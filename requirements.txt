@@ -1,0 +1,17 @@
+appscript==1.4.0
+certifi==2026.6.17
+charset-normalizer==3.4.9
+colorama==0.4.6
+dict2xml==1.7.8
+idna==3.18
+lxml==6.1.1
+numpy==2.5.1
+pandas==3.0.3
+psutil==7.2.2
+python-dateutil==2.9.0.post0
+requests==2.34.2
+six==1.17.0
+urllib3==2.7.0
+xlsxwriter==3.2.9
+xlwings==0.36.10
+xmltodict==1.0.4
