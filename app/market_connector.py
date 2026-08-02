@@ -24,7 +24,7 @@ search_in_ebay_model = SearchInEbayModel(
 #     conditions="{NEW,USED}",
 #     deliveryCountry="DE",
 #     q="RM1-XA",
-# )
+# )P
 
 
 def upload_from_ebay_to_woocommerce():

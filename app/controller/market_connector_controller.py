@@ -116,7 +116,7 @@ class MarketConnectorController(Base):
     def upload_model_to_woocommerce(self, target_woocommerce_category_model:WoocommerceCategoryModel) -> bool:
         for product_model in self.woocommerce_product_models:
             product_model.categories = [target_woocommerce_category_model]
-             self.apis_provider.woocommerce_api.woocommerce_uploader.resolve_or_upload(product_model=product_model)
+            self.apis_provider.woocommerce_api.woocommerce_uploader.resolve_or_upload(product_model=product_model)
 
             self.delay(500)
 
