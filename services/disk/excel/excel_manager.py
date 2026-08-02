@@ -1,9 +1,11 @@
-from services.disk.core.base_disk import BaseDisk
-from services.disk.excel.config.excel_config import excelConfig
+import random
+
 import xlsxwriter
 import xlwings
-import random
+
 import CONSTS
+from services.disk.core.base_disk import BaseDisk
+from services.disk.excel.config.excel_config import excelConfig
 
 # --
 # ...
@@ -17,7 +19,7 @@ class ExcelManager(BaseDisk):
         self.mode = kwargs.get("mode", self.instance.config_dictionary["default_mode"])
         self.address = kwargs.get(
             "address",
-            f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary["default_address"]}",
+            f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary['default_address']}",
         )
 
         # self.workbook = [
@@ -37,7 +39,7 @@ class ExcelManager(BaseDisk):
 
         self.workbook = []
         self.worksheet = None
-        self.worksheets_dictionary={}
+        self.worksheets_dictionary = {}
 
     # --
     # ...
@@ -51,10 +53,11 @@ class ExcelManager(BaseDisk):
     # ...
     # --
 
-    def operation(self, mode="", address="", file_name="", range = "A1", is_print_worksheets = True) -> str:
+    def operation(
+        self, mode="", address="", file_name="", range="A1", is_print_worksheets=True
+    ) -> str:
 
         try:
-
             if mode == "":
                 mode = self.mode
 
@@ -65,14 +68,9 @@ class ExcelManager(BaseDisk):
                     address = address.replace(address[address.rfind("/") :], file_name)
 
             if mode == "w":
-
                 with xlsxwriter.Workbook(address) as workbook:
-                    format_first_row = workbook.add_format(
-                        {"bg_color": "#c6e2ff", "border": 1}
-                    )
-                    format_rest_rows = workbook.add_format(
-                        {"bg_color": "#ffefd5", "border": 1}
-                    )
+                    format_first_row = workbook.add_format({"bg_color": "#c6e2ff", "border": 1})
+                    format_rest_rows = workbook.add_format({"bg_color": "#ffefd5", "border": 1})
                     format_first_row.set_center_across()
                     format_rest_rows.set_center_across()
 
@@ -87,9 +85,7 @@ class ExcelManager(BaseDisk):
                             )
 
                             temp = self.workbook.pop(index)
-                            temp[temp_new_worksheet_name] = temp.pop(
-                                temp_worksheet_name
-                            )
+                            temp[temp_new_worksheet_name] = temp.pop(temp_worksheet_name)
                             self.workbook.insert(index, temp)
 
                         temp_list_worksheet_name.append(temp_worksheet_name)
@@ -101,18 +97,14 @@ class ExcelManager(BaseDisk):
                             for row_data in worksheet_value:
                                 for data in row_data:
                                     for item, value in data.items():
-
                                         try:
-
                                             row_format = (
                                                 format_rest_rows
                                                 if item[0] != 0
                                                 else format_first_row
                                             )
 
-                                            worksheet.write(
-                                                item[0], item[1], value, row_format
-                                            )
+                                            worksheet.write(item[0], item[1], value, row_format)
                                         # I have change this exp to bestimmt exception
                                         except Exception as exp:
                                             print(repr(exp))
@@ -124,14 +116,12 @@ class ExcelManager(BaseDisk):
                 workbook = xlwings.Book(address)
 
                 if self.worksheet:
-                    worksheets = (
-                        workbook.sheets[self.worksheet].range(range).expand().value
-                    )
+                    worksheets = workbook.sheets[self.worksheet].range(range).expand().value
 
                 else:
-                    worksheet_data=[]
+                    worksheet_data = []
                     for worksheet in workbook.sheets:
-                        worksheet_data =worksheet.used_range.value
+                        worksheet_data = worksheet.used_range.value
 
                         temp_workdata = []
                         for item in worksheet_data:

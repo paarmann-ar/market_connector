@@ -1,15 +1,15 @@
+from abc import ABC
 from typing import Any
-from abc import ABC, abstractmethod
-from services.disk.json.json_manager import JSONManager
-import CONSTS
-from collections import namedtuple
-from services.mail.email_provider import EMailProvider
-from services.log_.log_provider import LogProvider
-import CONSTS
-import colorama
-from app.core.config.base_config import BaseConfig
-from apis.apis_provider import ApisProvider
 
+import colorama
+
+import CONSTS
+from apis.apis_provider import ApisProvider
+from app.core.config.base_config import BaseConfig
+from services.disk.json.json_manager import JSONManager
+from services.log_.log_provider import LogProvider
+from services.mail.email_provider import EMailProvider
+from toolboxs.delay import Delay
 # --
 # ...
 # --
@@ -40,14 +40,7 @@ class Base(ABC):
 
             cls.instance.json = JSONManager().instance
 
-            cls.ebay = ApisProvider().ebay_api
-            cls.woocommerce = ApisProvider().woocommerce_api
-            cls.wordpress = ApisProvider().wordpress_api
-
-            cls.woocommerce_product_model = ApisProvider().woocommerce_product_model
-            cls.woocommerce_category_model = ApisProvider().woocommerce_category_model
-            cls.woocommerce_image_model = ApisProvider().woocommerce_image_model
-            cls.wordpress_media_model = ApisProvider().wordpress_media_model
+            cls.delay = Delay
 
             cls.instance.config_dictionary = cls.get_config_dictionary()
 
@@ -92,6 +85,4 @@ class Base(ABC):
     @classmethod
     def prompt_on_screen(cls, message="") -> str:
         colorama.init()
-        print(
-            f"{CONSTS.COLORS.INITIAL_CLASS_PROMPT.value}{message}{CONSTS.COLORS.ENDC.value}"
-        )
+        print(f"{CONSTS.COLORS.INITIAL_CLASS_PROMPT.value}{message}{CONSTS.COLORS.ENDC.value}")

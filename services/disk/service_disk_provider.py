@@ -1,14 +1,10 @@
-from toolboxs.decorators import singleton
-from services.disk.file.file_manager import FileManager
 from services.disk.csv.csv_manager import CSVManager
-
 from services.disk.excel.excel_manager import ExcelManager
-
-from services.disk.xml.xml_manager import XMLManager
+from services.disk.file.file_manager import FileManager
 from services.disk.json.json_manager import JSONManager
-
+from services.disk.xml.xml_manager import XMLManager
 from services.log_.log_provider import LogProvider
-
+from toolboxs.decorators import singleton
 
 # --
 # ...
@@ -28,7 +24,7 @@ class ServiceDiskProvider:
         self.xml = XMLManager(
             log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
         ).instance
-        
+
         self.file = FileManager(
             log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
         ).instance
@@ -37,4 +33,6 @@ class ServiceDiskProvider:
             log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
         ).instance
 
-        self.csv=CSVManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs).instance
+        self.csv = CSVManager(
+            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
+        ).instance

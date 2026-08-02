@@ -1,6 +1,6 @@
+import CONSTS
 from services.disk.core.base_disk import BaseDisk
 from services.disk.file.config.file_config import FileConfig
-import CONSTS
 
 # --
 # ...
@@ -12,7 +12,7 @@ class FileManager(BaseDisk):
         super().__init__()
 
         self.mode = self.instance.config_dictionary["mode"]
-        self.address = f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary["address"]}"
+        self.address = f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary['address']}"
 
     # --
     # ...
@@ -29,7 +29,6 @@ class FileManager(BaseDisk):
     def operation(self, mode="", address="", context="", output="row") -> str:
 
         try:
-
             if mode == "":
                 mode = self.mode
 
@@ -43,7 +42,7 @@ class FileManager(BaseDisk):
 
                         match output:
                             case "list":
-                                context=  context.split("\n")
+                                context = context.split("\n")
 
                 case "w":
                     with open(address, mode) as file:
@@ -66,5 +65,5 @@ class FileManager(BaseDisk):
 
         finally:
             pass
-        
+
         return context

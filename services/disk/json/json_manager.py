@@ -1,6 +1,7 @@
-from services.disk.core.base_disk import BaseDisk
 import json
 from typing import Any
+
+from services.disk.core.base_disk import BaseDisk
 
 # --
 # ...
@@ -32,7 +33,7 @@ class JSONManager(BaseDisk):
         address="",
         context="",
         mode="",
-        dele = "",
+        dele="",
         is_get_dictionary=True,
         is_convert_context_to_json=False,
         is_json_data_has_unexpected_char=False,
@@ -68,7 +69,7 @@ class JSONManager(BaseDisk):
                     if is_get_dictionary:
                         if not isinstance(json_data, dict):
                             json_data = eval(json_data)
-                        
+
                         json_data = dict(json_data)
 
                     if is_json_data_has_unexpected_char:
@@ -88,21 +89,19 @@ class JSONManager(BaseDisk):
                     json_data = dict(json_data)
 
             elif mode == "append_or_replace":
-
                 dict_readed_file = {}
 
                 try:
-
                     with open(address, "r", encoding="utf8") as file:
                         readed_file = file.read(file)
                         json_readed_file = json.dumps(readed_file)
                         dict_readed_file = json.loads(json_readed_file)
 
-                except TypeError as exp:
+                except TypeError:
                     with open(address, "r", encoding="utf8") as file:
                         dict_readed_file = json.load(file)
 
-                except FileNotFoundError as exp:
+                except FileNotFoundError:
                     print(repr(f"JSON file will created: {address}"))
 
                 finally:
@@ -126,7 +125,6 @@ class JSONManager(BaseDisk):
 
             elif mode == "append":
                 with open(address, "a") as file:
-                    
                     if is_fix_json_error:
                         corrected_file_string = self.__fix_json_error(context)
                     else:
@@ -138,7 +136,6 @@ class JSONManager(BaseDisk):
 
             else:
                 with open(address, "w") as file:
-                    
                     if is_fix_json_error:
                         corrected_file_string = self.__fix_json_error(context)
                     else:
@@ -160,10 +157,9 @@ class JSONManager(BaseDisk):
     def __fix_json_error(self, context="") -> str:
 
         try:
-
             if isinstance(context, dict):
                 return context
-            
+
             context = context.replace(chr(92), chr(47))
             context = context.replace(chr(39), chr(34))
             context = context.replace('/"', "*******")

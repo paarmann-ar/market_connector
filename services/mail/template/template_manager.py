@@ -1,9 +1,9 @@
-from typing import Any
-import os
-from services.mail.template.config.template_config import TemplateConfig
 import importlib
-from services.mail.core.base_email import BaseEMail
+import os
+
 import CONSTS
+from services.mail.core.base_email import BaseEMail
+from services.mail.template.config.template_config import TemplateConfig
 
 # --
 # ...
@@ -63,7 +63,7 @@ class TemplateManager(BaseEMail):
     # --
 
     def get_template_class(self, template_name) -> str:
-        template_directory = f"{CONSTS.ROOT_DIR}/{self.config_dictionary["template_directory"]}"
+        template_directory = f"{CONSTS.ROOT_DIR}/{self.config_dictionary['template_directory']}"
         template_namespace = self.config_dictionary["template_namespace"]
 
         files = os.listdir(template_directory)

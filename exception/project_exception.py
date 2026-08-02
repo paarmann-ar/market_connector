@@ -1,3 +1,3 @@
-﻿class ProjectException(Exception):
+class ProjectException(Exception):
     def __init__(self, *args: object) -> None:
-       super().__init__(*args)
+        super().__init__(*args)

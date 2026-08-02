@@ -1,9 +1,5 @@
-import math
-import random
-from pathlib import Path
-import sys
 import os
-from datetime import datetime
+
 import CONSTS
 
 # --
@@ -12,7 +8,6 @@ import CONSTS
 
 
 class FileAndFolderOperation:
-
     # --
     # ...
     # --
@@ -21,7 +16,6 @@ class FileAndFolderOperation:
     def get_all_file_address(address=""):
 
         try:
-
             file_address_list = []
 
             if address == "":
@@ -45,13 +39,12 @@ class FileAndFolderOperation:
     def remove_pycache():
 
         try:
-
             file_address_list = FileAndFolderOperation().get_all_file_address()
 
             for file in file_address_list:
                 file_list = file.split("/")
 
-                file_list = filter(lambda x: x=="__pycache__", file_list)
+                file_list = filter(lambda x: x == "__pycache__", file_list)
                 for item in file_list:
                     os.remove(file)
                     print(f"I remove: {file}")
@@ -67,19 +60,18 @@ class FileAndFolderOperation:
     def remove_file(file_address):
 
         try:
-
-            candidate_filename = file_address.split('/')[-1]
-            dir_address = file_address.split('/')[:-1]
-            dir_address = '/'.join(dir_address)
+            candidate_filename = file_address.split("/")[-1]
+            dir_address = file_address.split("/")[:-1]
+            dir_address = "/".join(dir_address)
 
             for filename in os.listdir(dir_address):
-                if filename.upper()==candidate_filename.upper():
+                if filename.upper() == candidate_filename.upper():
                     os.remove(file_address)
                     print(f"I remove: {file_address}")
                     return True
-                
+
             print(f"I remove nothing: {file_address}")
             return False
-                    
+
         except Exception as exp:
             print(repr(exp))

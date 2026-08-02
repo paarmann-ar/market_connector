@@ -1,10 +1,12 @@
-import CONSTS
-from services.connection.request.config.request_config import RequestConfig
-from services.connection.core.base_connection import BaseConnection
-import requests
-import time
-import colorama
 import sys
+import time
+
+import colorama
+import requests
+
+import CONSTS
+from services.connection.core.base_connection import BaseConnection
+from services.connection.request.config.request_config import RequestConfig
 
 # --
 # ...
@@ -15,8 +17,7 @@ class Request(BaseConnection):
     def __init__(self, **kwargs) -> None:
 
         try:
-
-            is_use_default_headers=kwargs.get('is_use_default_headers', True)
+            is_use_default_headers = kwargs.get("is_use_default_headers", True)
 
             if is_use_default_headers:
                 self.headers = {
@@ -38,7 +39,7 @@ class Request(BaseConnection):
             self.is_response_json = kwargs.get("is_response_json", True)
 
         except Exception as exp:
-            self.error(f"{__file__}--->{__name__}: {str(exp)}")
+            self.error(f"{__file__}--->{__name__}: {exp!s}")
 
     # --
     # ...
@@ -57,7 +58,7 @@ class Request(BaseConnection):
 
         self.headers.clear()
 
-        is_use_default_headers=kwargs.get('is_use_default_headers', True)
+        is_use_default_headers = kwargs.get("is_use_default_headers", True)
 
         if is_use_default_headers:
             self.headers = {
@@ -105,7 +106,6 @@ class Request(BaseConnection):
     def get_response(self, wait_counter=5):
 
         try:
-
             sys.set_int_max_str_digits(0)
 
             response = None
@@ -122,7 +122,7 @@ class Request(BaseConnection):
 
                 case "delete":
                     response = requests.delete(**self.request_package)
-                    
+
                 case "put":
                     response = requests.put(**self.request_package)
 
@@ -166,9 +166,7 @@ class Request(BaseConnection):
         except ValueError as v_exp:
             print(f"{v_exp}")
 
-            print(
-                f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}"
-            )
+            print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}")
 
         except AttributeError as a_exp:
             print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{a_exp}{CONSTS.COLORS.ENDC.value}")

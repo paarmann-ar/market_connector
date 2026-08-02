@@ -5,42 +5,45 @@ import subprocess
 # --
 
 
-class cProcess():
+class cProcess:
     def __init__(self) -> None:
         pass
 
-# --
-# ...
-# --
+    # --
+    # ...
+    # --
 
     @staticmethod
     def run(AppAdress):
         subprocess.Popen(AppAdress)
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     @staticmethod
     def terminat(Appexecute):
         while cProcess.IsRunnigProcesByName(Appexecute):
             subprocess.call("TASKKILL /F /IM " + Appexecute, shell=True)
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     @staticmethod
     def IsRunnigProcesByName(Appexecute) -> bool:
         return True if cProcess.ProcessIdByName(Appexecute, False) else False
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     @staticmethod
     def ListOfAllProcess():
         # [HandleCount Name Priority ProcessId ThreadCount WorkingSetSize]
         allProcess = []
 
-        Data = subprocess.check_output(['wmic', 'process', 'list', 'brief'])
+        Data = subprocess.check_output(["wmic", "process", "list", "brief"])
 
         a = str(Data).split("\\r\\r\\n")
 
@@ -48,9 +51,10 @@ class cProcess():
             allProcess.append(",".join(b.split()).split(","))
 
         return allProcess
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     @staticmethod
     def ProcessIdByName(ProcessName, IsHex=True):

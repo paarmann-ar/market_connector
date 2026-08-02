@@ -1,14 +1,15 @@
+import os
+import smtplib
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from typing import Any
+
+import CONSTS
 from services.mail.core.base_email import BaseEMail
 from services.mail.email.config.mail_config import MailConfig
-from email.mime.multipart import MIMEMultipart
-from email import encoders
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-import smtplib
-import os
-from typing import Any
 from services.mail.template.template_manager import TemplateManager
-import CONSTS
 
 # --
 # ...
@@ -42,18 +43,13 @@ class EMail(BaseEMail):
     def set_email_attributs(self, **kwargs):
 
         try:
-
             if sender_domains := kwargs.get("sender_domains"):
-                self.from_object = self.config_dictionary["sender_domains"][
-                    sender_domains
-                ]
+                self.from_object = self.config_dictionary["sender_domains"][sender_domains]
             else:
                 self.from_object = kwargs.get("sender_object")
 
             if receiver_group := kwargs.get("receiver_group", []):
-                self.receiver_list = self.config_dictionary["receiver_groups"][
-                    receiver_group
-                ]
+                self.receiver_list = self.config_dictionary["receiver_groups"][receiver_group]
 
             self.receiver_list = kwargs.get("receiver_list", [])
             self.cc_list = kwargs.get("cc_list", [])
@@ -67,9 +63,7 @@ class EMail(BaseEMail):
             self.template_object = kwargs.get("template_object", None)
 
             if not self.template_object:
-                template_object_from_config_file = self.config_dictionary[
-                    "template_default"
-                ]
+                template_object_from_config_file = self.config_dictionary["template_default"]
 
                 self.template_object = TemplateManager().instance
 
@@ -104,7 +98,6 @@ class EMail(BaseEMail):
     def __send(self) -> bool:
 
         try:
-
             message = MIMEMultipart("alternative")
             message["From"] = self.from_object["address"]
             message["subject"] = self.subject
@@ -146,7 +139,6 @@ class EMail(BaseEMail):
     def attachment_manager(self, attachments_object=None) -> Any:
 
         try:
-
             files = []
             attachments = []
 
@@ -161,12 +153,11 @@ class EMail(BaseEMail):
 
                 if is_attach:
                     if bool(os.listdir(directory)):
-
                         if is_all_directory:
                             for item in os.listdir(directory):
                                 files.append(f"{directory}#{item}")
                         else:
-                            files.append(f"{directory}#{item["file"]}")
+                            files.append(f"{directory}#{item['file']}")
 
             attachments = self.create_holder(files)
 
@@ -184,7 +175,6 @@ class EMail(BaseEMail):
     def create_holder(self, files):
 
         try:
-
             temp_attachments = []
             files = set(files)
             # f = list(dict.fromkeys(File))

@@ -1,12 +1,12 @@
+from abc import ABC
 from typing import Any
-from abc import ABC, abstractmethod
 
 # --
 # ...
 # --
 
+
 class BaseDisk(ABC):
-    
     def __new__(cls, **kwargs: Any):
 
         if hasattr(cls, "instance_args"):

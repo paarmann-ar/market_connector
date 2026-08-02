@@ -1,4 +1,5 @@
 from enum import Enum
+
 from toolboxs.toolbox import Toolbox
 
 # --
@@ -15,6 +16,7 @@ EXTERNAL_FILES = ROOT_DIR + "/.external_files"
 # ... colors
 # --
 
+
 class COLORS(Enum):
     LOG_PROMPT = "\x1b[35;40;2m"
     DELAY_PROMPT = "\x1b[33;40;2m"
@@ -24,6 +26,7 @@ class COLORS(Enum):
     WARNUNG_PROMPT = "\x1b[34;43;2m"
     ERROR_PROMPT = "\x1b[31;40;2m"
     ENDC = "\x1b[0m"
+
 
 # ESC [ 0 m       # reset all (colors and brightness)
 # ESC [ 1 m       # bright
@@ -65,5 +68,5 @@ class COLORS(Enum):
 
 # # clear the line
 # ESC [ mode K    # clear the line
-     
+
 # ESC [ 36 ; 45 ; 1 m     # bright cyan text on magenta background

@@ -1,4 +1,5 @@
 from typing import Any
+
 from toolboxs.decorators import singleton
 
 # --
@@ -52,6 +53,4 @@ class test_report_template:
     # --
 
     def __get_mixed_html_body(self, body) -> str:
-        self.mixed_html = (
-            self.template if body == "" else self.template.replace("{}", body)
-        )
+        self.mixed_html = self.template if body == "" else self.template.replace("{}", body)

@@ -1,10 +1,11 @@
+import CONSTS
 from config_dictionary.base_dictionary import BaseDictionary
 from services.disk.json.json_manager import JSONManager
-import CONSTS
 
 # --
 # ...
 # --
+
 
 class MailConfig(BaseDictionary):
     @classmethod

@@ -1,9 +1,9 @@
-﻿import math
-import random
-from pathlib import Path
-import sys
+import math
 import os
+import random
+import sys
 from datetime import datetime
+from pathlib import Path
 
 # --
 # ...
@@ -11,12 +11,10 @@ from datetime import datetime
 
 
 class Toolbox:
-
     @staticmethod
     def str_(input_):
 
         try:
-
             if isinstance(input_, str):
                 return input_
 
@@ -34,7 +32,6 @@ class Toolbox:
     def get_random(start_string="RND ", type="string", limit=1000000, delemeter="_"):
 
         try:
-
             result = 0
 
             if start_string is tuple:
@@ -44,7 +41,7 @@ class Toolbox:
                 rand_ = math.ceil(random.random() * limit)
                 if rand_ < 10:
                     rand_ += 10
-                result = f"{start_string}{delemeter}{str(rand_)}"
+                result = f"{start_string}{delemeter}{rand_!s}"
 
             elif type == "int":
                 result = math.ceil(random.random() * limit)
@@ -64,7 +61,6 @@ class Toolbox:
     def get_root_path() -> str:
 
         try:
-
             return str(Path(__file__).parent.parent)
 
         except Exception as exp:
@@ -78,7 +74,6 @@ class Toolbox:
     def get_import_moduls() -> str:
 
         try:
-
             modules = []
             sys_modules_keys = sys.modules.keys()
             for module in sys_modules_keys:
@@ -86,7 +81,7 @@ class Toolbox:
                     modules.append(module)
 
             with open(
-                f"{Toolbox().get_root_path().replace("\\", "/")}/.external_files/temp/temp_import_moluls.txt",
+                f"{Toolbox().get_root_path().replace('\\', '/')}/.external_files/temp/temp_import_moluls.txt",
                 "w",
             ) as temp_import_moluls:
                 moduls_text = ""
@@ -116,15 +111,11 @@ class Toolbox:
 
         for folder_adress, sub_folders, files in os.walk(app_dir):
             for file in files:
-                file_name_with_length.append(
-                    f"{folder_adress.replace('\\', '/')}/{file}"
-                )
+                file_name_with_length.append(f"{folder_adress.replace('\\', '/')}/{file}")
 
         file_name_with_length.sort(key=lambda k: len(k), reverse=True)
         file_name_len_list = [
-            f"{file}: {len(file)}"
-            for file in file_name_with_length
-            if len(file) > len_condition
+            f"{file}: {len(file)}" for file in file_name_with_length if len(file) > len_condition
         ]
 
         print(len(file_name_len_list))
@@ -140,7 +131,6 @@ class Toolbox:
     def get_first_day_of_month(input_):
 
         try:
-
             today = datetime.today()
             return datetime(today.year, today.month, 1)
 

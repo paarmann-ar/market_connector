@@ -1,6 +1,6 @@
-from datetime import datetime
 import datetime
 import time
+from datetime import datetime
 
 # --
 # ...
@@ -8,12 +8,10 @@ import time
 
 
 class DateAndTime:
-
     @staticmethod
     def get_first_day_of_month(format="M/D/Y"):
 
         try:
-
             today = datetime.today()
 
             today_day = "01"
@@ -27,7 +25,7 @@ class DateAndTime:
             return format
 
         except Exception as exp:
-            print(f"get_first_day_of_month: {repr(exp)}")
+            print(f"get_first_day_of_month: {exp!r}")
 
     # --
     # ...
@@ -37,13 +35,12 @@ class DateAndTime:
     def get_today(format="%Y-%m-%d"):
 
         try:
-
             today = datetime.datetime.today().strftime(format)
 
             return today
 
         except Exception as exp:
-            print(f"get_today: {repr(exp)}")
+            print(f"get_today: {exp!r}")
 
     # --
     # ...
@@ -53,8 +50,7 @@ class DateAndTime:
     def get_now(format="%Y-%m-%d %H:%M:%S"):
 
         try:
-
             return time.strftime(format, time.gmtime())
 
         except Exception as exp:
-            print(f"get_today: {repr(exp)}")
+            print(f"get_today: {exp!r}")

@@ -1,9 +1,10 @@
+from abc import ABC
 from typing import Any
-from abc import ABC, abstractmethod
 
 # --
 # ...
 # --
+
 
 class BaseFTP(ABC):
     def __init__(self, **kwargs) -> None:

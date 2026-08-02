@@ -1,14 +1,17 @@
-import time
 import sys
-import CONSTS
+import time
+
 import colorama
+
+import CONSTS
 
 # --
 # ... delay
 # --
 
+
 class Delay:
-    def __init__(self, delay_):
+    def __init__(self, delay_: int):
         colorama.init()
         print(f"{CONSTS.COLORS.DELAY_PROMPT.value}I am waiting for {delay_} milliseconds", end="")
         delay_ /= 1000
@@ -27,4 +30,3 @@ class Delay:
             print(".", end="", flush=True)
 
         print(f"{CONSTS.COLORS.ENDC.value}")
-        

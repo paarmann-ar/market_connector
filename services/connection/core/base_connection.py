@@ -1,9 +1,10 @@
+from abc import ABC
 from typing import Any
-from abc import ABC, abstractmethod
 
 # --
 # ...
 # --
+
 
 class BaseConnection(ABC):
     def __init__(self, **kwargs: Any) -> None:

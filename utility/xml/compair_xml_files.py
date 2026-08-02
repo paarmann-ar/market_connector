@@ -1,18 +1,19 @@
-from services.disk.service_disk_provider import ServiceDiskProvider
 from data_structure.data_structure_provider import DataStructureProvider
+from services.disk.service_disk_provider import ServiceDiskProvider
 
 # --
 # ...
 # --
+
 
 class CompairXmlFile:
     def __init__(self) -> None:
         self.dictionary = DataStructureProvider().dictionary
         self.xml = ServiceDiskProvider().xml
 
-# --
-# ...
-# --
+    # --
+    # ...
+    # --
 
     def operation(self, xml_file_0, xml_file_1):
 
@@ -20,5 +21,5 @@ class CompairXmlFile:
         file_1 = self.xml.operation(xml_file_1)
 
         added_key, removed_key, difference, commen = self.dictionary.compair(file_0, file_1)
-        
+
         return str(added_key), str(removed_key), str(difference), str(commen)
