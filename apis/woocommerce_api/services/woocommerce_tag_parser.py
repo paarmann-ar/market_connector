@@ -7,41 +7,25 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
 from apis.woocommerce_api.models.woocommerce_tag_parser_model import WoocommerceTagParserModel
+from apis.woocommerce_api.constants.woocommerce_tag_constants import (
+    BRANDS,
+    CONDITIONS,
+    CATEGORIES,
+    NO_GO_WORDS,
+)
 
 # --
 # ...
 # --
 
 
-class WoocommerceTagPaser(BaseWoocommerceApi):
-    def __init__(self, **kwargs) -> None:
-        self.BRANDS = [
-            "SIEMENS",
-            "Bosch",
-            "ABB",
-            "Schneider",
-            "Electric",
-            "ABB",
-            "Phoenix",
-            "Contact",
-            "WAGÖ",
-            "Weidmüller",
-            "Endress",
-            "Hauser",
-            "Pepperl",
-            "Fuchs",
-            "ifm",
-            "Balluff",
-            "Sick",
-            "Turck",
-            "Mitsubishi",
-            "Omron",
-            "Delta",
-        ]
-        self.CONDITIONS = ["Neu", "Gebraucht", "New", "Used"]
-        self.CATEGORIES = ["Sensoren", "Sensor", "PLC", "module", "SIMATIC"]
-        self.NO_GO_WORDS = ["für", "Original", "none"]
+class WoocommerceTagParser(BaseWoocommerceApi):
+    BRANDS = BRANDS
+    CONDITIONS = CONDITIONS
+    CATEGORIES = CATEGORIES
+    NO_GO_WORDS = NO_GO_WORDS
 
+    def __init__(self, **kwargs) -> None:
         self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
 
     # --

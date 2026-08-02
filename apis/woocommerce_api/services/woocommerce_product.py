@@ -1,19 +1,11 @@
-from apis.woocommerce_api.services.woocommerce_category import WoocommerceCategory
-
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
-from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
-from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
-from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
-from apis.woocommerce_api.services.woocommerce_brand import WoocommerceBrand
-from apis.woocommerce_api.services.woocommerce_image import WoocommerceImage
-from apis.woocommerce_api.services.woocommerce_tag import WoocommerceTag
+
 from toolboxs.dict_utils import remove_none
 
 # --

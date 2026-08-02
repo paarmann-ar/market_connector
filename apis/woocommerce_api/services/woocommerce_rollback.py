@@ -4,10 +4,6 @@ from apis.woocommerce_api.config.woocommerce_api_config import (
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from apis.woocommerce_api.services.woocommerce_brand import WoocommerceBrand
-from apis.woocommerce_api.services.woocommerce_tag import WoocommerceTag
-from apis.woocommerce_api.services.woocommerce_product import WoocommerceProduct
-from apis.woocommerce_api.services.woocommerce_category import WoocommerceCategory
 
 # --
 # ...
@@ -40,17 +36,23 @@ class WoocommerceRollback(BaseWoocommerceApi):
 
     def rollback(self):
         try:
-            for brand in self.woocommerce_api.woocommerce_session_model.brands:
-                WoocommerceBrand().delete_brand_by_brand_id(brand.id)
+            for brand in self.woocommerce_service_provider.woocommerce_session_model.brands:
+                self.woocommerce_service_provider.woocommerce_brand.delete_brand_by_brand_id(
+                    brand.id
+                )
 
-            for tag in self.woocommerce_api.woocommerce_session_model.tags:
-                WoocommerceTag().delete_tag_by_tag_id(tag.id)
+            for tag in self.woocommerce_service_provider.woocommerce_session_model.tags:
+                self.woocommerce_service_provider.woocommerce_tag.delete_tag_by_tag_id(tag.id)
 
-            for product in self.woocommerce_api.woocommerce_session_model.products:
-                WoocommerceProduct().delete_product_by_product_id(product.id)
+            for product in self.woocommerce_service_provider.woocommerce_session_model.products:
+                self.woocommerce_service_provider.woocommerce_product.delete_product_by_product_id(
+                    product.id
+                )
 
-            for category in self.woocommerce_api.woocommerce_session_model.categories:
-                WoocommerceCategory().delete_category_by_category_id(category.id)
+            for category in self.woocommerce_service_provider.woocommerce_session_model.categories:
+                self.woocommerce_service_provider.woocommerce_category.delete_category_by_category_id(
+                    category.id
+                )
 
             return None
 

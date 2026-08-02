@@ -1,6 +1,7 @@
 from apis.ebay_api.config.ebay_api_config import (
     EbayApiConfig,
 )
+from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 from apis.ebay_api.services.ebay_category import EbayCategory
 from apis.ebay_api.services.ebay_product import EbayProduct
@@ -147,6 +148,23 @@ class EbayApi(BaseEbayApi):
 
         except Exception as exp:
             print(f"get_all_data_of_product_with_product_id_from_products_list: {exp}")
+
+    # --
+    # ...
+    # --
+
+    def fetch_product_from_ebay_by_search_in_ebay_model(
+        self, search_in_ebay_model: SearchInEbayModel
+    ):
+        search_in_ebay_model = search_in_ebay_model.to_dict()
+
+        self.get_all_product_ids(
+            category_name_candidate=search_in_ebay_model.get("category_name_candidate"),
+            filter_product=search_in_ebay_model.get("filter_product"),
+            q=search_in_ebay_model.get("q"),
+        )
+
+        self.get_all_data_of_product_with_product_id_from_products_list()
 
 
 def test():
