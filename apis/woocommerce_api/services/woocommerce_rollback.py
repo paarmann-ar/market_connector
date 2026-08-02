@@ -36,20 +36,20 @@ class WoocommerceRollback(BaseWoocommerceApi):
 
     def rollback(self):
         try:
-            for brand in self.woocommerce_service_provider.woocommerce_session_model.brands:
+            for brand in self.woocommerce_session_model.brands:
                 self.woocommerce_service_provider.woocommerce_brand.delete_brand_by_brand_id(
                     brand.id
                 )
 
-            for tag in self.woocommerce_service_provider.woocommerce_session_model.tags:
+            for tag in self.woocommerce_session_model.tags:
                 self.woocommerce_service_provider.woocommerce_tag.delete_tag_by_tag_id(tag.id)
 
-            for product in self.woocommerce_service_provider.woocommerce_session_model.products:
+            for product in self.woocommerce_session_model.products:
                 self.woocommerce_service_provider.woocommerce_product.delete_product_by_product_id(
                     product.id
                 )
 
-            for category in self.woocommerce_service_provider.woocommerce_session_model.categories:
+            for category in self.woocommerce_session_model.categories:
                 self.woocommerce_service_provider.woocommerce_category.delete_category_by_category_id(
                     category.id
                 )

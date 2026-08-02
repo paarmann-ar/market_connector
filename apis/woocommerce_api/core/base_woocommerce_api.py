@@ -4,7 +4,7 @@ import CONSTS
 from apis.core.base import Base
 from apis.woocommerce_api.services.woocommerce_service_provider import WoocommerceServiceProvider
 from services.connection.connection_provider import ConnectionProvider
-
+from apis.woocommerce_api.models.woocommerce_session_model import WoocommerceSessionModel
 # --
 # ...
 # --
@@ -30,8 +30,8 @@ class BaseWoocommerceApi(Base):
             cls.instance_args = kwargs
 
             cls.request = ConnectionProvider().request
-
             cls.woocommerce_service_provider = WoocommerceServiceProvider()
+            cls.woocommerce_session_model = WoocommerceSessionModel()
 
             cls.instance.config_dictionary = cls.get_config_dictionary()
 

@@ -120,7 +120,7 @@ class WoocommerceApi(BaseWoocommerceApi):
                 product_model=product_model
             )
 
-            self.delay(500)
+            self.delay(1000)
 
         self.woocommerce_service_provider.woocommerce_rollback.rollback()
         return True
