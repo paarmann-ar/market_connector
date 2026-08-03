@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from typing import Any
 
 import CONSTS
-from services.mail.core.base_email import BaseEMail
+from services.core.base import Base
 from services.mail.email.config.mail_config import MailConfig
 from services.mail.template.template_manager import TemplateManager
 
@@ -16,7 +16,7 @@ from services.mail.template.template_manager import TemplateManager
 # --
 
 
-class EMail(BaseEMail):
+class EMail(Base):
     def __init__(self) -> None:
         pass
 
@@ -26,7 +26,7 @@ class EMail(BaseEMail):
 
     @classmethod
     def get_config_dictionary(cls):
-        return MailConfig().instance.dictionary
+        return MailConfig().get_dictionary()
 
     # --
     # ...
@@ -44,12 +44,16 @@ class EMail(BaseEMail):
 
         try:
             if sender_domains := kwargs.get("sender_domains"):
-                self.from_object = self.config_dictionary["sender_domains"][sender_domains]
+                self.from_object = self.config_dictionary["sender_domains"][
+                    sender_domains
+                ]
             else:
                 self.from_object = kwargs.get("sender_object")
 
             if receiver_group := kwargs.get("receiver_group", []):
-                self.receiver_list = self.config_dictionary["receiver_groups"][receiver_group]
+                self.receiver_list = self.config_dictionary["receiver_groups"][
+                    receiver_group
+                ]
 
             self.receiver_list = kwargs.get("receiver_list", [])
             self.cc_list = kwargs.get("cc_list", [])
@@ -63,7 +67,9 @@ class EMail(BaseEMail):
             self.template_object = kwargs.get("template_object", None)
 
             if not self.template_object:
-                template_object_from_config_file = self.config_dictionary["template_default"]
+                template_object_from_config_file = self.config_dictionary[
+                    "template_default"
+                ]
 
                 self.template_object = TemplateManager().instance
 

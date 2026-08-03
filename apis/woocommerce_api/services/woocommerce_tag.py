@@ -15,18 +15,20 @@ from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagMode
 
 class WoocommerceTag(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.wp_media_url = self.instance.config_dictionary.get("wp_media_url")
+        super().__init__(**kwargs)
 
-        self.consumer_key = self.instance.config_dictionary.get("consumer_key")
-        self.consumer_secret = self.instance.config_dictionary.get("consumer_secret")
+        self.base_url = self.config_dictionary.get("base_url")
+        self.wp_media_url = self.config_dictionary.get("wp_media_url")
 
-        self.wp_user = self.instance.config_dictionary.get("wp_user")
-        self.wp_password = self.instance.config_dictionary.get("wp_password")
+        self.consumer_key = self.config_dictionary.get("consumer_key")
+        self.consumer_secret = self.config_dictionary.get("consumer_secret")
 
-        self.tag_url = self.instance.config_dictionary.get("tag_url")
+        self.wp_user = self.config_dictionary.get("wp_user")
+        self.wp_password = self.config_dictionary.get("wp_password")
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.tag_url = self.config_dictionary.get("tag_url")
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -34,7 +36,7 @@ class WoocommerceTag(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...

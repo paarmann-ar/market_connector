@@ -1,15 +1,12 @@
 from abc import ABC
 from typing import Any
 
-import colorama
-
-import CONSTS
-from apis.apis_provider import ApisProvider
 from app.core.config.base_config import BaseConfig
+from app.core.prompt_on_screen import PromptOnScreen
 from services.disk.json.json_manager import JSONManager
-from services.log_.log_provider import LogProvider
+from services.logging.log_provider import LogProvider
 from services.mail.email_provider import EMailProvider
-from toolboxs.delay import Delay
+
 # --
 # ...
 # --
@@ -38,11 +35,11 @@ class Base(ABC):
             cls.instance.error = LogProvider().error
             cls.instance.stack = LogProvider().stack
 
-            cls.instance.json = JSONManager().instance
-
-            cls.delay = Delay
+            cls.instance.json = JSONManager()
 
             cls.instance.config_dictionary = cls.get_config_dictionary()
+
+            cls.prompt_on_screen = PromptOnScreen()
 
         cls.prompt_on_screen(f"{__class__.__name__}, {id(cls.instance)}")
         return cls.instance
@@ -60,7 +57,7 @@ class Base(ABC):
 
     @classmethod
     def get_config_dictionary(cls) -> str:
-        return BaseConfig().instance.dictionary
+        return BaseConfig().get_dictionary()
 
     # --
     # ...
@@ -69,20 +66,3 @@ class Base(ABC):
     @classmethod
     def get_elements(cls) -> str:
         return None
-
-    # --
-    # ...
-    # --
-
-    @classmethod
-    def get_components(cls) -> str:
-        return None
-
-    # --
-    # ...
-    # --
-
-    @classmethod
-    def prompt_on_screen(cls, message="") -> str:
-        colorama.init()
-        print(f"{CONSTS.COLORS.INITIAL_CLASS_PROMPT.value}{message}{CONSTS.COLORS.ENDC.value}")

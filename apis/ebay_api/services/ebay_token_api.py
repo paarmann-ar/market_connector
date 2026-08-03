@@ -13,17 +13,19 @@ from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 
 class EbayTokenApi(BaseEbayApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.token_url = self.instance.config_dictionary.get("token_url")
-        self.client_id = self.instance.config_dictionary.get("client_id")
-        self.dev_id = self.instance.config_dictionary.get("dev_id")
-        self.client_secret = self.instance.config_dictionary.get("client_secret")
+        super().__init__(**kwargs)
+
+        self.base_url = self.config_dictionary.get("base_url")
+        self.token_url = self.config_dictionary.get("token_url")
+        self.client_id = self.config_dictionary.get("client_id")
+        self.dev_id = self.config_dictionary.get("dev_id")
+        self.client_secret = self.config_dictionary.get("client_secret")
 
         self.ebay_access_token = None
         self.expires_in_token = 0
         self.expires_get_time = time.time()
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -31,7 +33,7 @@ class EbayTokenApi(BaseEbayApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return EbayApiConfig().instance.dictionary
+        return EbayApiConfig().get_dictionary()
 
     # --
     # ...

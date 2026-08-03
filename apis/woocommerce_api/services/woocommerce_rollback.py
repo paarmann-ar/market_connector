@@ -12,8 +12,9 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 
 class WoocommerceRollback(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -21,7 +22,7 @@ class WoocommerceRollback(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...
@@ -42,7 +43,9 @@ class WoocommerceRollback(BaseWoocommerceApi):
                 )
 
             for tag in self.woocommerce_session_model.tags:
-                self.woocommerce_service_provider.woocommerce_tag.delete_tag_by_tag_id(tag.id)
+                self.woocommerce_service_provider.woocommerce_tag.delete_tag_by_tag_id(
+                    tag.id
+                )
 
             for product in self.woocommerce_session_model.products:
                 self.woocommerce_service_provider.woocommerce_product.delete_product_by_product_id(

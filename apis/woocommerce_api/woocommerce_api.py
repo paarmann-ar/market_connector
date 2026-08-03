@@ -1,24 +1,24 @@
+from bs4 import BeautifulSoup
+
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from toolboxs.decorators import singleton
-from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
-from bs4 import BeautifulSoup
 
 # --
 # ...
 # --
 
 
-@singleton
 class WoocommerceApi(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
-        self.woocommerce_product_models: list =[]
+        super().__init__(**kwargs)
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.woocommerce_product_models: list = []
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -26,7 +26,7 @@ class WoocommerceApi(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...
@@ -57,11 +57,15 @@ class WoocommerceApi(BaseWoocommerceApi):
             # chon faghat akharin category mikhastam dashteh basham
             category = product["categoryPath"].split("|")[-1]
             woocommerce_categories_model.append(
-                self.woocommerce_service_provider.woocommerce_category_model(name=category)
+                self.woocommerce_service_provider.woocommerce_category_model(
+                    name=category
+                )
             )
 
             woocommerce_brands_model.append(
-                self.woocommerce_service_provider.woocommerce_brand_model(name=product["brand"])
+                self.woocommerce_service_provider.woocommerce_brand_model(
+                    name=product["brand"]
+                )
             )
 
             woocommerce_tag_parser_model = self.woocommerce_service_provider.woocommerce_tag_parser.woocommerce_tag_parser(
@@ -69,7 +73,9 @@ class WoocommerceApi(BaseWoocommerceApi):
             )
 
             for tag in woocommerce_tag_parser_model.tags:
-                woocommerce_tag_model = self.woocommerce_service_provider.woocommerce_tag_model()
+                woocommerce_tag_model = (
+                    self.woocommerce_service_provider.woocommerce_tag_model()
+                )
                 woocommerce_tag_model.name = tag
                 woocommerce_tags_model.append(woocommerce_tag_model)
 
@@ -111,8 +117,14 @@ class WoocommerceApi(BaseWoocommerceApi):
     # ...
     # --
 
-    def upload_product_model_to_woocommerce(self, target_woocommerce_category_name: str) -> bool:
-        target_woocommerce_category_model = self.woocommerce_service_provider.woocommerce_category_model(name=target_woocommerce_category_name)
+    def upload_product_model_to_woocommerce(
+        self, target_woocommerce_category_name: str
+    ) -> bool:
+        target_woocommerce_category_model = (
+            self.woocommerce_service_provider.woocommerce_category_model(
+                name=target_woocommerce_category_name
+            )
+        )
 
         for product_model in self.woocommerce_product_models:
             product_model.categories = [target_woocommerce_category_model]
@@ -120,7 +132,7 @@ class WoocommerceApi(BaseWoocommerceApi):
                 product_model=product_model
             )
 
-            self.delay(1000)
+            self.waiting(1000)
 
         self.woocommerce_service_provider.woocommerce_rollback.rollback()
         return True

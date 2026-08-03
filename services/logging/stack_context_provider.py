@@ -1,4 +1,4 @@
-from services.log_.core.stack.stack_context import StackContext
+from services.logging.core.stack.stack_context import StackContext
 
 # --
 # ...

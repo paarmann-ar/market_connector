@@ -2,7 +2,7 @@ import importlib
 import os
 
 import CONSTS
-from services.mail.core.base_email import BaseEMail
+from services.core.base import Base
 from services.mail.template.config.template_config import TemplateConfig
 
 # --
@@ -10,7 +10,7 @@ from services.mail.template.config.template_config import TemplateConfig
 # --
 
 
-class TemplateManager(BaseEMail):
+class TemplateManager(Base):
     def __init__(self) -> None:
         pass
 
@@ -19,7 +19,7 @@ class TemplateManager(BaseEMail):
     # --
     @classmethod
     def get_config_dictionary(cls):
-        return TemplateConfig().instance.dictionary
+        return TemplateConfig().get_dictionary()
 
     # --
     # ...
@@ -34,7 +34,7 @@ class TemplateManager(BaseEMail):
             template_instance = template_class()
             template_instance(body)
 
-            self.instance.template_object = {
+            self.template_object = {
                 "template": template_instance.template,
                 "mixed_html": template_instance.mixed_html,
                 "body": body,
@@ -63,7 +63,9 @@ class TemplateManager(BaseEMail):
     # --
 
     def get_template_class(self, template_name) -> str:
-        template_directory = f"{CONSTS.ROOT_DIR}/{self.config_dictionary['template_directory']}"
+        template_directory = (
+            f"{CONSTS.ROOT_DIR}/{self.config_dictionary['template_directory']}"
+        )
         template_namespace = self.config_dictionary["template_namespace"]
 
         files = os.listdir(template_directory)

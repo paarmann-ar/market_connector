@@ -1,22 +1,21 @@
 import pandas
 
 import CONSTS
-from services.disk.core.base_disk import BaseDisk
 from services.disk.csv.config.csv_config import CSVConfig
-
+from services.core.base import Base
 # --
 # ...
 # --
 
 
-class CSVManager(BaseDisk):
+class CSVManager(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__()
 
-        self.mode = kwargs.get("mode", self.instance.config_dictionary["default_mode"])
+        self.mode = kwargs.get("mode", self.config_dictionary["default_mode"])
         self.address = kwargs.get(
             "address",
-            f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary['default_address']}",
+            f"{CONSTS.ROOT_DIR}/{self.config_dictionary['default_address']}",
         )
 
     # --
@@ -25,7 +24,7 @@ class CSVManager(BaseDisk):
 
     @classmethod
     def get_config_dictionary(cls):
-        return CSVConfig().instance.dictionary
+        return CSVConfig().get_dictionary()
 
     # --
     # ...
@@ -48,7 +47,9 @@ class CSVManager(BaseDisk):
             if mode == "w":
                 data_frame = pandas.DataFrame(data, columns=columns)
 
-                data_frame.to_csv(path_or_buf=address, index=False, encoding="utf-8-sig")
+                data_frame.to_csv(
+                    path_or_buf=address, index=False, encoding="utf-8-sig"
+                )
 
                 return data_frame
 

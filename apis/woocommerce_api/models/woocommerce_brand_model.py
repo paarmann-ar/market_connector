@@ -35,5 +35,8 @@ class WoocommerceBrandModel:
     @classmethod
     def from_api(cls, data):
         return cls(
-            id=data["id"], name=data["name"], slug=data["slug"], description=data["description"]
+            id=data["id"],
+            name=data["name"],
+            slug=data["slug"],
+            description=data["description"],
         )

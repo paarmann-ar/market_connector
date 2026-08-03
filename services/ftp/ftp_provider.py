@@ -1,13 +1,12 @@
-from services.ftp.core.ftp import FTP
-from services.log_.log_provider import LogProvider
-from toolboxs.decorators import singleton
-
+from services.core.singleton_meta import SingletonMeta
+from services.logging.log_provider import LogProvider
 
 # --
 # ...
 # --
-@singleton
-class FTPProvider:
+
+
+class FTPProvider(metaclass=SingletonMeta):
     def __init__(
         self,
         domain="aqc",
@@ -20,5 +19,8 @@ class FTPProvider:
         log_error_class = LogProvider().error
 
         self.ftp = FTP(
-            domain=domain, log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
+            domain=domain,
+            log_info_class=log_info_class,
+            log_error_class=log_error_class,
+            **kwargs,
         ).instance

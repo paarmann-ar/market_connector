@@ -10,12 +10,14 @@ from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 
 class EbayProduct(BaseEbayApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.products_url = self.instance.config_dictionary.get("products_url")
-        self.product_url = self.instance.config_dictionary.get("product_url")
+        super().__init__(**kwargs)
 
-        self.market_place_id = self.instance.config_dictionary.get("market_place_id")
-        self.market_place = self.instance.config_dictionary.get("market_place")
+        self.base_url = self.config_dictionary.get("base_url")
+        self.products_url = self.config_dictionary.get("products_url")
+        self.product_url = self.config_dictionary.get("product_url")
+
+        self.marketplace_id = self.config_dictionary.get("marketplace_id")
+        self.marketplace = self.config_dictionary.get("marketplace")
 
         self.product_name = "laptop"
         self.products = {}
@@ -23,7 +25,7 @@ class EbayProduct(BaseEbayApi):
         self.ebay_token_api = kwargs.get("ebay_token_api", None)
         self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -31,17 +33,19 @@ class EbayProduct(BaseEbayApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return EbayApiConfig().instance.dictionary
+        return EbayApiConfig().get_dictionary()
 
     # --
     # ...
     # --
 
-    def get_products(self, category_id, filter_product, q, offset, limit=200, market_place=""):
+    def get_products(
+        self, category_id, filter_product, q, offset, limit=200, marketplace=""
+    ):
 
         try:
-            if market_place == "":
-                market_place = self.market_place
+            if marketplace == "":
+                marketplace = self.marketplace
 
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
@@ -61,7 +65,7 @@ class EbayProduct(BaseEbayApi):
                 url=url,
                 headers={
                     "Authorization": f"Bearer {self.ebay_access_token}",
-                    "X-EBAY-C-MARKETPLACE-ID": f"{market_place}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace}",
                 },
             )
 
@@ -76,17 +80,22 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_ids_with_category_id(self, category_id, filter_product, q, market_place=""):
+    def get_product_ids_with_category_id(
+        self, category_id, filter_product, q, marketplace=""
+    ):
 
         try:
-            if market_place == "":
-                market_place = self.market_place
+            if marketplace == "":
+                marketplace = self.marketplace
 
             offset = 0
 
             while True:
                 item_summaries, offset, total = self.get_products(
-                    category_id=category_id, offset=offset, filter_product=filter_product, q=q
+                    category_id=category_id,
+                    offset=offset,
+                    filter_product=filter_product,
+                    q=q,
                 )
                 offset += 200
 
@@ -105,11 +114,11 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_with_product_id(self, product_id, market_place=""):
+    def get_product_with_product_id(self, product_id, marketplace=""):
 
         try:
-            if market_place == "":
-                market_place = self.market_place
+            if marketplace == "":
+                marketplace = self.marketplace
 
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
@@ -119,7 +128,7 @@ class EbayProduct(BaseEbayApi):
                 url=f"{self.base_url}{self.product_url}/{product_id}",
                 headers={
                     "Authorization": f"Bearer {self.ebay_access_token}",
-                    "X-EBAY-C-MARKETPLACE-ID": f"{market_place}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace}",
                 },
             )
 

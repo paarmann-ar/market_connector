@@ -1,7 +1,6 @@
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
-
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
@@ -15,8 +14,10 @@ from toolboxs.dict_utils import remove_none
 
 class WoocommerceImage(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -24,7 +25,7 @@ class WoocommerceImage(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...

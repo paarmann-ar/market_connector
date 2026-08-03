@@ -1,12 +1,11 @@
 from services.mail.email.email import EMail
-from toolboxs.decorators import singleton
-
+from services.core.singleton_meta import SingletonMeta
 # --
 # ...
 # --
 
 
-@singleton
-class EMailProvider:
+class EMailProvider(metaclass= SingletonMeta):
     def __init__(self, **kwargs):
-        self.email = EMail().instance
+        super().__init__(**kwargs)
+        self.email = EMail()

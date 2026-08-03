@@ -1,15 +1,13 @@
 from typing import Any
-
 import pyodbc
 
-from services.db.core.base_db import BaseDB
 
 # --
 # ...
 # --
 
 
-class SqlserverConnection(BaseDB):
+class SqlserverConnection():
     # --
     # ...
     # --

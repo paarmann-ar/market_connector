@@ -9,7 +9,9 @@ class WoocommerceServiceProvider:
 
     @property
     def woocommerce_brand_model(self):
-        from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
+        from apis.woocommerce_api.models.woocommerce_brand_model import (
+            WoocommerceBrandModel,
+        )
 
         return WoocommerceBrandModel
 
@@ -23,7 +25,9 @@ class WoocommerceServiceProvider:
 
     @property
     def woocommerce_image_model(self):
-        from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
+        from apis.woocommerce_api.models.woocommerce_image_model import (
+            WoocommerceImageModel,
+        )
 
         return WoocommerceImageModel
 
@@ -36,25 +40,33 @@ class WoocommerceServiceProvider:
 
     @property
     def woocommerce_tag_model(self):
-        from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
+        from apis.woocommerce_api.models.woocommerce_tag_model import (
+            WoocommerceTagModel,
+        )
 
         return WoocommerceTagModel
 
     @property
     def woocommerce_tag_parser(self):
-        from apis.woocommerce_api.services.woocommerce_tag_parser import WoocommerceTagParser
+        from apis.woocommerce_api.services.woocommerce_tag_parser import (
+            WoocommerceTagParser,
+        )
 
         return WoocommerceTagParser()
 
     @property
     def woocommerce_rollback(self):
-        from apis.woocommerce_api.services.woocommerce_rollback import WoocommerceRollback
+        from apis.woocommerce_api.services.woocommerce_rollback import (
+            WoocommerceRollback,
+        )
 
         return WoocommerceRollback()
 
     @property
     def woocommerce_uploader(self):
-        from apis.woocommerce_api.services.woocommerce_uploader import WoocommerceUploader
+        from apis.woocommerce_api.services.woocommerce_uploader import (
+            WoocommerceUploader,
+        )
 
         return WoocommerceUploader()
 
@@ -72,7 +84,9 @@ class WoocommerceServiceProvider:
 
     @property
     def woocommerce_category(self):
-        from apis.woocommerce_api.services.woocommerce_category import WoocommerceCategory
+        from apis.woocommerce_api.services.woocommerce_category import (
+            WoocommerceCategory,
+        )
 
         return WoocommerceCategory()
 

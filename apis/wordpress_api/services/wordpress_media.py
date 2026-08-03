@@ -11,18 +11,20 @@ from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 
 class WordpressMedia(BaseWordpressApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.media_url = self.instance.config_dictionary.get("media_url")
+        super().__init__(**kwargs)
 
-        self.wp_user = self.instance.config_dictionary.get("wp_user")
-        self.wp_application_password = self.instance.config_dictionary.get(
+        self.base_url = self.config_dictionary.get("base_url")
+        self.media_url = self.config_dictionary.get("media_url")
+
+        self.wp_user = self.config_dictionary.get("wp_user")
+        self.wp_application_password = self.config_dictionary.get(
             "wp_application_password"
         )
-        self.wp_password = self.instance.config_dictionary.get("wp_password")
+        self.wp_password = self.config_dictionary.get("wp_password")
 
         self.media_dict = {}
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -30,7 +32,7 @@ class WordpressMedia(BaseWordpressApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WordpressApiConfig().instance.dictionary
+        return WordpressApiConfig().get_dictionary()
 
     # --
     # ...
@@ -53,7 +55,9 @@ class WordpressMedia(BaseWordpressApi):
                 is_use_default_headers=False,
                 method="post",
                 url=f"{self.base_url}/{self.media_url}",
-                headers={"Content-Disposition": f"attachment; filename={media_model.media_name}"},
+                headers={
+                    "Content-Disposition": f"attachment; filename={media_model.media_name}"
+                },
                 files=media_file,
                 data=data,
                 auth=(self.wp_user, self.wp_application_password),

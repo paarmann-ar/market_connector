@@ -5,16 +5,17 @@ import colorama
 import requests
 
 import CONSTS
-from services.connection.core.base_connection import BaseConnection
 from services.connection.request.config.request_config import RequestConfig
+from services.core.base import Base
 
 # --
 # ...
 # --
 
 
-class Request(BaseConnection):
+class Request(Base):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
         try:
             is_use_default_headers = kwargs.get("is_use_default_headers", True)
@@ -47,7 +48,7 @@ class Request(BaseConnection):
 
     @classmethod
     def get_config_dictionary(cls):
-        return RequestConfig().instance.dictionary
+        return RequestConfig().get_dictionary()
 
     # --
     # ...
@@ -94,7 +95,7 @@ class Request(BaseConnection):
             "timeout": self.timeout,
         }
 
-        self.delay = kwargs.get("delay", 0.5)
+        self.waiting = kwargs.get("delay", 0.5)
         return self.get_response()
 
     # --
@@ -127,7 +128,7 @@ class Request(BaseConnection):
                     response = requests.put(**self.request_package)
 
             while response is None and wait_counter > 0:
-                time.sleep(self.delay)
+                time.sleep(self.waiting)
                 wait_counter -= 1
 
             if response is None:
@@ -166,7 +167,9 @@ class Request(BaseConnection):
         except ValueError as v_exp:
             print(f"{v_exp}")
 
-            print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}")
+            print(
+                f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}"
+            )
 
         except AttributeError as a_exp:
             print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{a_exp}{CONSTS.COLORS.ENDC.value}")

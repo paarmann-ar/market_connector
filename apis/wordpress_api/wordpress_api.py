@@ -5,22 +5,21 @@ from apis.wordpress_api.core.base_wordpress_api import BaseWordpressApi
 from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 from apis.wordpress_api.services.wordpress_media import WordpressMedia
 from apis.wordpress_api.services.wordpress_users import WordpressUsers
-from toolboxs.decorators import singleton
 
 # --
 # ...
 # --
 
 
-@singleton
 class WordpressApi(BaseWordpressApi):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
         self.wordpress_media = WordpressMedia()
         self.wordpress_users = WordpressUsers()
         self.wordpress_media_model = WordpressMediaModel
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -28,13 +27,15 @@ class WordpressApi(BaseWordpressApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WordpressApiConfig().instance.dictionary
+        return WordpressApiConfig().get_dictionary()
 
     # --
     # ...
     # --
 
-    def upload_media_models_from_disk(self, media_models: list[WordpressMediaModel]) -> str:
+    def upload_media_models_from_disk(
+        self, media_models: list[WordpressMediaModel]
+    ) -> str:
 
         try:
             for media_model in media_models:
@@ -102,7 +103,9 @@ class WordpressApi(BaseWordpressApi):
 def test_class():
     media_models: list[str] = []
     media_models.append("nivotemp_63K-WHG.jpg")
-    m = WordpressApi().get_wordpress_media_models_by_name(media_model_names=media_models)
+    m = WordpressApi().get_wordpress_media_models_by_name(
+        media_model_names=media_models
+    )
 
     media_model = WordpressMediaModel()
     media_model.media_name = "test.jpg"

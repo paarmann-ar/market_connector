@@ -1,19 +1,22 @@
-from apis.woocommerce_api.services.woocommerce_category import WoocommerceCategory
-
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from apis.woocommerce_api.services.woocommerce_product import WoocommerceProduct
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
-from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
+from apis.woocommerce_api.models.woocommerce_category_model import (
+    WoocommerceCategoryModel,
+)
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
-from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
+from apis.woocommerce_api.models.woocommerce_product_model import (
+    WoocommerceProductModel,
+)
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from apis.woocommerce_api.services.woocommerce_brand import WoocommerceBrand
+from apis.woocommerce_api.services.woocommerce_category import WoocommerceCategory
 from apis.woocommerce_api.services.woocommerce_image import WoocommerceImage
+from apis.woocommerce_api.services.woocommerce_product import WoocommerceProduct
 from apis.woocommerce_api.services.woocommerce_tag import WoocommerceTag
 from toolboxs.dict_utils import remove_none
 
@@ -24,19 +27,21 @@ from toolboxs.dict_utils import remove_none
 
 class WoocommerceUploader(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.wp_media_url = self.instance.config_dictionary.get("wp_media_url")
+        super().__init__(**kwargs)
 
-        self.consumer_key = self.instance.config_dictionary.get("consumer_key")
-        self.consumer_secret = self.instance.config_dictionary.get("consumer_secret")
+        self.base_url = self.config_dictionary.get("base_url")
+        self.wp_media_url = self.config_dictionary.get("wp_media_url")
 
-        self.wp_user = self.instance.config_dictionary.get("wp_user")
-        self.wp_password = self.instance.config_dictionary.get("wp_password")
+        self.consumer_key = self.config_dictionary.get("consumer_key")
+        self.consumer_secret = self.config_dictionary.get("consumer_secret")
 
-        self.products_url = self.instance.config_dictionary.get("products_url")
+        self.wp_user = self.config_dictionary.get("wp_user")
+        self.wp_password = self.config_dictionary.get("wp_password")
+
+        self.products_url = self.config_dictionary.get("products_url")
         self.woocommerce_product = WoocommerceProduct()
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -44,7 +49,7 @@ class WoocommerceUploader(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...
@@ -71,7 +76,9 @@ class WoocommerceUploader(BaseWoocommerceApi):
 
             woocommerce_image = WoocommerceImage()
             for image in product_model.images:
-                woocommerce_images_model.append(woocommerce_image.resolve_or_upload(image))
+                woocommerce_images_model.append(
+                    woocommerce_image.resolve_or_upload(image)
+                )
                 self.woocommerce_session_model.add_media(image)
 
             woocommerce_category = WoocommerceCategory()
@@ -83,7 +90,9 @@ class WoocommerceUploader(BaseWoocommerceApi):
 
             woocommerce_brand = WoocommerceBrand()
             for brand in product_model.brands:
-                woocommerce_brands_model.append(woocommerce_brand.resolve_or_upload(brand))
+                woocommerce_brands_model.append(
+                    woocommerce_brand.resolve_or_upload(brand)
+                )
                 self.woocommerce_session_model.add_brand(brand)
 
             woocommerce_tag = WoocommerceTag()
@@ -97,7 +106,9 @@ class WoocommerceUploader(BaseWoocommerceApi):
             product_model.tags = woocommerce_tags_model
 
             product_model = remove_none(product_model)
-            self.woocommerce_product.upload_product(WoocommerceProductModel(**product_model))
+            self.woocommerce_product.upload_product(
+                WoocommerceProductModel(**product_model)
+            )
 
             self.woocommerce_session_model.add_product(product_model)
 

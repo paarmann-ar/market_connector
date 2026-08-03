@@ -10,18 +10,20 @@ from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 
 class EbayCategory(BaseEbayApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.taxonomy_url = self.instance.config_dictionary.get("taxonomy_url")
+        super().__init__(**kwargs)
+
+        self.base_url = self.config_dictionary.get("base_url")
+        self.taxonomy_url = self.config_dictionary.get("taxonomy_url")
 
         self.product_name = ""
 
-        self.market_place_id = self.instance.config_dictionary.get("market_place_id")
-        self.market_place = self.instance.config_dictionary.get("market_place")
+        self.marketplace_id = self.config_dictionary.get("marketplace_id")
+        self.marketplace = self.config_dictionary.get("marketplace")
 
         self.ebay_token_api = kwargs.get("ebay_token_api", None)
         self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -29,24 +31,24 @@ class EbayCategory(BaseEbayApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return EbayApiConfig().instance.dictionary
+        return EbayApiConfig().get_dictionary()
 
     # --
     # ...
     # --
 
-    def get_default_category_tree_id_with_marketplace_id(self, market_place=""):
+    def get_default_category_tree_id_with_marketplace_id(self, marketplace=""):
 
         try:
-            if market_place == "":
-                market_place = self.market_place
+            if marketplace == "":
+                marketplace = self.marketplace
 
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
             response = self.request(
                 method="get",
-                url=f"{self.base_url}{self.taxonomy_url}/get_default_category_tree_id?marketplace_id={market_place}",
+                url=f"{self.base_url}{self.taxonomy_url}/get_default_category_tree_id?marketplace_id={marketplace}",
                 headers={
                     "Authorization": f"Bearer {self.ebay_access_token}",
                 },
@@ -54,7 +56,9 @@ class EbayCategory(BaseEbayApi):
 
             self.category_tree_id = response["categoryTreeId"]
 
-            self.prompt_on_screen(f"Default category tree id: {len(self.category_tree_id)}")
+            self.prompt_on_screen(
+                f"Default category tree id: {len(self.category_tree_id)}"
+            )
 
             return self.category_tree_id
 

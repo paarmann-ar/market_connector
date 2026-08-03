@@ -3,7 +3,9 @@ from dataclasses import asdict, dataclass, field
 from typing import Optional
 
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
-from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
+from apis.woocommerce_api.models.woocommerce_category_model import (
+    WoocommerceCategoryModel,
+)
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 

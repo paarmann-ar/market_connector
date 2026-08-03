@@ -1,58 +1,17 @@
-[build-system]
-requires = ["setuptools>=69", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "market-connector"
-version = "0.1.0"
-description = "Connector between eBay and WooCommerce"
-readme = "readme.txt"
-requires-python = ">=3.13"
-authors = [
-    { name = "BPM2" }
-]
-
-dependencies = [
-    "requests",
-    "beautifulsoup4",
-    "lxml",
-    "sqlalchemy",
-]
-
-[tool.setuptools]
-include-package-data = true
-
-[tool.setuptools.packages.find]
-include = [
-    "app*",
-    "apis*",
-    "services*",
-    "utility*",
-    "toolboxs*",
-    "config_dictionary*",
-    "data_structure*",
-    "exception*",
-]
-
 [tool.ruff]
-line-length = 100
-target-version = "py313"
+line-length = 88
 
 [tool.ruff.lint]
 select = [
     "E",
     "F",
-    "I",
-    "W",
+    "I"
 ]
 
-ignore = []
-
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
-line-ending = "auto"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]
+[tool.ruff.lint.isort]
+known-first-party = [
+    "apis",
+    "services",
+    "toolboxs",
+    "app"
+]

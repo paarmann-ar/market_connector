@@ -1,6 +1,6 @@
+from apis.apis_provider import ApisProvider
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from app.core.base import Base
-from apis.apis_provider import ApisProvider
 
 # --
 # ...
@@ -37,7 +37,9 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def upload_model_to_woocommerce(self, target_woocommerce_category_name: str) -> bool:
+    def upload_model_to_woocommerce(
+        self, target_woocommerce_category_name: str
+    ) -> bool:
         self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(
             target_woocommerce_category_name
         )

@@ -4,7 +4,7 @@ import xlsxwriter
 import xlwings
 
 import CONSTS
-from services.disk.core.base_disk import BaseDisk
+from services.core.base import Base
 from services.disk.excel.config.excel_config import excelConfig
 
 # --
@@ -12,14 +12,14 @@ from services.disk.excel.config.excel_config import excelConfig
 # --
 
 
-class ExcelManager(BaseDisk):
+class ExcelManager(Base):
     def __init__(self, **kwargs) -> None:
-        super().__init__()
+        super().__init__(**kwargs)
 
-        self.mode = kwargs.get("mode", self.instance.config_dictionary["default_mode"])
+        self.mode = kwargs.get("mode", self.config_dictionary["default_mode"])
         self.address = kwargs.get(
             "address",
-            f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary['default_address']}",
+            f"{CONSTS.ROOT_DIR}/{self.config_dictionary['default_address']}",
         )
 
         # self.workbook = [
@@ -47,7 +47,7 @@ class ExcelManager(BaseDisk):
 
     @classmethod
     def get_config_dictionary(cls):
-        return excelConfig().instance.dictionary
+        return excelConfig().get_dictionary()
 
     # --
     # ...
@@ -69,8 +69,12 @@ class ExcelManager(BaseDisk):
 
             if mode == "w":
                 with xlsxwriter.Workbook(address) as workbook:
-                    format_first_row = workbook.add_format({"bg_color": "#c6e2ff", "border": 1})
-                    format_rest_rows = workbook.add_format({"bg_color": "#ffefd5", "border": 1})
+                    format_first_row = workbook.add_format(
+                        {"bg_color": "#c6e2ff", "border": 1}
+                    )
+                    format_rest_rows = workbook.add_format(
+                        {"bg_color": "#ffefd5", "border": 1}
+                    )
                     format_first_row.set_center_across()
                     format_rest_rows.set_center_across()
 
@@ -85,7 +89,9 @@ class ExcelManager(BaseDisk):
                             )
 
                             temp = self.workbook.pop(index)
-                            temp[temp_new_worksheet_name] = temp.pop(temp_worksheet_name)
+                            temp[temp_new_worksheet_name] = temp.pop(
+                                temp_worksheet_name
+                            )
                             self.workbook.insert(index, temp)
 
                         temp_list_worksheet_name.append(temp_worksheet_name)
@@ -104,7 +110,9 @@ class ExcelManager(BaseDisk):
                                                 else format_first_row
                                             )
 
-                                            worksheet.write(item[0], item[1], value, row_format)
+                                            worksheet.write(
+                                                item[0], item[1], value, row_format
+                                            )
                                         # I have change this exp to bestimmt exception
                                         except Exception as exp:
                                             print(repr(exp))
@@ -116,7 +124,9 @@ class ExcelManager(BaseDisk):
                 workbook = xlwings.Book(address)
 
                 if self.worksheet:
-                    worksheets = workbook.sheets[self.worksheet].range(range).expand().value
+                    worksheets = (
+                        workbook.sheets[self.worksheet].range(range).expand().value
+                    )
 
                 else:
                     worksheet_data = []
@@ -132,7 +142,9 @@ class ExcelManager(BaseDisk):
                         worksheet_data = temp_workdata
 
                         worksheets.append(worksheet_data)
-                        self.worksheets_dictionary.update({worksheet.name: worksheet_data})
+                        self.worksheets_dictionary.update(
+                            {worksheet.name: worksheet_data}
+                        )
 
                 if is_print_worksheets:
                     print(worksheets)

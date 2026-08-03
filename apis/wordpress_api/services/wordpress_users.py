@@ -10,16 +10,18 @@ from apis.wordpress_api.core.base_wordpress_api import BaseWordpressApi
 
 class WordpressUsers(BaseWordpressApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.user_url = self.instance.config_dictionary.get("user_url")
+        super().__init__(**kwargs)
+        
+        self.base_url = self.config_dictionary.get("base_url")
+        self.user_url = self.config_dictionary.get("user_url")
 
-        self.wp_user = self.instance.config_dictionary.get("wp_user")
-        self.wp_application_password = self.instance.config_dictionary.get(
+        self.wp_user = self.config_dictionary.get("wp_user")
+        self.wp_application_password = self.config_dictionary.get(
             "wp_application_password"
         )
-        self.wp_password = self.instance.config_dictionary.get("wp_password")
+        self.wp_password = self.config_dictionary.get("wp_password")
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -27,7 +29,7 @@ class WordpressUsers(BaseWordpressApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WordpressApiConfig().instance.dictionary
+        return WordpressApiConfig().get_dictionary()
 
     # --
     # ...

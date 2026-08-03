@@ -1,6 +1,6 @@
 import sys
 import time
-
+from toolboxs.decorators import singleton
 import colorama
 
 import CONSTS
@@ -9,11 +9,14 @@ import CONSTS
 # ... delay
 # --
 
-
+@singleton
 class Delay:
     def __init__(self, delay_: int):
         colorama.init()
-        print(f"{CONSTS.COLORS.DELAY_PROMPT.value}I am waiting for {delay_} milliseconds", end="")
+        print(
+            f"{CONSTS.COLORS.DELAY_PROMPT.value}I am waiting for {delay_} milliseconds",
+            end="",
+        )
         delay_ /= 1000
 
         int_delay = int(delay_)
@@ -30,3 +33,4 @@ class Delay:
             print(".", end="", flush=True)
 
         print(f"{CONSTS.COLORS.ENDC.value}")
+        print(f"delay class id: {id(self)}")

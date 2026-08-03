@@ -23,4 +23,6 @@ spec
 
 # Config
 config.json
+*.env
 *.csv
+config copy.json

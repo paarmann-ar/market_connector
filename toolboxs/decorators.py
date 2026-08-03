@@ -1,3 +1,4 @@
+#make function singltone
 def singleton(class_):
     instance_dictionary = dict()
 

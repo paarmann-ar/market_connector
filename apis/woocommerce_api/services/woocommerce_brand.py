@@ -15,18 +15,20 @@ from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrand
 
 class WoocommerceBrand(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
-        self.base_url = self.instance.config_dictionary.get("base_url")
-        self.wp_media_url = self.instance.config_dictionary.get("wp_media_url")
+        super().__init__(**kwargs)
 
-        self.consumer_key = self.instance.config_dictionary.get("consumer_key")
-        self.consumer_secret = self.instance.config_dictionary.get("consumer_secret")
+        self.base_url = self.config_dictionary.get("base_url")
+        self.wp_media_url = self.config_dictionary.get("wp_media_url")
 
-        self.wp_user = self.instance.config_dictionary.get("wp_user")
-        self.wp_password = self.instance.config_dictionary.get("wp_password")
+        self.consumer_key = self.config_dictionary.get("consumer_key")
+        self.consumer_secret = self.config_dictionary.get("consumer_secret")
 
-        self.brand_url = self.instance.config_dictionary.get("brand_url")
+        self.wp_user = self.config_dictionary.get("wp_user")
+        self.wp_password = self.config_dictionary.get("wp_password")
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.brand_url = self.config_dictionary.get("brand_url")
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -34,7 +36,7 @@ class WoocommerceBrand(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...
@@ -121,7 +123,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
         if brand:
             return brand
 
-        return self.upload_brand(WoocommerceBrandModel(name=woocommerce_brand_model.name))
+        return self.upload_brand(
+            WoocommerceBrandModel(name=woocommerce_brand_model.name)
+        )
 
     # --
     # ...

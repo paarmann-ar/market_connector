@@ -4,22 +4,24 @@ from xml.dom import minidom
 import xmltodict
 from dict2xml import dict2xml
 
-from services.disk.core.base_disk import BaseDisk
+from services.core.singleton_meta import SingletonMeta
 
 # --
 # ...
 # --
 
 
-class XMLManager(BaseDisk):
+class XMLManager(metaclass= SingletonMeta):
     def __init__(self, **kwargs) -> None:
-        super().__init__()
+        pass
 
     # --
     # ...
     # --
 
-    def operation(self, address="", context="", is_get_string=False, is_get_dictionary=True) -> Any:
+    def operation(
+        self, address="", context="", is_get_string=False, is_get_dictionary=True
+    ) -> Any:
 
         try:
             xml_data = None

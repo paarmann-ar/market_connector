@@ -2,8 +2,8 @@ import re
 import traceback
 from typing import Any
 
-from services.log_.config.log_config import LogConfig
-from services.log_.core.base_log import BaseLog
+from services.logging.config.log_config import LogConfig
+from services.logging.core.base_log import BaseLog
 
 # --
 # ...
@@ -12,12 +12,13 @@ from services.log_.core.base_log import BaseLog
 
 class StackContext(BaseLog):
     object_name = None
-    no_show_moduls = None
+    no_show_modules = None
     no_show_methods = None
 
     def __init__(self) -> None:
-        StackContext.no_show_moduls = self.config_dictionary[__name__]["no_show_moduls"]
-        StackContext.no_show_methods = self.config_dictionary[__name__]["no_show_methods"]
+        StackContext.no_show_modules = self.get_config_dictionary().get(__name__).get(
+            "no_show_modules")
+        StackContext.no_show_methods = self.get_config_dictionary().get(__name__).get("no_show_methods")
 
     # --
     # ...
@@ -25,7 +26,7 @@ class StackContext(BaseLog):
 
     @classmethod
     def get_config_dictionary(cls):
-        return LogConfig().instance.dictionary
+        return LogConfig().get_dictionary()
 
     # --
     # ...
@@ -57,7 +58,7 @@ class StackContext(BaseLog):
                         module = Data.group(1)[3:]
                         Line = Data.group(2)[1:]
 
-                        if module not in cls.no_show_moduls:
+                        if module not in cls.no_show_modules:
                             Data = re.search(r"(\b, in\b.\w+)", line)
                             method = "0"
 
@@ -65,7 +66,16 @@ class StackContext(BaseLog):
                                 method = Data.group()[5:]
 
                                 if method not in cls.no_show_methods:
-                                    Stack = Stack + " > " + module + "." + method + "(" + Line + ")"
+                                    Stack = (
+                                        Stack
+                                        + " > "
+                                        + module
+                                        + "."
+                                        + method
+                                        + "("
+                                        + Line
+                                        + ")"
+                                    )
 
             return Stack
 

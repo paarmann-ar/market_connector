@@ -1,79 +1,42 @@
 from abc import ABC
 from typing import Any
 
-import colorama
-
-import CONSTS
+from apis.core.prompt_on_screen import PromptOnScreen
+from apis.core.singleton_meta import SingletonMeta
+from apis.core.waiting import Wating
 from services.disk.service_disk_provider import ServiceDiskProvider
-from toolboxs.delay import Delay
 
 # --
 # ...
 # --
 
 
-class Base(ABC):
+class Base(ABC, metaclass=SingletonMeta):
     def __init__(self, **kwargs: Any) -> None:
-        pass
 
-    # --
-    # ...
-    # --
+        self.waiting = Wating()
+        self.prompt_on_screen = PromptOnScreen()
 
-    def __new__(cls, **kwargs: Any):
+        # create instance for loging
+        self.info = kwargs.get("log_info_class", "log_info_class")
+        self.error = kwargs.get("log_error_class", "log_error_class")
+        self.config_dictionary = self.get_config_dictionary()
 
-        if hasattr(cls, "instance_args"):
-            if cls.instance_args != kwargs:
-                cls.instance = None
-
-        if not hasattr(cls, "instance") or not cls.instance:
-            cls.instance = super().__new__(cls)
-
-            cls.instance_args = kwargs
-
-            # create instance for loging
-            cls.info = kwargs.get("log_info_class", "log_info_class")
-            cls.error = kwargs.get("log_error_class", "log_error_class")
-            cls.instance.config_dictionary = cls.get_config_dictionary()
-            cls.instance.delay = cls.delay
-
-            # working with file
-            cls.json = ServiceDiskProvider().json
-            cls.csv = ServiceDiskProvider().csv
-
-        return cls.instance
+        # working with file
+        self.json = ServiceDiskProvider().json
+        self.csv = ServiceDiskProvider().csv
 
     # --
     # ...
     # --
 
     def __call__(self) -> str:
-        return self.instance
+        return self
 
     # --
     # ...
     # --
 
     @classmethod
-    def get_config_dictionary(cls) -> str:
+    def get_config_dictionary(self) -> str:
         return ""
-
-    # --
-    # ...
-    # --
-
-    @classmethod
-    def delay(cls, delay=1000, message="") -> str:
-        if message:
-            print(message)
-
-        Delay(delay)
-
-    # --
-    # ...
-    # --
-
-    @classmethod
-    def prompt_on_screen(cls, message="") -> str:
-        colorama.init()
-        print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{message}{CONSTS.COLORS.ENDC.value}")

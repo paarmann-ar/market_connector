@@ -1,8 +1,6 @@
 import json
 from typing import Any
-
-from services.disk.core.base_disk import BaseDisk
-
+from services.core.singleton_meta import SingletonMeta
 # --
 # ...
 # --
@@ -20,9 +18,9 @@ from services.disk.core.base_disk import BaseDisk
 # json.dumps()
 
 
-class JSONManager(BaseDisk):
+class JSONManager(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
-        super().__init__()
+        super().__init__(**kwargs)
 
     # --
     # ...
@@ -130,7 +128,9 @@ class JSONManager(BaseDisk):
                     else:
                         corrected_file_string = context
 
-                    corrected_file_string = json.dumps(corrected_file_string, indent=4) + dele
+                    corrected_file_string = (
+                        json.dumps(corrected_file_string, indent=4) + dele
+                    )
                     file.write(corrected_file_string)
                     json_data = True
 

@@ -1,15 +1,16 @@
 import CONSTS
-from services.log_.config.log_config import LogConfig
-from services.log_.core.base_log import BaseLog
-from services.log_.templates.log_template_dictionary import LogTemplateDictionary
+from services.logging.config.log_config import LogConfig
+from services.logging.core.base_log import BaseLog
+from services.logging.templates.log_template_dictionary import LogTemplateDictionary
 
 # --
 # ...
 # --
 
 
-class Log(BaseLog):
+class Logging(BaseLog):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
         try:
             self.info_message = ["\n"]
@@ -27,10 +28,14 @@ class Log(BaseLog):
                 self.instance.log_template = ""
 
             if config := kwargs.get("config"):
-                self.instance.config_dictionary = self.instance.config_dictionary[__name__][config]
+                self.instance.config_dictionary = self.instance.config_dictionary[
+                    __name__
+                ][config]
                 self.log_file = f"{CONSTS.ROOT_DIR}{self.config_dictionary['directory_address']}{self.config_dictionary['filename']}"
-                self.number_of_log_in_batch = int(self.config_dictionary["number_of_log_in_batch"])
-                self.is_show_in_consoule = self.config_dictionary["is_show_in_consoule"]
+                self.number_of_log_in_batch = int(
+                    self.config_dictionary["number_of_log_in_batch"]
+                )
+                self.is_show_in_console = self.config_dictionary["is_show_in_console"]
 
         except Exception as exp:
             print(f"{__file__}--->{__name__} : + {exp!s}")
@@ -49,7 +54,7 @@ class Log(BaseLog):
 
     @classmethod
     def get_config_dictionary(cls):
-        return LogConfig().instance.dictionary
+        return LogConfig().get_dictionary()
 
     # --
     # ...
@@ -73,7 +78,7 @@ class Log(BaseLog):
             )
 
             # print message on screen
-            if self.is_show_in_consoule:
+            if self.is_show_in_console:
                 temp = f"import colorama\ncolorama.init()\nimport CONSTS\nimport datetime\nprint({log_template_for_show_in_screen})"
                 exec(temp, {"message": message})
 
@@ -99,7 +104,9 @@ class Log(BaseLog):
     def __write_in_log_file(self):
 
         try:
-            self.file_manager.operation("a", self.log_file, "\n".join(self.info_message))
+            self.file_manager.operation(
+                "a", self.log_file, "\n".join(self.info_message)
+            )
             self.info_message.clear()
             self.info_message.append("\n")
 

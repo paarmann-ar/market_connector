@@ -1,8 +1,12 @@
 from dataclasses import dataclass, field
 
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
-from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
-from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
+from apis.woocommerce_api.models.woocommerce_category_model import (
+    WoocommerceCategoryModel,
+)
+from apis.woocommerce_api.models.woocommerce_product_model import (
+    WoocommerceProductModel,
+)
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 

@@ -71,7 +71,7 @@ class Toolbox:
     # --
 
     @staticmethod
-    def get_import_moduls() -> str:
+    def get_import_modules() -> str:
 
         try:
             modules = []
@@ -84,11 +84,11 @@ class Toolbox:
                 f"{Toolbox().get_root_path().replace('\\', '/')}/.external_files/temp/temp_import_moluls.txt",
                 "w",
             ) as temp_import_moluls:
-                moduls_text = ""
+                modules_text = ""
                 for m in modules:
-                    moduls_text = f"{moduls_text} {m} \n"
+                    modules_text = f"{modules_text} {m} \n"
 
-                print(moduls_text, file=temp_import_moluls)
+                print(modules_text, file=temp_import_moluls)
 
             temp_import_moluls.close()
 
@@ -111,11 +111,15 @@ class Toolbox:
 
         for folder_adress, sub_folders, files in os.walk(app_dir):
             for file in files:
-                file_name_with_length.append(f"{folder_adress.replace('\\', '/')}/{file}")
+                file_name_with_length.append(
+                    f"{folder_adress.replace('\\', '/')}/{file}"
+                )
 
         file_name_with_length.sort(key=lambda k: len(k), reverse=True)
         file_name_len_list = [
-            f"{file}: {len(file)}" for file in file_name_with_length if len(file) > len_condition
+            f"{file}: {len(file)}"
+            for file in file_name_with_length
+            if len(file) > len_condition
         ]
 
         print(len(file_name_len_list))

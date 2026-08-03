@@ -22,6 +22,3 @@ def add_id_to_all_json_element():
         json_dict = json_manager.operation(file)
 
         print(json_dict)
-
-
-add_id_to_all_json_element()

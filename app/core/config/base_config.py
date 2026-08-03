@@ -1,5 +1,4 @@
 import CONSTS
-from config_dictionary.base_dictionary import BaseDictionary
 from services.disk.json.json_manager import JSONManager
 
 # --
@@ -7,10 +6,10 @@ from services.disk.json.json_manager import JSONManager
 # --
 
 
-class BaseConfig(BaseDictionary):
+class BaseConfig:
     @classmethod
     def get_dictionary(cls, *args) -> dict:
-        json = JSONManager().instance
+        json = JSONManager()
         config_json = json.operation(CONSTS.CONFIG_JSON)
 
         return config_json[__name__] if __name__ in config_json else {}

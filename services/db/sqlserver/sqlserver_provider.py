@@ -2,14 +2,14 @@ from services.db.sqlserver.config.db_commands_dictionary import DBCommandsDictio
 from services.db.sqlserver.config.db_config import DBConfig
 from services.db.sqlserver.core.sqlserver_connection import SqlserverConnection
 from services.db.sqlserver.core.sqlserver_execute import SqlserverExecute
-from services.log_.log_provider import LogProvider
-
+from services.logging.log_provider import LogProvider
+from services.core.singleton_meta import SingletonMeta
 # --
 # ...
 # --
 
 
-class SqlserverProvider:
+class SqlserverProvider(metaclass=SingletonMeta):
     def __init__(
         self,
         driver="",
@@ -29,7 +29,7 @@ class SqlserverProvider:
 
         # create config dictionary
         if is_use_default:
-            db_config_dictionary = DBConfig().instance.dictionary
+            db_config_dictionary = DBConfig().get_dictionary()
             driver = db_config_dictionary["driver"]
             host = db_config_dictionary["host"].replace("/", "\\")
             database = db_config_dictionary["database"]
@@ -43,7 +43,7 @@ class SqlserverProvider:
         if db_command:
             db_command = DBCommandsDictionary(
                 testme_db_folder=testme_db_folder, testme_db=testme_db, **kwargs
-            ).instance.dictionary[db_command]
+            ).get_dictionary()[db_command]
 
         self.db_connection = SqlserverConnection(
             driver=driver,

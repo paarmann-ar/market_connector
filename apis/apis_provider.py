@@ -12,6 +12,6 @@ from toolboxs.decorators import singleton
 class ApisProvider:
     def __init__(self, **kwargs):
 
-        self.wordpress_api = WordpressApi().instance
-        self.ebay_api = EbayApi().instance
-        self.woocommerce_api = WoocommerceApi().instance
+        self.wordpress_api = WordpressApi()
+        self.ebay_api = EbayApi()
+        self.woocommerce_api = WoocommerceApi()

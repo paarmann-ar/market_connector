@@ -1,21 +1,20 @@
 from apis.ebay_api.config.ebay_api_config import (
     EbayApiConfig,
 )
-from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
+from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.services.ebay_category import EbayCategory
 from apis.ebay_api.services.ebay_product import EbayProduct
 from apis.ebay_api.services.ebay_token_api import EbayTokenApi
-from toolboxs.decorators import singleton
 
 # --
 # ...
 # --
 
 
-@singleton
 class EbayApi(BaseEbayApi):
     def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
 
         self.ebay_token_api = EbayTokenApi()
         self.ebay_token_api()
@@ -28,7 +27,7 @@ class EbayApi(BaseEbayApi):
         self.products_list = []
         self.product_detail_list = []
 
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -36,7 +35,7 @@ class EbayApi(BaseEbayApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return EbayApiConfig().instance.dictionary
+        return EbayApiConfig().get_dictionary()
 
     # --
     # ...
@@ -53,7 +52,9 @@ class EbayApi(BaseEbayApi):
 
         try:
             category_id_candidate = {}
-            category_tree_id = self.ebay_category.get_default_category_tree_id_with_marketplace_id()
+            category_tree_id = (
+                self.ebay_category.get_default_category_tree_id_with_marketplace_id()
+            )
 
             if category_name_candidate:
                 category_tree = self.ebay_category.get_category_tree(
@@ -83,7 +84,11 @@ class EbayApi(BaseEbayApi):
     def recursive_category(self, category_node: dict):
         if "childCategoryTreeNodes" not in category_node:
             self.category_dict.update(
-                {category_node["category"]["categoryId"]: category_node["category"]["categoryName"]}
+                {
+                    category_node["category"]["categoryId"]: category_node["category"][
+                        "categoryName"
+                    ]
+                }
             )
             return
 
@@ -143,7 +148,9 @@ class EbayApi(BaseEbayApi):
                 )
 
             self.csv.operation(
-                mode="w", file_name="ebay_product_detail.csv", data=self.product_detail_list
+                mode="w",
+                file_name="ebay_product_detail.csv",
+                data=self.product_detail_list,
             )
 
         except Exception as exp:

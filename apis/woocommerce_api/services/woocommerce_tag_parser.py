@@ -3,15 +3,17 @@ import re
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
+from apis.woocommerce_api.constants.woocommerce_tag_constants import (
+    BRANDS,
+    CATEGORIES,
+    CONDITIONS,
+    NO_GO_WORDS,
+)
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from apis.woocommerce_api.models.woocommerce_tag_parser_model import WoocommerceTagParserModel
-from apis.woocommerce_api.constants.woocommerce_tag_constants import (
-    BRANDS,
-    CONDITIONS,
-    CATEGORIES,
-    NO_GO_WORDS,
+from apis.woocommerce_api.models.woocommerce_tag_parser_model import (
+    WoocommerceTagParserModel,
 )
 
 # --
@@ -26,7 +28,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
     NO_GO_WORDS = NO_GO_WORDS
 
     def __init__(self, **kwargs) -> None:
-        self.prompt_on_screen(f"{__class__.__name__}, {id(__class__)}")
+        super().__init__(**kwargs)
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
@@ -34,7 +38,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
 
     @classmethod
     def get_config_dictionary(cls):
-        return WoocommerceApiConfig().instance.dictionary
+        return WoocommerceApiConfig().get_dictionary()
 
     # --
     # ...
@@ -55,7 +59,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             part_numbers = self.find_part_number(context)
             category = self.find_category(context)
 
-            clean_name = self.clean_title(context, brand, condition, part_numbers, category)
+            clean_name = self.clean_title(
+                context, brand, condition, part_numbers, category
+            )
 
             tags = self.build_tags(
                 name=clean_name,

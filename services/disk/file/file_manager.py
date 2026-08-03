@@ -1,5 +1,5 @@
 import CONSTS
-from services.disk.core.base_disk import BaseDisk
+from services.core.base import Base
 from services.disk.file.config.file_config import FileConfig
 
 # --
@@ -7,12 +7,12 @@ from services.disk.file.config.file_config import FileConfig
 # --
 
 
-class FileManager(BaseDisk):
+class FileManager(Base):
     def __init__(self, **kwargs) -> None:
-        super().__init__()
+        super().__init__(**kwargs)
 
-        self.mode = self.instance.config_dictionary["mode"]
-        self.address = f"{CONSTS.ROOT_DIR}/{self.instance.config_dictionary['address']}"
+        self.mode = self.config_dictionary["mode"]
+        self.address = f"{CONSTS.ROOT_DIR}/{self.config_dictionary['address']}"
 
     # --
     # ...
@@ -20,7 +20,7 @@ class FileManager(BaseDisk):
 
     @classmethod
     def get_config_dictionary(cls):
-        return FileConfig().instance.dictionary
+        return FileConfig().get_dictionary()
 
     # --
     # ...
