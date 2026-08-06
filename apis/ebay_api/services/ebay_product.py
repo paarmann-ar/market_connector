@@ -50,31 +50,30 @@ class EbayProduct(BaseEbayApi):
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
-            url = f"{self.base_url}{self.products_url}?limit={limit}&offset={offset}"
-            if category_id:
-                url = url + f"&category_ids={category_id}"
-
-            if filter_product:
-                url = url + f"&filter={filter_product}"
-
-            if q:
-                url = url + f"&q={q}"
+            params = {
+                "limit": limit,
+                "offset": offset,
+                "filter": filter_product,
+                "q": q,
+            }
 
             response = self.request(
                 method="get",
-                url=url,
+                url=f"{self.base_url}{self.products_url}",
                 headers={
+                    "Accept": "application/json",
                     "Authorization": f"Bearer {self.ebay_access_token}",
                     "X-EBAY-C-MARKETPLACE-ID": f"{marketplace}",
                 },
+                params=params,
             )
 
-            self.prompt_on_screen(f"get_products: {response}")
+            self.prompt_on_screen(f"get_products: {response.get('total')}")
 
             return response["itemSummaries"], response["offset"], response["total"]
 
         except Exception as exp:
-            print(f"get_products: {exp}")
+            self.prompt_on_screen(f"get_products: {exp}")
 
     # --
     # ...
@@ -108,7 +107,7 @@ class EbayProduct(BaseEbayApi):
             return self.products
 
         except Exception as exp:
-            print(f"get_product_ids_with_category_id: {exp}")
+            self.prompt_on_screen(f"get_product_ids_with_category_id: {exp}")
 
     # --
     # ...
@@ -132,9 +131,9 @@ class EbayProduct(BaseEbayApi):
                 },
             )
 
-            self.prompt_on_screen(f"product: {response}")
+            self.prompt_on_screen(f"product: {response.get('title')}")
 
             return response
 
         except Exception as exp:
-            print(f"get_product_with_product_id: {exp}")
+            self.prompt_on_screen(f"get_product_with_product_id: {exp}")

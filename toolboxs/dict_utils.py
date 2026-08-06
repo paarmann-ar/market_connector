@@ -4,6 +4,7 @@ from dataclasses import asdict, is_dataclass
 # ...
 # --
 
+
 def remove_none(obj):
     if is_dataclass(obj):
         obj = asdict(obj)

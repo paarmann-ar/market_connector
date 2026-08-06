@@ -11,7 +11,7 @@ from apis.wordpress_api.core.base_wordpress_api import BaseWordpressApi
 class WordpressUsers(BaseWordpressApi):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
-        
+
         self.base_url = self.config_dictionary.get("base_url")
         self.user_url = self.config_dictionary.get("user_url")
 
@@ -49,4 +49,4 @@ class WordpressUsers(BaseWordpressApi):
             return response
 
         except Exception as exp:
-            print(f"test_is_valid_user: {exp}")
+            self.error(f"test_is_valid_user: {exp}")

@@ -38,9 +38,11 @@ class DictionaryManager(BaseDataStructure):
                 if dictionary_0[key] != dictionary_1[key]
             }
 
-            commen = set(key for key in shared_keys if dictionary_0[key] == dictionary_1[key])
+            commen = set(
+                key for key in shared_keys if dictionary_0[key] == dictionary_1[key]
+            )
 
             return added_key, removed_key, difference, commen
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))

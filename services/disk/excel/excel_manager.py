@@ -115,7 +115,7 @@ class ExcelManager(Base):
                                             )
                                         # I have change this exp to bestimmt exception
                                         except Exception as exp:
-                                            print(repr(exp))
+                                            self.error(repr(exp))
 
                         worksheet.autofit()
 
@@ -147,10 +147,10 @@ class ExcelManager(Base):
                         )
 
                 if is_print_worksheets:
-                    print(worksheets)
+                    self.info(worksheets)
 
                 return worksheets
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             return False

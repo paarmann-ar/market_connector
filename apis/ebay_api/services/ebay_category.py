@@ -54,16 +54,16 @@ class EbayCategory(BaseEbayApi):
                 },
             )
 
-            self.category_tree_id = response["categoryTreeId"]
+            self.category_tree_id = int(response["categoryTreeId"])
 
-            self.prompt_on_screen(
-                f"Default category tree id: {len(self.category_tree_id)}"
-            )
+            self.prompt_on_screen(f"Default category tree id: {self.category_tree_id}")
 
             return self.category_tree_id
 
         except Exception as exp:
-            print(f"get_default_category_tree_id_with_marketplace_id: {exp}")
+            self.prompt_on_screen(
+                f"get_default_category_tree_id_with_marketplace_id: {exp}"
+            )
 
     # --
     # ...
@@ -88,9 +88,7 @@ class EbayCategory(BaseEbayApi):
 
             self.category_tree = response["rootCategoryNode"]
 
-            self.prompt_on_screen(f"category tree: {len(self.category_tree)}")
-
             return self.category_tree
 
         except Exception as exp:
-            print(f"get_category_tree: {exp}")
+            self.prompt_on_screen(f"get_category_tree: {exp}")

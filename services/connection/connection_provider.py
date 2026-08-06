@@ -6,6 +6,7 @@ from services.core.singleton_meta import SingletonMeta
 # ...
 # --
 
+
 class ConnectionProvider(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)

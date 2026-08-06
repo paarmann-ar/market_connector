@@ -56,15 +56,19 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 method="get",
                 url=f"{self.base_url}{self.products_url}",
                 auth=(self.consumer_key, self.consumer_secret),
-                params={"per_page": record_per_page, "search": name},
+                params={
+                    "per_page": record_per_page,
+                    "search": name,
+                    "search_fields": "name",
+                },
             )
 
-            self.prompt_on_screen(f"product modele: {response}")
+            self.prompt_on_screen(f"get product modele: {response}")
 
             return response
 
         except Exception as exp:
-            print(f"get_product_by_name: {exp}")
+            self.prompt_on_screen(f"get_product_by_name: {exp}")
 
     # --
     # ...
@@ -85,7 +89,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"get_products: {exp}")
+            self.prompt_on_screen(f"get_all_products: {exp}")
 
     # --
     # ...
@@ -106,7 +110,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"upload_product: {exp}")
+            self.prompt_on_screen(f"upload_product: {exp}")
 
     # --
     # ...
@@ -127,4 +131,4 @@ class WoocommerceProduct(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"delete_product_by_product_id: {exp}")
+            self.prompt_on_screen(f"delete_product_by_product_id: {exp}")

@@ -82,9 +82,9 @@ class EbayTokenApi(BaseEbayApi):
             self.expires_in_token = response.get("expires_in", 0)
             self.expires_get_time = time.time()
 
-            self.prompt_on_screen(f"access Token is: {self.ebay_access_token}")
+            self.prompt_on_screen(f"access Token is: {bool(self.ebay_access_token)}")
 
             return self.ebay_access_token
 
         except Exception as exp:
-            print(f"get_token: {exp}")
+            self.prompt_on_screen(f"get_token: {exp}")

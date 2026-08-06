@@ -85,7 +85,7 @@ class WoocommerceTag(BaseWoocommerceApi):
             return tags
 
         except Exception as exp:
-            print(f"get_all_tags: {exp}")
+            self.prompt_on_screen(f"get_all_tags: {exp}")
 
     # --
     # ...
@@ -107,7 +107,7 @@ class WoocommerceTag(BaseWoocommerceApi):
             return woocommerce_tag_model
 
         except Exception as exp:
-            print(f"upload_tag: {exp}")
+            self.prompt_on_screen(f"upload_tag: {exp}")
 
     # --
     # ...
@@ -141,7 +141,7 @@ class WoocommerceTag(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"delete_tag_by_tag_id: {exp}")
+            self.prompt_on_screen(f"delete_tag_by_tag_id: {exp}")
 
 
 def test():

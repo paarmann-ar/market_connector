@@ -16,6 +16,8 @@ class Base(ABC, metaclass=SingletonMeta):
         self.waiting = Wating()
         self.prompt_on_screen = PromptOnScreen()
 
+        self.config_dictionary = self.get_config_dictionary()
+
         # create instance for loging
         self.config_dictionary = self.get_config_dictionary()
 

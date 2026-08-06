@@ -7,7 +7,7 @@ from apis.woocommerce_api.models.woocommerce_session_model import (
 from apis.woocommerce_api.services.woocommerce_service_provider import (
     WoocommerceServiceProvider,
 )
-from services.connection.connection_provider import ConnectionProvider
+from apis.seo_api.models.rank_math_model import RankMathModel
 
 # --
 # ...
@@ -18,9 +18,10 @@ class BaseWoocommerceApi(Base):
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
-        self.request = ConnectionProvider().request
         self.woocommerce_service_provider = WoocommerceServiceProvider()
         self.woocommerce_session_model = WoocommerceSessionModel()
+
+        self.rank_math_model = RankMathModel()
 
         self.config_dictionary = self.get_config_dictionary()
 

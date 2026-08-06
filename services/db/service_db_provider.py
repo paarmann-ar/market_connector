@@ -2,7 +2,6 @@ from services.db.sqlserver.sqlserver_provider import SqlserverProvider
 from services.core.singleton_meta import SingletonMeta
 
 
-
 # --
 # ...
 # --

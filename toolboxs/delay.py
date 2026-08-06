@@ -9,6 +9,7 @@ import CONSTS
 # ... delay
 # --
 
+
 @singleton
 class Delay:
     def __init__(self, delay_: int):
@@ -33,4 +34,3 @@ class Delay:
             print(".", end="", flush=True)
 
         print(f"{CONSTS.COLORS.ENDC.value}")
-        print(f"delay class id: {id(self)}")

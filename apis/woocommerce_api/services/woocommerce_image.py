@@ -16,7 +16,6 @@ class WoocommerceImage(BaseWoocommerceApi):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
@@ -51,7 +50,7 @@ class WoocommerceImage(BaseWoocommerceApi):
             return None
 
         except Exception as exp:
-            print(f"get_all_images: {exp}")
+            self.prompt_on_screen(f"get_all_images: {exp}")
 
     # --
     # ...
@@ -63,7 +62,7 @@ class WoocommerceImage(BaseWoocommerceApi):
             return None
 
         except Exception as exp:
-            print(f"upload_image: {exp}")
+            self.prompt_on_screen(f"upload_image: {exp}")
 
     # --
     # ...
@@ -71,7 +70,3 @@ class WoocommerceImage(BaseWoocommerceApi):
 
     def resolve_or_upload(self, woocommerce_image_model: WoocommerceImageModel):
         return remove_none(woocommerce_image_model)
-
-
-def test():
-    WoocommerceImage().resolve_or_upload("hahaha")

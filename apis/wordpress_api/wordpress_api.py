@@ -46,7 +46,7 @@ class WordpressApi(BaseWordpressApi):
             return
 
         except Exception as exp:
-            print(f"upload_media_models: {exp}")
+            self.error(f"upload_media_models: {exp}")
 
     # --
     # ...
@@ -72,7 +72,7 @@ class WordpressApi(BaseWordpressApi):
             return returned_media_models
 
         except Exception as exp:
-            print(f"get_wordpress_media_models_by_name: {exp}")
+            self.error(f"get_wordpress_media_models_by_name: {exp}")
 
     # --
     # ...
@@ -93,7 +93,7 @@ class WordpressApi(BaseWordpressApi):
             return
 
         except Exception as exp:
-            print(f"delete_media_models: {exp}")
+            self.error(f"delete_media_models: {exp}")
 
     # --
     # ...

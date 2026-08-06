@@ -11,7 +11,7 @@ from services.core.singleton_meta import SingletonMeta
 # --
 
 
-class XMLManager(metaclass= SingletonMeta):
+class XMLManager(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
         pass
 
@@ -52,7 +52,7 @@ class XMLManager(metaclass= SingletonMeta):
             return xml_data
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
 
     # --
     # ...
@@ -64,7 +64,7 @@ class XMLManager(metaclass= SingletonMeta):
             ...
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             context = "Error"
 
         finally:

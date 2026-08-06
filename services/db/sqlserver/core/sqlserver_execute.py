@@ -6,7 +6,7 @@ from typing import Any
 # --
 
 
-class SqlserverExecute():
+class SqlserverExecute:
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 

@@ -7,7 +7,7 @@ from services.core.singleton_meta import SingletonMeta
 # --
 
 
-class LogProvider(metaclass=SingletonMeta ):
+class LogProvider(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 

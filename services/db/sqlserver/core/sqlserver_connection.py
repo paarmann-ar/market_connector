@@ -7,7 +7,7 @@ import pyodbc
 # --
 
 
-class SqlserverConnection():
+class SqlserverConnection:
     # --
     # ...
     # --

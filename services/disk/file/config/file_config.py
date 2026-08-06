@@ -6,8 +6,7 @@ from services.disk.json.json_manager import JSONManager
 # --
 
 
-class FileConfig():
-    
+class FileConfig:
     @classmethod
     def get_dictionary(cls, *args) -> dict:
         json = JSONManager()

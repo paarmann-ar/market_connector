@@ -94,7 +94,7 @@ class EMail(Base):
             return True
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             return False
 
     # --
@@ -135,7 +135,7 @@ class EMail(Base):
             return True
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             return False
 
     # --
@@ -171,7 +171,7 @@ class EMail(Base):
 
         except Exception as exp:
             # self.error(f"{__file__}--->{__name__}: {str(exp)}")
-            print(repr(exp))
+            self.error(repr(exp))
             return False
 
     # --
@@ -204,5 +204,5 @@ class EMail(Base):
             return temp_attachments
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             return False

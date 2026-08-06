@@ -8,10 +8,6 @@ import CONSTS
 
 
 class FileAndFolderOperation:
-    # --
-    # ...
-    # --
-
     @staticmethod
     def get_all_file_address(address=""):
 

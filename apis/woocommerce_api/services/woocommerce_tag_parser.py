@@ -81,7 +81,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             )
 
         except Exception as exp:
-            print(f"get_all_tags: {exp}")
+            self.prompt_on_screen(f"get_all_tags: {exp}")
 
     # --
     # ...
@@ -97,7 +97,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             return context.strip()
 
         except Exception as exp:
-            print(f"normalize_context: {exp}")
+            self.prompt_on_screen(f"normalize_context: {exp}")
 
     # --
     # ...
@@ -161,7 +161,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             return list(dict.fromkeys(matches))
 
         except Exception as exp:
-            print(f"find_part_number: {exp}")
+            self.prompt_on_screen(f"find_part_number: {exp}")
 
     # --
     # ...
@@ -185,7 +185,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             return " ".join(result.split()).strip()
 
         except Exception as exp:
-            print(f"clean_title: {exp}")
+            self.prompt_on_screen(f"clean_title: {exp}")
 
     # --
     # ...
@@ -232,4 +232,4 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             return tags
 
         except Exception as exp:
-            print(f"build_tags: {exp}")
+            self.prompt_on_screen(f"build_tags: {exp}")

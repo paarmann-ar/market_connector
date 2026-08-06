@@ -12,17 +12,17 @@
                 "PYTHONPATH": "${workspaceFolder}"
             }
         },
-        // {
-        //     "name": "Custom Debug",
-        //     "type": "debugpy",
-        //     "request": "launch",
-        //     "module": "apis.woocommerce_api.services.woocommerce_product",
-        //     "cwd": "${workspaceFolder}",
-        //     "console": "integratedTerminal",
-        //     "env": {
-        //         "PYTHONPATH": "${workspaceFolder}"
-        //     },
-        //     "justMyCode": true
-        // }
+        {
+            "name": "Custom Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "ki.ollama.ollama",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true
+        }
     ]
 }

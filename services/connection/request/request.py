@@ -40,7 +40,7 @@ class Request(Base):
             self.is_response_json = kwargs.get("is_response_json", True)
 
         except Exception as exp:
-            self.error(f"{__file__}--->{__name__}: {exp!s}")
+            print(f"{__file__}--->{__name__}: {exp!s}")
 
     # --
     # ...
@@ -77,7 +77,8 @@ class Request(Base):
         self.files = kwargs.get("files")
         self.auth = kwargs.get("auth", None)
         self.verify = kwargs.get("verify", True)
-        self.timeout = kwargs.get("timeout", (11, 11))
+        # 11 sec for connect, 11 secound for read
+        self.timeout = kwargs.get("timeout", (12, 120))
         self.method = kwargs.get("method", "get")
         self.is_response_json = kwargs.get("is_response_json", True)
         self.is_download_file = kwargs.get("is_download_file", False)
@@ -144,6 +145,8 @@ class Request(Base):
                 )
                 return "expired token"
 
+            response.raise_for_status()
+
             response = (
                 response
                 if response.status_code in [204, 200, 201]
@@ -173,6 +176,15 @@ class Request(Base):
 
         except AttributeError as a_exp:
             print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{a_exp}{CONSTS.COLORS.ENDC.value}")
+
+        except requests.exceptions.ReadTimeout:
+            print("Read timeout: Server took too long to respond.")
+
+        except requests.exceptions.ConnectTimeout:
+            print("Connection timeout.")
+
+        except requests.exceptions.Timeout:
+            print("Request timed out.")
 
         except Exception as exp:
             print(f"{exp}")

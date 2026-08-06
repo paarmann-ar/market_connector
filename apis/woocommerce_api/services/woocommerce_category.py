@@ -85,7 +85,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
             self.prompt_on_screen(f"categories: {response}")
 
         except Exception as exp:
-            print(f"get_all_categories: {exp}")
+            self.prompt_on_screen(f"get_all_categories: {exp}")
 
     # --
     # ...
@@ -107,7 +107,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
             return woocommerce_category_model
 
         except Exception as exp:
-            print(f"upload_category: {exp}")
+            self.prompt_on_screen(f"upload_category: {exp}")
 
     # --
     # ...
@@ -145,9 +145,4 @@ class WoocommerceCategory(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"delete_category_by_category_id: {exp}")
-
-
-def test():
-    WoocommerceCategory().get_all_categories()
-    WoocommerceCategory().resolve_or_upload("hahaha")
+            self.prompt_on_screen(f"delete_category_by_category_id: {exp}")

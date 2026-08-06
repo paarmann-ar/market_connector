@@ -8,7 +8,7 @@ from apis.woocommerce_api.models.woocommerce_category_model import (
 )
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
-
+from apis.seo_api.models.rank_math_model import RankMathModel
 # --
 # ...
 # --
@@ -42,6 +42,7 @@ class WoocommerceProductModel:
     attributes: list = field(default_factory=list)
     default_attributes: list[str] = field(default_factory=list)
     stock_status: Optional[str] = "instock"
+    meta_data: Optional[RankMathModel] = None
 
     # --
     # ...

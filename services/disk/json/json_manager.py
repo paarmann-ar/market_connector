@@ -1,6 +1,8 @@
 import json
 from typing import Any
+
 from services.core.singleton_meta import SingletonMeta
+
 # --
 # ...
 # --
@@ -148,7 +150,7 @@ class JSONManager(metaclass=SingletonMeta):
             return json_data
 
         except Exception as exp:
-            print(repr(f"{exp} -> {address}"))
+            self.error(repr(f"{exp} -> {address}"))
 
     # --
     # ...
@@ -167,4 +169,4 @@ class JSONManager(metaclass=SingletonMeta):
             return context
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))

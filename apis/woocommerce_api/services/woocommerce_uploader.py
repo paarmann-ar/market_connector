@@ -113,4 +113,4 @@ class WoocommerceUploader(BaseWoocommerceApi):
             self.woocommerce_session_model.add_product(product_model)
 
         except Exception as exp:
-            print(f"resolve_or_upload: {exp}")
+            self.error(f"resolve_or_upload: {exp}")

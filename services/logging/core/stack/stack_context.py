@@ -16,9 +16,12 @@ class StackContext(BaseLog):
     no_show_methods = None
 
     def __init__(self) -> None:
-        StackContext.no_show_modules = self.get_config_dictionary().get(__name__).get(
-            "no_show_modules")
-        StackContext.no_show_methods = self.get_config_dictionary().get(__name__).get("no_show_methods")
+        StackContext.no_show_modules = (
+            self.get_config_dictionary().get(__name__).get("no_show_modules")
+        )
+        StackContext.no_show_methods = (
+            self.get_config_dictionary().get(__name__).get("no_show_methods")
+        )
 
     # --
     # ...
@@ -80,4 +83,4 @@ class StackContext(BaseLog):
             return Stack
 
         except Exception as exp:
-            print(f"{__file__}--->{__name__} : + {exp!s}")
+            self.error(f"{__file__}--->{__name__} : + {exp!s}")

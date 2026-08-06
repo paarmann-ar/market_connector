@@ -68,7 +68,7 @@ class WordpressMedia(BaseWordpressApi):
             return True
 
         except Exception as exp:
-            print(f"upload_media_model: {exp}")
+            self.error(f"upload_media_model: {exp}")
 
     # --
     # ...
@@ -80,7 +80,7 @@ class WordpressMedia(BaseWordpressApi):
             pass
 
         except Exception as exp:
-            print(f"upload_media_model_from_url: {exp}")
+            self.error(f"upload_media_model_from_url: {exp}")
 
     # --
     # ...
@@ -120,7 +120,7 @@ class WordpressMedia(BaseWordpressApi):
             return returned_media_model
 
         except Exception as exp:
-            print(f"get_wordpress_media_model_by_medial_model_name: {exp}")
+            self.error(f"get_wordpress_media_model_by_medial_model_name: {exp}")
 
     # --
     # ...
@@ -141,7 +141,7 @@ class WordpressMedia(BaseWordpressApi):
             return response
 
         except Exception as exp:
-            print(f"delete_wordpress_media_by_media_model: {exp}")
+            self.error(f"delete_wordpress_media_by_media_model: {exp}")
 
     # --
     # ...
@@ -162,4 +162,4 @@ class WordpressMedia(BaseWordpressApi):
             return response
 
         except Exception as exp:
-            print(f"delete_wordpress_media_by_wp_id: {exp}")
+            self.error(f"delete_wordpress_media_by_wp_id: {exp}")

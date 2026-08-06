@@ -1,8 +1,9 @@
 import pandas
 
 import CONSTS
-from services.disk.csv.config.csv_config import CSVConfig
 from services.core.base import Base
+from services.disk.csv.config.csv_config import CSVConfig
+
 # --
 # ...
 # --
@@ -58,5 +59,5 @@ class CSVManager(Base):
                 return data_frame
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
             return False

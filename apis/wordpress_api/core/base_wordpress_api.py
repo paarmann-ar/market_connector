@@ -1,7 +1,6 @@
 from typing import Any
 
 from apis.core.base import Base
-from services.connection.connection_provider import ConnectionProvider
 
 # --
 # ...
@@ -11,8 +10,6 @@ from services.connection.connection_provider import ConnectionProvider
 class BaseWordpressApi(Base):
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
-
-        self.request = ConnectionProvider().request
 
         self.config_dictionary = self.get_config_dictionary()
 

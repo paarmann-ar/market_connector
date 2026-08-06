@@ -60,4 +60,4 @@ class WoocommerceRollback(BaseWoocommerceApi):
             return None
 
         except Exception as exp:
-            print(f"rollback: {exp}")
+            self.prompt_on_screen(f"rollback: {exp}")

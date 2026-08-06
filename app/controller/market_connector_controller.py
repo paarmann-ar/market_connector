@@ -27,10 +27,11 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def convert_ebay_to_woocommerce_product_model(self) -> None:
+    def convert_ebay_to_woocommerce_product_model(self, price_anpassen) -> None:
         ebay_product_detail_model_list = self.apis_provider.ebay_api.product_detail_list
         self.apis_provider.woocommerce_api.convert_ebay_product_model_to_woocommerce_product_model(
-            ebay_product_detail_model_list=ebay_product_detail_model_list
+            ebay_product_detail_model_list=ebay_product_detail_model_list,
+            price_anpassen=price_anpassen,
         )
 
     # --

@@ -22,7 +22,7 @@ class Toolbox:
                 return str(input_)
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
 
     # --
     # ...
@@ -51,7 +51,7 @@ class Toolbox:
             return result
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
 
     # --
     # ...
@@ -64,7 +64,7 @@ class Toolbox:
             return str(Path(__file__).parent.parent)
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
 
     # --
     # ...
@@ -95,7 +95,7 @@ class Toolbox:
             return modules
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))
 
     # --
     # ...
@@ -139,4 +139,4 @@ class Toolbox:
             return datetime(today.year, today.month, 1)
 
         except Exception as exp:
-            print(repr(exp))
+            self.error(repr(exp))

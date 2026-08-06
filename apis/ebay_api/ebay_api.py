@@ -75,7 +75,7 @@ class EbayApi(BaseEbayApi):
                 return {category_tree_id: "root"}
 
         except Exception as exp:
-            print(f"get_ebay_category_id: {exp}")
+            self.prompt_on_screen(f"get_ebay_category_id: {exp}")
 
     # --
     # ...
@@ -121,7 +121,7 @@ class EbayApi(BaseEbayApi):
             self.csv.operation(mode="w", file_name="ebay_item_summaries.csv", data=rows)
 
         except Exception as exp:
-            print(f"get_all_product_ids: {exp}")
+            self.prompt_on_screen(f"get_all_product_ids: {exp}")
 
     # --
     # ...
@@ -133,7 +133,7 @@ class EbayApi(BaseEbayApi):
             self.ebay_product.get_product_with_product_id(product_id=product_id)
 
         except Exception as exp:
-            print(f"get_product_with_product_id: {exp}")
+            self.prompt_on_screen(f"get_product_with_product_id: {exp}")
 
     # --
     # ...
@@ -154,7 +154,9 @@ class EbayApi(BaseEbayApi):
             )
 
         except Exception as exp:
-            print(f"get_all_data_of_product_with_product_id_from_products_list: {exp}")
+            self.prompt_on_screen(
+                f"get_all_data_of_product_with_product_id_from_products_list: {exp}"
+            )
 
     # --
     # ...

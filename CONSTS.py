@@ -9,7 +9,8 @@ from toolboxs.toolbox import Toolbox
 PROJECTS_DIR = "/".join(Toolbox.get_root_path().replace("\\", "/").split("/")[:-1])
 ROOT_DIR = Toolbox.get_root_path().replace("\\", "/")
 APP_DIR = f"{Toolbox.get_root_path()}/app".replace("\\", "/")
-CONFIG_JSON = ROOT_DIR + "/config_dictionary/config.json"
+CONFIG_JSON = ROOT_DIR + "/config/config.json"
+KI_PROMPT_DIR = ROOT_DIR + "/ki_prompts/"
 EXTERNAL_FILES = ROOT_DIR + "/.external_files"
 
 # --

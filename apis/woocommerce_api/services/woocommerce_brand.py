@@ -88,7 +88,7 @@ class WoocommerceBrand(BaseWoocommerceApi):
             return brands
 
         except Exception as exp:
-            print(f"get_all_brands: {exp}")
+            self.prompt_on_screen(f"get_all_brands: {exp}")
 
     # --
     # ...
@@ -110,7 +110,7 @@ class WoocommerceBrand(BaseWoocommerceApi):
             return woocommerce_brand_model
 
         except Exception as exp:
-            print(f"upload_brand: {exp}")
+            self.prompt_on_screen(f"upload_brand: {exp}")
 
     # --
     # ...
@@ -146,9 +146,4 @@ class WoocommerceBrand(BaseWoocommerceApi):
             return response
 
         except Exception as exp:
-            print(f"delete_brand_by_brand_id: {exp}")
-
-
-def test():
-    WoocommerceBrand().get_all_brands()
-    WoocommerceBrand().resolve_or_upload("hahaha")
+            self.prompt_on_screen(f"delete_brand_by_brand_id: {exp}")
