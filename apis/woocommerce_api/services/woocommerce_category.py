@@ -113,18 +113,14 @@ class WoocommerceCategory(BaseWoocommerceApi):
     # ...
     # --
 
-    def resolve_or_upload(
-        self, woocommerce_category_model: WoocommerceCategoryModel
-    ) -> WoocommerceCategoryModel:
+    def resolve_or_upload(self, woocommerce_category_model: WoocommerceCategoryModel) -> WoocommerceCategoryModel:
 
         category = self.get_category_by_name(woocommerce_category_model.name)
 
         if category:
             return category
 
-        return self.upload_category(
-            WoocommerceCategoryModel(name=woocommerce_category_model.name)
-        )
+        return self.upload_category(WoocommerceCategoryModel(name=woocommerce_category_model.name))
 
     # --
     # ...

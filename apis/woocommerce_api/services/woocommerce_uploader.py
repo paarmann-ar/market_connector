@@ -71,28 +71,22 @@ class WoocommerceUploader(BaseWoocommerceApi):
             woocommerce_tags_model: list[WoocommerceTagModel] = []
             woocommerce_images_model: list[WoocommerceImageModel] = []
 
-            if product:
-                return product
+            # if product:
+            #     return product
 
             woocommerce_image = WoocommerceImage()
             for image in product_model.images:
-                woocommerce_images_model.append(
-                    woocommerce_image.resolve_or_upload(image)
-                )
+                woocommerce_images_model.append(woocommerce_image.resolve_or_upload(image))
                 self.woocommerce_session_model.add_media(image)
 
             woocommerce_category = WoocommerceCategory()
             for category in product_model.categories:
-                woocommerce_categories_model.append(
-                    woocommerce_category.resolve_or_upload(category)
-                )
+                woocommerce_categories_model.append(woocommerce_category.resolve_or_upload(category))
                 self.woocommerce_session_model.add_category(category)
 
             woocommerce_brand = WoocommerceBrand()
             for brand in product_model.brands:
-                woocommerce_brands_model.append(
-                    woocommerce_brand.resolve_or_upload(brand)
-                )
+                woocommerce_brands_model.append(woocommerce_brand.resolve_or_upload(brand))
                 self.woocommerce_session_model.add_brand(brand)
 
             woocommerce_tag = WoocommerceTag()
@@ -106,9 +100,7 @@ class WoocommerceUploader(BaseWoocommerceApi):
             product_model.tags = woocommerce_tags_model
 
             product_model = remove_none(product_model)
-            self.woocommerce_product.upload_product(
-                WoocommerceProductModel(**product_model)
-            )
+            self.woocommerce_product.upload_product(WoocommerceProductModel(**product_model))
 
             self.woocommerce_session_model.add_product(product_model)
 

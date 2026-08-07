@@ -39,9 +39,7 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_products(
-        self, category_id, filter_product, q, offset, limit=200, marketplace=""
-    ):
+    def get_products(self, category_id, filter_product, q, offset, limit=200, marketplace=""):
 
         try:
             if marketplace == "":
@@ -79,9 +77,7 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_ids_with_category_id(
-        self, category_id, filter_product, q, marketplace=""
-    ):
+    def get_product_ids_with_category_id(self, category_id, filter_product, q, marketplace=""):
 
         try:
             if marketplace == "":

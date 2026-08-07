@@ -16,22 +16,12 @@ class ServiceDiskProvider(metaclass=SingletonMeta):
         log_info_class = LogProvider().info
         log_error_class = LogProvider().error
 
-        self.json = JSONManager(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.json = JSONManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)
 
-        self.xml = XMLManager(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.xml = XMLManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)
 
-        self.file = FileManager(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.file = FileManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)
 
-        self.excel = ExcelManager(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.excel = ExcelManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)
 
-        self.csv = CSVManager(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.csv = CSVManager(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)

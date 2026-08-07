@@ -130,9 +130,7 @@ class JSONManager(metaclass=SingletonMeta):
                     else:
                         corrected_file_string = context
 
-                    corrected_file_string = (
-                        json.dumps(corrected_file_string, indent=4) + dele
-                    )
+                    corrected_file_string = json.dumps(corrected_file_string, indent=4) + dele
                     file.write(corrected_file_string)
                     json_data = True
 

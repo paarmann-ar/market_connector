@@ -16,10 +16,6 @@ class LogProvider(metaclass=SingletonMeta):
 
         file_manager_class = FileManager()
 
-        self.info = Logging(
-            template=template, config=config, file_manager_class=file_manager_class
-        ).info
-        self.error = Logging(
-            template="Error", config="Error", file_manager_class=file_manager_class
-        ).error
+        self.info = Logging(template=template, config=config, file_manager_class=file_manager_class).info
+        self.error = Logging(template="Error", config="Error", file_manager_class=file_manager_class).error
         self.stack = StackContext().StackOperation

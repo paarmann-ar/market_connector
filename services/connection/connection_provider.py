@@ -14,6 +14,4 @@ class ConnectionProvider(metaclass=SingletonMeta):
         log_info_class = LogProvider().info
         log_error_class = LogProvider().error
 
-        self.request = Request(
-            log_info_class=log_info_class, log_error_class=log_error_class, **kwargs
-        )
+        self.request = Request(log_info_class=log_info_class, log_error_class=log_error_class, **kwargs)

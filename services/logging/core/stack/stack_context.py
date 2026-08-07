@@ -16,12 +16,8 @@ class StackContext(BaseLog):
     no_show_methods = None
 
     def __init__(self) -> None:
-        StackContext.no_show_modules = (
-            self.get_config_dictionary().get(__name__).get("no_show_modules")
-        )
-        StackContext.no_show_methods = (
-            self.get_config_dictionary().get(__name__).get("no_show_methods")
-        )
+        StackContext.no_show_modules = self.get_config_dictionary().get(__name__).get("no_show_modules")
+        StackContext.no_show_methods = self.get_config_dictionary().get(__name__).get("no_show_methods")
 
     # --
     # ...
@@ -69,16 +65,7 @@ class StackContext(BaseLog):
                                 method = Data.group()[5:]
 
                                 if method not in cls.no_show_methods:
-                                    Stack = (
-                                        Stack
-                                        + " > "
-                                        + module
-                                        + "."
-                                        + method
-                                        + "("
-                                        + Line
-                                        + ")"
-                                    )
+                                    Stack = Stack + " > " + module + "." + method + "(" + Line + ")"
 
             return Stack
 

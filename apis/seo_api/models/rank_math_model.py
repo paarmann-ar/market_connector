@@ -46,28 +46,33 @@ class RankMathModel:
     # --
 
     def for_use_in_woocommerce(self):
-        data = asdict(self)
 
-        data = [
-            {
-                "key": "rank_math_title",
-                "value": data.get("rank_math_title", ""),
-            },
-            {
-                "key": "rank_math_description",
-                "value": data.get("rank_math_description", ""),
-            },
-            {
-                "key": "rank_math_focus_keyword",
-                "value": data.get("rank_math_focus_keyword", ""),
-            },
-            {
-                "key": "rank_math_canonical_url",
-                "value": data.get("rank_math_canonical_url", ""),
-            },
-        ]
+        try:
+            data = asdict(self)
 
-        return data
+            data = [
+                {
+                    "key": "rank_math_title",
+                    "value": data.get("rank_math_title", ""),
+                },
+                {
+                    "key": "rank_math_description",
+                    "value": data.get("rank_math_description", ""),
+                },
+                {
+                    "key": "rank_math_focus_keyword",
+                    "value": data.get("rank_math_focus_keyword", ""),
+                },
+                {
+                    "key": "rank_math_canonical_url",
+                    "value": data.get("rank_math_canonical_url", ""),
+                },
+            ]
+
+            return data
+
+        except Exception as exp:
+            self.error(f"for_use_in_woocommerce: {exp}")
 
     # --
     # ...

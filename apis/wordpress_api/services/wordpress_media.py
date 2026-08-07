@@ -17,9 +17,7 @@ class WordpressMedia(BaseWordpressApi):
         self.media_url = self.config_dictionary.get("media_url")
 
         self.wp_user = self.config_dictionary.get("wp_user")
-        self.wp_application_password = self.config_dictionary.get(
-            "wp_application_password"
-        )
+        self.wp_application_password = self.config_dictionary.get("wp_application_password")
         self.wp_password = self.config_dictionary.get("wp_password")
 
         self.media_dict = {}
@@ -55,9 +53,7 @@ class WordpressMedia(BaseWordpressApi):
                 is_use_default_headers=False,
                 method="post",
                 url=f"{self.base_url}/{self.media_url}",
-                headers={
-                    "Content-Disposition": f"attachment; filename={media_model.media_name}"
-                },
+                headers={"Content-Disposition": f"attachment; filename={media_model.media_name}"},
                 files=media_file,
                 data=data,
                 auth=(self.wp_user, self.wp_application_password),
@@ -86,9 +82,7 @@ class WordpressMedia(BaseWordpressApi):
     # ...
     # --
 
-    def get_wordpress_media_model_by_medial_model_name(
-        self, media_model: WordpressMediaModel
-    ) -> WordpressMediaModel:
+    def get_wordpress_media_model_by_medial_model_name(self, media_model: WordpressMediaModel) -> WordpressMediaModel:
 
         try:
             response = self.request(

@@ -44,16 +44,12 @@ class EMail(Base):
 
         try:
             if sender_domains := kwargs.get("sender_domains"):
-                self.from_object = self.config_dictionary["sender_domains"][
-                    sender_domains
-                ]
+                self.from_object = self.config_dictionary["sender_domains"][sender_domains]
             else:
                 self.from_object = kwargs.get("sender_object")
 
             if receiver_group := kwargs.get("receiver_group", []):
-                self.receiver_list = self.config_dictionary["receiver_groups"][
-                    receiver_group
-                ]
+                self.receiver_list = self.config_dictionary["receiver_groups"][receiver_group]
 
             self.receiver_list = kwargs.get("receiver_list", [])
             self.cc_list = kwargs.get("cc_list", [])
@@ -67,9 +63,7 @@ class EMail(Base):
             self.template_object = kwargs.get("template_object", None)
 
             if not self.template_object:
-                template_object_from_config_file = self.config_dictionary[
-                    "template_default"
-                ]
+                template_object_from_config_file = self.config_dictionary["template_default"]
 
                 self.template_object = TemplateManager().instance
 
@@ -124,9 +118,7 @@ class EMail(Base):
             server.login(self.from_object["address"], self.from_object["password"])
 
             map(
-                lambda receiver: server.sendmail(
-                    self.from_object["address"], receiver, message.as_string()
-                ),
+                lambda receiver: server.sendmail(self.from_object["address"], receiver, message.as_string()),
                 self.receiver_list,
             )
 
@@ -195,9 +187,7 @@ class EMail(Base):
                 temp_attachments[_].set_payload((attachment).read())
                 encoders.encode_base64(temp_attachments[_])
 
-                temp_attachments[_].add_header(
-                    "Content-Disposition", "attachment; filename= %s" % item[1]
-                )
+                temp_attachments[_].add_header("Content-Disposition", "attachment; filename= %s" % item[1])
 
                 _ += 1
 

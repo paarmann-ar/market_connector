@@ -18,6 +18,7 @@ Requirements:
 - Keep the meaning of the original content unchanged.
 - Return only valid JSON.
 - Do not include explanations, comments, or markdown.
+- Do not include any HTML, CSS, JavaScript, markdown, or explanations.
 
 Output format:
 {{

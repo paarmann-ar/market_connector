@@ -140,9 +140,7 @@ class Request(Base):
                 raise ValueError(message)
 
             if response.status_code == 401:
-                print(
-                    "The current user is not correctly authenticated or the session or authentication token has expired."
-                )
+                print("The current user is not correctly authenticated or the session or authentication token has expired.")
                 return "expired token"
 
             response.raise_for_status()
@@ -150,9 +148,7 @@ class Request(Base):
             response = (
                 response
                 if response.status_code in [204, 200, 201]
-                else print(
-                    f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}"
-                )
+                else print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}")
             )
 
             if response.status_code == 204:
@@ -170,9 +166,7 @@ class Request(Base):
         except ValueError as v_exp:
             print(f"{v_exp}")
 
-            print(
-                f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}"
-            )
+            print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{response.text}{CONSTS.COLORS.ENDC.value}")
 
         except AttributeError as a_exp:
             print(f"{CONSTS.COLORS.AQUA_PROMPT.value}{a_exp}{CONSTS.COLORS.ENDC.value}")

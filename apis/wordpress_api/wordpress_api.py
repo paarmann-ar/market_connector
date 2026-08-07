@@ -33,9 +33,7 @@ class WordpressApi(BaseWordpressApi):
     # ...
     # --
 
-    def upload_media_models_from_disk(
-        self, media_models: list[WordpressMediaModel]
-    ) -> str:
+    def upload_media_models_from_disk(self, media_models: list[WordpressMediaModel]) -> str:
 
         try:
             for media_model in media_models:
@@ -52,9 +50,7 @@ class WordpressApi(BaseWordpressApi):
     # ...
     # --
 
-    def get_wordpress_media_models_by_name(
-        self, media_model_names: list[str]
-    ) -> list[WordpressMediaModel]:
+    def get_wordpress_media_models_by_name(self, media_model_names: list[str]) -> list[WordpressMediaModel]:
 
         try:
             returned_media_models: list[WordpressMediaModel] = []
@@ -63,11 +59,7 @@ class WordpressApi(BaseWordpressApi):
                 media_model = WordpressMediaModel()
                 media_model.media_name = media_model_name
 
-                returned_media_models.append(
-                    self.wordpress_media.get_wordpress_media_model_by_medial_model_name(
-                        media_model=media_model
-                    )
-                )
+                returned_media_models.append(self.wordpress_media.get_wordpress_media_model_by_medial_model_name(media_model=media_model))
 
             return returned_media_models
 
@@ -81,14 +73,10 @@ class WordpressApi(BaseWordpressApi):
     def delete_media_models(self, media_model_names: list[str]) -> str:
 
         try:
-            medial_models_to_delete = self.get_wordpress_media_models_by_name(
-                media_model_names=media_model_names
-            )
+            medial_models_to_delete = self.get_wordpress_media_models_by_name(media_model_names=media_model_names)
 
             for medial_model_to_delete in medial_models_to_delete:
-                self.wordpress_media.delete_wordpress_media_by_media_model(
-                    media_model=medial_model_to_delete
-                )
+                self.wordpress_media.delete_wordpress_media_by_media_model(media_model=medial_model_to_delete)
 
             return
 
@@ -103,9 +91,7 @@ class WordpressApi(BaseWordpressApi):
 def test_class():
     media_models: list[str] = []
     media_models.append("nivotemp_63K-WHG.jpg")
-    m = WordpressApi().get_wordpress_media_models_by_name(
-        media_model_names=media_models
-    )
+    m = WordpressApi().get_wordpress_media_models_by_name(media_model_names=media_models)
 
     media_model = WordpressMediaModel()
     media_model.media_name = "test.jpg"

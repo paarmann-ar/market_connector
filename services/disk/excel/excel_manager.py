@@ -53,9 +53,7 @@ class ExcelManager(Base):
     # ...
     # --
 
-    def operation(
-        self, mode="", address="", file_name="", range="A1", is_print_worksheets=True
-    ) -> str:
+    def operation(self, mode="", address="", file_name="", range="A1", is_print_worksheets=True) -> str:
 
         try:
             if mode == "":
@@ -69,12 +67,8 @@ class ExcelManager(Base):
 
             if mode == "w":
                 with xlsxwriter.Workbook(address) as workbook:
-                    format_first_row = workbook.add_format(
-                        {"bg_color": "#c6e2ff", "border": 1}
-                    )
-                    format_rest_rows = workbook.add_format(
-                        {"bg_color": "#ffefd5", "border": 1}
-                    )
+                    format_first_row = workbook.add_format({"bg_color": "#c6e2ff", "border": 1})
+                    format_rest_rows = workbook.add_format({"bg_color": "#ffefd5", "border": 1})
                     format_first_row.set_center_across()
                     format_rest_rows.set_center_across()
 
@@ -84,14 +78,10 @@ class ExcelManager(Base):
                         temp_worksheet_name = list(worksheet.keys())[0]
 
                         if temp_worksheet_name in temp_list_worksheet_name:
-                            temp_new_worksheet_name = (
-                                f"{temp_worksheet_name}_{random.randint(1, 10000)}"
-                            )
+                            temp_new_worksheet_name = f"{temp_worksheet_name}_{random.randint(1, 10000)}"
 
                             temp = self.workbook.pop(index)
-                            temp[temp_new_worksheet_name] = temp.pop(
-                                temp_worksheet_name
-                            )
+                            temp[temp_new_worksheet_name] = temp.pop(temp_worksheet_name)
                             self.workbook.insert(index, temp)
 
                         temp_list_worksheet_name.append(temp_worksheet_name)
@@ -104,15 +94,9 @@ class ExcelManager(Base):
                                 for data in row_data:
                                     for item, value in data.items():
                                         try:
-                                            row_format = (
-                                                format_rest_rows
-                                                if item[0] != 0
-                                                else format_first_row
-                                            )
+                                            row_format = format_rest_rows if item[0] != 0 else format_first_row
 
-                                            worksheet.write(
-                                                item[0], item[1], value, row_format
-                                            )
+                                            worksheet.write(item[0], item[1], value, row_format)
                                         # I have change this exp to bestimmt exception
                                         except Exception as exp:
                                             self.error(repr(exp))
@@ -124,9 +108,7 @@ class ExcelManager(Base):
                 workbook = xlwings.Book(address)
 
                 if self.worksheet:
-                    worksheets = (
-                        workbook.sheets[self.worksheet].range(range).expand().value
-                    )
+                    worksheets = workbook.sheets[self.worksheet].range(range).expand().value
 
                 else:
                     worksheet_data = []
@@ -142,9 +124,7 @@ class ExcelManager(Base):
                         worksheet_data = temp_workdata
 
                         worksheets.append(worksheet_data)
-                        self.worksheets_dictionary.update(
-                            {worksheet.name: worksheet_data}
-                        )
+                        self.worksheets_dictionary.update({worksheet.name: worksheet_data})
 
                 if is_print_worksheets:
                     self.info(worksheets)

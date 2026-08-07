@@ -52,9 +52,7 @@ class EbayTokenApi(BaseEbayApi):
             expire_token_in_next_seconds = int(time.time() - self.expires_get_time)
 
             if self.expires_in_token - 30 > expire_token_in_next_seconds:
-                self.prompt_on_screen(
-                    f"Token is valid for {self.expires_in_token - expire_token_in_next_seconds} seconds"
-                )
+                self.prompt_on_screen(f"Token is valid for {self.expires_in_token - expire_token_in_next_seconds} seconds")
                 return self.ebay_access_token
 
             credentials = f"{self.client_id}: {self.client_secret}"

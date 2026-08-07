@@ -52,14 +52,10 @@ class EbayApi(BaseEbayApi):
 
         try:
             category_id_candidate = {}
-            category_tree_id = (
-                self.ebay_category.get_default_category_tree_id_with_marketplace_id()
-            )
+            category_tree_id = self.ebay_category.get_default_category_tree_id_with_marketplace_id()
 
             if category_name_candidate:
-                category_tree = self.ebay_category.get_category_tree(
-                    category_tree_id=category_tree_id
-                )
+                category_tree = self.ebay_category.get_category_tree(category_tree_id=category_tree_id)
 
                 self.recursive_category(category_node=category_tree)
 
@@ -83,13 +79,7 @@ class EbayApi(BaseEbayApi):
 
     def recursive_category(self, category_node: dict):
         if "childCategoryTreeNodes" not in category_node:
-            self.category_dict.update(
-                {
-                    category_node["category"]["categoryId"]: category_node["category"][
-                        "categoryName"
-                    ]
-                }
-            )
+            self.category_dict.update({category_node["category"]["categoryId"]: category_node["category"]["categoryName"]})
             return
 
         for child in category_node["childCategoryTreeNodes"]:
@@ -102,15 +92,11 @@ class EbayApi(BaseEbayApi):
     def get_all_product_ids(self, category_name_candidate, filter_product, q) -> str:
 
         try:
-            category_id_dict: dict = self.get_ebay_category_id(
-                category_name_candidate=category_name_candidate
-            )
+            category_id_dict: dict = self.get_ebay_category_id(category_name_candidate=category_name_candidate)
 
             for category_id in category_id_dict.keys():
                 self.products_list.append(
-                    self.ebay_product.get_product_ids_with_category_id(
-                        category_id=category_id, filter_product=filter_product, q=q
-                    )
+                    self.ebay_product.get_product_ids_with_category_id(category_id=category_id, filter_product=filter_product, q=q)
                 )
 
             rows = []
@@ -143,9 +129,7 @@ class EbayApi(BaseEbayApi):
 
         try:
             for product_id in self.products_list[0].keys():
-                self.product_detail_list.append(
-                    self.ebay_product.get_product_with_product_id(product_id=product_id)
-                )
+                self.product_detail_list.append(self.ebay_product.get_product_with_product_id(product_id=product_id))
 
             self.csv.operation(
                 mode="w",
@@ -154,17 +138,13 @@ class EbayApi(BaseEbayApi):
             )
 
         except Exception as exp:
-            self.prompt_on_screen(
-                f"get_all_data_of_product_with_product_id_from_products_list: {exp}"
-            )
+            self.prompt_on_screen(f"get_all_data_of_product_with_product_id_from_products_list: {exp}")
 
     # --
     # ...
     # --
 
-    def fetch_product_from_ebay_by_search_in_ebay_model(
-        self, search_in_ebay_model: SearchInEbayModel
-    ):
+    def fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel):
         search_in_ebay_model = search_in_ebay_model.to_dict()
 
         self.get_all_product_ids(

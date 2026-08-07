@@ -41,9 +41,7 @@ class SqlserverProvider(metaclass=SingletonMeta):
                 testme_db = db_config_dictionary["testme_db"]
 
         if db_command:
-            db_command = DBCommandsDictionary(
-                testme_db_folder=testme_db_folder, testme_db=testme_db, **kwargs
-            ).get_dictionary()[db_command]
+            db_command = DBCommandsDictionary(testme_db_folder=testme_db_folder, testme_db=testme_db, **kwargs).get_dictionary()[db_command]
 
         self.db_connection = SqlserverConnection(
             driver=driver,

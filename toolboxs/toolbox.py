@@ -111,16 +111,10 @@ class Toolbox:
 
         for folder_adress, sub_folders, files in os.walk(app_dir):
             for file in files:
-                file_name_with_length.append(
-                    f"{folder_adress.replace('\\', '/')}/{file}"
-                )
+                file_name_with_length.append(f"{folder_adress.replace('\\', '/')}/{file}")
 
         file_name_with_length.sort(key=lambda k: len(k), reverse=True)
-        file_name_len_list = [
-            f"{file}: {len(file)}"
-            for file in file_name_with_length
-            if len(file) > len_condition
-        ]
+        file_name_len_list = [f"{file}: {len(file)}" for file in file_name_with_length if len(file) > len_condition]
 
         print(len(file_name_len_list))
         print(f"{'\n'.join(file_name_len_list)}")

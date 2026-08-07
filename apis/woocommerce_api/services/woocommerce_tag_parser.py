@@ -59,9 +59,7 @@ class WoocommerceTagParser(BaseWoocommerceApi):
             part_numbers = self.find_part_number(context)
             category = self.find_category(context)
 
-            clean_name = self.clean_title(
-                context, brand, condition, part_numbers, category
-            )
+            clean_name = self.clean_title(context, brand, condition, part_numbers, category)
 
             tags = self.build_tags(
                 name=clean_name,

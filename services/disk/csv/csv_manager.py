@@ -31,9 +31,7 @@ class CSVManager(Base):
     # ...
     # --
 
-    def operation(
-        self, mode="", address="", file_name="", data: list = None, columns: list = None
-    ) -> dict:  # type: ignore
+    def operation(self, mode="", address="", file_name="", data: list = None, columns: list = None) -> dict:  # type: ignore
 
         try:
             if mode == "":
@@ -48,9 +46,7 @@ class CSVManager(Base):
             if mode == "w":
                 data_frame = pandas.DataFrame(data, columns=columns)
 
-                data_frame.to_csv(
-                    path_or_buf=address, index=False, encoding="utf-8-sig"
-                )
+                data_frame.to_csv(path_or_buf=address, index=False, encoding="utf-8-sig")
 
                 return data_frame
 

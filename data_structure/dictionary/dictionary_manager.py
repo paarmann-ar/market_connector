@@ -32,15 +32,9 @@ class DictionaryManager(BaseDataStructure):
 
             removed_key = dictionary_1_Keys - dictionary_0_Keys
 
-            difference = {
-                key: (dictionary_0[key], dictionary_1[key])
-                for key in shared_keys
-                if dictionary_0[key] != dictionary_1[key]
-            }
+            difference = {key: (dictionary_0[key], dictionary_1[key]) for key in shared_keys if dictionary_0[key] != dictionary_1[key]}
 
-            commen = set(
-                key for key in shared_keys if dictionary_0[key] == dictionary_1[key]
-            )
+            commen = set(key for key in shared_keys if dictionary_0[key] == dictionary_1[key])
 
             return added_key, removed_key, difference, commen
 

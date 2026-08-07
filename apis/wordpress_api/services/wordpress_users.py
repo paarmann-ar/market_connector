@@ -16,9 +16,7 @@ class WordpressUsers(BaseWordpressApi):
         self.user_url = self.config_dictionary.get("user_url")
 
         self.wp_user = self.config_dictionary.get("wp_user")
-        self.wp_application_password = self.config_dictionary.get(
-            "wp_application_password"
-        )
+        self.wp_application_password = self.config_dictionary.get("wp_application_password")
         self.wp_password = self.config_dictionary.get("wp_password")
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")

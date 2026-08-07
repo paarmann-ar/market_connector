@@ -26,9 +26,7 @@ class PromptManager:
 
     def load_prompt_from_file(self, prompt_file_name: str, kwargs: dict) -> str:
         try:
-            prompt = Path(f"{CONSTS.KI_PROMPT_DIR}{prompt_file_name}.md").read_text(
-                encoding="utf-8"
-            )
+            prompt = Path(f"{CONSTS.KI_PROMPT_DIR}{prompt_file_name}.md").read_text(encoding="utf-8")
             prompt = prompt.format(**kwargs)
 
             return prompt

@@ -70,9 +70,7 @@ class SqlserverExecute:
                         self.info(*list(map(lambda x: x, self.cursor.messages)))
 
                     row = self.cursor.fetchone()
-                    result = dict(
-                        zip(list(map(lambda x: x[0], row.cursor_description)), row)
-                    )
+                    result = dict(zip(list(map(lambda x: x[0], row.cursor_description)), row))
 
                 # I have change this exp to bestimmt exception
                 except Exception as exp:

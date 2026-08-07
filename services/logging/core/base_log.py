@@ -19,7 +19,7 @@ class BaseLog(metaclass=SingletonMeta):
     # --
 
     @classmethod
-    def get_template_dictionary(cls) -> str:
+    def get_template_dictionary(self) -> str:
         return ""
 
     # --
@@ -27,7 +27,7 @@ class BaseLog(metaclass=SingletonMeta):
     # --
 
     @classmethod
-    def get_config_dictionary(cls) -> str:
+    def get_config_dictionary(self) -> str:
         return ""
 
     # --

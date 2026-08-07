@@ -19,9 +19,7 @@ class MarketConnectorController(Base):
     # --
 
     def fetch_from_ebay(self, search_in_ebay_model: SearchInEbayModel):
-        self.apis_provider.ebay_api.fetch_product_from_ebay_by_search_in_ebay_model(
-            search_in_ebay_model
-        )
+        self.apis_provider.ebay_api.fetch_product_from_ebay_by_search_in_ebay_model(search_in_ebay_model)
 
     # --
     # ...
@@ -38,9 +36,5 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def upload_model_to_woocommerce(
-        self, target_woocommerce_category_name: str
-    ) -> bool:
-        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(
-            target_woocommerce_category_name
-        )
+    def upload_model_to_woocommerce(self, target_woocommerce_category_name: str) -> bool:
+        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(target_woocommerce_category_name)

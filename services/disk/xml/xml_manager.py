@@ -19,9 +19,7 @@ class XMLManager(metaclass=SingletonMeta):
     # ...
     # --
 
-    def operation(
-        self, address="", context="", is_get_string=False, is_get_dictionary=True
-    ) -> Any:
+    def operation(self, address="", context="", is_get_string=False, is_get_dictionary=True) -> Any:
 
         try:
             xml_data = None
@@ -38,9 +36,7 @@ class XMLManager(metaclass=SingletonMeta):
                     if is_get_dictionary:
                         from io import BytesIO
 
-                        xml_data = xmltodict.parse(
-                            BytesIO(bytes(corrected_file_string, encoding="utf-8"))
-                        )
+                        xml_data = xmltodict.parse(BytesIO(bytes(corrected_file_string, encoding="utf-8")))
 
             else:
                 with open(address, "w") as file:

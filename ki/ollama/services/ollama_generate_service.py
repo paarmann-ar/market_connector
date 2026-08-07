@@ -16,6 +16,7 @@ class OllamaGenerateService(Base):
         self.num_predict = self.config_dictionary.get("num_predict")
         self.temperature = self.config_dictionary.get("temperature")
         self.num_ctx = self.config_dictionary.get("num_ctx")
+        self.top_p = self.config_dictionary.get("top_p")
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
@@ -45,10 +46,13 @@ class OllamaGenerateService(Base):
                 model=self.model,
                 prompt=prompt,
                 format="json",
+                think=False,
+                stream=False,
                 options={
                     "num_predict": self.num_predict,
                     "temperature": self.temperature,
                     "num_ctx": self.num_ctx,
+                    "top_p": float(self.top_p),
                 },
                 keep_alive="30m",
             )

@@ -61,9 +61,7 @@ class EbayCategory(BaseEbayApi):
             return self.category_tree_id
 
         except Exception as exp:
-            self.prompt_on_screen(
-                f"get_default_category_tree_id_with_marketplace_id: {exp}"
-            )
+            self.prompt_on_screen(f"get_default_category_tree_id_with_marketplace_id: {exp}")
 
     # --
     # ...

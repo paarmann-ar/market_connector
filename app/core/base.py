@@ -1,8 +1,10 @@
 from abc import ABC
 from typing import Any
+from apis.core.singleton_meta import SingletonMeta
 
 from app.core.config.base_config import BaseConfig
 from app.core.prompt_on_screen import PromptOnScreen
+from apis.core.waiting import Wating
 from services.disk.json.json_manager import JSONManager
 from services.logging.log_provider import LogProvider
 from services.mail.email_provider import EMailProvider
@@ -12,51 +14,33 @@ from services.mail.email_provider import EMailProvider
 # --
 
 
-class Base(ABC):
+class Base(ABC, metaclass=SingletonMeta):
     state = {}
 
-    def __new__(cls, *args, **kwargs: Any):
+    def __init__(self, **kwargs: Any) -> None:
 
-        if hasattr(cls, "instance_args"):
-            if cls.instance_args != kwargs:
-                cls.instance = None
+        self.waiting = Wating()
 
-        if not hasattr(cls, "instance"):
-            cls.instance = super().__new__(cls)
-            cls.state["base_id"] = id(cls)
+        self.mail = EMailProvider().email
 
-            cls.instance_args = kwargs
+        self.info = LogProvider().info
+        self.error = LogProvider().error
+        self.stack = LogProvider().stack
 
-            cls.aqua_result = []
+        self.json = JSONManager()
 
-            cls.instance.mail = EMailProvider().email
+        self.config_dictionary = self.get_config_dictionary()
 
-            cls.instance.info = LogProvider().info
-            cls.instance.error = LogProvider().error
-            cls.instance.stack = LogProvider().stack
+        self.prompt_on_screen = PromptOnScreen()
 
-            cls.instance.json = JSONManager()
-
-            cls.instance.config_dictionary = cls.get_config_dictionary()
-
-            cls.prompt_on_screen = PromptOnScreen()
-
-        cls.prompt_on_screen(f"{__class__.__name__}, {id(cls.instance)}")
-        return cls.instance
-
-    # --
-    # ...
-    # --
-
-    def __init__(self, *args, **kwargs: Any) -> None:
-        pass
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
     # ...
     # --
 
     @classmethod
-    def get_config_dictionary(cls) -> str:
+    def get_config_dictionary(self) -> str:
         return BaseConfig().get_dictionary()
 
     # --
@@ -64,5 +48,5 @@ class Base(ABC):
     # --
 
     @classmethod
-    def get_elements(cls) -> str:
+    def get_elements(self) -> str:
         return None

@@ -16,15 +16,9 @@ class DBCommandsDictionary(BaseDictionary):
         time_metric = kwargs.get("time_metric") if "time_metric" in kwargs else ""
         log_info = kwargs.get("log_info") if "log_info" in kwargs else ""
 
-        testme_db_folder = (
-            kwargs.get("testme_db_folder") if "testme_db_folder" in kwargs else ""
-        )
+        testme_db_folder = kwargs.get("testme_db_folder") if "testme_db_folder" in kwargs else ""
         testme_db = kwargs.get("testme_db") if "testme_db" in kwargs else ""
-        testme_version_folder = (
-            kwargs.get("testme_version_folder")
-            if "testme_version_folder" in kwargs
-            else ""
-        )
+        testme_version_folder = kwargs.get("testme_version_folder") if "testme_version_folder" in kwargs else ""
 
         json = JSONManager()
         config_json_dictionary = json.operation(CONSTS.CONFIG_JSON)[__name__]

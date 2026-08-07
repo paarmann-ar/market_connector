@@ -123,9 +123,7 @@ class WoocommerceBrand(BaseWoocommerceApi):
         if brand:
             return brand
 
-        return self.upload_brand(
-            WoocommerceBrandModel(name=woocommerce_brand_model.name)
-        )
+        return self.upload_brand(WoocommerceBrandModel(name=woocommerce_brand_model.name))
 
     # --
     # ...

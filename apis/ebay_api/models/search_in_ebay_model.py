@@ -27,9 +27,7 @@ class SearchInEbayModel:
 
     def to_dict(self):
         data = asdict(self)
-        self.filter_product = (
-            f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry}"
-        )
+        self.filter_product = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry}"
         data["filter_product"] = self.filter_product
         return data
 
