@@ -4,9 +4,6 @@ from apis.woocommerce_api.config.woocommerce_api_config import (
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-
-# from ki.prompt_provider.models.input_message_model import InputMessageModel
-# from toolboxs.html import Html
 from toolboxs.numbers import Numbers
 from apis.woocommerce_api.create_product_seo import CreateProductSeo
 
@@ -21,6 +18,7 @@ class WoocommerceApi(BaseWoocommerceApi):
 
         self.woocommerce_product_models: list = []
         self.create_product_seo = CreateProductSeo()
+        self.create_product_seo.rank_math_model = self.rank_math_model
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
@@ -53,17 +51,17 @@ class WoocommerceApi(BaseWoocommerceApi):
             )
             for image_url in product.get("additionalImages", []):
                 woocommerce_images_model.append(
-                    self.woocommerce_service_provider.woocommerce_image_model.from_api({"src": image_url["imageUrl"]})
+                    self.woocommerce_service_provider.woocommerce_image_model.from_api({"src": image_url.get("imageUrl")})
                 )
 
             # chon faghat akharin category mikhastam dashteh basham
-            category = product["categoryPath"].split("|")[-1]
+            category = product.get("categoryPath").split("|")[-1]
             woocommerce_categories_model.append(self.woocommerce_service_provider.woocommerce_category_model(name=category))
 
             woocommerce_brands_model.append(self.woocommerce_service_provider.woocommerce_brand_model(name=product.get("brand")))
 
             woocommerce_tag_parser_model = self.woocommerce_service_provider.woocommerce_tag_parser.woocommerce_tag_parser(
-                context=f"{product['title']} {product.get('brand')} {product.get('condition')} {product.get('sku')}"
+                context=f"{product.get('title')} {product.get('brand')} {product.get('condition')} {product.get('sku')}"
             )
 
             for tag in woocommerce_tag_parser_model.tags:
@@ -73,18 +71,18 @@ class WoocommerceApi(BaseWoocommerceApi):
 
             ki_dict = self.create_product_seo.use_ki_to_rewrite_metadata_to_woocommerce(product=product)
 
-            self.ziel_woocommerce_product_model.meta_data = self.rank_math_model
-            self.ziel_woocommerce_product_model.name = ki_dict["title"]
-            self.ziel_woocommerce_product_model.description = ki_dict["description"]
-            self.ziel_woocommerce_product_model.short_description = ki_dict["short_description"]
+            self.ziel_woocommerce_product_model.meta_data = self.rank_math_model.for_use_in_woocommerce()
+            self.ziel_woocommerce_product_model.name = ki_dict.get("title")
+            self.ziel_woocommerce_product_model.description = ki_dict.get("description")
+            self.ziel_woocommerce_product_model.short_description = ki_dict.get("short_description")
 
             self.ziel_woocommerce_product_model.slug = ""
             self.ziel_woocommerce_product_model.permalink = ""
             self.ziel_woocommerce_product_model.catalog_visibility = "visible"
             self.ziel_woocommerce_product_model.sku = ""
-            self.ziel_woocommerce_product_model.price = Numbers.price_anpassen(product["price"]["value"], price_anpassen)
-            self.ziel_woocommerce_product_model.regular_price = Numbers.price_anpassen(product["price"]["value"], price_anpassen)
-            self.ziel_woocommerce_product_model.sale_price = Numbers.price_anpassen(product["price"]["value"], (price_anpassen - 0.1))
+            self.ziel_woocommerce_product_model.price = Numbers.price_anpassen(product.get("price")["value"], price_anpassen)
+            self.ziel_woocommerce_product_model.regular_price = Numbers.price_anpassen(product.get("price")["value"], price_anpassen)
+            self.ziel_woocommerce_product_model.sale_price = Numbers.price_anpassen(product.get("price")["value"], (price_anpassen - 0.1))
             self.ziel_woocommerce_product_model.on_sale = True
             self.ziel_woocommerce_product_model.tax_status = "taxable"
             self.ziel_woocommerce_product_model.tax_class = ""

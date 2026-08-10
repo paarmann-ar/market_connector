@@ -110,6 +110,17 @@ class Ollama(Base):
             if not ollama_prompt_model:
                 ollama_prompt_model = self.convert_prompt_model_to_ollama_prompt_model(input_message_model)
 
+            error_product_dict = input_message_model.to_dict()
+
+            default_return = {
+                "title": f"kapput!{error_product_dict.get('title'), ''}",
+                "description": error_product_dict.get("description", ""),
+                "short_description": error_product_dict.get("short_description", ""),
+                "meta_description": error_product_dict.get("short_description", ""),
+                "focus_keywords": [error_product_dict.get("brand", ""), ""],
+                "primary_focus_keyword": error_product_dict.get("brand", "No-Brand"),
+            }
+
             response = self.ollama_generate_service.generate_with_ollama(prompt=ollama_prompt_model.content)
             response = response.get("response", "").strip()
 
@@ -122,12 +133,8 @@ class Ollama(Base):
             return response
 
         except json.JSONDecodeError as exp:
-            self.error(
-                "Invalid JSON from Ollama: %s | Response: %s",
-                exp,
-                response[:2000],
-            )
-            return {}
+            self.error("Invalid JSON from Ollama: %s | Response: %s", exp)
+            return default_return
 
         except Exception as exp:
             self.error(f"get_seo_from_ollama_generate_for_rankmath: {exp}")

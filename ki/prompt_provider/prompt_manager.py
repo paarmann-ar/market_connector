@@ -1,7 +1,6 @@
 import CONSTS
 from services.disk.file.file_manager import FileManager
 from pathlib import Path
-import os
 
 # --
 # ...
@@ -32,4 +31,4 @@ class PromptManager:
             return prompt
 
         except Exception as exp:
-            self.error(f"load_prompt_from_file: {exp}")
+            print(f"load_prompt_from_file: {exp}")

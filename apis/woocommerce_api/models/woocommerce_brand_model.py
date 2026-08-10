@@ -10,7 +10,7 @@ from typing import Optional
 @dataclass
 class WoocommerceBrandModel:
     id: Optional[int] = None
-    name: Optional[str] = None
+    name: Optional[str] = "No Brand"
     slug: Optional[str] = None
     description: Optional[str] = None
 

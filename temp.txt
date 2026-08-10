@@ -1,1 +1,1 @@
-08-07-2026, 20:05:19 use_ki_to_rewrite_metadata_to_woocommerce: 'NoneType' object is not subscriptable
+08-10-2026, 22:12:59 remove_backgroung_from_photo: 'FindProductBox' object has no attribute 'session'

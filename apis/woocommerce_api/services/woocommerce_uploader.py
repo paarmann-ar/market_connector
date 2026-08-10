@@ -71,8 +71,8 @@ class WoocommerceUploader(BaseWoocommerceApi):
             woocommerce_tags_model: list[WoocommerceTagModel] = []
             woocommerce_images_model: list[WoocommerceImageModel] = []
 
-            # if product:
-            #     return product
+            if product:
+                return product
 
             woocommerce_image = WoocommerceImage()
             for image in product_model.images:
@@ -86,6 +86,8 @@ class WoocommerceUploader(BaseWoocommerceApi):
 
             woocommerce_brand = WoocommerceBrand()
             for brand in product_model.brands:
+                if not brand.name:
+                    brand.name = "NoBrand"
                 woocommerce_brands_model.append(woocommerce_brand.resolve_or_upload(brand))
                 self.woocommerce_session_model.add_brand(brand)
 

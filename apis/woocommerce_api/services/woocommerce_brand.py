@@ -51,6 +51,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
 
     def get_brand_by_name(self, name: str, record_per_page: int = 100):
 
+        if not name:
+            return None
+
         response = self.request(
             method="get",
             url=f"{self.base_url}{self.brand_url}",
@@ -97,17 +100,18 @@ class WoocommerceBrand(BaseWoocommerceApi):
     def upload_brand(self, brand_model: WoocommerceBrandModel):
 
         try:
-            response = self.request(
-                method="post",
-                url=f"{self.base_url}{self.brand_url}",
-                auth=(self.consumer_key, self.consumer_secret),
-                json=brand_model.to_dict(),
-            )
+            if brand_model.name:
+                response = self.request(
+                    method="post",
+                    url=f"{self.base_url}{self.brand_url}",
+                    auth=(self.consumer_key, self.consumer_secret),
+                    json=brand_model.to_dict(),
+                )
 
-            self.prompt_on_screen(f"brands: {response}")
+                self.prompt_on_screen(f"brands: {response}")
 
-            woocommerce_brand_model = WoocommerceBrandModel.from_api(response)
-            return woocommerce_brand_model
+                woocommerce_brand_model = WoocommerceBrandModel.from_api(response)
+                return woocommerce_brand_model
 
         except Exception as exp:
             self.prompt_on_screen(f"upload_brand: {exp}")

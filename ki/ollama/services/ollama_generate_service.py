@@ -2,7 +2,7 @@ from ollama import chat
 from ollama import generate
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
-
+from toolboxs.date_and_time import DateAndTime
 # --
 # ...
 # --
@@ -42,6 +42,8 @@ class OllamaGenerateService(Base):
     def generate_with_ollama(self, prompt: str):
 
         try:
+            self.prompt_on_screen(f"generate_with_ollama: ollamat start it on: {DateAndTime.get_now()}")
+
             response = generate(
                 model=self.model,
                 prompt=prompt,
@@ -58,6 +60,8 @@ class OllamaGenerateService(Base):
             )
 
             self.prompt_on_screen(f"generate_with_ollama: {bool(response)}")
+
+            self.prompt_on_screen(f"generate_with_ollama: ollamat finished it on: {DateAndTime.get_now()}")
 
             return response
 

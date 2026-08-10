@@ -12,6 +12,7 @@ APP_DIR = f"{Toolbox.get_root_path()}/app".replace("\\", "/")
 CONFIG_JSON = ROOT_DIR + "/config/config.json"
 KI_PROMPT_DIR = ROOT_DIR + "/ki_prompts/"
 EXTERNAL_FILES = ROOT_DIR + "/.external_files"
+IMAGE_FILES = ROOT_DIR + "/image_services"
 
 # --
 # ... colors

@@ -10,9 +10,12 @@ from typing import Optional
 @dataclass
 class SearchInEbayModel:
     category_name_candidate: Optional[str] = None
-    conditions: Optional[str] = None
-    deliveryCountry: Optional[str] = None
+    conditions: Optional[str] = "{NEW|USED}"
+    marketplace: Optional[str] = "EBAY_DE"
+    deliveryCountry: Optional[str] = "DE"
     q: Optional[str] = None
+    total: Optional[int] = None
+    item_to_fetch: Optional[int] = 1000
 
     # --
     # ...

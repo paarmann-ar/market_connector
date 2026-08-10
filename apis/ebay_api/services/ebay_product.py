@@ -77,7 +77,7 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_ids_with_category_id(self, category_id, filter_product, q, marketplace=""):
+    def get_product_ids_with_category_id(self, category_id, filter_product, q, item_to_fetch, marketplace=""):
 
         try:
             if marketplace == "":
@@ -100,6 +100,7 @@ class EbayProduct(BaseEbayApi):
                 if offset >= total:
                     break
 
+            self.products = dict(list(self.products.items())[:item_to_fetch])
             return self.products
 
         except Exception as exp:

@@ -25,7 +25,7 @@ class DateAndTime:
             return format
 
         except Exception as exp:
-            self.error(f"get_first_day_of_month: {exp!r}")
+            print(f"get_first_day_of_month: {exp!r}")
 
     # --
     # ...
@@ -40,7 +40,7 @@ class DateAndTime:
             return today
 
         except Exception as exp:
-            self.error(f"get_today: {exp!r}")
+            print(f"get_today: {exp!r}")
 
     # --
     # ...
@@ -53,4 +53,4 @@ class DateAndTime:
             return time.strftime(format, time.gmtime())
 
         except Exception as exp:
-            self.error(f"get_today: {exp!r}")
+            print(f"get_today: {exp!r}")

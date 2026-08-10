@@ -16,7 +16,7 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "ki.ollama.ollama",
+            "module": "image_services.remove_background.remove_background",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {
