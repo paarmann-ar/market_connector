@@ -16,7 +16,7 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "image_services.background_operation.background_operation",
+            "module": "image_services.image_processing_pipeline.image_processing_pipline",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {

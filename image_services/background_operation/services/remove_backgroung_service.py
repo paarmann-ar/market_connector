@@ -81,11 +81,11 @@ class RemoveBackgroungService(Base):
     # ...
     # --
 
-    def finalize_image(self, image_data_model: ImageDataModel) -> bool:
+    def finalize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
         try:
             image_data_model.image_data.save(image_data_model.output_image_adress)
 
-            return True
+            return image_data_model
 
         except Exception as exp:
             print(f"finalize_image: {exp}")

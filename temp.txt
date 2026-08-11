@@ -1,1 +1,1 @@
-08-10-2026, 22:12:59 remove_backgroung_from_photo: 'FindProductBox' object has no attribute 'session'
+08-11-2026, 12:07:42 download_image: super() takes no keyword arguments

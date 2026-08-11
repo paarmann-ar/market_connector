@@ -34,9 +34,11 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.request = ConnectionProvider().request
 
-        bilateral_reference_network_model = self.config_dictionary.get('bilateral_reference_network_model')
+        bilateral_reference_network_model = self.config_dictionary.get('bilateral_reference_network_model', "")
+        if bilateral_reference_network_model:
+            self.session = new_session(bilateral_reference_network_model)
+
         self.remove = remove
-        self.session = new_session(bilateral_reference_network_model)
 
         self.prompt_manager = PromptManager()
 

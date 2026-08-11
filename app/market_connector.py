@@ -191,7 +191,7 @@ search_in_ebay_model = SearchInEbayModel(
 # )
 
 
-def upload_from_ebay_to_woocommerce():
+def upload_from_ebay_to_woocommerce_pipline():
     market_connector_controller = MarketConnectorController()
     market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
 
@@ -199,4 +199,4 @@ def upload_from_ebay_to_woocommerce():
     market_connector_controller.upload_model_to_woocommerce(target_woocommerce_category_name=target_woocommerce_category_model_name)
 
 
-upload_from_ebay_to_woocommerce()
+upload_from_ebay_to_woocommerce_pipline()

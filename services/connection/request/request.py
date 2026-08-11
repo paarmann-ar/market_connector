@@ -154,6 +154,11 @@ class Request(Base):
             if response.status_code == 204:
                 return True
 
+            elif self.is_download_file and response:
+                with open(self.download_file_address, "wb") as file_to_download:
+                    file_to_download.write(response.content)
+                return response
+
             elif self.is_response_json and response:
                 response = response.json()
 

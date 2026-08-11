@@ -37,23 +37,26 @@ class BackgroundOperation(Base):
     # ...
     # --
 
-    def remove_set_white_backgroung_on_photo(self) -> bool:
+    def remove_set_white_backgroung_on_photo(self, image_directory_model:ImageDirectoryModel=None) -> list:
 
         try:
-            image_data_models = self.prepaer_image_file.read_image_file(image_directory_model=self.image_directory_model)
+            if not image_directory_model:
+                image_directory_model = self.image_directory_model
+
+            image_data_models = self.prepaer_image_file.read_image_file(image_directory_model=image_directory_model)
 
             for image_data_model in image_data_models:
-                self.find_product_box.find_product_box(image_data_model=image_data_model)
+                image_data_model = self.find_product_box.find_product_box(image_data_model=image_data_model)
 
                 image_data_model = self.prepaer_image_file.add_padding_corp_image(image_data_model=image_data_model, padding=30)
 
                 image_data_model = self.remove_backgroung_service.make_background_white(image_data_model)
 
-                self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
+                image_data_model = self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
 
                 self.prompt_on_screen(f"image has been finished at: {image_data_model.output_image_adress}")
 
-            return True
+            return image_data_models
 
         except Exception as exp:
             self.error(f"remove_set_white_backgroung_on_photo: {exp}")
@@ -63,5 +66,5 @@ class BackgroundOperation(Base):
     # --
 
 
-x=BackgroundOperation()
-x.remove_set_white_backgroung_on_photo()
+# x=BackgroundOperation()
+# x.remove_set_white_backgroung_on_photo()
