@@ -16,7 +16,7 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "image_services.remove_background.remove_background",
+            "module": "image_services.background_operation.background_operation",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {

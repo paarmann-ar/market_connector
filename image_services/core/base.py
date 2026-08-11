@@ -17,14 +17,16 @@ from rembg import new_session, remove
 
 class Base(ABC, metaclass=SingletonMeta):
     def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
 
         self.waiting = Wating()
         self.prompt_on_screen = PromptOnScreen()
 
+        self.config_dictionary = self.get_config_dictionary()
+
         # create instance for loging
         self.info = LogProvider().info
         self.error = LogProvider().error
-        self.config_dictionary = self.get_config_dictionary()
 
         # working with file
         self.json = ServiceDiskProvider().json
@@ -32,8 +34,9 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.request = ConnectionProvider().request
 
-        self.remove=remove
-        self.session = new_session("birefnet-general")
+        bilateral_reference_network_model = self.config_dictionary.get('bilateral_reference_network_model')
+        self.remove = remove
+        self.session = new_session(bilateral_reference_network_model)
 
         self.prompt_manager = PromptManager()
 
@@ -49,5 +52,5 @@ class Base(ABC, metaclass=SingletonMeta):
     # --
 
     @classmethod
-    def get_config_dictionary(self) -> str:
+    def get_config_dictionary(cls) -> str:
         return ""

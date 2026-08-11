@@ -1,6 +1,6 @@
 from image_services.core.base import Base
-from image_services.remove_background.config.remove_background_config import RemoveBackgroundConfig
-from image_services.remove_background.models.image_data_model import ImageDataModel
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.models.image_data_model import ImageDataModel
 from pathlib import Path
 from PIL import Image
 
@@ -21,7 +21,7 @@ class RemoveBackgroungService(Base):
 
     @classmethod
     def get_config_dictionary(cls):
-        return RemoveBackgroundConfig().get_dictionary()
+        return BackgroundOperationConfig().get_dictionary()
 
     # --
     # ...
@@ -46,7 +46,7 @@ class RemoveBackgroungService(Base):
             image_data_model.image_data = result
 
             return image_data_model
-        
+
         except Exception as exp:
             print(f"make_background_white: {exp}")
 
@@ -54,15 +54,23 @@ class RemoveBackgroungService(Base):
     # ...
     # --
 
-    def remove_backgroung_from_photo(self, image_data_model: ImageDataModel)->ImageDataModel:
+    def remove_backgroung_from_photo(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
         try:
-
             image = image_data_model.image_data.convert("RGB")
 
-            result = self.remove( image, session=self.session ) # result is RGBA result = result.convert("RGBA") # White background with same original size white_background = Image.new( "RGBA", image.size, (255, 255, 255, 255) ) # Put product over white background final_image = Image.alpha_composite( white_background, result ) # Convert to RGB for JPG final_image = final_image.convert("RGB") image_data_model.image_data = final_image return image_data_model
+            result = self.remove(
+                image, session=self.session
+            )
+            result = result.convert("RGBA") 
 
+            white_background = Image.new( "RGBA", image.size, (255, 255, 255, 255) ) 
+
+            final_image = Image.alpha_composite( white_background, result ) 
+
+            final_image = final_image.convert("RGB")
             
+            image_data_model.image_data = final_image 
 
             return image_data_model
 
@@ -75,11 +83,8 @@ class RemoveBackgroungService(Base):
 
     def finalize_image(self, image_data_model: ImageDataModel) -> bool:
         try:
+            image_data_model.image_data.save(image_data_model.output_image_adress)
 
-            image_data_model.image_data.save(
-                image_data_model.output_image_adress
-            )
-            
             return True
 
         except Exception as exp:

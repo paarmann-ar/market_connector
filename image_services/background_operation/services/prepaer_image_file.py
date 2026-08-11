@@ -1,7 +1,7 @@
 from image_services.core.base import Base
-from image_services.remove_background.config.remove_background_config import RemoveBackgroundConfig
-from image_services.remove_background.models.image_data_model import ImageDataModel
-from image_services.remove_background.models.image_directory_model import ImageDirectoryModel
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.models.image_data_model import ImageDataModel
+from image_services.models.image_directory_model import ImageDirectoryModel
 from image_services.core.base import Base
 from pathlib import Path
 from rembg import remove
@@ -15,7 +15,22 @@ from PIL import Image
 class PrepaerImageFile(Base):
     def __init__(self, **kwargs):
         super(**kwargs).__init__(**kwargs)
-        
+
+    # --
+    # ...
+    # --
+
+    @classmethod
+    def get_config_dictionary(cls):
+        return BackgroundOperationConfig().get_dictionary()
+
+    # --
+    # ...
+    # --
+
+    def __call__(self) -> str:
+        pass
+    
     # --
     # ...
     # --
@@ -42,7 +57,7 @@ class PrepaerImageFile(Base):
                 image_data_models.append(image_data_model)
 
             return image_data_models
-        
+
         except Exception as exp:
             print(f"read_image_file: {exp}")
 
@@ -67,6 +82,6 @@ class PrepaerImageFile(Base):
             image_data_model.mask = image_data_model.mask[y1:y2, x1:x2]
 
             return image_data_model
-        
+
         except Exception as exp:
             print(f"add_padding_corp_image: {exp}")

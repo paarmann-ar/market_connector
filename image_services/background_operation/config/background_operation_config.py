@@ -6,7 +6,7 @@ from services.disk.json.json_manager import JSONManager
 # --
 
 
-class RemoveBackgroundConfig:
+class BackgroundOperationConfig:
     @classmethod
     def get_dictionary(cls, *args) -> dict:
         json = JSONManager()

@@ -1,10 +1,9 @@
 from image_services.core.base import Base
-from image_services.remove_background.config.remove_background_config import RemoveBackgroundConfig
-from image_services.remove_background.services.remove_backgroung_service import RemoveBackgroungService
-from image_services.remove_background.models.image_data_model import ImageDataModel
-from image_services.remove_background.models.image_directory_model import ImageDirectoryModel
-from image_services.remove_background.services.prepaer_image_file import PrepaerImageFile
-from image_services.remove_background.services.find_product_box import FindProductBox
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.background_operation.services.remove_backgroung_service import RemoveBackgroungService
+from image_services.models.image_directory_model import ImageDirectoryModel
+from image_services.background_operation.services.prepaer_image_file import PrepaerImageFile
+from image_services.background_operation.services.find_product_box import FindProductBox
 import CONSTS
 
 # --
@@ -12,7 +11,7 @@ import CONSTS
 # --
 
 
-class RemoveBackground(Base):
+class BackgroundOperation(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
@@ -32,13 +31,13 @@ class RemoveBackground(Base):
 
     @classmethod
     def get_config_dictionary(self):
-        return RemoveBackgroundConfig().get_dictionary()
+        return BackgroundOperationConfig().get_dictionary()
 
     # --
     # ...
     # --
 
-    def remove_backgroung_from_photo(self) -> bool:
+    def remove_set_white_backgroung_on_photo(self) -> bool:
 
         try:
             image_data_models = self.prepaer_image_file.read_image_file(image_directory_model=self.image_directory_model)
@@ -48,20 +47,21 @@ class RemoveBackground(Base):
 
                 image_data_model = self.prepaer_image_file.add_padding_corp_image(image_data_model=image_data_model, padding=30)
 
+                image_data_model = self.remove_backgroung_service.make_background_white(image_data_model)
+
                 self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
 
                 self.prompt_on_screen(f"image has been finished at: {image_data_model.output_image_adress}")
 
-                #image_data_model = self.remove_backgroung_service.make_background_white(image_data_model)
-
             return True
 
         except Exception as exp:
-            self.error(f"remove_backgroung_from_photo: {exp}")
+            self.error(f"remove_set_white_backgroung_on_photo: {exp}")
 
     # --
     # ...
     # --
 
 
-RemoveBackground().remove_backgroung_from_photo()
+x=BackgroundOperation()
+x.remove_set_white_backgroung_on_photo()

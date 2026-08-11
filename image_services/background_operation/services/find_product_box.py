@@ -1,7 +1,8 @@
 from PIL import Image
 import numpy as np
-from image_services.remove_background.models.image_data_model import ImageDataModel
+from image_services.models.image_data_model import ImageDataModel
 from image_services.core.base import Base
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
 
 # --
 # ...
@@ -11,6 +12,21 @@ from image_services.core.base import Base
 class FindProductBox(Base):
     def __init__(self, **kwargs):
         super(**kwargs).__init__(**kwargs)
+
+    # --
+    # ...
+    # --
+
+    @classmethod
+    def get_config_dictionary(cls):
+        return BackgroundOperationConfig().get_dictionary()
+
+    # --
+    # ...
+    # --
+
+    def __call__(self) -> str:
+        pass
 
     # ...
     # --
