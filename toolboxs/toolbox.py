@@ -1,8 +1,5 @@
-import math
 import os
-import random
 import sys
-from datetime import datetime
 from pathlib import Path
 
 # --
@@ -22,36 +19,7 @@ class Toolbox:
                 return str(input_)
 
         except Exception as exp:
-            self.error(repr(exp))
-
-    # --
-    # ...
-    # --
-
-    @staticmethod
-    def get_random(start_string="RND ", type="string", limit=1000000, delemeter="_"):
-
-        try:
-            result = 0
-
-            if start_string is tuple:
-                start_string, _ = start_string
-
-            if type == "string":
-                rand_ = math.ceil(random.random() * limit)
-                if rand_ < 10:
-                    rand_ += 10
-                result = f"{start_string}{delemeter}{rand_!s}"
-
-            elif type == "int":
-                result = math.ceil(random.random() * limit)
-                if result < 10:
-                    result += 10
-
-            return result
-
-        except Exception as exp:
-            self.error(repr(exp))
+            print(repr(exp))
 
     # --
     # ...
@@ -64,7 +32,7 @@ class Toolbox:
             return str(Path(__file__).parent.parent)
 
         except Exception as exp:
-            self.error(repr(exp))
+            print(repr(exp))
 
     # --
     # ...
@@ -95,7 +63,7 @@ class Toolbox:
             return modules
 
         except Exception as exp:
-            self.error(repr(exp))
+            print(repr(exp))
 
     # --
     # ...
@@ -120,17 +88,3 @@ class Toolbox:
         print(f"{'\n'.join(file_name_len_list)}")
 
     # Toolbox().get_all_file_name_with_length(app_dir="C:/Users/mpaarmann/Projects/rdp_bot", len_condition=155)
-
-    # --
-    # ...
-    # --
-
-    @staticmethod
-    def get_first_day_of_month(input_):
-
-        try:
-            today = datetime.today()
-            return datetime(today.year, today.month, 1)
-
-        except Exception as exp:
-            self.error(repr(exp))

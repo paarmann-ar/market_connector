@@ -27,19 +27,16 @@ class CloudOperation(Base):
     # ...
     # --
 
-    def download_image_from_url(self, image_data_model:ImageDataModel) -> ImageDataModel:
+    def download_image_from_url(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
         try:
-
             download_image = DownloadImage()
-            download_image.download_image(image_data_model= image_data_model)
-    
+            download_image.download_image(image_data_model=image_data_model)
+
             return image_data_model
 
         except Exception as exp:
             self.error(f"download_image: {exp}")
 
-    # --
-    # ...
-    # --
+
 # CloudOperation().download_image_from_url(url="https://i.ebayimg.com/images/g/S3YAAOSwZR5gWHWN/s-l1600.webp")

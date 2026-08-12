@@ -1,8 +1,6 @@
-from PIL import Image
-import numpy as np
-from image_services.models.image_data_model import ImageDataModel
-from image_services.core.base import Base
 from image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
+from image_services.core.base import Base
+from image_services.models.image_data_model import ImageDataModel
 
 # --
 # ...
@@ -36,9 +34,9 @@ class DownloadImage(Base):
         try:
             response = self.request(
                 method="get",
-                url=image_data_model.input_image_url,
+                url=image_data_model.image_url,
                 is_download_file=True,
-                download_file_address=f"{image_data_model.output_image_adress}"
+                download_file_address=f"{image_data_model.images_address}",
             )
 
             image_data_model.image_data = response
@@ -48,5 +46,3 @@ class DownloadImage(Base):
 
         except Exception as exp:
             self.prompt_on_screen(f"download_image: {exp}")
-
-

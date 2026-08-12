@@ -14,14 +14,13 @@ from app.controller.market_connector_controller import MarketConnectorController
 # ],
 # q = "Q6135-LE 50HZ"
 
-price_anpassen = 1.60
-
 # target_woocommerce_category_model_name = "Sonstige"
 # search_in_ebay_model = SearchInEbayModel(
 # #     category_name_candidate="Business & Industrie",
-#     conditions="{NEW|USED}",
+#     conditions="{NEW}",
 #     deliveryCountry="DE",
 #     q="Axis Q6135-LE PTZ",
+
 # )
 # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
@@ -159,20 +158,20 @@ price_anpassen = 1.60
 # )
 
 
-target_woocommerce_category_model_name = "PLC & SPS"
+# target_woocommerce_category_model_name = "PLC & SPS"
+# # search_in_ebay_model = SearchInEbayModel(
+# #     # category_name_candidate="SPS-Prozessoren",
+# #     q="Siemens 6ES7215-1HG40-0XB0 6ES7 215-1HG40-0XB0",
+# # )
+
+
 # search_in_ebay_model = SearchInEbayModel(
-#     # category_name_candidate="SPS-Prozessoren",
-#     q="Siemens 6ES7215-1HG40-0XB0 6ES7 215-1HG40-0XB0",
+#     # category_name_candidate="Business & Industrie",
+#     conditions="{NEW}",
+#     deliveryCountry="DE",
+#     q="Siemens Simatic S7-1500 6ES7512-1CK01-0AB0",
+#     item_to_fetch=1,
 # )
-
-
-search_in_ebay_model = SearchInEbayModel(
-    # category_name_candidate="Business & Industrie",
-    conditions="{NEW}",
-    deliveryCountry="DE",
-    q="Siemens Simatic S7-1500 6ES7512-1CK01-0AB0",
-    item_to_fetch=2,
-)
 
 
 # product: RM1XA1011 - TÉLÉMÉCANIQUE RM1XA1011 Zubehör Neu
@@ -184,18 +183,32 @@ search_in_ebay_model = SearchInEbayModel(
 # product: RM1XA100 020294 SCHNEIDER ELECTRIC, Schneider Electric Einpoliges ..............
 # target_woocommerce_category_model_name = "Elektronik"
 # search_in_ebay_model = SearchInEbayModel(
-#     # category_name_candidate="Business & Industrie",
+#     category_name_candidate="Business & Industrie",
 #     conditions="{NEW}",
 #     deliveryCountry="DE",
 #     q="RM1-XA",
+#     item_to_fetch=10,
 # )
+
+
+target_woocommerce_category_model_name = "Sonstige"
+search_in_ebay_model = SearchInEbayModel(
+    conditions="{NEW}",
+    marketplace="EBAY_US",
+    deliveryCountry="US",
+    q="DRUCKBEGRENZUNGSVENTIL",
+    filter="sellers:{jlb_the_farm},price:[..500]",
+    price_anpassen = 1.5
+)
 
 
 def upload_from_ebay_to_woocommerce_pipline():
     market_connector_controller = MarketConnectorController()
     market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
 
-    market_connector_controller.convert_ebay_to_woocommerce_product_model(price_anpassen=price_anpassen)
+    market_connector_controller.convert_ebay_to_woocommerce_product_model(price_anpassen=search_in_ebay_model.price_anpassen)
+    market_connector_controller.image_convertor_pipline()
+
     market_connector_controller.upload_model_to_woocommerce(target_woocommerce_category_name=target_woocommerce_category_model_name)
 
 

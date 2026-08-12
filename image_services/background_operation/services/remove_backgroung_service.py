@@ -1,8 +1,8 @@
-from image_services.core.base import Base
-from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
-from image_services.models.image_data_model import ImageDataModel
-from pathlib import Path
 from PIL import Image
+
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.core.base import Base
+from image_services.models.image_data_model import ImageDataModel
 
 # --
 # ...
@@ -59,18 +59,16 @@ class RemoveBackgroungService(Base):
         try:
             image = image_data_model.image_data.convert("RGB")
 
-            result = self.remove(
-                image, session=self.session
-            )
-            result = result.convert("RGBA") 
+            result = self.remove(image, session=self.session)
+            result = result.convert("RGBA")
 
-            white_background = Image.new( "RGBA", image.size, (255, 255, 255, 255) ) 
+            white_background = Image.new("RGBA", image.size, (255, 255, 255, 255))
 
-            final_image = Image.alpha_composite( white_background, result ) 
+            final_image = Image.alpha_composite(white_background, result)
 
             final_image = final_image.convert("RGB")
-            
-            image_data_model.image_data = final_image 
+
+            image_data_model.image_data = final_image
 
             return image_data_model
 
@@ -83,7 +81,7 @@ class RemoveBackgroungService(Base):
 
     def finalize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
         try:
-            image_data_model.image_data.save(image_data_model.output_image_adress)
+            image_data_model.image_data.save(image_data_model.images_address, "WEBP", quality=80, method=6)
 
             return image_data_model
 

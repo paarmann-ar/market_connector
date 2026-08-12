@@ -9,8 +9,7 @@ from typing import Optional, Any
 
 @dataclass
 class ImageDirectoryModel:
-    input_folder_image_adress: Optional[str] = None
-    output_folder_image_adress: Optional[str] = None
+    images_folder_adress: Optional[str] = None
 
     # --
     # ...

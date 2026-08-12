@@ -17,9 +17,6 @@ class EbayCategory(BaseEbayApi):
 
         self.product_name = ""
 
-        self.marketplace_id = self.config_dictionary.get("marketplace_id")
-        self.marketplace = self.config_dictionary.get("marketplace")
-
         self.ebay_token_api = kwargs.get("ebay_token_api", None)
         self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
@@ -37,12 +34,9 @@ class EbayCategory(BaseEbayApi):
     # ...
     # --
 
-    def get_default_category_tree_id_with_marketplace_id(self, marketplace=""):
+    def get_default_category_tree_id_with_marketplace_id(self, marketplace):
 
         try:
-            if marketplace == "":
-                marketplace = self.marketplace
-
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
 

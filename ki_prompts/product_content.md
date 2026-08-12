@@ -20,11 +20,98 @@ No explanations, markdown, comments, questions, or text outside JSON.
 2. DESCRIPTION CLEANING
 ==================================================
 
+The description is PRODUCT-ONLY.
 Remove irrelevant non-product content from the original description.
-The product description MUST NOT contain any commercial,shipping, customs, tax, payment, or buyer-responsibility information.
 
-Remove sections or content such as:
+The generated description MUST contain ONLY factual information
+about the physical product itself.
 
+REMOVE ANY SENTENCE, PHRASE, OR PARAGRAPH related to:
+
+* buying
+* purchase
+* purchasing
+* ordering
+* order
+* offer
+* listing
+* sale
+* selling
+* selling conditions
+* payment
+* payment received
+* payment terms
+* price
+* pricing
+* invoice
+* billing
+* VAT
+* tax
+* taxes
+* Mehrwertsteuer
+* MwSt.
+* Steuer
+* Rechnungen
+* Zahlung
+* Zahlungsbedingungen
+* Versand
+* Versandkosten
+* Versand nach Zahlung
+* shipping
+* delivery
+* delivery time
+* Lieferzeit
+* Lieferadresse
+* shipping address
+* buyer
+* customer
+* purchaser
+* Käufer
+* Kunde
+* purchase before
+* before buying
+* nach dem Kauf
+* vor dem Kauf
+* after purchase
+* contact before purchase
+* contact before buying
+* return
+* refund
+* Rückgabe
+* Rücksendung
+* Erstattung
+* warranty
+* Garantie
+* liability
+* responsibility
+* buyer responsibility
+* customs
+* customs duties
+* import duties
+* Zölle
+* Zoll
+* Einfuhrzölle
+* Verpackung
+* package
+* parcel
+* Versandkarton
+* Füllmaterial
+* shipping box
+* shipping protection
+* contact information
+* Kontakt
+* email
+* E-Mail
+* phone
+* Telefon
+* website
+* Homepage
+* support
+* service
+* contact us
+* melden
+* Lösung
+* Reklamation
 * Über uns
 * About us
 * Company introduction
@@ -77,6 +164,7 @@ Remove sections or content such as:
 * Erstattung
 * Warranty
 * Garantie
+* Rechnung
 
 Example text that MUST be completely removed:
 
@@ -117,6 +205,28 @@ If the original description contains both company information and product inform
 * Remove the company information.
 * Keep and rewrite only the relevant product information.
 * Never copy generic company text into the final product description.
+
+IMPORTANT:
+
+If a sentence contains BOTH product information and commercial,
+shipping, payment, tax, buyer, or purchase information:
+
+REMOVE THE ENTIRE SENTENCE.
+
+Do NOT extract only the product-related part from such a sentence.
+
+Do NOT rewrite commercial information into neutral wording.
+
+Do NOT summarize commercial information.
+
+Do NOT translate commercial information.
+
+Do NOT preserve commercial information in another language.
+
+The only allowed information is information that describes the
+physical product, its technical specifications, condition, model,
+part number, dimensions, material, manufacturer, certifications,
+or explicitly stated technical application.
 
 ==================================================
 3. FACTUAL ACCURACY
@@ -585,35 +695,140 @@ Rules:
 13. FOCUS KEYWORDS
 ==================================================
 
-Generate minimum 1 and maximum 4 relevant German and English focus keywords. Ignore other focus keywords.
+CRITICAL FOCUS KEYWORD RULE:
 
-Include, when available:
+A focus keyword MUST NOT contain another focus keyword
+plus additional words.
 
-* Exact product type
-* German product term
-* English product term
-* Technical term
+A focus keyword MUST NOT contain the complete product title
+unless the complete product title itself is the intended keyword.
+
+Generate minimum 1 and maximum 4 relevant focus keywords.
+
+IMPORTANT:
+Each focus keyword MUST represent ONE DISTINCT search concept.
+
+Focus keywords MUST be SHORT, DISTINCT, and NON-OVERLAPPING.
+
+Do NOT combine multiple keyword concepts into one keyword.
+
+Do NOT automatically append:
+* Product name
+* Brand
 * Model number
-* Artikelnummer
-* Article Number
-* Part Number
-* Manufacturer Number
-* Relevant industrial category
+* Article number
+* Part number
+* SKU
+* German/English product terms
+to every keyword.
 
-Rules:
+Each keyword must stand independently as a useful search query.
 
-* Use ONLY terms supported by PRODUCT DATA.
-* Do not include Paarmann-Tech.
-* Do not create unrelated keywords.
-* Do not invent search terms.
-* Use exact spelling of all identifiers.
-* If an Artikelnummer exists, it MUST be included.
-* If a model number exists, it MUST be included.
-* If a part number exists, it MUST be included.
-* Every focus_keyword must be relevant to the actual product.
+KEYWORD DIVERSITY RULE:
 
+The generated keywords MUST represent different search intents or concepts.
+
+For example, for:
+
+Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0)
+
+A valid result is:
+
+[
+  "Siemens Simatic S7 1500 CPU 1512C-1PN",
+  "SPS Steuerung",
+  "PLC CPU",
+  "6ES7 512-1CK01-0AB0"
+]
+
+An INVALID result is:
+
+[
+  "Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0) SPS PLC",
+  "Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0) SPS Steuerung",
+  "Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0) PLC CPU",
+  "Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0)"
+]
+
+Do NOT create keyword combinations simply by concatenating:
+* Product name + model
+* Product name + Artikelnummer
+* Product name + technical term
+* Product name + language variant
+* Product name + brand
+* Product name + identifier
+
+IDENTIFIER RULE:
+
+If an Artikelnummer, Model Number, Part Number, or Manufacturer Number exists, it MAY be used as ONE independent keyword.
+
+Do NOT append the identifier to every other keyword.
+
+LANGUAGE RULE:
+
+German and English keywords may both be included, but they MUST represent different search terms.
+
+Do NOT create German and English versions of the same phrase unless both are genuinely useful independent search terms.
+
+DUPLICATE / SIMILARITY RULE:
+
+Every keyword must be substantially different from the others.
+
+Do NOT generate:
+* Near-duplicates
+* Long and short versions of the same keyword
+* The same product name with different suffixes
+* The same identifier combined with different product terms
+* Keywords that differ only by word order
+* Keywords that contain another keyword plus additional words
+
+If one keyword already contains the complete product name, do NOT create another keyword that contains the complete product name.
+
+LENGTH RULE:
+
+Prefer concise keyword phrases.
+
+Do not create unnecessarily long keyword phrases.
+
+Each keyword should normally contain only the words necessary to express its specific search intent.
+
+PRODUCT DATA RULE:
+
+Use ONLY terms explicitly supported by PRODUCT DATA.
+
+Never invent synonyms, applications, specifications, or product categories.
+
+Paarmann-Tech MUST NOT appear in focus_keywords.
+
+
+Do NOT automatically prepend the product name to:
+* technical terms
+* German product terms
+* English product terms
+* identifiers
+* industrial categories
+
+For example:
+
+INVALID:
+"Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0) SPS Steuerung"
+
+VALID:
+"SPS Steuerung"
+
+INVALID:
+"Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0) PLC CPU"
+
+VALID:
+"PLC CPU"
+
+INVALID:
+"Siemens Simatic S7 1500 CPU 1512C-1PN (6ES7 512-1CK01-0AB0)"
+
+VALID:
+"6ES7 512-1CK01-0AB0"
 ==================================================
-13. PRIMARY FOCUS KEYWORD
+14. PRIMARY FOCUS KEYWORD
 ==================================================
 
 After generating focus_keywords, select ONE primary focus keyword.
@@ -634,7 +849,7 @@ The primary focus keyword must be an exact string from focus_keywords.
 
 
 ==================================================
-14. JSON OUTPUT
+15. JSON OUTPUT
 ==================================================
 
 Return exactly this structure:
@@ -663,7 +878,7 @@ Requirements:
 * focus_keywords MUST be a JSON array of strings.
 
 ==================================================
-15. FINAL VALIDATION
+16. FINAL VALIDATION
 ==================================================
 
 Before returning the JSON, internally verify ALL of the following:

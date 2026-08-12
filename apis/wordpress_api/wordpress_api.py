@@ -36,12 +36,13 @@ class WordpressApi(BaseWordpressApi):
     def upload_media_models_from_disk(self, media_models: list[WordpressMediaModel]) -> str:
 
         try:
+            source_urls = []
             for media_model in media_models:
-                self.wordpress_media.upload_media_model(media_model=media_model)
+                source_urls.append(self.wordpress_media.upload_media_model(media_model=media_model))
 
                 self.prompt_on_screen(f"uploaded media: {media_model}")
 
-            return
+            return source_urls
 
         except Exception as exp:
             self.error(f"upload_media_models: {exp}")

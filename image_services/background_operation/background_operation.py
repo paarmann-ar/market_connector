@@ -1,10 +1,11 @@
-from image_services.core.base import Base
-from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
-from image_services.background_operation.services.remove_backgroung_service import RemoveBackgroungService
-from image_services.models.image_directory_model import ImageDirectoryModel
-from image_services.background_operation.services.prepaer_image_file import PrepaerImageFile
-from image_services.background_operation.services.find_product_box import FindProductBox
 import CONSTS
+from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.background_operation.services.find_product_box import FindProductBox
+from image_services.background_operation.services.prepaer_image_file import PrepaerImageFile
+from image_services.background_operation.services.remove_backgroung_service import RemoveBackgroungService
+from image_services.core.base import Base
+from image_services.models.image_data_model import ImageDataModel
+from image_services.models.image_directory_model import ImageDirectoryModel
 
 # --
 # ...
@@ -15,10 +16,9 @@ class BackgroundOperation(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        input_folder = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('input_folder')}"
-        output_folder = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('output_folder')}"
+        images_address = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('images_address')}"
 
-        self.image_directory_model = ImageDirectoryModel(input_folder_image_adress=input_folder, output_folder_image_adress=output_folder)
+        self.image_directory_model = ImageDirectoryModel(images_folder_adress=images_address)
         self.prepaer_image_file = PrepaerImageFile()
         self.find_product_box = FindProductBox()
         self.remove_backgroung_service = RemoveBackgroungService()
@@ -37,7 +37,7 @@ class BackgroundOperation(Base):
     # ...
     # --
 
-    def remove_set_white_backgroung_on_photo(self, image_directory_model:ImageDirectoryModel=None) -> list:
+    def remove_set_white_backgroung_on_photo(self, image_directory_model: ImageDirectoryModel = None) -> list[ImageDataModel]:
 
         try:
             if not image_directory_model:
@@ -54,7 +54,7 @@ class BackgroundOperation(Base):
 
                 image_data_model = self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
 
-                self.prompt_on_screen(f"image has been finished at: {image_data_model.output_image_adress}")
+                self.prompt_on_screen(f"image proccing for {image_data_model.images_address} has been finished")
 
             return image_data_models
 

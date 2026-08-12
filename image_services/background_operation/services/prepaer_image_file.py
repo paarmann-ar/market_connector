@@ -1,11 +1,11 @@
-from image_services.core.base import Base
+from pathlib import Path
+
+from PIL import Image
+
 from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from image_services.core.base import Base
 from image_services.models.image_data_model import ImageDataModel
 from image_services.models.image_directory_model import ImageDirectoryModel
-from image_services.core.base import Base
-from pathlib import Path
-from rembg import remove
-from PIL import Image
 
 # --
 # ...
@@ -30,7 +30,7 @@ class PrepaerImageFile(Base):
 
     def __call__(self) -> str:
         pass
-    
+
     # --
     # ...
     # --
@@ -39,20 +39,17 @@ class PrepaerImageFile(Base):
         try:
             image_data_models = []
 
-            input_folder = Path(image_directory_model.input_folder_image_adress)
-            output_folder = Path(image_directory_model.output_folder_image_adress)
+            images_folder_adress = Path(image_directory_model.images_folder_adress)
 
             extensions = {".jpg", ".jpeg", ".png", ".webp"}
 
-            for image_path in input_folder.iterdir():
+            for image_path in images_folder_adress.iterdir():
                 if image_path.suffix.lower() not in extensions:
                     continue
 
-                image_data_model = ImageDataModel(
-                    input_image_adress=f"{input_folder}/{image_path.name}", output_image_adress=f"{output_folder}/{image_path.name}"
-                )
+                image_data_model = ImageDataModel(images_address=f"{images_folder_adress}/{image_path.name}")
 
-                image_data_model.image_data = Image.open(f"{image_data_model.input_image_adress}").convert("RGB")
+                image_data_model.image_data = Image.open(f"{image_data_model.images_address}").convert("RGB")
 
                 image_data_models.append(image_data_model)
 

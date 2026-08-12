@@ -1,6 +1,6 @@
 import json
 from dataclasses import asdict, dataclass
-from typing import Optional, Any
+from typing import Any, Optional
 
 # --
 # ...
@@ -9,15 +9,14 @@ from typing import Optional, Any
 
 @dataclass
 class ImageDataModel:
-    image_name:Optional[str] = None
-    input_image_adress: Optional[str] = None
-    input_image_url: Optional[str] = None
-    output_image_adress: Optional[str] = None
-    output_image_url: Optional[str] = None
+    image_name: Optional[str] = None
+    images_address: Optional[str] = None
+    image_url: Optional[str] = None
     image_data: Optional[Any] = None
     image_size: Optional[tuple] = None
     product_box: Optional[tuple] = None
     mask: Optional[Any] = None
+    is_main_image: bool = False
 
     # --
     # ...
@@ -40,4 +39,3 @@ class ImageDataModel:
 
     def to_list(self):
         return [self]
-

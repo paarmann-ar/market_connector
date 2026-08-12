@@ -10,12 +10,17 @@ from typing import Optional
 @dataclass
 class SearchInEbayModel:
     category_name_candidate: Optional[str] = None
-    conditions: Optional[str] = "{NEW|USED}"
+    category_id = Optional[int]
+    product_id=Optional[int]
     marketplace: Optional[str] = "EBAY_DE"
+    marketplace_id: Optional[str] = "EBAY_DE"
     deliveryCountry: Optional[str] = "DE"
+    conditions: Optional[str] = "{NEW|USED}"
+    filter:Optional[str] = None
     q: Optional[str] = None
     total: Optional[int] = None
     item_to_fetch: Optional[int] = 1000
+    price_anpassen :Optional[int] = 1.50
 
     # --
     # ...
@@ -30,9 +35,14 @@ class SearchInEbayModel:
 
     def to_dict(self):
         data = asdict(self)
-        self.filter_product = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry}"
-        data["filter_product"] = self.filter_product
         return data
+
+    # --
+    # ...
+    # --
+
+    def generate_filter(self):    
+        self.filter = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry},{self.filter}"
 
     # --
     # ...

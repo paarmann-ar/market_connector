@@ -1,10 +1,11 @@
-from image_services.core.base import Base
-from image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
-from image_services.models.image_data_model import ImageDataModel
+import CONSTS
 from image_services.background_operation.background_operation import BackgroundOperation
 from image_services.cloud_operation.cloud_operation import CloudOperation
-import CONSTS
-
+from image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
+from image_services.core.base import Base
+from image_services.models.image_data_model import ImageDataModel
+from toolboxs.random_expertion import RandomExpertion
+from toolboxs.file_and_folder_operation import FileAndFolderOperation
 # --
 # ...
 # --
@@ -13,7 +14,8 @@ import CONSTS
 class ImageProcessingPipline(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
-        self.image_download_folder = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('output_folder')}"
+        self.images_address = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('images_address')}"
+        FileAndFolderOperation.remove_nestet_folder(self.images_address)
 
         self.cloud_operation = CloudOperation()
         self.background_operation = BackgroundOperation()
@@ -32,23 +34,22 @@ class ImageProcessingPipline(Base):
     # ...
     # --
 
-    def download_url_remove_white_bg_image(self, image_data_models:list[ImageDataModel]) -> bool:
+    def download_url_remove_white_bg_image(self, image_data_models: list[ImageDataModel]) -> list[ImageDataModel]:
 
         try:
             for image_data_model in image_data_models:
                 if not image_data_model.image_name:
-                    image_data_model.image_name = image_data_model.input_image_url.split("/")[-1]
+                    image_name = RandomExpertion.get_uuid(postfix=".webp")
+                    image_data_model.image_name = image_name
 
-                if not image_data_model.output_image_adress:
-                    image_data_model.output_image_adress= f"{self.image_download_folder}/{image_data_model.image_name}"
+                if not image_data_model.images_address:
+                    image_data_model.images_address = f"{self.images_address}/{image_data_model.image_name}"
 
                 image_data_model = self.cloud_operation.download_image_from_url(image_data_model)
-                image_data_model.input_image_adress = image_data_model.output_image_adress
-                image_data_model.output_image_adress = ""
 
-            self.background_operation.remove_set_white_backgroung_on_photo()
+            image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
 
-            return True
+            return image_data_models
 
         except Exception as exp:
             self.error(f"download_image: {exp}")
@@ -57,5 +58,6 @@ class ImageProcessingPipline(Base):
     # ...
     # --
 
-ldm = ImageDataModel(input_image_url="https://i.ebayimg.com/images/g/S3YAAOSwZR5gWHWN/s-l1600.webp")
-ImageProcessingPipline().download_url_remove_white_bg_image([ldm])
+
+# ldm = ImageDataModel(image_url="https://i.ebayimg.com/images/g/S3YAAOSwZR5gWHWN/s-l1600.webp")
+# ImageProcessingPipline().download_url_remove_white_bg_image([ldm])

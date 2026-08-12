@@ -1,6 +1,7 @@
 from apis.ebay_api.config.ebay_api_config import (
     EbayApiConfig,
 )
+from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 
 # --
@@ -39,20 +40,19 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_products(self, category_id, filter_product, q, offset, limit=200, marketplace=""):
+    def get_products(self, search_in_ebay_model:SearchInEbayModel,offset=0):
 
         try:
-            if marketplace == "":
-                marketplace = self.marketplace
-
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
+            search_in_ebay_model.generate_filter()
+
             params = {
-                "limit": limit,
+                "limit": 200,
                 "offset": offset,
-                "filter": filter_product,
-                "q": q,
+                "filter": search_in_ebay_model.filter,
+                "q": search_in_ebay_model.q,
             }
 
             response = self.request(
@@ -61,7 +61,7 @@ class EbayProduct(BaseEbayApi):
                 headers={
                     "Accept": "application/json",
                     "Authorization": f"Bearer {self.ebay_access_token}",
-                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{search_in_ebay_model.marketplace}",
                 },
                 params=params,
             )
@@ -77,21 +77,13 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_ids_with_category_id(self, category_id, filter_product, q, item_to_fetch, marketplace=""):
+    def get_product_ids_with_category_id(self, search_in_ebay_model: SearchInEbayModel):
 
         try:
-            if marketplace == "":
-                marketplace = self.marketplace
-
             offset = 0
 
             while True:
-                item_summaries, offset, total = self.get_products(
-                    category_id=category_id,
-                    offset=offset,
-                    filter_product=filter_product,
-                    q=q,
-                )
+                item_summaries, offset, total = self.get_products(search_in_ebay_model)
                 offset += 200
 
                 for product in item_summaries:
@@ -100,7 +92,7 @@ class EbayProduct(BaseEbayApi):
                 if offset >= total:
                     break
 
-            self.products = dict(list(self.products.items())[:item_to_fetch])
+            self.products = dict(list(self.products.items())[: search_in_ebay_model.item_to_fetch])
             return self.products
 
         except Exception as exp:

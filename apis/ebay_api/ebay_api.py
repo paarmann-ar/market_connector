@@ -48,26 +48,30 @@ class EbayApi(BaseEbayApi):
     # ...
     # --
 
-    def get_ebay_category_id(self, category_name_candidate, marketplace) -> str:
+    def get_ebay_category_id(self, search_in_ebay_model: SearchInEbayModel) -> str:
 
         try:
             category_id_candidate = {}
-            category_tree_id = self.ebay_category.get_default_category_tree_id_with_marketplace_id(marketplace=marketplace)
+            category_tree_id = self.ebay_category.get_default_category_tree_id_with_marketplace_id(
+                marketplace=search_in_ebay_model.marketplace
+            )
 
-            if category_name_candidate:
+            if search_in_ebay_model.category_name_candidate:
                 category_tree = self.ebay_category.get_category_tree(category_tree_id=category_tree_id)
 
                 self.recursive_category(category_node=category_tree)
 
                 for category_id, category_name in self.category_dict.items():
-                    if category_name == category_name_candidate:
+                    if category_name == search_in_ebay_model.category_name_candidate:
                         category_id_candidate[int(category_id)] = category_name
 
                 self.prompt_on_screen(f"category id: {category_id_candidate}")
 
+                search_in_ebay_model.category_id = category_id_candidate
                 return category_id_candidate
 
             else:
+                search_in_ebay_model.category_id = category_tree_id
                 return {category_tree_id: "root"}
 
         except Exception as exp:
@@ -89,16 +93,14 @@ class EbayApi(BaseEbayApi):
     # ...
     # --
 
-    def get_all_product_ids(self, category_name_candidate, filter_product, q, item_to_fetch, marketplace) -> str:
+    def get_all_product_ids(self, search_in_ebay_model: SearchInEbayModel) -> str:
 
         try:
-            category_id_dict: dict = self.get_ebay_category_id(category_name_candidate=category_name_candidate, marketplace=marketplace)
+            category_id_dict: dict = self.get_ebay_category_id(search_in_ebay_model)
 
             for category_id in category_id_dict.keys():
                 self.products_list.append(
-                    self.ebay_product.get_product_ids_with_category_id(
-                        category_id=category_id, filter_product=filter_product, q=q, item_to_fetch=item_to_fetch
-                    )
+                    self.ebay_product.get_product_ids_with_category_id(search_in_ebay_model=search_in_ebay_model)
                 )
 
             rows = []
@@ -147,23 +149,6 @@ class EbayApi(BaseEbayApi):
     # --
 
     def fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel):
-        search_in_ebay_model = search_in_ebay_model.to_dict()
-
-        self.get_all_product_ids(
-            category_name_candidate=search_in_ebay_model.get("category_name_candidate"),
-            filter_product=search_in_ebay_model.get("filter_product"),
-            q=search_in_ebay_model.get("q"),
-            item_to_fetch=search_in_ebay_model.get("item_to_fetch"),
-            marketplace=search_in_ebay_model.get("marketplace"),
-        )
+        self.get_all_product_ids(search_in_ebay_model=search_in_ebay_model)
 
         self.get_all_data_of_product_with_product_id_from_products_list()
-
-
-def test():
-    EbayApi().get_all_product_ids(
-        category_name_candidate="Sonstige Sensoren",
-        filter_product="conditions:{NEW},deliveryCountry:DE",
-        q="Lambdasonde",
-    )
-    EbayApi().get_all_data_of_product_with_product_id_from_products_list()

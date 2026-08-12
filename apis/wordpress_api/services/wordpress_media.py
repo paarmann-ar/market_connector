@@ -59,9 +59,9 @@ class WordpressMedia(BaseWordpressApi):
                 auth=(self.wp_user, self.wp_application_password),
             )
 
-            self.prompt_on_screen(f"upload_media_model: {response}")
+            self.prompt_on_screen(f"upload_media_model: {response['source_url']}")
 
-            return True
+            return response["source_url"]
 
         except Exception as exp:
             self.error(f"upload_media_model: {exp}")

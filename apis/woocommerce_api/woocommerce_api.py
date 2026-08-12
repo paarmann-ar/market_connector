@@ -6,7 +6,8 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 )
 from toolboxs.numbers import Numbers
 from apis.woocommerce_api.create_product_seo import CreateProductSeo
-
+from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
+from toolboxs.text import Text
 # --
 # ...
 # --
@@ -36,22 +37,31 @@ class WoocommerceApi(BaseWoocommerceApi):
 
     def convert_ebay_product_model_to_woocommerce_product_model(
         self, ebay_product_detail_model_list: object, price_anpassen: float
-    ) -> None:
+    ) -> list[WoocommerceProductModel]:
+
         for product in ebay_product_detail_model_list:
             woocommerce_categories_model: list = []
             woocommerce_brands_model: list = []
             woocommerce_tags_model: list = []
             woocommerce_images_model: list = []
 
+            ki_dict = self.create_product_seo.use_ki_to_rewrite_metadata_to_woocommerce(product=product)
+
+            alt_image_constructor = " ".join(ki_dict.get("focus_keywords", ["_", "_"]))
+            image_alt = Text().remove_dublicate_words_from_string(alt_image_constructor)
+            image_alt_main = ki_dict.get("title").split("|")[0]
+
             self.ziel_woocommerce_product_model = self.woocommerce_service_provider.woocommerce_product_model()
 
             woocommerce_images_model.insert(
                 0,
-                self.woocommerce_service_provider.woocommerce_image_model.from_api({"src": product.get("image")["imageUrl"]}),
+                self.woocommerce_service_provider.woocommerce_image_model.from_api(
+                    {"src": product.get("image")["imageUrl"], "alt": image_alt_main, "is_main_image": True}
+                ),
             )
             for image_url in product.get("additionalImages", []):
                 woocommerce_images_model.append(
-                    self.woocommerce_service_provider.woocommerce_image_model.from_api({"src": image_url.get("imageUrl")})
+                    self.woocommerce_service_provider.woocommerce_image_model.from_api({"src": image_url.get("imageUrl"), "alt": image_alt})
                 )
 
             # chon faghat akharin category mikhastam dashteh basham
@@ -68,8 +78,6 @@ class WoocommerceApi(BaseWoocommerceApi):
                 woocommerce_tag_model = self.woocommerce_service_provider.woocommerce_tag_model()
                 woocommerce_tag_model.name = tag
                 woocommerce_tags_model.append(woocommerce_tag_model)
-
-            ki_dict = self.create_product_seo.use_ki_to_rewrite_metadata_to_woocommerce(product=product)
 
             self.ziel_woocommerce_product_model.meta_data = self.rank_math_model.for_use_in_woocommerce()
             self.ziel_woocommerce_product_model.name = ki_dict.get("title")
@@ -97,6 +105,8 @@ class WoocommerceApi(BaseWoocommerceApi):
             self.ziel_woocommerce_product_model.tags = woocommerce_tags_model
             self.ziel_woocommerce_product_model.images = woocommerce_images_model
             self.woocommerce_product_models.append(self.ziel_woocommerce_product_model)
+
+            return self.woocommerce_product_models
 
     # --
     # ...

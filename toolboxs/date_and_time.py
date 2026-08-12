@@ -32,6 +32,20 @@ class DateAndTime:
     # --
 
     @staticmethod
+    def get_first_day_of_month_1(input_):
+
+        try:
+            today = datetime.today()
+            return datetime(today.year, today.month, 1)
+
+        except Exception as exp:
+            print(repr(exp))
+
+    # --
+    # ...
+    # --
+
+    @staticmethod
     def get_today(format="%Y-%m-%d"):
 
         try:

@@ -14,6 +14,7 @@ class WoocommerceImageModel:
     name: Optional[str] = None
     alt: Optional[str] = None
     srcset: Optional[str] = None
+    is_main_image: bool = False
 
     # --
     # ...
@@ -51,4 +52,5 @@ class WoocommerceImageModel:
             name=data.get("name"),
             alt=data.get("alt"),
             srcset=data.get("srcset"),
+            is_main_image=data.get("is_main_image"),
         )
