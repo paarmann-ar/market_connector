@@ -40,7 +40,7 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_products(self, search_in_ebay_model:SearchInEbayModel,offset=0):
+    def get_products(self, search_in_ebay_model: SearchInEbayModel, offset=0):
 
         try:
             self.ebay_token_api()

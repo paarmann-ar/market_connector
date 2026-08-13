@@ -4,6 +4,18 @@ from app.controller.market_connector_controller import MarketConnectorController
 # --
 # ...
 # --
+
+
+def upload_from_ebay_to_woocommerce_pipline(search_in_ebay_model: SearchInEbayModel):
+    market_connector_controller = MarketConnectorController()
+    market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+
+    market_connector_controller.convert_ebay_to_woocommerce_product_model(price_anpassen=search_in_ebay_model.price_anpassen)
+    market_connector_controller.image_convertor_pipline()
+
+    market_connector_controller.upload_model_to_woocommerce(search_in_ebay_model=search_in_ebay_model)
+
+
 # q=[
 #     "Q6135-LE",
 #     "Q6135-E",
@@ -57,7 +69,7 @@ from app.controller.market_connector_controller import MarketConnectorController
 # )
 
 
-# target_woocommerce_category_model_name = "Sensoren"
+target_woocommerce_category_model_name = "Sensoren"
 # # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
 #     conditions="{NEW|USED}",
@@ -89,13 +101,14 @@ from app.controller.market_connector_controller import MarketConnectorController
 #     deliveryCountry="DE",
 #     q="Ifm electronic IA5051 IA-3010-APKG Induktiver Sensor -unused-"
 # )
-# search_in_ebay_model = SearchInEbayModel(
-#     # category_name_candidate="Business & Industrie",
-#     conditions="{NEW|USED}",
-#     deliveryCountry="DE",
-#     q="BOSCH LAMBDASONDE LAMDASONDE DIAGNOSESONDE NACH KAT 0258006499",
-#     item_to_fetch=2,
-# )
+search_in_ebay_model = SearchInEbayModel(
+    # category_name_candidate="Business & Industrie",
+    conditions="{NEW}",
+    deliveryCountry="DE",
+    q="BOSCH LAMBDASONDE LAMDASONDE DIAGNOSESONDE NACH KAT 0258006499",
+    item_to_fetch=2,
+    target_category_name_in_woocommerce="Sensoren",
+)
 # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
 #     conditions="{NEW|USED}",
@@ -118,7 +131,7 @@ from app.controller.market_connector_controller import MarketConnectorController
 # target_woocommerce_category_model_name = "Sensoren"
 # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
-#     conditions="{NEW|USED}",
+#     conditions="{NEW}",
 #     deliveryCountry="DE",
 #     marketplace="EBAY_DE",
 #     q="NEU Stickoxid Nox Sensor 68366428AA SNS0932 für Jeep Compass II MP M6 1.6 CRD",
@@ -127,11 +140,11 @@ from app.controller.market_connector_controller import MarketConnectorController
 
 # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
-#     conditions="{NEW|USED}",
+#     conditions="{NEW}",
 #     deliveryCountry="DE",
 #     marketplace="EBAY_DE",
 #     q="Buhler NT M-VA-G3/4-M12/170-2K-ATEX Niveau-Und Temperaturkontakt",
-#     item_to_fetch=10,
+#     item_to_fetch=3,
 # )
 
 
@@ -152,9 +165,11 @@ from app.controller.market_connector_controller import MarketConnectorController
 # product: ENGLER Niveau- und Temperaturschalter SSM.4.ABCD5....275.18S1
 # search_in_ebay_model = SearchInEbayModel(
 #     conditions="{NEW}",
+#     marketplace="EBAY_DE",
 #     deliveryCountry="DE",
-#     q="ENGLER Niveau- und Temperaturschalter SSM.4.ABCD5....275.18S1",
-#     item_to_fetch=2
+#     q="Bühler NT 66-MS-S6/370/2K-TT71-KT Niveau- und Temperaturschalter Unused",
+#     item_to_fetch=2,
+#     price_anpassen = 1.5
 # )
 
 
@@ -191,25 +206,33 @@ from app.controller.market_connector_controller import MarketConnectorController
 # )
 
 
-target_woocommerce_category_model_name = "Sonstige"
-search_in_ebay_model = SearchInEbayModel(
-    conditions="{NEW}",
-    marketplace="EBAY_US",
-    deliveryCountry="US",
-    q="DRUCKBEGRENZUNGSVENTIL",
-    filter="sellers:{jlb_the_farm},price:[..500]",
-    price_anpassen = 1.5
-)
+# target_woocommerce_category_model_name = "Sonstige"
+# search_in_ebay_model = SearchInEbayModel(
+#     conditions="{NEW}",
+#     marketplace="EBAY_US",
+#     deliveryCountry="US",
+#     q="FITOK",
+#     filter="sellers:{jlb_the_farm},price:[..500]",
+#     item_to_fetch=1,
+#     price_anpassen = 1.5
+# )
+
+search_in_ebay_models = [
+    SearchInEbayModel(
+        conditions="{NEW}",
+        marketplace="EBAY_US",
+        deliveryCountry="US",
+        q="FITOK",
+        filter="sellers:{jlb_the_farm},price:[..500]",
+        item_to_fetch=1,
+        price_anpassen=1.5,
+    )
+]
 
 
-def upload_from_ebay_to_woocommerce_pipline():
-    market_connector_controller = MarketConnectorController()
-    market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
-
-    market_connector_controller.convert_ebay_to_woocommerce_product_model(price_anpassen=search_in_ebay_model.price_anpassen)
-    market_connector_controller.image_convertor_pipline()
-
-    market_connector_controller.upload_model_to_woocommerce(target_woocommerce_category_name=target_woocommerce_category_model_name)
+def start():
+    for search_in_ebay_model in search_in_ebay_models:
+        upload_from_ebay_to_woocommerce_pipline(search_in_ebay_model=search_in_ebay_model)
 
 
-upload_from_ebay_to_woocommerce_pipline()
+start()

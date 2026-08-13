@@ -72,5 +72,5 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def upload_model_to_woocommerce(self, target_woocommerce_category_name: str) -> bool:
-        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(target_woocommerce_category_name)
+    def upload_model_to_woocommerce(self, search_in_ebay_model: SearchInEbayModel) -> bool:
+        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(search_in_ebay_model.target_category_name_in_woocommerce)

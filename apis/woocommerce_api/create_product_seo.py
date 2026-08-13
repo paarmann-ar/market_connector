@@ -92,7 +92,7 @@ class CreateProductSeo(BaseWoocommerceApi):
             if isinstance(focus_keywords, list):
                 focus_keywords = ", ".join(focus_keywords)
 
-            self.rank_math_model.rank_math_focus_keyword = focus_keywords
+            self.rank_math_model.rank_math_focus_keyword = f"{focus_keywords}, {brand}"
 
             self.prompt_on_screen(f"use_ki_to_rewrite_metadata_to_woocommerce: {ki_message}")
 

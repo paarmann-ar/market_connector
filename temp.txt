@@ -1,1 +1,1 @@
-08-11-2026, 23:26:22 upload_media_model: [Errno 2] No such file or directory: ''
+08-12-2026, 22:00:23 resolve_or_upload: 'NoneType' object is not iterable

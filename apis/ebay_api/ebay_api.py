@@ -99,9 +99,7 @@ class EbayApi(BaseEbayApi):
             category_id_dict: dict = self.get_ebay_category_id(search_in_ebay_model)
 
             for category_id in category_id_dict.keys():
-                self.products_list.append(
-                    self.ebay_product.get_product_ids_with_category_id(search_in_ebay_model=search_in_ebay_model)
-                )
+                self.products_list.append(self.ebay_product.get_product_ids_with_category_id(search_in_ebay_model=search_in_ebay_model))
 
             rows = []
             for key, value in self.products_list[0].items():
