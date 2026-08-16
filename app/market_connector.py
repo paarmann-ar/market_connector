@@ -8,12 +8,18 @@ from app.controller.market_connector_controller import MarketConnectorController
 
 def upload_from_ebay_to_woocommerce_pipline(search_in_ebay_model: SearchInEbayModel):
     market_connector_controller = MarketConnectorController()
-    market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+    product_ebay_models = market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
 
-    market_connector_controller.convert_ebay_to_woocommerce_product_model(price_anpassen=search_in_ebay_model.price_anpassen)
-    market_connector_controller.image_convertor_pipline()
+    for product_ebay_model in product_ebay_models:
+        product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
 
-    market_connector_controller.upload_model_to_woocommerce(search_in_ebay_model=search_in_ebay_model)
+    woocommerce_product_models = market_connector_controller.convert_ebay_to_woocommerce_product_model(
+                product_ebay_models=product_ebay_models
+            )
+
+    market_connector_controller.image_convertor_pipline(woocommerce_product_models = woocommerce_product_models)
+
+    market_connector_controller.upload_model_to_woocommerce(woocommerce_product_models = woocommerce_product_models, search_in_ebay_model=search_in_ebay_model)
 
 
 # q=[
@@ -69,7 +75,7 @@ def upload_from_ebay_to_woocommerce_pipline(search_in_ebay_model: SearchInEbayMo
 # )
 
 
-target_woocommerce_category_model_name = "Sensoren"
+# target_woocommerce_category_model_name = "Sensoren"
 # # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
 #     conditions="{NEW|USED}",
@@ -101,14 +107,14 @@ target_woocommerce_category_model_name = "Sensoren"
 #     deliveryCountry="DE",
 #     q="Ifm electronic IA5051 IA-3010-APKG Induktiver Sensor -unused-"
 # )
-search_in_ebay_model = SearchInEbayModel(
-    # category_name_candidate="Business & Industrie",
-    conditions="{NEW}",
-    deliveryCountry="DE",
-    q="BOSCH LAMBDASONDE LAMDASONDE DIAGNOSESONDE NACH KAT 0258006499",
-    item_to_fetch=2,
-    target_category_name_in_woocommerce="Sensoren",
-)
+# search_in_ebay_model = SearchInEbayModel(
+#     # category_name_candidate="Business & Industrie",
+#     conditions="{NEW}",
+#     deliveryCountry="DE",
+#     q="BOSCH LAMBDASONDE LAMDASONDE DIAGNOSESONDE NACH KAT 0258006499",
+#     item_to_fetch=2,
+#     target_category_name_in_woocommerce="Sensoren",
+# )
 # search_in_ebay_model = SearchInEbayModel(
 #     # category_name_candidate="Business & Industrie",
 #     conditions="{NEW|USED}",
@@ -216,23 +222,114 @@ search_in_ebay_model = SearchInEbayModel(
 #     item_to_fetch=1,
 #     price_anpassen = 1.5
 # )
-
+    # SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="FITOK",
+    #     filter="sellers:{jlb_the_farm},price:[..500]",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.5,
+    # )
+# ABB SSAC PLMU11 PC606 3-Phasen Spannungsüberwachungsrelais 200-480VAC SPDT 8-Pin
+# DAIHATSU PUG-AP65W ELEKTRISCHER MAGNETISCHER AUFNEHMER SENSOR 15190A-
+# Speed Controller/Motor Display Rate Variable/AC 220V Motor Governor.
+# AC 110-230V 10000W SCR Motor Speed Controller Volt Regulator Dimmer Thermostat
+# 2-Phasen 4,2A Schrittmotortreiber-
+# PWM 12V 24V 36V 48V DC Motor Speed Controller Reversible Switch 6A Regulator
 search_in_ebay_models = [
-    SearchInEbayModel(
+    # SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="ABB SSAC PLMU11 PC606",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     target_category_name_in_woocommerce="Sensoren"
+    # ),
+    #     SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="DAIHATSU PUG-AP65W",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     target_category_name_in_woocommerce="Sensoren"
+    # ),
+    #     SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="",
+    #     legacy_item_id="155291562575",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     filter="sellers:{life-changing666}",
+    #     target_category_name_in_woocommerce="Sensoren"
+    # ),
+    #     SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="",
+    #     legacy_item_id="116715910077",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     target_category_name_in_woocommerce="Sensoren"
+    # ),
+    
+    # SearchInEbayModel(
+    #         conditions="{NEW}",
+    #         marketplace="EBAY_US",
+    #         deliveryCountry="US",
+    #         q="Siemens Simatic S7-1500 6ES7512-1CK01-0AB0",
+    #         legacy_item_id="",
+    #         item_to_fetch=1,
+    #         price_anpassen=1.8,
+    #         target_category_name_in_woocommerce="PLC & SPS"
+    #     ),
+        SearchInEbayModel(
         conditions="{NEW}",
-        marketplace="EBAY_US",
-        deliveryCountry="US",
-        q="FITOK",
-        filter="sellers:{jlb_the_farm},price:[..500]",
+        marketplace="EBAY_DE",
+        deliveryCountry="DE",
+        q="",
+        legacy_item_id="398250185440",
         item_to_fetch=1,
-        price_anpassen=1.5,
-    )
+        price_anpassen=1.8,
+        target_category_name_in_woocommerce="Tischdekoration"
+    ),
+    #     SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="",
+    #     legacy_item_id="301905615798",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     target_category_name_in_woocommerce="Sensoren"
+    # ),
+    #     SearchInEbayModel(
+    #     conditions="{NEW}",
+    #     marketplace="EBAY_US",
+    #     deliveryCountry="US",
+    #     q="",
+    #     legacy_item_id="385440556015",
+    #     item_to_fetch=1,
+    #     price_anpassen=1.8,
+    #     target_category_name_in_woocommerce="Sensoren"
+    # )
 ]
 
 
 def start():
     for search_in_ebay_model in search_in_ebay_models:
+        print(search_in_ebay_model.q)
         upload_from_ebay_to_woocommerce_pipline(search_in_ebay_model=search_in_ebay_model)
 
 
 start()
+
+
+        # // "base_url": "https://www.paarmann-tech.de/wp-json/wc/v3"
+        # // "consumer_key": "ck_db0adcfd3b7c3b3fb117d245a0ea648951869584"
+        # // "consumer_secret": "cs_1767d6b43ab0bda2c4f71aaa0768ff36c42369a7"

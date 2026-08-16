@@ -49,7 +49,8 @@ class WoocommerceProduct(BaseWoocommerceApi):
     # ...
     # --
 
-    def get_product_by_name(self, name: str, record_per_page: int = 100):
+
+    def get_product_by_name(self, name: str, record_per_page: int = 100)->WoocommerceProductModel:
 
         try:
             response = self.request(
@@ -63,10 +64,12 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 },
             )
 
-            self.prompt_on_screen(f"get product modele: {response}")
 
-            return response
+            if not response:
+                return None
 
+            return WoocommerceProductModel(**response[0])
+        
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_name: {exp}")
 
@@ -74,7 +77,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
     # ...
     # --
 
-    def get_all_products(self, record_per_page: int = 100):
+    def get_all_products(self, record_per_page: int = 100)->[WoocommerceProductModel]:
 
         try:
             response = self.request(
@@ -83,10 +86,12 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 auth=(self.consumer_key, self.consumer_secret),
                 params={"per_page": record_per_page},
             )
+            woocommerce_product_models:list[WoocommerceProductModel]=[]
 
-            self.prompt_on_screen(f"products: {response}")
+            for product in response:
+                woocommerce_product_models.append( WoocommerceProductModel(**product))
 
-            return response
+            return woocommerce_product_models
 
         except Exception as exp:
             self.prompt_on_screen(f"get_all_products: {exp}")
@@ -102,7 +107,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 method="post",
                 url=f"{self.base_url}{self.products_url}",
                 auth=(self.consumer_key, self.consumer_secret),
-                json=product_model.to_dict(),
+                json=product_model,
             )
 
             self.prompt_on_screen(f"products: {response}")

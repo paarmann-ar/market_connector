@@ -4,9 +4,9 @@ from ki.ollama.models.ollama_message_model import OllamaMessageModel
 from ki.ollama.models.ollama_prompt_model import OllamaPromptModel
 from ki.ollama.services.ollama_chat_service import OllamaChatService
 from ki.ollama.services.ollama_generate_service import OllamaGenerateService
-
 from ki.prompt_provider.models.input_message_model import InputMessageModel
 import json
+import CONSTS
 
 # --
 # ...
@@ -16,6 +16,7 @@ import json
 class Ollama(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+        self.cache_file_name = self.config_dictionary.get("cache_file_name")
 
         self.ollama_chat_service = OllamaChatService()
         self.ollama_generate_service = OllamaGenerateService()
@@ -107,6 +108,10 @@ class Ollama(Base):
     ) -> dict:
 
         try:
+            cache = self.cache.get_from_cache(cache_file=self.cache_file_name, key=input_message_model.inputs.get("cache_id"))
+            if cache:
+                return cache
+                
             if not ollama_prompt_model:
                 ollama_prompt_model = self.convert_prompt_model_to_ollama_prompt_model(input_message_model)
 
@@ -130,6 +135,7 @@ class Ollama(Base):
 
             response = json.loads(response)
 
+            self.cache.update_cache(key=input_message_model.inputs.get("cache_id"), data=response, cache_file=self.cache_file_name)
             return response
 
         except json.JSONDecodeError as exp:

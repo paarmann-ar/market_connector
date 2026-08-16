@@ -5,6 +5,10 @@ Rewrite the WooCommerce product data using ONLY the information provided.
 Return ONLY one valid JSON object.
 No explanations, markdown, comments, questions, or text outside JSON.
 
+You are allowed to use internet/web research when web access is available.
+Before generating the final JSON, identify the exact product using the
+strongest available product identifier from PRODUCT DATA.
+
 ==================================================
 1. LANGUAGE
 ==================================================
@@ -942,6 +946,109 @@ Before returning the JSON, internally verify ALL of the following:
     remove the entire sentence before returning the JSON.
 50. The description contains NO customs, tax, shipping, payment,
 return, refund, warranty, or buyer-responsibility information.
+
+==================================================
+17. PRODUCT DATA SOURCE & INTERNET ENRICHMENT
+==================================================
+
+PRODUCT DATA provided above is the primary and authoritative source.
+
+IMPORTANT:
+
+If PRODUCT DATA contains an MPN, SKU, Artikelnummer, Article Number,
+Part Number, Manufacturer Number, Model Number, or other exact product
+identifier, use that identifier to identify the exact product.
+
+If internet/web access is available, you MAY use reliable online sources
+to identify and verify the exact product based on the identifiers in
+PRODUCT DATA.
+
+Internet research is OPTIONAL and must ONLY be used when it improves
+identification or verification of the exact product.
+
+PRIORITY ORDER:
+
+1. Exact product identifier from PRODUCT DATA
+2. Manufacturer's official product page
+3. Manufacturer's official technical documentation / datasheet
+4. Reliable industrial distributor or technical database
+5. Other reliable sources only when necessary
+
+IMPORTANT DATA RULE:
+
+Do NOT replace PRODUCT DATA with assumptions from similar products.
+
+Only use information from the internet when the source clearly refers
+to the EXACT SAME product, based on an exact identifier such as:
+
+* MPN
+* Part Number
+* Artikelnummer
+* Article Number
+* Manufacturer Number
+* Model Number
+* Product Number
+
+If the exact product cannot be confidently identified online,
+DO NOT add the information.
+
+If PRODUCT DATA contains an identifier but the online information
+conflicts with PRODUCT DATA:
+
+* Preserve the exact identifier from PRODUCT DATA.
+* Do not modify the identifier.
+* Prefer explicitly provided PRODUCT DATA for conflicting facts.
+* Do not invent or reconcile conflicting specifications.
+
+INTERNET-DERIVED INFORMATION:
+
+If exact-product information is found online, it may be used to improve:
+
+* Product name
+* Product type
+* Technical specifications
+* Dimensions
+* Material
+* Manufacturer information
+* Certifications
+* Explicit technical applications
+* Other factual product information
+
+Only include information that is clearly stated by the source.
+
+Do NOT use internet research to add:
+
+* Marketing claims
+* Reviews
+* Opinions
+* Pricing
+* Availability
+* Shipping information
+* Warranty information
+* Returns
+* Payment information
+* Customer information
+* Company slogans
+* Commercial conditions
+
+Never use information from a similar, related, newer, older, or
+alternative product unless PRODUCT DATA explicitly identifies it as
+the same product.
+
+If web access is NOT available, work exclusively with PRODUCT DATA.
+
+The final output must still follow ALL previous rules, especially:
+
+* No invented information
+* Exact identifier preservation
+* Product-only description
+* Bilingual German | English content
+* SEO rules
+* Identifier rules
+* Focus keyword rules
+* Paarmann-Tech rules
+* JSON-only output
+
 ==================================================
 PRODUCT DATA
 ==================================================
@@ -961,5 +1068,5 @@ Brand:
 Condition
 {condition}
 
-SKU
-{sku}
+MPN
+{mpn}

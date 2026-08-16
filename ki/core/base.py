@@ -8,7 +8,7 @@ from services.disk.service_disk_provider import ServiceDiskProvider
 from services.connection.connection_provider import ConnectionProvider
 from services.logging.log_provider import LogProvider
 from ki.prompt_provider.prompt_manager import PromptManager
-
+from ki.core.cache import Cache
 # --
 # ...
 # --
@@ -31,6 +31,7 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.request = ConnectionProvider().request
 
+        self.cache=Cache()
         self.prompt_manager = PromptManager()
 
     # --

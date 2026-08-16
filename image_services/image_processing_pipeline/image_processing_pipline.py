@@ -6,6 +6,8 @@ from image_services.core.base import Base
 from image_services.models.image_data_model import ImageDataModel
 from toolboxs.random_expertion import RandomExpertion
 from toolboxs.file_and_folder_operation import FileAndFolderOperation
+from image_services.models.image_directory_model import ImageDirectoryModel
+
 # --
 # ...
 # --
@@ -53,11 +55,10 @@ class ImageProcessingPipline(Base):
 
         except Exception as exp:
             self.error(f"download_image: {exp}")
-
+ 
     # --
     # ...
     # --
 
-
-# ldm = ImageDataModel(image_url="https://i.ebayimg.com/images/g/S3YAAOSwZR5gWHWN/s-l1600.webp")
-# ImageProcessingPipline().download_url_remove_white_bg_image([ldm])
+    def reduce_image_size(self, image_directory_model:ImageDirectoryModel):
+        self.background_operation.reduce_image_size(image_directory_model)

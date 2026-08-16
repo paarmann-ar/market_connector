@@ -39,6 +39,7 @@ class WoocommerceUploader(BaseWoocommerceApi):
         self.wp_password = self.config_dictionary.get("wp_password")
 
         self.products_url = self.config_dictionary.get("products_url")
+        
         self.woocommerce_product = WoocommerceProduct()
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
@@ -62,9 +63,9 @@ class WoocommerceUploader(BaseWoocommerceApi):
     # ...
     # --
 
-    def resolve_or_upload(self, product_model: WoocommerceProductModel):
+    def resolve_or_upload(self, woocommerce_product_model: WoocommerceProductModel):
         try:
-            product = self.woocommerce_product.get_product_by_name(product_model.name)
+            product = self.woocommerce_product.get_product_by_name(woocommerce_product_model.name)
 
             woocommerce_categories_model: list[WoocommerceCategoryModel] = []
             woocommerce_brands_model: list[WoocommerceBrandModel] = []
@@ -75,36 +76,36 @@ class WoocommerceUploader(BaseWoocommerceApi):
                 return product
 
             woocommerce_image = WoocommerceImage()
-            for image in product_model.images:
+            for image in woocommerce_product_model.images:
                 woocommerce_images_model.append(woocommerce_image.resolve_or_upload(image))
                 self.woocommerce_session_model.add_media(image)
 
             woocommerce_category = WoocommerceCategory()
-            for category in product_model.categories:
+            for category in woocommerce_product_model.categories:
                 woocommerce_categories_model.append(woocommerce_category.resolve_or_upload(category))
                 self.woocommerce_session_model.add_category(category)
 
             woocommerce_brand = WoocommerceBrand()
-            for brand in product_model.brands:
+            for brand in woocommerce_product_model.brands:
                 if not brand.name:
                     brand.name = "NoBrand"
                 woocommerce_brands_model.append(woocommerce_brand.resolve_or_upload(brand))
                 self.woocommerce_session_model.add_brand(brand)
 
             woocommerce_tag = WoocommerceTag()
-            for tag in product_model.tags:
+            for tag in woocommerce_product_model.tags:
                 woocommerce_tags_model.append(woocommerce_tag.resolve_or_upload(tag))
                 self.woocommerce_session_model.add_tag(tag)
 
-            product_model.images = woocommerce_images_model
-            product_model.categories = woocommerce_categories_model
-            product_model.brands = woocommerce_brands_model
-            product_model.tags = woocommerce_tags_model
+            woocommerce_product_model.images = woocommerce_images_model
+            woocommerce_product_model.categories = woocommerce_categories_model
+            woocommerce_product_model.brands = woocommerce_brands_model
+            woocommerce_product_model.tags = woocommerce_tags_model
 
-            product_model = remove_none(product_model)
-            self.woocommerce_product.upload_product(WoocommerceProductModel(**product_model))
+            woocommerce_product_model = remove_none(woocommerce_product_model)
+            self.woocommerce_product.upload_product(woocommerce_product_model)
 
-            self.woocommerce_session_model.add_product(product_model)
+            self.woocommerce_session_model.add_product(woocommerce_product_model)
 
         except Exception as exp:
             self.error(f"resolve_or_upload: {exp}")

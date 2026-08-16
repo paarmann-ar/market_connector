@@ -47,7 +47,7 @@ class PrepaerImageFile(Base):
                 if image_path.suffix.lower() not in extensions:
                     continue
 
-                image_data_model = ImageDataModel(images_address=f"{images_folder_adress}/{image_path.name}")
+                image_data_model = ImageDataModel(images_address=f"{images_folder_adress}/{image_path.name}", image_name=image_path.name)
 
                 image_data_model.image_data = Image.open(f"{image_data_model.images_address}").convert("RGB")
 

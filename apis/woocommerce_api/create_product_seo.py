@@ -6,7 +6,11 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 )
 from ki.prompt_provider.models.input_message_model import InputMessageModel
 from toolboxs.html import Html
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from apis.ebay_api.models.product_ebay_model import ProductEbayModel
+    
 # --
 # ...
 # --
@@ -58,35 +62,37 @@ class CreateProductSeo(BaseWoocommerceApi):
     # ...
     # --
 
-    def use_ki_to_rewrite_metadata_to_woocommerce(self, product: dict) -> dict:
+    def use_ki_to_rewrite_metadata_to_woocommerce(self, product_ebay_model: "ProductEbayModel") -> dict:
 
         try:
-            title = product.get("title")
-            description = self.clean_product_description(text=product.get("description", ""))
+            item_id = product_ebay_model.itemId
+            title = product_ebay_model. title
+            description = self.clean_product_description(text=product_ebay_model.description)
             description = Html.remove_html_tags(context=description)[:1500]
-            short_description = Html.remove_html_tags(context=product.get("short_description", ""))[:500]
+            short_description = Html.remove_html_tags(context=product_ebay_model.shortDescription)[:500]
 
-            brand = product.get("brand", "")
-            condition = product.get("condition")
-            sku = product.get("sku")
+            brand = product_ebay_model.brand
+            condition = product_ebay_model.condition
+            mpn = product_ebay_model.mpn
 
             input_message_model = InputMessageModel()
             input_message_model.md_file_name = "product_content"
 
             input_message_model.inputs = {
+                "cache_id":item_id,
                 "title": title,
                 "description": description,
                 "short_description": short_description,
                 "brand": brand,
                 "condition": condition,
-                "sku": sku,
+                "mpn":mpn
             }
 
             ki_message = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
 
             self.rank_math_model.clear()
-            self.rank_math_model.rank_math_title = product.get("title")
-            self.rank_math_model.rank_math_description = product.get("meta_description")
+            self.rank_math_model.rank_math_title = ki_message.get("title")
+            self.rank_math_model.rank_math_description = ki_message.get("meta_description")
             focus_keywords = ki_message.get("focus_keywords")
 
             if isinstance(focus_keywords, list):

@@ -6,6 +6,7 @@ from image_services.background_operation.services.remove_backgroung_service impo
 from image_services.core.base import Base
 from image_services.models.image_data_model import ImageDataModel
 from image_services.models.image_directory_model import ImageDirectoryModel
+from image_services.background_operation.services.image_size_service import ImageSizeService
 
 # --
 # ...
@@ -22,6 +23,8 @@ class BackgroundOperation(Base):
         self.prepaer_image_file = PrepaerImageFile()
         self.find_product_box = FindProductBox()
         self.remove_backgroung_service = RemoveBackgroungService()
+
+        self.image_size_service = ImageSizeService()
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
@@ -65,6 +68,22 @@ class BackgroundOperation(Base):
     # ...
     # --
 
+    def reduce_image_size(self, image_directory_model: ImageDirectoryModel = None) -> list[ImageDataModel]:
 
-# x=BackgroundOperation()
-# x.remove_set_white_backgroung_on_photo()
+        try:
+            if not image_directory_model:
+                image_directory_model = self.image_directory_model
+
+            image_data_models = self.prepaer_image_file.read_image_file(image_directory_model=image_directory_model)
+
+            for image_data_model in image_data_models:
+                self.image_size_service.optimize_image(image_data_model)
+                
+                image_data_model = self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
+
+                self.prompt_on_screen(f"image proccing for {image_data_model.images_address} has been finished")
+
+            return image_data_models
+
+        except Exception as exp:
+            self.error(f"remove_set_white_backgroung_on_photo: {exp}")

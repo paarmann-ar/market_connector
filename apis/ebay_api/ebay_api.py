@@ -2,6 +2,8 @@ from apis.ebay_api.config.ebay_api_config import (
     EbayApiConfig,
 )
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
+from apis.ebay_api.models.product_ebay_model import ProductEbayModel
+from apis.ebay_api.models.product_summery_ebay_model import ProductSummeryEbayModel
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.services.ebay_category import EbayCategory
 from apis.ebay_api.services.ebay_product import EbayProduct
@@ -24,9 +26,6 @@ class EbayApi(BaseEbayApi):
 
         self.ebay_product = EbayProduct(ebay_token_api=self.ebay_token_api)
 
-        self.products_list = []
-        self.product_detail_list = []
-
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
@@ -41,7 +40,7 @@ class EbayApi(BaseEbayApi):
     # ...
     # --
 
-    def refresh_tocken(self) -> str:
+    def refresh_token(self) -> str:
         self.ebay_token_api.get_token()
 
     # --
@@ -57,6 +56,7 @@ class EbayApi(BaseEbayApi):
             )
 
             if search_in_ebay_model.category_name_candidate:
+                self.category_dict.clear()
                 category_tree = self.ebay_category.get_category_tree(category_tree_id=category_tree_id)
 
                 self.recursive_category(category_node=category_tree)
@@ -93,32 +93,10 @@ class EbayApi(BaseEbayApi):
     # ...
     # --
 
-    def get_all_product_ids(self, search_in_ebay_model: SearchInEbayModel) -> str:
+    def get_product_with_product_id(self, legacy_item_id) -> str:
 
         try:
-            category_id_dict: dict = self.get_ebay_category_id(search_in_ebay_model)
-
-            for category_id in category_id_dict.keys():
-                self.products_list.append(self.ebay_product.get_product_ids_with_category_id(search_in_ebay_model=search_in_ebay_model))
-
-            rows = []
-            for key, value in self.products_list[0].items():
-                row = {"id": key, **value}
-                rows.append(row)
-
-            self.csv.operation(mode="w", file_name="ebay_item_summaries.csv", data=rows)
-
-        except Exception as exp:
-            self.prompt_on_screen(f"get_all_product_ids: {exp}")
-
-    # --
-    # ...
-    # --
-
-    def get_product_with_product_id(self, product_id) -> str:
-
-        try:
-            self.ebay_product.get_product_with_product_id(product_id=product_id)
+            self.ebay_product.get_product_with_legacy_item_id(legacy_item_id=legacy_item_id)
 
         except Exception as exp:
             self.prompt_on_screen(f"get_product_with_product_id: {exp}")
@@ -127,26 +105,44 @@ class EbayApi(BaseEbayApi):
     # ...
     # --
 
-    def get_all_data_of_product_with_product_id_from_products_list(self) -> str:
+    def get_product_ebay_models_with_product_id(self, product_summery_ebay_models: list[ProductSummeryEbayModel]) -> list[ProductEbayModel]:
 
         try:
-            for product_id in self.products_list[0].keys():
-                self.product_detail_list.append(self.ebay_product.get_product_with_product_id(product_id=product_id))
+            product_ebay_models: list[ProductEbayModel] = []
+
+            for product_summery_ebay_model in product_summery_ebay_models:
+                product_ebay_model = self.ebay_product.get_product_ebay_model_with_item_id(
+                    product_item_id=product_summery_ebay_model.itemId, marketplace_id=product_summery_ebay_model.listingMarketplaceId
+                )
+
+                product_ebay_model.additionalImages = product_summery_ebay_model.additionalImages
+                product_ebay_models.append(product_ebay_model)
 
             self.csv.operation(
                 mode="w",
                 file_name="ebay_product_detail.csv",
-                data=self.product_detail_list,
+                data=product_ebay_models,
             )
 
+            return product_ebay_models
+
         except Exception as exp:
-            self.prompt_on_screen(f"get_all_data_of_product_with_product_id_from_products_list: {exp}")
+            self.prompt_on_screen(f"get_product_ebay_models_with_product_id: {exp}")
+            return []
 
     # --
     # ...
     # --
 
-    def fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel):
-        self.get_all_product_ids(search_in_ebay_model=search_in_ebay_model)
+    def fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
+        if search_in_ebay_model.legacy_item_id:
+            product_ebay_model = self.ebay_product.get_product_ebay_model_with_legacy_item_id(
+                legacy_item_id=search_in_ebay_model.legacy_item_id, marketplace_id=search_in_ebay_model.marketplace_id
+            )
+            return [product_ebay_model]
 
-        self.get_all_data_of_product_with_product_id_from_products_list()
+        else:
+            product_summery_ebay_models = self.ebay_product.get_product_summery_ebay_models(search_in_ebay_model=search_in_ebay_model)
+            product_summery_ebay_models = product_summery_ebay_models[: search_in_ebay_model.item_to_fetch]
+
+        return self.get_product_ebay_models_with_product_id(product_summery_ebay_models=product_summery_ebay_models)

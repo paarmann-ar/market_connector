@@ -8,6 +8,7 @@ from apis.core.waiting import Wating
 from services.disk.json.json_manager import JSONManager
 from services.logging.log_provider import LogProvider
 from services.mail.email_provider import EMailProvider
+from image_services.image_provider.image_provider import ImageProvider
 
 # --
 # ...
@@ -28,6 +29,7 @@ class Base(ABC, metaclass=SingletonMeta):
         self.stack = LogProvider().stack
 
         self.json = JSONManager()
+        self.image_provider = ImageProvider()
 
         self.config_dictionary = self.get_config_dictionary()
 

@@ -16,7 +16,19 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "image_services.image_processing_pipeline.image_processing_pipline",
+            "module": "image_services.background_operation.background_operation",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": true
+        },
+        {
+            "name": "Custom background_operation",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "image_services.background_operation.background_operation",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {

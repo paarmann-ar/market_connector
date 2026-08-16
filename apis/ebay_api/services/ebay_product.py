@@ -3,6 +3,10 @@ from apis.ebay_api.config.ebay_api_config import (
 )
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
+from apis.ebay_api.models.product_summery_ebay_model import ProductSummeryEbayModel
+from apis.ebay_api.models.product_ebay_model import ProductEbayModel
+
+
 
 # --
 # ...
@@ -16,6 +20,8 @@ class EbayProduct(BaseEbayApi):
         self.base_url = self.config_dictionary.get("base_url")
         self.products_url = self.config_dictionary.get("products_url")
         self.product_url = self.config_dictionary.get("product_url")
+
+        self.inventory_item_url = self.config_dictionary.get("inventory_item_url")
 
         self.marketplace_id = self.config_dictionary.get("marketplace_id")
         self.marketplace = self.config_dictionary.get("marketplace")
@@ -40,7 +46,7 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_products(self, search_in_ebay_model: SearchInEbayModel, offset=0):
+    def get_product_summery_ebay_models(self, search_in_ebay_model: SearchInEbayModel, offset=0)-> list[ProductSummeryEbayModel]:
 
         try:
             self.ebay_token_api()
@@ -66,9 +72,12 @@ class EbayProduct(BaseEbayApi):
                 params=params,
             )
 
-            self.prompt_on_screen(f"get_products: {response.get('total')}")
+            product_summery_ebay_models :list[ ProductSummeryEbayModel] = []
 
-            return response["itemSummaries"], response["offset"], response["total"]
+            for itemSummary in response["itemSummaries"]:
+               product_summery_ebay_models.append( ProductSummeryEbayModel(**itemSummary))
+
+            return product_summery_ebay_models
 
         except Exception as exp:
             self.prompt_on_screen(f"get_products: {exp}")
@@ -77,52 +86,59 @@ class EbayProduct(BaseEbayApi):
     # ...
     # --
 
-    def get_product_ids_with_category_id(self, search_in_ebay_model: SearchInEbayModel):
+    def get_product_ebay_model_with_legacy_item_id(self, legacy_item_id: str, marketplace_id:str="")->ProductEbayModel:
 
         try:
-            offset = 0
-
-            while True:
-                item_summaries, offset, total = self.get_products(search_in_ebay_model)
-                offset += 200
-
-                for product in item_summaries:
-                    self.products.update({product["itemId"]: product})
-
-                if offset >= total:
-                    break
-
-            self.products = dict(list(self.products.items())[: search_in_ebay_model.item_to_fetch])
-            return self.products
-
-        except Exception as exp:
-            self.prompt_on_screen(f"get_product_ids_with_category_id: {exp}")
-
-    # --
-    # ...
-    # --
-
-    def get_product_with_product_id(self, product_id, marketplace=""):
-
-        try:
-            if marketplace == "":
-                marketplace = self.marketplace
+            # in endpoint shortDescription ro nemideh shabih be ProductEbayModel hast
+            if marketplace_id == "":
+                marketplace_id = self.marketplace_id
 
             self.ebay_token_api()
             self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
             response = self.request(
                 method="get",
-                url=f"{self.base_url}{self.product_url}/{product_id}",
+                url=f"{self.base_url}{self.product_url}/get_item_by_legacy_id?legacy_item_id={legacy_item_id}",
                 headers={
                     "Authorization": f"Bearer {self.ebay_access_token}",
-                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace_id}",
                 },
             )
 
-            self.prompt_on_screen(f"product: {response.get('title')}")
-
-            return response
+            self.prompt_on_screen(f"get_product_ebay_model_with_legacy_item_id: legacy_item_id={legacy_item_id}, title:{response.get('title')}")
+            return ProductEbayModel(**response)
 
         except Exception as exp:
-            self.prompt_on_screen(f"get_product_with_product_id: {exp}")
+            self.prompt_on_screen(f"get_product_with_legacy_item_id: {exp}")
+
+    # --
+    # ...
+    # --
+
+    def get_product_ebay_model_with_item_id(self, product_item_id: str, marketplace_id:str="")->ProductEbayModel:
+
+        try:
+            if marketplace_id == "":
+                marketplace_id = self.marketplace_id
+
+            self.ebay_token_api()
+            self.ebay_access_token = self.ebay_token_api.ebay_access_token
+
+            response = self.request(
+                method="get",
+                url=f"{self.base_url}{self.product_url}/{product_item_id}",
+                headers={
+                    "Authorization": f"Bearer {self.ebay_access_token}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{marketplace_id}",
+                },
+            )
+
+            self.prompt_on_screen(f"get_product_ebay_model_with_item_id: product_item_id={product_item_id}, title: {response.get('title')}")
+            return ProductEbayModel(**response)
+
+        except Exception as exp:
+            self.prompt_on_screen(f"get_product_ebay_model_with_item_id: {exp}")
+
+    # --
+    # ...
+    # --

@@ -18,8 +18,9 @@ class SearchInEbayModel:
     conditions: Optional[str] = "{NEW|USED}"
     filter: Optional[str] = None
     q: Optional[str] = None
+    legacy_item_id:Optional[str] = None
     total: Optional[int] = None
-    item_to_fetch: Optional[int] = 1000
+    item_to_fetch: Optional[int] = 5
     price_anpassen: Optional[int] = 1.60
     target_category_name_in_woocommerce: Optional[str] = "Sensoren"
 
