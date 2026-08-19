@@ -103,8 +103,6 @@ class Request(Base):
     # ...
     # --
 
-    async def get_response(self): ...
-
     def get_response(self, wait_counter=5):
 
         try:
@@ -142,6 +140,12 @@ class Request(Base):
             if response.status_code == 401:
                 print("The current user is not correctly authenticated or the session or authentication token has expired.")
                 return "expired token"
+
+            if response.status_code == 400:
+                print("STATUS:", response.status_code)
+                print("request_package:", self.request_package)
+                print("EBAY RESPONSE:")
+                print(response.text)
 
             response.raise_for_status()
 

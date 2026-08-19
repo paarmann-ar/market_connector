@@ -1,10 +1,9 @@
-
 import json
 from dataclasses import asdict, dataclass, fields
 from typing import Optional, Any
-from apis.ebay_api.models.image_ebay_model import ImageEbayModel
-from apis.ebay_api.models.seller_ebay_model import SellerEbayModel
-from apis.ebay_api.models.product_summery_ebay_model import ProductSummeryEbayModel
+from apis.ebay_api.models.browse.image_ebay_model import ImageEbayModel
+from apis.ebay_api.models.browse.seller_ebay_model import SellerEbayModel
+from apis.ebay_api.models.browse.product_summery_ebay_model import ProductSummeryEbayModel
 # --
 # ...
 # --
@@ -17,7 +16,6 @@ class ProductsSummeryEbayModel:
     limit: Optional[int] = None
     offset: Optional[int] = None
     href: Optional[str] = None
-
 
     def __init__(self, **kwargs):
         valid_fields = {f.name for f in fields(self)}

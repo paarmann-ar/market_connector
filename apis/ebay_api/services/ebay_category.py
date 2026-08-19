@@ -18,7 +18,6 @@ class EbayCategory(BaseEbayApi):
         self.product_name = ""
 
         self.ebay_token_api = kwargs.get("ebay_token_api", None)
-        self.ebay_access_token = self.ebay_token_api.ebay_access_token
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
@@ -37,14 +36,14 @@ class EbayCategory(BaseEbayApi):
     def get_default_category_tree_id_with_marketplace_id(self, marketplace):
 
         try:
-            self.ebay_token_api()
-            self.ebay_access_token = self.ebay_token_api.ebay_access_token
+            self.ebay_token_api.get_application_token()
+            ebay_access_token = self.ebay_token_api.ebay_application_token
 
             response = self.request(
                 method="get",
                 url=f"{self.base_url}{self.taxonomy_url}/get_default_category_tree_id?marketplace_id={marketplace}",
                 headers={
-                    "Authorization": f"Bearer {self.ebay_access_token}",
+                    "Authorization": f"Bearer {ebay_access_token}",
                 },
             )
 
@@ -67,14 +66,14 @@ class EbayCategory(BaseEbayApi):
             if category_tree_id == "":
                 category_tree_id = self.category_tree_id
 
-            self.ebay_token_api()
-            self.ebay_access_token = self.ebay_token_api.ebay_access_token
+            self.ebay_token_api.get_application_token()
+            ebay_access_token = self.ebay_token_api.ebay_application_token
 
             response = self.request(
                 method="get",
                 url=f"{self.base_url}{self.taxonomy_url}/category_tree/{category_tree_id}",
                 headers={
-                    "Authorization": f"Bearer {self.ebay_access_token}",
+                    "Authorization": f"Bearer {ebay_access_token}",
                 },
             )
 

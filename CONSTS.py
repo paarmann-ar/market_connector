@@ -6,6 +6,7 @@ from toolboxs.toolbox import Toolbox
 # ... Global Config
 # --
 
+DOWNLOAD_DIR = "/Users/bpm2/Downloads"
 PROJECTS_DIR = "/".join(Toolbox.get_root_path().replace("\\", "/").split("/")[:-1])
 ROOT_DIR = Toolbox.get_root_path().replace("\\", "/")
 APP_DIR = f"{Toolbox.get_root_path()}/app".replace("\\", "/")

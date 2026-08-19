@@ -64,7 +64,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         if not response:
             return None
-        
+
         for category in response:
             if html.unescape(category["name"].lower()) == name.lower():
                 return WoocommerceCategoryModel.from_api(category)

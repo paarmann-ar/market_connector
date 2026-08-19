@@ -31,7 +31,7 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.request = ConnectionProvider().request
 
-        self.cache=Cache()
+        self.cache = Cache()
         self.prompt_manager = PromptManager()
 
     # --

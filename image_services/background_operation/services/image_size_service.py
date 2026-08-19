@@ -34,18 +34,18 @@ class ImageSizeService(Base):
     # ...
     # --
 
-    def optimize_image(self,image_data_model: ImageDataModel) -> ImageDataModel:
+    def optimize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
-            suffix = image_data_model.image_name.find(".")
-            suffix = image_data_model.image_name[suffix:].lower()
+        suffix = image_data_model.image_name.find(".")
+        suffix = image_data_model.image_name[suffix:].lower()
 
-            if suffix in {".jpg", ".jpeg"}:
-                # Keep RGB/RGBA compatibility for JPEG
-                if image_data_model.image_data.mode in ("RGBA", "LA", "P"):
-                    background = Image.new("RGB", image_data_model.image_data.size, "white")
-                    if image_data_model.image_data.mode == "P":
-                        image_data_model.image_data = image_data_model.image_data.convert("RGBA")
-                    background.paste(image_data_model.image_data, mask=image_data_model.image_data.getchannel("A"))
-                    image_data_model.image_data = background
-                else:
-                    image_data_model.image_data = image_data_model.image_data.convert("RGB")
+        if suffix in {".jpg", ".jpeg"}:
+            # Keep RGB/RGBA compatibility for JPEG
+            if image_data_model.image_data.mode in ("RGBA", "LA", "P"):
+                background = Image.new("RGB", image_data_model.image_data.size, "white")
+                if image_data_model.image_data.mode == "P":
+                    image_data_model.image_data = image_data_model.image_data.convert("RGBA")
+                background.paste(image_data_model.image_data, mask=image_data_model.image_data.getchannel("A"))
+                image_data_model.image_data = background
+            else:
+                image_data_model.image_data = image_data_model.image_data.convert("RGB")

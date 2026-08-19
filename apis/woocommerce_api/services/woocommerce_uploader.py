@@ -39,7 +39,7 @@ class WoocommerceUploader(BaseWoocommerceApi):
         self.wp_password = self.config_dictionary.get("wp_password")
 
         self.products_url = self.config_dictionary.get("products_url")
-        
+
         self.woocommerce_product = WoocommerceProduct()
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")

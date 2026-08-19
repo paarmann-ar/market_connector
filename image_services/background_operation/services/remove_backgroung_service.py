@@ -81,7 +81,7 @@ class RemoveBackgroungService(Base):
 
     def finalize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
         try:
-            image_data_model.image_data.save(image_data_model.images_address, "WEBP", quality=80, method=6,optimize=True,progressive=True)
+            image_data_model.image_data.save(image_data_model.images_address, "WEBP", quality=80, method=6, optimize=True, progressive=True)
 
             return image_data_model
 

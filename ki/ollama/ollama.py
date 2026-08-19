@@ -111,7 +111,7 @@ class Ollama(Base):
             cache = self.cache.get_from_cache(cache_file=self.cache_file_name, key=input_message_model.inputs.get("cache_id"))
             if cache:
                 return cache
-                
+
             if not ollama_prompt_model:
                 ollama_prompt_model = self.convert_prompt_model_to_ollama_prompt_model(input_message_model)
 

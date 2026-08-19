@@ -78,7 +78,7 @@ class BackgroundOperation(Base):
 
             for image_data_model in image_data_models:
                 self.image_size_service.optimize_image(image_data_model)
-                
+
                 image_data_model = self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
 
                 self.prompt_on_screen(f"image proccing for {image_data_model.images_address} has been finished")

@@ -1,5 +1,5 @@
 from toolboxs.decorators import singleton
-from image_services.image_processing_pipeline . image_processing_pipline import ImageProcessingPipline
+from image_services.image_processing_pipeline.image_processing_pipline import ImageProcessingPipline
 
 # --
 # ...

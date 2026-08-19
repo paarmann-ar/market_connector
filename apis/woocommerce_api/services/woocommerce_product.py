@@ -49,8 +49,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
     # ...
     # --
 
-
-    def get_product_by_name(self, name: str, record_per_page: int = 100)->WoocommerceProductModel:
+    def get_product_by_name(self, name: str, record_per_page: int = 100) -> WoocommerceProductModel:
 
         try:
             response = self.request(
@@ -64,12 +63,11 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 },
             )
 
-
             if not response:
                 return None
 
             return WoocommerceProductModel(**response[0])
-        
+
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_name: {exp}")
 
@@ -77,7 +75,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
     # ...
     # --
 
-    def get_all_products(self, record_per_page: int = 100)->[WoocommerceProductModel]:
+    def get_all_products(self, record_per_page: int = 100) -> [WoocommerceProductModel]:
 
         try:
             response = self.request(
@@ -86,10 +84,10 @@ class WoocommerceProduct(BaseWoocommerceApi):
                 auth=(self.consumer_key, self.consumer_secret),
                 params={"per_page": record_per_page},
             )
-            woocommerce_product_models:list[WoocommerceProductModel]=[]
+            woocommerce_product_models: list[WoocommerceProductModel] = []
 
             for product in response:
-                woocommerce_product_models.append( WoocommerceProductModel(**product))
+                woocommerce_product_models.append(WoocommerceProductModel(**product))
 
             return woocommerce_product_models
 

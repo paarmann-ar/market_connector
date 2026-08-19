@@ -12,7 +12,7 @@ from toolboxs.numbers import Numbers
 from toolboxs.text import Text
 
 if TYPE_CHECKING:
-    from apis.ebay_api.models.product_ebay_model import ProductEbayModel
+    from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 
 # --
 # ...

@@ -1,9 +1,8 @@
-
 import json
 from dataclasses import asdict, dataclass, fields
 from typing import Optional, Any
-from apis.ebay_api.models.image_ebay_model import ImageEbayModel
-from apis.ebay_api.models.seller_ebay_model import SellerEbayModel
+from apis.ebay_api.models.browse.image_ebay_model import ImageEbayModel
+from apis.ebay_api.models.browse.seller_ebay_model import SellerEbayModel
 
 # --
 # ...
@@ -29,7 +28,7 @@ class ProductSummeryEbayModel:
     itemWebUrl: Optional[str] = None
     itemLocation: Optional[Any] = None
     additionalImages: Optional[Any] = None
-    adultOnly: Optional[str] = None 
+    adultOnly: Optional[str] = None
     legacyItemId: Optional[str] = None
     availableCoupons: Optional[str] = None
     itemOriginDate: Optional[str] = None
@@ -37,7 +36,6 @@ class ProductSummeryEbayModel:
     topRatedBuyingExperience: Optional[str] = None
     priorityListing: Optional[str] = None
     listingMarketplaceId: Optional[str] = None
-
 
     # --
     # ...

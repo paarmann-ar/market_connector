@@ -55,10 +55,10 @@ class ImageProcessingPipline(Base):
 
         except Exception as exp:
             self.error(f"download_image: {exp}")
- 
+
     # --
     # ...
     # --
 
-    def reduce_image_size(self, image_directory_model:ImageDirectoryModel):
+    def reduce_image_size(self, image_directory_model: ImageDirectoryModel):
         self.background_operation.reduce_image_size(image_directory_model)

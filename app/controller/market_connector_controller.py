@@ -7,7 +7,7 @@ from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 from app.core.base import Base
 from image_services.models.image_data_model import ImageDataModel
 from toolboxs.file_and_folder_operation import FileAndFolderOperation
-from apis.ebay_api.models.product_ebay_model import ProductEbayModel
+from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 
 # --
 # ...
@@ -25,16 +25,18 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def fetch_from_ebay(self, search_in_ebay_model: SearchInEbayModel)->list[ProductEbayModel]:
-        product_ebay_models = self.apis_provider.ebay_api.fetch_product_from_ebay_by_search_in_ebay_model(search_in_ebay_model=search_in_ebay_model)
+    def fetch_from_ebay(self, search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
+        product_ebay_models = self.apis_provider.ebay_api.fetch_product_from_ebay_by_search_in_ebay_model(
+            search_in_ebay_model=search_in_ebay_model
+        )
 
         return product_ebay_models
-    
+
     # --
     # ...
     # --
 
-    def convert_ebay_to_woocommerce_product_model(self, product_ebay_models:list[ProductEbayModel]) -> list[WoocommerceProductModel]:
+    def convert_ebay_to_woocommerce_product_model(self, product_ebay_models: list[ProductEbayModel]) -> list[WoocommerceProductModel]:
         # ebay_product_detail_model_list = self.apis_provider.ebay_api.product_detail_list
         return self.apis_provider.woocommerce_api.convert_ebay_product_model_to_woocommerce_product_model(
             product_ebay_models=product_ebay_models
@@ -44,7 +46,7 @@ class MarketConnectorController(Base):
     # ...
     # --
 
-    def image_convertor_pipline(self, woocommerce_product_models:list[WoocommerceProductModel])->None:
+    def image_convertor_pipline(self, woocommerce_product_models: list[WoocommerceProductModel]) -> None:
 
         for woocommerce_product_model in woocommerce_product_models:
             image_data_models: list[ImageDataModel] = []
@@ -70,11 +72,15 @@ class MarketConnectorController(Base):
                 image.src = url
 
             FileAndFolderOperation.remove_nestet_folder(self.image_provider.image_processing_pipline.images_address)
-        
 
     # --
     # ...
     # --
 
-    def upload_model_to_woocommerce(self, woocommerce_product_models :list[WoocommerceProductModel], search_in_ebay_model: SearchInEbayModel) -> bool:
-        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(woocommerce_product_models = woocommerce_product_models, target_woocommerce_category_name = search_in_ebay_model.target_category_name_in_woocommerce)
+    def upload_model_to_woocommerce(
+        self, woocommerce_product_models: list[WoocommerceProductModel], search_in_ebay_model: SearchInEbayModel
+    ) -> bool:
+        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(
+            woocommerce_product_models=woocommerce_product_models,
+            target_woocommerce_category_name=search_in_ebay_model.target_category_name_in_woocommerce,
+        )

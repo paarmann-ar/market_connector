@@ -148,7 +148,7 @@ class JSONManager(metaclass=SingletonMeta):
             return json_data
 
         except Exception as exp:
-            self.error(repr(f"{exp} -> {address}"))
+            (repr(f"{exp} -> {address}"))
 
     # --
     # ...

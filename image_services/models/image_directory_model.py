@@ -1,6 +1,7 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional, Any
+import CONSTS
 
 # --
 # ...
@@ -9,7 +10,7 @@ from typing import Optional, Any
 
 @dataclass
 class ImageDirectoryModel:
-    images_folder_adress: Optional[str] = None
+    images_folder_adress: Optional[str] = CONSTS.DOWNLOAD_DIR
 
     # --
     # ...
