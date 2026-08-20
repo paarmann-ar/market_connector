@@ -1,6 +1,6 @@
 import os
 import shutil
-
+from pathlib import Path
 import CONSTS
 
 # --
@@ -88,3 +88,16 @@ class FileAndFolderOperation:
 
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
+
+    # --
+    # ...
+    # --
+
+    @staticmethod
+    def copy_file(source, destination):
+        source = Path(source)
+        destination = Path(destination)
+
+        destination.parent.mkdir(parents=True, exist_ok=True)
+
+        shutil.copy2(source, destination)

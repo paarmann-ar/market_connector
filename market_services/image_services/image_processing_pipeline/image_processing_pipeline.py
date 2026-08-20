@@ -1,5 +1,6 @@
 import CONSTS
 from apis.apis_provider import ApisProvider
+from toolboxs.file_and_folder_operation import FileAndFolderOperation
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 from market_services.image_services.background_operation.background_operation import BackgroundOperation
@@ -20,11 +21,13 @@ class ImageProcessingPipeline(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         self.images_address = f"{CONSTS.ROOT_DIR}{self.config_dictionary.get('images_address')}"
+        self.cache_file_name = self.config_dictionary.get("cache_file_name")
 
         self.cloud_operation = CloudOperation()
         self.background_operation = BackgroundOperation()
 
         FileAndFolderOperation.remove_nestet_folder(self.images_address)
+
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
     # --
@@ -42,6 +45,18 @@ class ImageProcessingPipeline(Base):
     def download_url_remove_white_bg_image(self, image_data_models: list[ImageDataModel]) -> list[ImageDataModel]:
 
         try:
+            finded_image_data_models = []
+            for image_data_model in reversed(image_data_models):
+                cache = self.cache.get_from_cache(cache_file=self.cache_file_name, key=image_data_model.image_url)
+                if cache:
+                    image_file_name = cache.split("/")[-1]
+                    image_data_model.images_address = cache
+                    image_data_model.image_name = image_file_name
+                    finded_image_data_models.append(image_data_model)
+
+                    FileAndFolderOperation.copy_file(source=f"{CONSTS.IMAGES_CACHE}/{image_data_model.image_name}", destination=cache)
+                    image_data_models.remove(image_data_model)
+
             for image_data_model in image_data_models:
                 if not image_data_model.image_name:
                     image_name = RandomExpertion.get_uuid(postfix=".webp")
@@ -52,8 +67,22 @@ class ImageProcessingPipeline(Base):
 
                 image_data_model = self.cloud_operation.download_image_from_url(image_data_model)
 
+            image_url_by_image_name = {image.image_name: image.image_url for image in image_data_models}
+
             image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
 
+            for image_data_model in image_data_models:
+                image_data_model.image_url = image_url_by_image_name.get(image_data_model.image_name)
+
+            for image_data_model in image_data_models:
+                self.cache.update_cache(
+                    key=image_data_model.image_url, data=f"{image_data_model.images_address}", cache_file=self.cache_file_name
+                )
+                FileAndFolderOperation.copy_file(
+                    source=image_data_model.images_address, destination=f"{CONSTS.IMAGES_CACHE}/{image_data_model.image_name}"
+                )
+
+            image_data_models.extend(finded_image_data_models)
             return image_data_models
 
         except Exception as exp:
@@ -82,7 +111,7 @@ class ImageProcessingPipeline(Base):
                 )
                 image_data_models.append(image_data_model)
 
-            self.download_url_remove_white_bg_image(image_data_models=image_data_models)
+            image_data_models = self.download_url_remove_white_bg_image(image_data_models=image_data_models)
 
             for image_data_model in image_data_models:
                 wordpress_media_model = WordpressMediaModel(

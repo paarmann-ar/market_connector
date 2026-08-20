@@ -36,6 +36,3 @@ class CloudOperation(Base):
 
         except Exception as exp:
             self.error(f"download_image: {exp}")
-
-
-# CloudOperation().download_image_from_url(url="https://i.ebayimg.com/images/g/S3YAAOSwZR5gWHWN/s-l1600.webp")

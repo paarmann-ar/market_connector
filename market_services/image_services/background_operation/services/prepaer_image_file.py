@@ -16,6 +16,8 @@ class PrepaerImageFile(Base):
     def __init__(self, **kwargs):
         super(**kwargs).__init__(**kwargs)
 
+        self.cache_file_name = self.config_dictionary.get("cache_file_name")
+
     # --
     # ...
     # --
@@ -45,6 +47,10 @@ class PrepaerImageFile(Base):
 
             for image_path in images_folder_adress.iterdir():
                 if image_path.suffix.lower() not in extensions:
+                    continue
+
+                cache = self.cache.get_from_cache(cache_file=self.cache_file_name, is_change_k_v=True)
+                if cache.get(str(image_path)):
                     continue
 
                 image_data_model = ImageDataModel(images_address=f"{images_folder_adress}/{image_path.name}", image_name=image_path.name)

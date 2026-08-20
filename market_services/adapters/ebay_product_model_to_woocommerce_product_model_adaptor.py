@@ -43,7 +43,7 @@ class EbayProductModelToWoocommerceProductModelAdaptor:
 
         return WoocommerceProductModel(
             categories=WoocommerceCategoryModel(name=product_ebay_model.categoryPath.split("|")[-1]),
-            brands=WoocommerceBrandModel(name=product_ebay_model.brand),
+            brands=[WoocommerceBrandModel(name=product_ebay_model.brand)],
             tags=woocommerce_tags_model,
             meta_data=product_output_metadata_model.image_seo_model,
             name=product_output_metadata_model.title,
