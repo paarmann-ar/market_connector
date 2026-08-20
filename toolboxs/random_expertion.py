@@ -1,6 +1,6 @@
-import uuid
 import math
 import random
+import uuid
 
 # --
 # ...

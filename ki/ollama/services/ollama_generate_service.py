@@ -1,8 +1,9 @@
-from ollama import chat
 from ollama import generate
+
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
 from toolboxs.date_and_time import DateAndTime
+
 # --
 # ...
 # --

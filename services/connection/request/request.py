@@ -142,10 +142,10 @@ class Request(Base):
                 return "expired token"
 
             if response.status_code == 400:
-                print("STATUS:", response.status_code)
-                print("request_package:", self.request_package)
-                print("EBAY RESPONSE:")
-                print(response.text)
+                self.prompt_on_screen("STATUS:", response.status_code)
+                self.prompt_on_screen("request_package:", self.request_package)
+                self.prompt_on_screen("EBAY RESPONSE:")
+                self.prompt_on_screen(response.text)
 
             response.raise_for_status()
 

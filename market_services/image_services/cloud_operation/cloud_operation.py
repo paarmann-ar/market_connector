@@ -1,8 +1,7 @@
-from image_services.core.base import Base
-from image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
-from image_services.models.image_data_model import ImageDataModel
-from image_services.cloud_operation.services.download_image import DownloadImage
-import CONSTS
+from market_services.image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
+from market_services.image_services.cloud_operation.services.download_image import DownloadImage
+from market_services.image_services.core.base import Base
+from market_services.image_services.models.image_data_model import ImageDataModel
 
 # --
 # ...

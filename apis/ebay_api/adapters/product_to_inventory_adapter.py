@@ -1,7 +1,6 @@
 from apis.ebay_api.models.browse.product_ebay_model import (
     ProductEbayModel,
 )
-
 from apis.ebay_api.models.inventory import (
     InventoryProductModel,
     InventoryProductDetailsModel,
@@ -55,11 +54,17 @@ class ProductToInventoryAdapter:
 
         availability = InventoryAvailabilityModel(shipToLocationAvailability=(ShipToLocationAvailabilityModel(quantity=quantity)))
 
+        a = 1
+        if product.price["currency"] == "USD":
+            a = a * 1.2
+            product.price["currency"] = "EUR"
+        price = {"value": str(float(product.price["value"]) * product.price_anpassen * a), "currency": product.price["currency"]}
+
         return InventoryProductModel(
             sku=product.sku,
             product=inventory_product,
             availability=availability,
             condition=product.condition,
             conditionDescription=(product.conditionDescription),
-            price=str(float(product.price["value"]) * product.price_anpassen),
+            price=price,
         )

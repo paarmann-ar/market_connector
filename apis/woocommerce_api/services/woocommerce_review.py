@@ -1,5 +1,3 @@
-import html
-
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
@@ -99,23 +97,24 @@ class WoocommerceReview(BaseWoocommerceApi):
 
         return self.upload_review(WoocommerceReviewModel(name=woocommerce_review_model.name))
 
-    # --
-    # ...
-    # --
 
-    # def delete_brand_by_brand_id(self, brand_id: int):
+# --
+# ...
+# --
 
-    #     try:
-    #         response = self.request(
-    #             method="delete",
-    #             url=f"{self.base_url}{self.brand_url}/{brand_id}",
-    #             auth=(self.consumer_key, self.consumer_secret),
-    #             params={"force": True},
-    #         )
+# def delete_brand_by_brand_id(self, brand_id: int):
 
-    #         self.prompt_on_screen(f"brand deleted: {response}")
+#     try:
+#         response = self.request(
+#             method="delete",
+#             url=f"{self.base_url}{self.brand_url}/{brand_id}",
+#             auth=(self.consumer_key, self.consumer_secret),
+#             params={"force": True},
+#         )
 
-    #         return response
+#         self.prompt_on_screen(f"brand deleted: {response}")
 
-    #     except Exception as exp:
-    #         self.prompt_on_screen(f"delete_brand_by_brand_id: {exp}")
+#         return response
+
+#     except Exception as exp:
+#         self.prompt_on_screen(f"delete_brand_by_brand_id: {exp}")

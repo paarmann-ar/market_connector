@@ -1,6 +1,6 @@
-from image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
-from image_services.core.base import Base
-from image_services.models.image_data_model import ImageDataModel
+from market_services.image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
+from market_services.image_services.core.base import Base
+from market_services.image_services.models.image_data_model import ImageDataModel
 
 # --
 # ...

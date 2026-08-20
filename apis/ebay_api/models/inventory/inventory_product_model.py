@@ -5,15 +5,12 @@ from typing import Any, Optional
 from apis.ebay_api.models.inventory.inventory_availability_model import (
     InventoryAvailabilityModel,
 )
-
 from apis.ebay_api.models.inventory.inventory_condition_descriptor_model import (
     InventoryConditionDescriptorModel,
 )
-
 from apis.ebay_api.models.inventory.inventory_package_model import (
     InventoryPackageWeightAndSizeModel,
 )
-
 from apis.ebay_api.models.inventory.inventory_product_details_model import (
     InventoryProductDetailsModel,
 )

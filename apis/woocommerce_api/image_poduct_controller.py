@@ -1,8 +1,7 @@
-from typing import Any
-
-from apis.woocommerce_api.core.base_woocommerce_api import BaseWoocommerceApi
 import CONSTS
+from apis.woocommerce_api.core.base_woocommerce_api import BaseWoocommerceApi
 from apis.wordpress_api.wordpress_api import WordpressApi
+
 # --
 # ...
 # --

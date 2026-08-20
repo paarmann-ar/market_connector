@@ -171,7 +171,6 @@ REMOVE ANY SENTENCE, PHRASE, OR PARAGRAPH related to:
 * Rechnung
 
 Example text that MUST be completely removed:
-
 "Zölle, Steuern und andere Gebühren sind nicht im Artikelpreis
 oder den Versandkosten enthalten. Diese Gebühren liegen in der
 Verantwortung des Käufers."

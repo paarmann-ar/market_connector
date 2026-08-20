@@ -4,10 +4,11 @@ from typing import Any
 from apis.core.prompt_on_screen import PromptOnScreen
 from apis.core.singleton_meta import SingletonMeta
 from apis.core.waiting import Wating
-from services.disk.service_disk_provider import ServiceDiskProvider
-from services.connection.connection_provider import ConnectionProvider
-from services.logging.log_provider import LogProvider
 from ki.ki_provider import KiProvider
+from services.connection.connection_provider import ConnectionProvider
+from services.disk.service_disk_provider import ServiceDiskProvider
+from services.logging.log_provider import LogProvider
+
 # --
 # ...
 # --

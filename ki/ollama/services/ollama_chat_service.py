@@ -1,5 +1,5 @@
 from ollama import chat
-from ollama import generate
+
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
 
@@ -53,6 +53,7 @@ class OllamaChatService(Base):
         except Exception as exp:
             print(f"chat_with_ollama: {exp}")
 
-    # --
-    # ...
-    # --
+
+# --
+# ...
+# --

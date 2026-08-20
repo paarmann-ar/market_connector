@@ -1,12 +1,12 @@
 import base64
 import time
-from urllib.parse import urlparse, parse_qs, urlencode
+import webbrowser
+from urllib.parse import parse_qs, urlencode, urlparse
 
 from apis.ebay_api.config.ebay_api_config import (
     EbayApiConfig,
 )
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
-import webbrowser
 
 # --
 # ...

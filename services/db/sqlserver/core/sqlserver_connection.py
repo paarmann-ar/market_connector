@@ -1,6 +1,6 @@
 from typing import Any
-import pyodbc
 
+import pyodbc
 
 # --
 # ...

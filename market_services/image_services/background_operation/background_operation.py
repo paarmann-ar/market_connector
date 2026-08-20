@@ -1,12 +1,12 @@
 import CONSTS
-from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
-from image_services.background_operation.services.find_product_box import FindProductBox
-from image_services.background_operation.services.prepaer_image_file import PrepaerImageFile
-from image_services.background_operation.services.remove_backgroung_service import RemoveBackgroungService
-from image_services.core.base import Base
-from image_services.models.image_data_model import ImageDataModel
-from image_services.models.image_directory_model import ImageDirectoryModel
-from image_services.background_operation.services.image_size_service import ImageSizeService
+from market_services.image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from market_services.image_services.background_operation.services.find_product_box import FindProductBox
+from market_services.image_services.background_operation.services.image_size_service import ImageSizeService
+from market_services.image_services.background_operation.services.prepaer_image_file import PrepaerImageFile
+from market_services.image_services.background_operation.services.remove_backgroung_service import RemoveBackgroungService
+from market_services.image_services.core.base import Base
+from market_services.image_services.models.image_data_model import ImageDataModel
+from market_services.image_services.models.image_directory_model import ImageDirectoryModel
 
 # --
 # ...

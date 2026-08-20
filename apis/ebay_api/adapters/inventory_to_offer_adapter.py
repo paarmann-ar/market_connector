@@ -22,12 +22,7 @@ class InventoryToOfferAdapter:
             "returnPolicyId": offer_ebay_config.return_policy_id,
         }
 
-        pricing_summary = {
-            "price": {
-                "value": inventory_product_model.price,
-                "currency": offer_ebay_config.currency,
-            }
-        }
+        pricing_summary = {"price": inventory_product_model.price}
 
         return OfferEbayModel(
             sku=inventory_product_model.sku,
@@ -36,7 +31,7 @@ class InventoryToOfferAdapter:
             categoryId=offer_ebay_config.category_id,
             merchantLocationKey=offer_ebay_config.merchant_location_key,
             availableQuantity=inventory_product_model.quantity,
-            listingDescription=inventory_product_model.product.get("description"),
+            listingDescription=inventory_product_model.product.description,
             listingDuration=offer_ebay_config.listing_duration,
             pricingSummary=pricing_summary,
             listingPolicies=listing_policies,

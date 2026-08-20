@@ -1,8 +1,6 @@
 import json
 from dataclasses import asdict, dataclass, fields
-from typing import Optional, Any
-from apis.ebay_api.models.browse.image_ebay_model import ImageEbayModel
-from apis.ebay_api.models.browse.seller_ebay_model import SellerEbayModel
+from typing import Any, Optional
 
 # --
 # ...

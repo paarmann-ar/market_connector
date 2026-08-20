@@ -1,14 +1,14 @@
 from abc import ABC
 from typing import Any
-from apis.core.singleton_meta import SingletonMeta
 
+from apis.core.singleton_meta import SingletonMeta
+from apis.core.waiting import Wating
 from app.core.config.base_config import BaseConfig
 from app.core.prompt_on_screen import PromptOnScreen
-from apis.core.waiting import Wating
+from market_services.image_services.image_provider.image_provider import ImageProvider
 from services.disk.json.json_manager import JSONManager
 from services.logging.log_provider import LogProvider
 from services.mail.email_provider import EMailProvider
-from image_services.image_provider.image_provider import ImageProvider
 
 # --
 # ...

@@ -1,6 +1,6 @@
 class Text:
     @staticmethod
-    def remove_dublicate_words_from_string(context: str = " ") -> str:
+    def remove_duplicate_words_from_string(context: str = " ") -> str:
         seen = set()
         result = []
 

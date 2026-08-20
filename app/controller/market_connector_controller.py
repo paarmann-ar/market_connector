@@ -1,86 +1,205 @@
-import os
-
 from apis.apis_provider import ApisProvider
+from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
-from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
-from app.core.base import Base
-from image_services.models.image_data_model import ImageDataModel
-from toolboxs.file_and_folder_operation import FileAndFolderOperation
-from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 
-# --
-# ...
-# --
+from market_services.adapters.ebay_product_model_to_woocommerce_product_model_adaptor import (
+    EbayProductModelToWoocommerceProductModelAdaptor,
+)
+from market_services.image_services.image_processing_pipeline.image_processing_pipeline import (
+    ImageProcessingPipeline,
+)
 
 
-class MarketConnectorController(Base):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class MarketConnectorController:
+    """
+    Controller responsible for connecting eBay and WooCommerce.
+    """
 
-        self.apis_provider = ApisProvider()
-        self.woocommerce_product_models: list[WoocommerceProductModel] = []
+    # -------------------------------------------------------------------------
+    # eBay
+    # -------------------------------------------------------------------------
 
-    # --
-    # ...
-    # --
+    @staticmethod
+    def fetch_from_ebay(
+        search_in_ebay_model: SearchInEbayModel,
+    ) -> list[ProductEbayModel]:
+        """
+        Fetch products from eBay based on the given search model.
+        """
 
-    def fetch_from_ebay(self, search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
-        product_ebay_models = self.apis_provider.ebay_api.fetch_product_from_ebay_by_search_in_ebay_model(
-            search_in_ebay_model=search_in_ebay_model
-        )
+        return ApisProvider().ebay_api.pipeline_fetch_product_from_ebay_by_search_in_ebay_model(search_in_ebay_model=search_in_ebay_model)
 
-        return product_ebay_models
+    # -------------------------------------------------------------------------
+    # WooCommerce
+    # -------------------------------------------------------------------------
 
-    # --
-    # ...
-    # --
-
-    def convert_ebay_to_woocommerce_product_model(self, product_ebay_models: list[ProductEbayModel]) -> list[WoocommerceProductModel]:
-        # ebay_product_detail_model_list = self.apis_provider.ebay_api.product_detail_list
-        return self.apis_provider.woocommerce_api.convert_ebay_product_model_to_woocommerce_product_model(
-            product_ebay_models=product_ebay_models
-        )
-
-    # --
-    # ...
-    # --
-
-    def image_convertor_pipline(self, woocommerce_product_models: list[WoocommerceProductModel]) -> None:
-
-        for woocommerce_product_model in woocommerce_product_models:
-            image_data_models: list[ImageDataModel] = []
-            wordpress_media_models: list[WordpressMediaModel] = []
-
-            for woocommerce_product_model_image in woocommerce_product_model.images:
-                image_data_model = ImageDataModel(
-                    image_url=woocommerce_product_model_image.src, is_main_image=woocommerce_product_model_image.is_main_image
-                )
-                image_data_models.append(image_data_model)
-
-            self.image_provider.image_processing_pipline.download_url_remove_white_bg_image(image_data_models=image_data_models)
-
-            for image_data_model in image_data_models:
-                wordpress_media_model = WordpressMediaModel(
-                    media_address=image_data_model.images_address, media_name=image_data_model.image_name
-                )
-                wordpress_media_models.append(wordpress_media_model)
-
-            source_urls = self.apis_provider.wordpress_api.upload_media_models_from_disk(media_models=wordpress_media_models)
-            # main image ro ba if bezaram
-            for image, url in zip(woocommerce_product_model.images, source_urls):
-                image.src = url
-
-            FileAndFolderOperation.remove_nestet_folder(self.image_provider.image_processing_pipline.images_address)
-
-    # --
-    # ...
-    # --
-
-    def upload_model_to_woocommerce(
-        self, woocommerce_product_models: list[WoocommerceProductModel], search_in_ebay_model: SearchInEbayModel
+    @staticmethod
+    def upload_to_woocommerce(
+        woocommerce_product_models: list[WoocommerceProductModel],
+        search_in_ebay_model: SearchInEbayModel,
     ) -> bool:
-        self.apis_provider.woocommerce_api.upload_product_model_to_woocommerce(
+        """
+        Upload WooCommerce products to the target WooCommerce category.
+        """
+
+        return ApisProvider().woocommerce_api.upload_product_model_to_woocommerce(
             woocommerce_product_models=woocommerce_product_models,
-            target_woocommerce_category_name=search_in_ebay_model.target_category_name_in_woocommerce,
+            target_woocommerce_category_name=(search_in_ebay_model.target_category_name_in_woocommerce),
         )
+
+    # -------------------------------------------------------------------------
+    # eBay -> WooCommerce
+    # -------------------------------------------------------------------------
+
+    @staticmethod
+    def sync_ebay_to_woocommerce(
+        search_in_ebay_model: SearchInEbayModel,
+    ) -> bool:
+        """
+        Fetch products from eBay, convert them to WooCommerce models,
+        process images and upload them to WooCommerce.
+        """
+
+        product_ebay_models = MarketConnectorController.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+
+        if not product_ebay_models:
+            return False
+
+        woocommerce_product_models: list[WoocommerceProductModel] = []
+
+        adaptor = EbayProductModelToWoocommerceProductModelAdaptor()
+
+        for product_ebay_model in product_ebay_models:
+            product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
+
+            woocommerce_product_model = adaptor.adapter(product_ebay_model=product_ebay_model)
+
+            woocommerce_product_models.append(woocommerce_product_model)
+
+        if not woocommerce_product_models:
+            return False
+
+        ImageProcessingPipeline().image_convertor_pipeline(woocommerce_product_models=woocommerce_product_models)
+
+        return MarketConnectorController.upload_to_woocommerce(
+            woocommerce_product_models=woocommerce_product_models,
+            search_in_ebay_model=search_in_ebay_model,
+        )
+
+    # -------------------------------------------------------------------------
+    # eBay -> eBay
+    # -------------------------------------------------------------------------
+
+    @staticmethod
+    def create_ebay_offers(
+        search_in_ebay_model: SearchInEbayModel,
+    ) -> bool:
+        """
+        Fetch products from eBay and create offers on eBay.
+        """
+
+        product_ebay_models = MarketConnectorController.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+
+        if not product_ebay_models:
+            return False
+
+        ebay_api = ApisProvider().ebay_api
+
+        for product_ebay_model in product_ebay_models:
+            product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
+
+            # TODO:
+            # Generate a unique SKU instead of using a hard-coded value.
+            product_ebay_model.sku = "im_US_ebay_0000001"
+
+            ebay_api.pipeline_create_ebay_offer(
+                product_ebay_model=product_ebay_model,
+                marketplace_id="EBAY_DE",
+            )
+
+        return True
+
+
+# from apis.apis_provider import ApisProvider
+# from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
+# from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
+# from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
+# from app.core.base import Base
+# from app.controller.market_connector_controller import MarketConnectorController
+# from market_services.adapters.ebay_product_model_to_woocommerce_product_model_adaptor import (
+#     EbayProductModelToWoocommerceProductModelAdaptor,
+# )
+# from market_services.image_services.image_processing_pipeline.image_processing_pipeline import ImageProcessingPipeline
+
+# # --
+# # ...
+# # --
+
+
+# class MarketConnectorController:
+#     # --
+#     # ...
+#     # --
+#     @staticmethod
+#     def fetch_from_ebay(search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
+#         product_ebay_models = ApisProvider().ebay_api.pipeline_fetch_product_from_ebay_by_search_in_ebay_model(
+#             search_in_ebay_model=search_in_ebay_model
+#         )
+
+#         return product_ebay_models
+
+#     # --
+#     # ...
+#     # --
+
+#     @staticmethod
+#     def upload_model_to_woocommerce(
+#         woocommerce_product_models: list[WoocommerceProductModel], search_in_ebay_model: SearchInEbayModel
+#     ) -> bool:
+#         ApisProvider().woocommerce_api.upload_product_model_to_woocommerce(
+#             woocommerce_product_models=woocommerce_product_models,
+#             target_woocommerce_category_name=search_in_ebay_model.target_category_name_in_woocommerce,
+#         )
+
+#     # --
+#     # ...
+#     # --
+
+#     @staticmethod
+#     def download_from_ebay_and_create_offer_on_woocommerce_pipeline(search_in_ebay_model: SearchInEbayModel):
+#         market_connector_controller = MarketConnectorController()
+
+#         product_ebay_models = market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+
+#         woocommerce_product_models: list[WoocommerceProductModel] = []
+#         for product_ebay_model in product_ebay_models:
+#             product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
+
+#             woocommerce_product_models.append(EbayProductModelToWoocommerceProductModelAdaptor().adapter(product_ebay_model=product_ebay_model))
+
+#         ImageProcessingPipeline().image_convertor_pipeline(woocommerce_product_models=woocommerce_product_models)
+
+#         market_connector_controller.upload_model_to_woocommerce(
+#             woocommerce_product_models=woocommerce_product_models, search_in_ebay_model=search_in_ebay_model
+#         )
+
+#     # --
+#     # ...
+#     # --
+
+#     @staticmethod
+#     def download_from_ebay_and_create_offer_on_ebay_pipeline(search_in_ebay_model: SearchInEbayModel):
+#         market_connector_controller = MarketConnectorController()
+
+#         product_ebay_models = market_connector_controller.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+
+#         for product_ebay_model in product_ebay_models:
+#             product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
+
+#             product_ebay_model.sku = "im_US_ebay_0000001"
+#             market_connector_controller.apis_provider.ebay_api.pipeline_create_ebay_offer(
+#                 product_ebay_model=product_ebay_model, marketplace_id="EBAY_DE"
+#             )
+
+#         return

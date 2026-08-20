@@ -11,10 +11,10 @@ PROJECTS_DIR = "/".join(Toolbox.get_root_path().replace("\\", "/").split("/")[:-
 ROOT_DIR = Toolbox.get_root_path().replace("\\", "/")
 APP_DIR = f"{Toolbox.get_root_path()}/app".replace("\\", "/")
 CONFIG_JSON = ROOT_DIR + "/config/config.json"
-KI_PROMPT_DIR = ROOT_DIR + "/ki_prompts/"
-CACHE = ROOT_DIR + "/cache/"
+KI_PROMPT_DIR = ROOT_DIR + "/ki/ki_prompts"
+CACHE = ROOT_DIR + "/cache"
 EXTERNAL_FILES = ROOT_DIR + "/.external_files"
-IMAGE_FILES = ROOT_DIR + "/image_services"
+IMAGE_FILES = ROOT_DIR + "/market_services/image_services"
 
 # --
 # ... colors

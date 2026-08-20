@@ -2,13 +2,14 @@ import json
 from dataclasses import asdict, dataclass, field
 from typing import Optional
 
+from apis.seo_api.models.rank_math_model import RankMathModel
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
 from apis.woocommerce_api.models.woocommerce_category_model import (
     WoocommerceCategoryModel,
 )
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
-from apis.seo_api.models.rank_math_model import RankMathModel
+
 # --
 # ...
 # --
@@ -27,7 +28,7 @@ class WoocommerceProductModel:
     price: Optional[str] = ""
     regular_price: Optional[str] = ""
     sale_price: Optional[str] = ""
-    on_sale: Optional[bool] = False
+    on_sale: Optional[bool] = True
     tax_status: Optional[str] = "taxable"
     tax_class: Optional[str] = ""
     manage_stock: Optional[bool] = False

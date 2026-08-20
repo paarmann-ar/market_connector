@@ -1,3 +1,5 @@
+import json
+
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
 from ki.ollama.models.ollama_message_model import OllamaMessageModel
@@ -5,8 +7,6 @@ from ki.ollama.models.ollama_prompt_model import OllamaPromptModel
 from ki.ollama.services.ollama_chat_service import OllamaChatService
 from ki.ollama.services.ollama_generate_service import OllamaGenerateService
 from ki.prompt_provider.models.input_message_model import InputMessageModel
-import json
-import CONSTS
 
 # --
 # ...
@@ -40,10 +40,6 @@ class Ollama(Base):
         try:
             message = self.prompt_manager.load_prompt_from_file(input_message.md_file_name, input_message.inputs)
 
-            # "seo",
-            # title=product.title,
-            # description=product.description,
-
             ollama_message_model = OllamaMessageModel()
             ollama_message_model.content = message
 
@@ -60,10 +56,6 @@ class Ollama(Base):
 
         try:
             message = self.prompt_manager.load_prompt_from_file(input_message.md_file_name, input_message.inputs)
-
-            # "seo",
-            # title=product.title,
-            # description=product.description,
 
             ollama_prompt_model = OllamaPromptModel()
             ollama_prompt_model.content = message

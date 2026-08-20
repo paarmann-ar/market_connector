@@ -1,3 +1,5 @@
+from typing import TYPE_CHECKING
+
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
@@ -6,7 +8,6 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 )
 from ki.prompt_provider.models.input_message_model import InputMessageModel
 from toolboxs.html import Html
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel

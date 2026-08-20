@@ -1,4 +1,5 @@
 from typing import Any
+
 from services.core.singleton_meta import SingletonMeta
 
 # --

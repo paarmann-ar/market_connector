@@ -2,10 +2,10 @@ from pathlib import Path
 
 from PIL import Image
 
-from image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
-from image_services.core.base import Base
-from image_services.models.image_data_model import ImageDataModel
-from image_services.models.image_directory_model import ImageDirectoryModel
+from market_services.image_services.background_operation.config.background_operation_config import BackgroundOperationConfig
+from market_services.image_services.core.base import Base
+from market_services.image_services.models.image_data_model import ImageDataModel
+from market_services.image_services.models.image_directory_model import ImageDirectoryModel
 
 # --
 # ...

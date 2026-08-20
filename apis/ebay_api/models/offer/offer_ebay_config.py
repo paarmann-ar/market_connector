@@ -1,6 +1,4 @@
 from dataclasses import dataclass, fields
-from typing import Optional
-from apis.ebay_api.models.inventory.inventory_location_model import InventoryLocationModel
 
 # --
 # ...
@@ -16,9 +14,7 @@ class OfferEbayConfig:
     fulfillment_policy_id: str
     payment_policy_id: str
     return_policy_id: str
-
     currency: str
-
     listing_duration: str = "GTC"
 
     # --
