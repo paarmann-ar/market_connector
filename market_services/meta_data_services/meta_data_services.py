@@ -35,6 +35,7 @@ class MetaDataServices:
         description = ki_message.get("description") or ""
         focus_keyword = ki_message.get("focus_keyword") or ""
         focus_keywords = ki_message.get("focus_keywords") or []
+        slug = ki_message.get("permalink")
 
         if isinstance(focus_keywords, str):
             focus_keywords = [focus_keywords]
@@ -43,8 +44,8 @@ class MetaDataServices:
         # Image SEO
         # -----------------------------------------
 
-        alt_image_constructor = " ".join(keyword for keyword in focus_keywords if keyword)
-        image_alt = Text().remove_duplicate_words_from_string(alt_image_constructor)
+        image_alt_constructor = " ".join(keyword for keyword in focus_keywords if keyword)
+        image_alt = Text().remove_duplicate_words_from_string(image_alt_constructor)
         image_alt_main = title.split("|")[0].strip()
 
         # -----------------------------------------

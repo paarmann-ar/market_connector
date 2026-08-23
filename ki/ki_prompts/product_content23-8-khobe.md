@@ -68,7 +68,6 @@ Return exactly:
 "meta_description": "",
 "focus_keywords": [],
 "primary_focus_keyword": ""
-"permalink":""
 }}
 
 DO NOT return:
@@ -938,64 +937,7 @@ Do NOT:
 
 **==================================================**
 
-23. Permalink
-
-**==================================================**
-
-Permalink requirements:
-
-- Always generate a "permalink" field.
-- The permalink must be in English.
-- Use this preferred structure whenever the information is available:
-  [brand]-[product-type]-[model-or-part-number]
-- If [brand]-[product-type]-[model-or-part-number] is not fully available, generate the permalink directly from the English product title.
-- The permalink must be SEO-friendly, concise, descriptive, and suitable for a WooCommerce product URL.
-- Use lowercase English characters, numbers, and valid product/model identifiers only.
-- Use hyphens (-) between words or segments.
-- Do not use spaces, underscores, special characters, German umlauts, or HTML.
-- Do not include a leading or trailing slash.
-- Base the permalink only on information available in the original product data.
-- Do not invent product specifications, model numbers, brands, or keywords that are not present in the original product data.
-- Prefer the product type, brand, model, or part number when they are available.
-- Keep the permalink as short as reasonably possible while still clearly identifying the product.
-- The permalink must contain a minimum of 3 and a maximum of 8 meaningful segments.
-- Remove unnecessary words such as "new", "product", "item", "official", "best", "buy", or "shop" unless they are part of the actual product name.
-- Keep brand names, model numbers, and part numbers recognizable and unchanged, except for converting letters to lowercase.
-- Do not translate model numbers, part numbers, or technical identifiers.
-- Do not use duplicate words unnecessarily.
-
-Example VALID:
-
-"title": "Siemens SIMATIC S7-1200 CPU 1214C",
-"permalink": "siemens-simatic-s7-1200-cpu-1214c"
-
-Example VALID:
-
-"title": "Bosch Nitrogen Oxide NOx Sensor",
-"permalink": "bosch-nitrogen-oxide-nox-sensor"
-
-Example VALID:
-
-"title": "Nitrogen Oxide NOx Sensor",
-"permalink": "nitrogen-oxide-nox-sensor"
-
-Example INVALID:
-
-"title": "Siemens SIMATIC S7-1200 CPU 1214C NEW",
-"permalink": "siemens-simatic-s7-1200-cpu-1214c-new"
-
-Reason: "new" is unnecessary and should not be included in the permalink.
-
-Example INVALID:
-
-"title": "Bosch Nitrogen Oxide NOx Sensor",
-"permalink": "best-bosch-nox-sensor-buy-online"
-
-Reason: Contains invented or unnecessary SEO keywords that are not part of the product identity.
-
-**==================================================**
-
-24. SEO KEYWORD HTML SECTION
+23. SEO KEYWORD HTML SECTION
 
 **==================================================**
 
@@ -1037,7 +979,7 @@ must produce:
 
 **==================================================**
 
-25. WHITESPACE AND NEWLINE CLEANING
+24. WHITESPACE AND NEWLINE CLEANING
 
 **==================================================**
 
@@ -1073,7 +1015,7 @@ The description MUST end exactly with the final SEO keyword link.
 
 **==================================================**
 
-26. FACTUAL STYLE
+25. FACTUAL STYLE
 
 **==================================================**
 
@@ -1099,7 +1041,7 @@ Do NOT invent product benefits.
 
 **==================================================**
 
-27. FIELD-SPECIFIC ANTI-GENERIC RULE
+26. FIELD-SPECIFIC ANTI-GENERIC RULE
 
 **==================================================**
 
@@ -1139,7 +1081,7 @@ Do NOT compensate for missing data by inventing information.
 
 **==================================================**
 
-28. PRODUCT DATA
+27. PRODUCT DATA
 
 **==================================================**
 
@@ -1169,7 +1111,7 @@ MPN:
 
 **==================================================**
 
-29. FINAL QUALITY CHECK
+28. FINAL QUALITY CHECK
 
 **==================================================**
 

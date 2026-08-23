@@ -12,6 +12,7 @@ class ImageDataModel:
     image_name: Optional[str] = None
     images_address: Optional[str] = None
     image_url: Optional[str] = None
+    alt: Optional[str] = None
     image_data: Optional[Any] = None
     image_size: Optional[tuple] = None
     product_box: Optional[tuple] = None

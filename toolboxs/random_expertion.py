@@ -1,6 +1,8 @@
 import math
 import random
 import uuid
+import secrets
+import string
 
 # --
 # ...
@@ -44,3 +46,14 @@ class RandomExpertion:
 
         except Exception as exp:
             print(repr(exp))
+
+    # --
+    # ...
+    # --
+
+    @staticmethod
+    def password_maker():
+        chars = string.ascii_letters + string.digits + "!@#$%^&*()-_=+"
+        password = "".join(secrets.choice(chars) for _ in range(30))
+
+        return password

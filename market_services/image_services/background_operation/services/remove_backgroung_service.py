@@ -89,3 +89,44 @@ class RemoveBackgroungService(Base):
 
         except Exception as exp:
             print(f"finalize_image: {exp}")
+
+    # --
+    # ...
+    # --
+
+    def resize_to_fixed_canvas(
+        self,
+        image_data_model: ImageDataModel,
+        size: tuple[int, int] = (1200, 1200),
+    ) -> ImageDataModel:
+        try:
+            image = image_data_model.image_data.convert("RGB")
+
+            target_width, target_height = size
+
+            # Keep the original aspect ratio.
+            image.thumbnail(
+                (target_width, target_height),
+                Image.Resampling.LANCZOS,
+            )
+
+            # Create fixed-size white canvas.
+            canvas = Image.new(
+                "RGB",
+                (target_width, target_height),
+                (255, 255, 255),
+            )
+
+            # Center image on canvas.
+            x = (target_width - image.width) // 2
+            y = (target_height - image.height) // 2
+
+            canvas.paste(image, (x, y))
+
+            image_data_model.image_data = canvas
+
+            return image_data_model
+
+        except Exception as exp:
+            print(f"resize_to_fixed_canvas: {exp}")
+            return None

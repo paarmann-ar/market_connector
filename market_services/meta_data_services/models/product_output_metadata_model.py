@@ -17,6 +17,7 @@ class ProductOutputMetadataModel:
     primary_focus_keyword: Optional[str] = None
     seo_model: Optional[Any] = None
     image_seo_model: Optional[Any] = None
+    slug: Optional[Any] = None
 
     # --
     # ...

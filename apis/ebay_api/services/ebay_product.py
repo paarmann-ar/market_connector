@@ -90,8 +90,6 @@ class EbayProduct(BaseEbayApi):
             if marketplace_id == "":
                 marketplace_id = self.marketplace_id
 
-            self.get_sku_with_item_id("377407787143")
-
             self.ebay_token_api.get_application_token()
             ebay_access_token = self.ebay_token_api.ebay_application_token
 

@@ -110,20 +110,17 @@ class Ollama(Base):
             error_product_dict = input_message_model.to_dict()
 
             default_return = {
-                "title": f"kapput!{error_product_dict.get('title'), ''}",
+                "title": f"kapput!{error_product_dict.get('title', '')}",
                 "description": error_product_dict.get("description", ""),
                 "short_description": error_product_dict.get("short_description", ""),
                 "meta_description": error_product_dict.get("short_description", ""),
                 "focus_keywords": [error_product_dict.get("brand", ""), ""],
                 "primary_focus_keyword": error_product_dict.get("brand", "No-Brand"),
+                "permalink": error_product_dict.get("permalink", "No-permalink"),
             }
 
             response = self.ollama_generate_service.generate_with_ollama(prompt=ollama_prompt_model.content)
             response = response.get("response", "").strip()
-
-            # print("========== OLLAMA RAW RESPONSE ==========")
-            # print(response)
-            # print("==========================================")
 
             response = json.loads(response)
 

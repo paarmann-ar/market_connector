@@ -48,19 +48,23 @@ class WoocommerceReview(BaseWoocommerceApi):
     # --
 
     def get_all_reviews(self, product_id: str, record_per_page: int = 100):
+        try:
 
-        response = self.request(
-            method="get",
-            url=f"{self.base_url}{self.review_url}",
-            auth=(self.consumer_key, self.consumer_secret),
-            params={"per_page": record_per_page, "product": product_id},
-        )
+            response = self.request(
+                method="get",
+                url=f"{self.base_url}{self.review_url}",
+                auth=(self.consumer_key, self.consumer_secret),
+                params={"per_page": record_per_page, "product": product_id},
+            )
 
-        woocommerce_review_models = []
-        for review in response:
-            woocommerce_review_models.append(WoocommerceReviewModel.from_api(review))
+            woocommerce_review_models = []
+            for review in response:
+                woocommerce_review_models.append(WoocommerceReviewModel.from_api(review))
 
-        return woocommerce_review_models
+            return woocommerce_review_models
+
+        except Exception as exp:
+            self.prompt_on_screen(f"get_all_reviews: {exp}")
 
     # --
     # ...
@@ -83,38 +87,3 @@ class WoocommerceReview(BaseWoocommerceApi):
 
         except Exception as exp:
             self.prompt_on_screen(f"upload_review: {exp}")
-
-    # --
-    # ...
-    # --
-
-    def resolve_or_upload(self, woocommerce_review_model: WoocommerceReviewModel):
-
-        review = self.get_brand_by_name(woocommerce_review_model.name)
-
-        if review:
-            return review
-
-        return self.upload_review(WoocommerceReviewModel(name=woocommerce_review_model.name))
-
-
-# --
-# ...
-# --
-
-# def delete_brand_by_brand_id(self, brand_id: int):
-
-#     try:
-#         response = self.request(
-#             method="delete",
-#             url=f"{self.base_url}{self.brand_url}/{brand_id}",
-#             auth=(self.consumer_key, self.consumer_secret),
-#             params={"force": True},
-#         )
-
-#         self.prompt_on_screen(f"brand deleted: {response}")
-
-#         return response
-
-#     except Exception as exp:
-#         self.prompt_on_screen(f"delete_brand_by_brand_id: {exp}")

@@ -67,12 +67,16 @@ class ImageProcessingPipeline(Base):
 
                 image_data_model = self.cloud_operation.download_image_from_url(image_data_model)
 
-            image_url_by_image_name = {image.image_name: image.image_url for image in image_data_models}
+            image_url_by_image_name = {
+                image.image_name: {"image_url": image.image_url, "image_alt": image.alt} for image in image_data_models
+            }
 
             image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
 
             for image_data_model in image_data_models:
-                image_data_model.image_url = image_url_by_image_name.get(image_data_model.image_name)
+                image_data = image_url_by_image_name.get(image_data_model.image_name)
+                image_data_model.image_url = image_data.get("image_url")
+                image_data_model.alt = image_data.get("image_alt")
 
             for image_data_model in image_data_models:
                 self.cache.update_cache(
@@ -99,6 +103,13 @@ class ImageProcessingPipeline(Base):
     # ...
     # --
 
+    def white_backgroung(self, image_directory_model: ImageDirectoryModel):
+        self.background_operation.remove_set_white_backgroung_on_photo(image_directory_model)
+
+    # --
+    # ...
+    # --
+
     def image_convertor_pipeline(self, woocommerce_product_models: list[WoocommerceProductModel]) -> None:
 
         for woocommerce_product_model in woocommerce_product_models:
@@ -107,15 +118,18 @@ class ImageProcessingPipeline(Base):
 
             for woocommerce_product_model_image in woocommerce_product_model.images:
                 image_data_model = ImageDataModel(
-                    image_url=woocommerce_product_model_image.src, is_main_image=woocommerce_product_model_image.is_main_image
+                    image_url=woocommerce_product_model_image.src,
+                    is_main_image=woocommerce_product_model_image.is_main_image,
+                    alt=woocommerce_product_model_image.alt,
                 )
                 image_data_models.append(image_data_model)
 
             image_data_models = self.download_url_remove_white_bg_image(image_data_models=image_data_models)
 
+            # add alt auch hier
             for image_data_model in image_data_models:
                 wordpress_media_model = WordpressMediaModel(
-                    media_address=image_data_model.images_address, media_name=image_data_model.image_name
+                    media_address=image_data_model.images_address, media_name=image_data_model.image_name, wp_alt_text=image_data_model.alt
                 )
                 wordpress_media_models.append(wordpress_media_model)
 

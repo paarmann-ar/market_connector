@@ -50,22 +50,25 @@ class WoocommerceBrand(BaseWoocommerceApi):
     # --
 
     def get_brand_by_name(self, name: str, record_per_page: int = 100):
+        try:
+            if not name:
+                return None
 
-        if not name:
+            response = self.request(
+                method="get",
+                url=f"{self.base_url}{self.brand_url}",
+                auth=(self.consumer_key, self.consumer_secret),
+                params={"per_page": record_per_page},
+            )
+
+            for brand in response or []:
+                if html.unescape(brand["name"].lower()) == name.lower():
+                    return WoocommerceBrandModel.from_api(brand)
+
             return None
 
-        response = self.request(
-            method="get",
-            url=f"{self.base_url}{self.brand_url}",
-            auth=(self.consumer_key, self.consumer_secret),
-            params={"per_page": record_per_page},
-        )
-
-        for brand in response:
-            if html.unescape(brand["name"].lower()) == name.lower():
-                return WoocommerceBrandModel.from_api(brand)
-
-        return None
+        except Exception as exp:
+            self.prompt_on_screen(f"get_brand_by_name: {exp}")
 
     # --
     # ...

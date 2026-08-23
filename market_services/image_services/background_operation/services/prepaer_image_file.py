@@ -50,8 +50,9 @@ class PrepaerImageFile(Base):
                     continue
 
                 cache = self.cache.get_from_cache(cache_file=self.cache_file_name, is_change_k_v=True)
-                if cache.get(str(image_path)):
-                    continue
+                if cache:
+                    if cache.get(str(image_path)):
+                        continue
 
                 image_data_model = ImageDataModel(images_address=f"{images_folder_adress}/{image_path.name}", image_name=image_path.name)
 
@@ -68,7 +69,7 @@ class PrepaerImageFile(Base):
     # ...
     # --
 
-    def add_padding_corp_image(self, image_data_model: ImageDataModel, padding=30) -> ImageDataModel:
+    def add_padding_crop_image(self, image_data_model: ImageDataModel, padding=30) -> ImageDataModel:
         try:
             x1, y1, x2, y2 = image_data_model.product_box
 
@@ -87,4 +88,4 @@ class PrepaerImageFile(Base):
             return image_data_model
 
         except Exception as exp:
-            print(f"add_padding_corp_image: {exp}")
+            print(f"add_padding_crop_image: {exp}")

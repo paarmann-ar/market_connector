@@ -17,20 +17,6 @@ class MarketConnectorController:
     """
 
     # -------------------------------------------------------------------------
-    # eBay
-    # -------------------------------------------------------------------------
-
-    @staticmethod
-    def fetch_from_ebay(
-        search_in_ebay_model: SearchInEbayModel,
-    ) -> list[ProductEbayModel]:
-        """
-        Fetch products from eBay based on the given search model.
-        """
-
-        return ApisProvider().ebay_api.pipeline_fetch_product_from_ebay_by_search_in_ebay_model(search_in_ebay_model=search_in_ebay_model)
-
-    # -------------------------------------------------------------------------
     # WooCommerce
     # -------------------------------------------------------------------------
 
@@ -61,20 +47,19 @@ class MarketConnectorController:
         process images and upload them to WooCommerce.
         """
 
-        product_ebay_models = MarketConnectorController.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+        product_ebay_models = ApisProvider().ebay_api.pipeline_fetch_product_from_ebay_by_search_in_ebay_model(
+            search_in_ebay_model=search_in_ebay_model
+        )
 
         if not product_ebay_models:
             return False
 
         woocommerce_product_models: list[WoocommerceProductModel] = []
-
         adaptor = EbayProductModelToWoocommerceProductModelAdaptor()
 
         for product_ebay_model in product_ebay_models:
             product_ebay_model.price_anpassen = search_in_ebay_model.price_anpassen
-
             woocommerce_product_model = adaptor.adapter(product_ebay_model=product_ebay_model)
-
             woocommerce_product_models.append(woocommerce_product_model)
 
         if not woocommerce_product_models:
@@ -99,7 +84,9 @@ class MarketConnectorController:
         Fetch products from eBay and create offers on eBay.
         """
 
-        product_ebay_models = MarketConnectorController.fetch_from_ebay(search_in_ebay_model=search_in_ebay_model)
+        product_ebay_models = ApisProvider().ebay_api.pipeline_fetch_product_from_ebay_by_search_in_ebay_model(
+            search_in_ebay_model=search_in_ebay_model
+        )
 
         if not product_ebay_models:
             return False
@@ -119,3 +106,19 @@ class MarketConnectorController:
             )
 
         return True
+
+    # -------------------------------------------------------------------------
+    # woocommerce -> eBay
+    # -------------------------------------------------------------------------
+    @staticmethod
+    def sync_woocommerce_to_ebay(
+        self,
+        search_in_ebay_model: SearchInEbayModel,
+    ) -> bool:
+        """
+        Fetch products from woocommerce and create offers on eBay.
+        """
+
+        ApisProvider().woocommerce_api
+
+        product_woocommerce_models = MarketConnectorController.fetch_from_woocommerce(search_in_ebay_model=search_in_ebay_model)

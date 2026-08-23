@@ -51,9 +51,11 @@ class BackgroundOperation(Base):
             for image_data_model in image_data_models:
                 image_data_model = self.find_product_box.find_product_box(image_data_model=image_data_model)
 
-                image_data_model = self.prepaer_image_file.add_padding_corp_image(image_data_model=image_data_model, padding=30)
+                image_data_model = self.prepaer_image_file.add_padding_crop_image(image_data_model=image_data_model, padding=30)
 
                 image_data_model = self.remove_backgroung_service.make_background_white(image_data_model)
+
+                image_data_model = self.remove_backgroung_service.resize_to_fixed_canvas(image_data_model=image_data_model)
 
                 image_data_model = self.remove_backgroung_service.finalize_image(image_data_model=image_data_model)
 
