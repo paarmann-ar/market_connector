@@ -1,5 +1,5 @@
 from ollama import generate
-
+from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
 from toolboxs.date_and_time import DateAndTime
@@ -48,7 +48,7 @@ class OllamaGenerateService(Base):
             response = generate(
                 model=self.model,
                 prompt=prompt,
-                format="json",
+                format=ProductOutputModel.model_json_schema(),
                 think=False,
                 stream=False,
                 options={

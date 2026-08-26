@@ -43,4 +43,8 @@ NO_GO_WORDS = [
     "für",
     "Original",
     "none",
+    "Neu",
+    "Gebraucht",
+    "New",
+    "Used",
 ]

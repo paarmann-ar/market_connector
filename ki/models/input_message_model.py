@@ -1,6 +1,23 @@
 import json
 from dataclasses import asdict, dataclass, fields
-from typing import Optional
+from typing import Optional, Annotated
+import re
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+# --
+# ...
+# --
+
+
+@dataclass
+class ProductInput(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    short_description: Optional[str] = None
+    brand: Optional[str] = None
+    condition: Optional[str] = None
+    mpn: Optional[str] = None
+
 
 # --
 # ...
@@ -10,7 +27,7 @@ from typing import Optional
 @dataclass
 class InputMessageModel:
     md_file_name: Optional[str] = None
-    inputs: Optional[dict] = None
+    inputs: Optional[ProductInput] = None
 
     # --
     # ...

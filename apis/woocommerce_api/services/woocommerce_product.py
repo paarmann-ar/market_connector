@@ -7,6 +7,7 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 from apis.woocommerce_api.models.woocommerce_product_model import (
     WoocommerceProductModel,
 )
+from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 
 # --
 # ...
@@ -132,3 +133,25 @@ class WoocommerceProduct(BaseWoocommerceApi):
 
         except Exception as exp:
             self.prompt_on_screen(f"delete_product_by_product_id: {exp}")
+
+    # --
+    # ...
+    # --
+
+    def get_product_by_search_in_woocommerce_model(self, search_in_woocommerce_model: SearchInWoocommerceModel) -> WoocommerceProductModel:
+
+        try:
+            response = self.request(
+                method="get",
+                url=f"{self.base_url}{self.products_url}",
+                auth=(self.consumer_key, self.consumer_secret),
+                params=search_in_woocommerce_model.filter,
+            )
+
+            if not response:
+                return None
+
+            return WoocommerceProductModel(**response)
+
+        except Exception as exp:
+            self.prompt_on_screen(f"get_product_by_search_in_woocommerce_model: {exp}")

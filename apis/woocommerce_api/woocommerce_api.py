@@ -14,6 +14,7 @@ from apis.woocommerce_api.models.woocommerce_product_model import (
     WoocommerceProductModel,
 )
 from apis.woocommerce_api.models.woocommerce_session_model import WoocommerceSessionModel
+from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from apis.woocommerce_api.services.woocommerce_brand import WoocommerceBrand
@@ -130,3 +131,13 @@ class WoocommerceApi(BaseWoocommerceApi):
 
         except Exception as exp:
             self.error(f"resolve_or_upload: {exp}")
+
+    # --
+    # ...
+    # --
+
+    def fetch_from_woocommerce(self, search_in_woocommerce_model: SearchInWoocommerceModel) -> WoocommerceProductModel:
+        woocommerce_product_models = self.woocommerce_product.get_product_by_search_in_woocommerce_model(
+            search_in_woocommerce_model=search_in_woocommerce_model
+        )
+        return woocommerce_product_models

@@ -1,6 +1,6 @@
 from apis.seo_api.models.rank_math_model import RankMathModel
 from ki.ki_provider import KiProvider
-from ki.prompt_provider.models.input_message_model import InputMessageModel
+from ki.models.input_message_model import InputMessageModel
 from market_services.meta_data_services.models.product_input_metadata_model import ProductInputMetadataModel
 from market_services.meta_data_services.models.product_output_metadata_model import ProductOutputMetadataModel
 from toolboxs.text import Text
@@ -24,7 +24,9 @@ class MetaDataServices:
 
         inputs = product_input_metadata_model.to_dict()
         input_message_model = InputMessageModel(inputs=inputs)
-        input_message_model.md_file_name = "product_content"
+        input_message_model.md_file_name = "prompt"
+        # qwen3:30B
+
         ki_message = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
 
         # -----------------------------------------
@@ -35,7 +37,9 @@ class MetaDataServices:
         description = ki_message.get("description") or ""
         focus_keyword = ki_message.get("focus_keyword") or ""
         focus_keywords = ki_message.get("focus_keywords") or []
-        slug = ki_message.get("permalink")
+        slug = ki_message.get("slug")
+        image_description = ki_message.get("image_description")
+        product_tags = ki_message.get("product_tags")
 
         if isinstance(focus_keywords, str):
             focus_keywords = [focus_keywords]
@@ -59,10 +63,13 @@ class MetaDataServices:
             "image_alt_main": image_alt_main,
         }
 
+        rank_math_focus_keyword = product_tags
+        rank_math_focus_keyword.extend(focus_keyword)
+
         product_output_metadata_model.seo_model = RankMathModel(
             rank_math_title=title,
             rank_math_description=description,
-            rank_math_focus_keyword=focus_keyword,
+            rank_math_focus_keyword=rank_math_focus_keyword,
         ).for_use_in_woocommerce()
 
         return product_output_metadata_model

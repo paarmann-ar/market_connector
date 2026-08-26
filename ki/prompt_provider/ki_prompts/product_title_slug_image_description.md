@@ -49,55 +49,7 @@ Only return the final JSON object.
 
 **==================================================**
 
-OUTPUT RESTRICTION
-
-**==================================================**
-
-Return ONLY one valid JSON object.
-
-The response MUST be directly parseable using:
-
-json.loads()
-
-Return exactly:
-
-{{
-"title": "",
-"description": "",
-"short_description": "",
-"meta_description": "",
-"focus_keywords": [],
-"primary_focus_keyword": ""
-"permalink":""
-}}
-
-DO NOT return:
-
-* explanations
-* comments
-* markdown
-* code fences
-* analysis
-* reasoning
-* questions
-* warnings
-* notes
-* text before JSON
-* text after JSON
-
-The JSON MUST contain:
-
-* valid double quotes
-* no trailing commas
-* no unescaped quotation marks
-* no invalid escape sequences
-* no raw line breaks inside JSON strings
-* focus_keywords as an array of strings
-* primary_focus_keyword as a string
-
-**==================================================**
-
-1. PRODUCT DATA IS THE PRIMARY SOURCE
+PRODUCT DATA IS THE PRIMARY SOURCE
 
 **==================================================**
 
@@ -134,9 +86,10 @@ If a fact is not supported by PRODUCT DATA or a verified exact-product source, D
 
 If information is missing, omit it.
 
+
 **==================================================**
 
-2. EXACT PRODUCT IDENTIFICATION
+EXACT PRODUCT IDENTIFICATION
 
 **==================================================**
 
@@ -196,7 +149,7 @@ Never:
 
 **==================================================**
 
-3. IDENTIFIER SELECTION
+IDENTIFIER SELECTION
 
 **==================================================**
 
@@ -229,63 +182,7 @@ Never modify an identifier to make it more SEO-friendly.
 
 **==================================================**
 
-4. OPTIONAL INTERNET RESEARCH
-
-**==================================================**
-
-If reliable internet access is available, exact-product research MAY be used.
-
-Internet research is optional.
-
-Use it ONLY when it helps identify or verify the EXACT SAME PRODUCT.
-
-Priority:
-
-1. Exact identifier from PRODUCT DATA
-2. Manufacturer official product page
-3. Manufacturer technical documentation
-4. Reliable industrial distributor
-5. Reliable technical database
-
-Never use information from:
-
-* similar products
-* alternative products
-* related models
-* newer versions
-* older versions
-* products with similar names
-
-unless the source clearly identifies the exact same product.
-
-If exact-product identification is uncertain:
-
-DO NOT add the external information.
-
-If online information conflicts with PRODUCT DATA:
-
-PRODUCT DATA has priority.
-
-Never "correct" PRODUCT DATA by guessing.
-
-Do not use internet research for:
-
-* price
-* availability
-* shipping
-* payment
-* returns
-* warranty
-* seller information
-* customer information
-* commercial conditions
-* reviews
-* opinions
-* marketing claims
-
-**==================================================**
-
-5. PRODUCT INFORMATION ONLY
+PRODUCT INFORMATION ONLY
 
 **==================================================**
 
@@ -318,7 +215,7 @@ Use these ONLY when supported by PRODUCT DATA.
 
 **==================================================**
 
-6. COMMERCIAL CONTENT REMOVAL
+COMMERCIAL CONTENT REMOVAL
 
 **==================================================**
 
@@ -415,7 +312,7 @@ Also remove equivalent German commercial terms, including:
 
 **==================================================**
 
-7. SENTENCE-LEVEL COMMERCIAL FILTER
+SENTENCE-LEVEL COMMERCIAL FILTER
 
 **==================================================**
 
@@ -447,7 +344,7 @@ MUST be completely removed.
 
 **==================================================**
 
-8. DUPLICATE INFORMATION REMOVAL
+DUPLICATE INFORMATION REMOVAL
 
 **==================================================**
 
@@ -486,7 +383,7 @@ The final content should communicate this material fact only once.
 
 **==================================================**
 
-9. COMPLETE BUT NON-REPETITIVE
+COMPLETE BUT NON-REPETITIVE
 
 **==================================================**
 
@@ -519,7 +416,7 @@ SHORT + INCOMPLETE
 
 **==================================================**
 
-10. LANGUAGE
+LANGUAGE
 
 **==================================================**
 
@@ -555,38 +452,55 @@ NEVER translate or modify:
 * Units
 * Exact technical identifiers
 
-**==================================================**
-
-11. PRODUCT-SPECIFIC SEO
 
 **==================================================**
 
-SEO MUST target the EXACT PRODUCT.
-
-Do NOT generate generic SEO content merely because the product belongs to an industrial category.
-
-SEO priority:
-
-1. Exact product type
-2. Exact product name
-3. Brand/manufacturer
-4. Exact model number
-5. Exact MPN
-6. Artikelnummer / Part Number
-7. Important technical specifications
-8. Relevant industrial terminology
-
-Use keywords naturally.
-
-Never use keyword stuffing.
-
-Never repeat a keyword simply to increase keyword density.
-
-Every SEO element must be supported by PRODUCT DATA.
+OUTPUT RESTRICTION
 
 **==================================================**
 
-12. TITLE
+Return ONLY one valid JSON object.
+
+The response MUST be directly parseable using:
+
+json.loads()
+
+Return exactly:
+
+{{
+"title": "",
+"slug": "",
+"image_description": "",
+}}
+
+DO NOT return:
+
+* explanations
+* comments
+* markdown
+* code fences
+* analysis
+* reasoning
+* questions
+* warnings
+* notes
+* text before JSON
+* text after JSON
+
+The JSON MUST contain:
+
+* valid double quotes
+* no trailing commas
+* no unescaped quotation marks
+* no invalid escape sequences
+* no raw line breaks inside JSON strings
+* focus_keywords as an array of strings
+* primary_focus_keyword as a string
+
+
+**==================================================**
+
+1. TITLE
 
 **==================================================**
 
@@ -615,7 +529,7 @@ Temperaturkontakt M-VA-G3/4-M12/170-2K-ATEX | Temperature Contact M-VA-G3/4-M12/
 
 **==================================================**
 
-13. CONDITION
+1.a CONDITION
 
 **==================================================**
 
@@ -631,334 +545,30 @@ Condition MUST always be the final element of the title.
 
 Nothing may appear after Condition.
 
-**==================================================**
-
-14. DESCRIPTION
 
 **==================================================**
 
-Create a bilingual HTML product description.
-
-German content MUST come first.
-
-English content MUST come second.
-
-The description must contain the important unique information of the EXACT PRODUCT.
-
-Recommended structure:
-
-<p>German product description.</p>
-
-<p>English product description.</p>
-
-<br>
-
-<strong>Produktname / Product Name:</strong><br>
-
-German product name<br>
-
-English product name
-
-<br><br>
-
-<strong>Artikelnummer / Part Number:</strong><br>
-
-Exact identifier
-
-<br><br>
-
-<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>
-
-keyword links
-
-Do NOT create empty sections.
-
-Only include the Artikelnummer / Part Number section when an actual relevant identifier exists.
-
-The description MUST contain useful product information before the SEO section.
+2. Slug
 
 **==================================================**
 
-15. DESCRIPTION CONTENT
+Slug requirements:
 
-**==================================================**
-
-The description should communicate, when supported:
-
-* exact product identity
-* product type
-* product function
-* manufacturer
-* brand
-* model
-* MPN
-* Artikelnummer
-* part number
-* important technical specifications
-* dimensions
-* measurements
-* materials
-* condition
-* certifications
-* standards
-* explicit applications
-* explicit characteristics
-* included components
-* limitations
-
-Do NOT add generic filler.
-
-Do NOT add unsupported benefits.
-
-Do NOT add generic marketing claims.
-
-Do NOT repeat the same fact unnecessarily.
-
-**==================================================**
-
-16. DESCRIPTION LENGTH
-
-**==================================================**
-
-Do NOT use an arbitrary character target.
-
-Do NOT shorten the content if shortening would remove important technical information.
-
-Do NOT add filler to increase length.
-
-Prioritize:
-
-* accuracy
-* completeness
-* readability
-* technical usefulness
-* uniqueness
-* SEO relevance
-
-**==================================================**
-
-17. HTML STRUCTURE
-
-**==================================================**
-
-Use HTML only where it improves structure.
-
-Allowed headings:
-
-<h2>
-<h3>
-<h4>
-<h6>
-
-Do NOT create headings merely to increase content length.
-
-The final SEO keyword section MUST use exactly:
-
-<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>
-
-Nothing may appear after the final keyword link.
-
-**==================================================**
-
-18. PAARMANN-TECH
-
-**==================================================**
-
-Mention Paarmann-Tech exactly ONCE in the entire output.
-
-Use EXACTLY:
-
-<a href="https://www.paarmann-tech.de/shop/">Paarmann-Tech</a>
-
-Rules:
-
-* Use it ONLY in the German main description.
-* Mention it exactly once.
-* Do NOT mention it in English.
-* Do NOT mention it in title.
-* Do NOT mention it in short_description.
-* Do NOT mention it in meta_description.
-* Do NOT mention it in focus_keywords.
-* Do NOT mention it in primary_focus_keyword.
-* Do NOT mention it in SEO keyword links.
-* Do NOT start the description with it.
-* Place it naturally in the German description.
-
-The link itself counts as the single occurrence.
-
-**==================================================**
-
-19. SHORT DESCRIPTION
-
-**==================================================**
-
-Create a concise bilingual WooCommerce short description.
-
-Format:
-
-<p>German short description.</p>
-
-<p>English short description.</p>
-
-Focus on:
-
-* exact product type
-* main function when supported
-* important technical information
-* model number
-* Artikelnummer / Part Number when relevant
-
-Rules:
-
-* Use only PRODUCT DATA.
-* Do NOT mention Paarmann-Tech.
-* Do NOT add commercial information.
-* Do NOT invent benefits.
-* Do NOT use generic filler.
-* Do NOT copy the main description unnecessarily.
-
-**==================================================**
-
-20. META DESCRIPTION
-
-**==================================================**
-
-Create:
-
-German meta description | English meta description
-
-The meta description MUST be product-specific.
-
-Use relevant supported information such as:
-
-* exact product type
-* important product term
-* brand
-* model number
-* Artikelnummer
-* relevant technical specification
-
-At least ONE focus keyword MUST appear naturally in the meta description.
-
-Do NOT:
-
-* use keyword stuffing
-* invent information
-* mention Paarmann-Tech
-* add commercial claims
-* use generic category-only wording
-
-**==================================================**
-
-21. FOCUS KEYWORDS
-
-**==================================================**
-
-Generate MINIMUM 1 and MAXIMUM 4 focus keywords.
-
-Every keyword MUST:
-
-* be supported by PRODUCT DATA
-* be relevant to the exact product
-* represent a distinct search concept
-* be concise
-* be useful for B2B industrial search
-* be unique
-* not unnecessarily overlap another keyword
-
-Do NOT create keywords by blindly combining:
-
-product name + brand + model + identifier + technical term
-
-Do NOT create near-duplicates.
-
-Do NOT create:
-
-* long and short versions of the same keyword
-* same keyword with different word order
-* same identifier with different product terms
-* same product name with different suffixes
-* unnecessary language variants
-* unnecessarily repeated brand + identifier combinations
-* generic category keywords when a more exact product concept is available
-
-Example VALID:
-
-[
-"FITOK pressure relief valve",
-"High pressure relief valve",
-"HARSS-FH9-FNS12-2"
-]
-
-Example INVALID:
-
-[
-"FITOK HARSS-FH9-FNS12-2 pressure relief valve",
-"FITOK HARSS-FH9-FNS12-2 high pressure relief valve",
-"FITOK HARSS-FH9-FNS12-2 valve",
-"FITOK HARSS-FH9-FNS12-2 pressure valve"
-]
-
-The invalid example repeatedly combines the same concepts.
-
-CRITICAL:
-
-Do NOT make all keywords variations of the same product phrase.
-
-Each keyword must add a genuinely different search concept.
-
-**==================================================**
-
-22. PRIMARY FOCUS KEYWORD
-
-**==================================================**
-
-After generating focus_keywords, select EXACTLY ONE primary focus keyword.
-
-The primary focus keyword MUST:
-
-* be the strongest search concept
-* describe the exact product
-* be supported by PRODUCT DATA
-* exist exactly in focus_keywords
-* appear naturally in the German title
-* appear naturally in the German description
-* appear naturally in the German meta_description
-
-The value of primary_focus_keyword MUST be character-for-character identical to one item in focus_keywords.
-
-Do NOT:
-
-* translate it
-* shorten it
-* modify it
-* create a variant
-* change capitalization
-* change word order
-
-**==================================================**
-
-23. Permalink
-
-**==================================================**
-
-Permalink requirements:
-
-- Always generate a "permalink" field.
-- The permalink must be in English.
+- Always generate a "slug" field.
+- The slug must be in English.
 - Use this preferred structure whenever the information is available:
   [brand]-[product-type]-[model-or-part-number]
-- If [brand]-[product-type]-[model-or-part-number] is not fully available, generate the permalink directly from the English product title.
-- The permalink must be SEO-friendly, concise, descriptive, and suitable for a WooCommerce product URL.
+- If [brand]-[product-type]-[model-or-part-number] is not fully available, generate the slug directly from the English product title.
+- The slug must be SEO-friendly, concise, descriptive, and suitable for a WooCommerce product URL.
 - Use lowercase English characters, numbers, and valid product/model identifiers only.
 - Use hyphens (-) between words or segments.
 - Do not use spaces, underscores, special characters, German umlauts, or HTML.
 - Do not include a leading or trailing slash.
-- Base the permalink only on information available in the original product data.
+- Base the slug only on information available in the original product data.
 - Do not invent product specifications, model numbers, brands, or keywords that are not present in the original product data.
 - Prefer the product type, brand, model, or part number when they are available.
-- Keep the permalink as short as reasonably possible while still clearly identifying the product.
-- The permalink must contain a minimum of 3 and a maximum of 8 meaningful segments.
+- Keep the slug as short as reasonably possible while still clearly identifying the product.
+- The slug must contain maximum of 8 meaningful segments.
 - Remove unnecessary words such as "new", "product", "item", "official", "best", "buy", or "shop" unless they are part of the actual product name.
 - Keep brand names, model numbers, and part numbers recognizable and unchanged, except for converting letters to lowercase.
 - Do not translate model numbers, part numbers, or technical identifiers.
@@ -967,77 +577,70 @@ Permalink requirements:
 Example VALID:
 
 "title": "Siemens SIMATIC S7-1200 CPU 1214C",
-"permalink": "siemens-simatic-s7-1200-cpu-1214c"
+"slug": "siemens-simatic-s7-1200-cpu-1214c"
 
 Example VALID:
 
 "title": "Bosch Nitrogen Oxide NOx Sensor",
-"permalink": "bosch-nitrogen-oxide-nox-sensor"
+"slug": "bosch-nitrogen-oxide-nox-sensor"
 
 Example VALID:
 
 "title": "Nitrogen Oxide NOx Sensor",
-"permalink": "nitrogen-oxide-nox-sensor"
+"slug": "nitrogen-oxide-nox-sensor"
 
 Example INVALID:
 
 "title": "Siemens SIMATIC S7-1200 CPU 1214C NEW",
-"permalink": "siemens-simatic-s7-1200-cpu-1214c-new"
+"slug": "siemens-simatic-s7-1200-cpu-1214c-new"
 
-Reason: "new" is unnecessary and should not be included in the permalink.
+Reason: "new" is unnecessary and should not be included in the slug.
 
 Example INVALID:
 
 "title": "Bosch Nitrogen Oxide NOx Sensor",
-"permalink": "best-bosch-nox-sensor-buy-online"
+"slug": "best-bosch-nox-sensor-buy-online"
 
 Reason: Contains invented or unnecessary SEO keywords that are not part of the product identity.
 
-**==================================================**
-
-24. SEO KEYWORD HTML SECTION
 
 **==================================================**
+ 
+ 3.IMAGE DESCRIPTION
 
-The SEO keyword section MUST be the FINAL HTML content.
+**==================================================**
+Create exactly ONE bilingual Image description.
+Put it in output json as value of image_description.
 
-Use exactly:
+EXACT STRUCTURE:
 
-<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>
+German IMAGE DESCRIPTION | English IMAGE DESCRIPTION
 
-Then immediately output the keyword links.
+Base it ONLY on information supported by PRODUCT DATA.
+
+Generate a concise product-image description based on the exact product identity and supported product information.
+
+Requirements:
+
+- concise and natural
+- useful for accessibility and image SEO
+- product-specific
+- include brand, product type, model, or part number when supported
+- no invented colors, dimensions, materials, specifications, components, or visual details
+- no marketing language
+- no keyword stuffing
+- no HTML or markdown
+- do not start with "Bild von", "Foto von", or "Dieses Bild zeigt"
+
+Maximum length is 30 words.
 
 Example:
 
-<a href="/?s=keyword1">keyword1</a>, <a href="/?s=keyword2">keyword2</a>
-
-Rules:
-
-* Use ONLY focus_keywords.
-* Do NOT invent additional keywords.
-* Do NOT modify visible keyword text.
-* Visible keyword text MUST exactly equal the corresponding focus_keywords value.
-* Replace spaces in URLs with +.
-* Use only internal search URLs.
-* Never use external keyword links.
-* Nothing may appear after the final keyword link.
-
-Example:
-
-focus_keywords:
-
-[
-"FITOK pressure relief valve",
-"HARSS-FH9-FNS12-2"
-]
-
-must produce:
-
-<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6><a href="/?s=FITOK+pressure+relief+valve">FITOK pressure relief valve</a>, <a href="/?s=HARSS-FH9-FNS12-2">HARSS-FH9-FNS12-2</a>
+"END-ARMATUREN EA 2-Wege-Kugelhahn mit Antrieb, Modell ZA310063-EE620632 | END-ARMATUREN EA 2-Way-Ball Valve with actuator, model ZA310063-EE620632"
 
 **==================================================**
 
-25. WHITESPACE AND NEWLINE CLEANING
+WHITESPACE AND NEWLINE CLEANING
 
 **==================================================**
 
@@ -1073,7 +676,7 @@ The description MUST end exactly with the final SEO keyword link.
 
 **==================================================**
 
-26. FACTUAL STYLE
+FACTUAL STYLE
 
 **==================================================**
 
@@ -1099,61 +702,29 @@ Do NOT invent product benefits.
 
 **==================================================**
 
-27. FIELD-SPECIFIC ANTI-GENERIC RULE
+FIELD-SPECIFIC ANTI-GENERIC RULE
 
 **==================================================**
 
-This rule applies independently to ALL six output fields.
+This rule applies independently to ALL output fields.
 
 TITLE:
 
 Must identify the exact product.
 
-DESCRIPTION:
-
-Must contain unique factual information about the exact product.
-
-SHORT_DESCRIPTION:
+IMAGE_DESCRIPTION:
 
 Must summarize the exact product, not the generic product category.
 
-META_DESCRIPTION:
-
-Must target the exact product and include at least one product-specific focus keyword.
-
-FOCUS_KEYWORDS:
-
-Must contain only distinct, product-specific search concepts supported by PRODUCT DATA.
-
-PRIMARY_FOCUS_KEYWORD:
-
-Must be the strongest product-specific search concept and must exist exactly inside focus_keywords.
-
-NEVER fill a field with generic boilerplate just because PRODUCT DATA is incomplete.
-
-If PRODUCT DATA is limited:
-
-Produce a shorter accurate field.
-
-Do NOT compensate for missing data by inventing information.
-
 **==================================================**
 
-28. PRODUCT DATA
+PRODUCT DATA
 
 **==================================================**
 
 Title:
 
 {title}
-
-Description:
-
-{description}
-
-Short description:
-
-{short_description}
 
 Brand:
 
@@ -1169,7 +740,7 @@ MPN:
 
 **==================================================**
 
-29. FINAL QUALITY CHECK
+FINAL QUALITY CHECK
 
 **==================================================**
 
@@ -1229,77 +800,14 @@ TITLE:
 35. Strongest identifier is at the end of the German title.
 36. Identifier is immediately before the " | " separator.
 37. Condition is the final element.
-38. Nothing appears after Condition.
 
-DESCRIPTION:
-
-39. German description comes first.
-40. English description comes second.
-41. Description contains only supported product information.
-42. Description contains all important unique technical information.
-43. Description contains no commercial information.
-44. Description contains no unnecessary repetition.
-45. HTML structure is valid.
-46. No unnecessary whitespace exists.
-47. SEO keyword section is the final HTML content.
-48. Description ends exactly with the final keyword link.
-
-PAARMANN-TECH:
-
-49. Paarmann-Tech appears exactly once.
-50. It appears only in the German description.
-51. The exact required link is used.
-
-SHORT DESCRIPTION:
-
-52. German comes first.
-53. English comes second.
-54. Content is product-specific.
-55. No commercial information exists.
-56. No Paarmann-Tech exists.
-57. No unnecessary duplication exists.
-
-META DESCRIPTION:
-
-58. German comes first.
-59. English comes second.
-60. Content is product-specific.
-61. At least one focus keyword appears naturally.
-62. No Paarmann-Tech exists.
-63. No commercial claims exist.
-
-KEYWORDS:
-
-64. focus_keywords contains 1 to 4 values.
-65. Every keyword is unique.
-66. Every keyword represents a distinct search concept.
-67. Every keyword is supported by PRODUCT DATA.
-68. No keyword is unnecessarily generic.
-69. No keyword is a near-duplicate.
-70. No keyword stuffing exists.
-71. primary_focus_keyword exists in focus_keywords.
-72. primary_focus_keyword exactly equals one focus_keywords value.
-73. Primary focus keyword appears naturally in German title.
-74. Primary focus keyword appears naturally in German description.
-75. Primary focus keyword appears naturally in German meta_description.
-
-SEO HTML:
-
-76. Final heading is exactly:
-
-<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>
-
-77. Keyword links immediately follow the heading.
-78. Only focus_keywords are used.
-79. Visible keyword text exactly matches focus_keywords.
-80. Spaces in search URLs are replaced with +.
-81. Only internal search URLs are used.
-82. Nothing appears after the final keyword link.
+SLUG:
+38. The slug must contain maximum of 8 meaningful segments.
 
 JSON:
 
 83. Exactly one JSON object is returned.
-84. All six required fields exist.
+84. All required fields exist.
 85. JSON is valid.
 86. json.loads() can parse it successfully.
 87. No markdown exists.

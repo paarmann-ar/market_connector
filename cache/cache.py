@@ -38,19 +38,23 @@ class Cache:
     # --
 
     def update_cache(self, key: str, data: dict, cache_file: str) -> dict:
-        cache_file = Path(f"{self.cache_address}/{cache_file}")
-        cache_file = Path(cache_file)
 
-        cache = {}
+        try:
+            cache_file = Path(f"{self.cache_address}/{cache_file}")
 
-        if cache_file.exists():
-            try:
-                with cache_file.open("r", encoding="utf-8") as f:
-                    cache = json.load(f)
-            except (json.JSONDecodeError, OSError):
-                cache = {}
+            cache = {}
 
-        cache[key] = data
+            if cache_file.exists():
+                try:
+                    with cache_file.open("r", encoding="utf-8") as f:
+                        cache = json.load(f)
+                except (json.JSONDecodeError, OSError):
+                    cache = {}
 
-        with cache_file.open("w", encoding="utf-8") as f:
-            json.dump(cache, f, ensure_ascii=False, indent=2)
+            cache[key] = data
+
+            with cache_file.open("w", encoding="utf-8") as f:
+                json.dump(cache, f, ensure_ascii=False, indent=2)
+
+        except Exception as exp:
+            print(f"update_cache: {exp}")

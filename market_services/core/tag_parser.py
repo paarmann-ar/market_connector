@@ -120,8 +120,15 @@ class TagParser:
 
         context = self.normalize_context(context)
 
+        # patterns = [
+        #     r"\b[A-Z]{2,}\d+[A-Z0-9-]*\b",
+        #     r"\b6ES\d+[A-Z0-9-]*\b",
+        #     r"\b6ES\d+\s+\d+[A-Z0-9-]*\b",
+        # ]
+
         patterns = [
-            r"\b[A-Z]{2,}\d+[A-Z0-9-]*\b",
+            r"\b[A-Z]{2,}\d+(?:-[A-Z]{2,}\d+)+\b",
+            r"\b[A-Z]{2,}\d+\b",
             r"\b6ES\d+[A-Z0-9-]*\b",
             r"\b6ES\d+\s+\d+[A-Z0-9-]*\b",
         ]
@@ -145,9 +152,13 @@ class TagParser:
             remove_words = [brand, condition, category]
             remove_words.extend(part_numbers)
 
+            remove_words = list(filter(lambda x: x is None, remove_words))
+
             for word in remove_words:
                 if word:
                     result = result.lower().replace(word.lower(), "")
+
+            result = self.clean_char(result)
 
             for no_go_word in self.NO_GO_WORDS:
                 result = result.replace(no_go_word, "")
@@ -203,3 +214,20 @@ class TagParser:
 
         except Exception as exp:
             self.prompt_on_screen(f"build_tags: {exp}")
+
+    def clean_char(self, text):
+        # , , ,
+        text = re.sub(r"\s*,\s*(?=,)", "", text)
+
+        text = re.sub(r"\s*,\s*([–—-])", r" \1", text)
+        text = re.sub(r"\s*,\s*$", "", text)
+
+        # ......
+        text = re.sub(r"\.{2,}", "", text)
+
+        #!!!
+        text = re.sub(r"\s*[!]{1,}\s*", " ", text)
+
+        text = re.sub(r"\s+", " ", text).strip()
+
+        return text

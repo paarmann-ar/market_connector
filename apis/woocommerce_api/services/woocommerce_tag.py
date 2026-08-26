@@ -59,7 +59,7 @@ class WoocommerceTag(BaseWoocommerceApi):
         )
 
         for tag in response:
-            if html.unescape(tag["name"].lower()) == name.lower():
+            if name.lower() in html.unescape(tag["name"].lower()):
                 return WoocommerceTagModel.from_api(tag)
 
         return None

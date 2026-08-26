@@ -24,6 +24,7 @@ class WoocommerceProductModel:
     catalog_visibility: Optional[str] = "visible"
     description: Optional[str] = ""
     short_description: Optional[str] = ""
+    image_description: Optional[str] = ""
     sku: Optional[str] = ""
     price: Optional[str] = ""
     regular_price: Optional[str] = ""
@@ -40,6 +41,7 @@ class WoocommerceProductModel:
     brands: list[WoocommerceBrandModel] = field(default_factory=list)
     tags: list[WoocommerceTagModel] = field(default_factory=list)
     images: list[WoocommerceImageModel] = field(default_factory=list)
+    image_description: Optional[str] = ""
     attributes: list = field(default_factory=list)
     default_attributes: list[str] = field(default_factory=list)
     stock_status: Optional[str] = "instock"

@@ -57,3 +57,13 @@ class RandomExpertion:
         password = "".join(secrets.choice(chars) for _ in range(30))
 
         return password
+
+    # --
+    # ...
+    # --
+
+    @staticmethod
+    def sku_generator(length=10):
+        chars = string.ascii_uppercase + string.digits
+        random_part = "".join(secrets.choice(chars) for _ in range(length))
+        return f"pt-{random_part}"

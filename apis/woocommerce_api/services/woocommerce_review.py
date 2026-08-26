@@ -49,7 +49,6 @@ class WoocommerceReview(BaseWoocommerceApi):
 
     def get_all_reviews(self, product_id: str, record_per_page: int = 100):
         try:
-
             response = self.request(
                 method="get",
                 url=f"{self.base_url}{self.review_url}",

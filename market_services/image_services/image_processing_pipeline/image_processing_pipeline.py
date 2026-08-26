@@ -68,7 +68,8 @@ class ImageProcessingPipeline(Base):
                 image_data_model = self.cloud_operation.download_image_from_url(image_data_model)
 
             image_url_by_image_name = {
-                image.image_name: {"image_url": image.image_url, "image_alt": image.alt} for image in image_data_models
+                image.image_name: {"image_url": image.image_url, "image_alt": image.alt, "image_description": image.image_description}
+                for image in image_data_models
             }
 
             image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
@@ -77,6 +78,7 @@ class ImageProcessingPipeline(Base):
                 image_data = image_url_by_image_name.get(image_data_model.image_name)
                 image_data_model.image_url = image_data.get("image_url")
                 image_data_model.alt = image_data.get("image_alt")
+                image_data_model.image_description = image_data.get("image_description")
 
             for image_data_model in image_data_models:
                 self.cache.update_cache(
@@ -116,11 +118,13 @@ class ImageProcessingPipeline(Base):
             image_data_models: list[ImageDataModel] = []
             wordpress_media_models: list[WordpressMediaModel] = []
 
+            image_description = woocommerce_product_model.image_description
             for woocommerce_product_model_image in woocommerce_product_model.images:
                 image_data_model = ImageDataModel(
                     image_url=woocommerce_product_model_image.src,
                     is_main_image=woocommerce_product_model_image.is_main_image,
                     alt=woocommerce_product_model_image.alt,
+                    image_description=image_description,
                 )
                 image_data_models.append(image_data_model)
 
@@ -129,7 +133,10 @@ class ImageProcessingPipeline(Base):
             # add alt auch hier
             for image_data_model in image_data_models:
                 wordpress_media_model = WordpressMediaModel(
-                    media_address=image_data_model.images_address, media_name=image_data_model.image_name, wp_alt_text=image_data_model.alt
+                    media_address=image_data_model.images_address,
+                    media_name=image_data_model.image_name,
+                    wp_alt_text=image_data_model.alt,
+                    wp_description=image_data_model.image_description,
                 )
                 wordpress_media_models.append(wordpress_media_model)
 

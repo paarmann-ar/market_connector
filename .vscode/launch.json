@@ -16,7 +16,7 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "image_services.background_operation.background_operation",
+            "module": "ki.ollama.semantic_seo",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {

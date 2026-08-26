@@ -9,6 +9,7 @@ from market_services.adapters.ebay_product_model_to_woocommerce_product_model_ad
 from market_services.image_services.image_processing_pipeline.image_processing_pipeline import (
     ImageProcessingPipeline,
 )
+from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 
 
 class MarketConnectorController:
@@ -16,9 +17,9 @@ class MarketConnectorController:
     Controller responsible for connecting eBay and WooCommerce.
     """
 
-    # -------------------------------------------------------------------------
-    # WooCommerce
-    # -------------------------------------------------------------------------
+    # --
+    # ...
+    # --
 
     @staticmethod
     def upload_to_woocommerce(
@@ -34,9 +35,9 @@ class MarketConnectorController:
             target_woocommerce_category_name=(search_in_ebay_model.target_category_name_in_woocommerce),
         )
 
-    # -------------------------------------------------------------------------
-    # eBay -> WooCommerce
-    # -------------------------------------------------------------------------
+    # --
+    # ...
+    # --
 
     @staticmethod
     def sync_ebay_to_woocommerce(
@@ -72,9 +73,9 @@ class MarketConnectorController:
             search_in_ebay_model=search_in_ebay_model,
         )
 
-    # -------------------------------------------------------------------------
-    # eBay -> eBay
-    # -------------------------------------------------------------------------
+    # --
+    # ...
+    # --
 
     @staticmethod
     def create_ebay_offers(
@@ -107,18 +108,19 @@ class MarketConnectorController:
 
         return True
 
-    # -------------------------------------------------------------------------
-    # woocommerce -> eBay
-    # -------------------------------------------------------------------------
+    # --
+    # ...
+    # --
+
     @staticmethod
     def sync_woocommerce_to_ebay(
         self,
-        search_in_ebay_model: SearchInEbayModel,
+        search_in_woocommerce_model: SearchInWoocommerceModel,
     ) -> bool:
         """
         Fetch products from woocommerce and create offers on eBay.
         """
 
-        ApisProvider().woocommerce_api
+        woocommerce_api = ApisProvider().woocommerce_api
 
-        product_woocommerce_models = MarketConnectorController.fetch_from_woocommerce(search_in_ebay_model=search_in_ebay_model)
+        product_woocommerce_models = woocommerce_api.fetch_from_woocommerce(search_in_woocommerce_model=search_in_woocommerce_model)

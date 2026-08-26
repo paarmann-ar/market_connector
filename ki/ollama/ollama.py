@@ -6,7 +6,8 @@ from ki.ollama.models.ollama_message_model import OllamaMessageModel
 from ki.ollama.models.ollama_prompt_model import OllamaPromptModel
 from ki.ollama.services.ollama_chat_service import OllamaChatService
 from ki.ollama.services.ollama_generate_service import OllamaGenerateService
-from ki.prompt_provider.models.input_message_model import InputMessageModel
+from ki.models.input_message_model import InputMessageModel
+from ki.ollama.models.ollama_answer_model import ProductOutputModel
 
 # --
 # ...
@@ -116,15 +117,16 @@ class Ollama(Base):
                 "meta_description": error_product_dict.get("short_description", ""),
                 "focus_keywords": [error_product_dict.get("brand", ""), ""],
                 "primary_focus_keyword": error_product_dict.get("brand", "No-Brand"),
-                "permalink": error_product_dict.get("permalink", "No-permalink"),
+                "slug": error_product_dict.get("slug", "No-Slug"),
             }
 
             response = self.ollama_generate_service.generate_with_ollama(prompt=ollama_prompt_model.content)
             response = response.get("response", "").strip()
-
-            response = json.loads(response)
+            response = ProductOutputModel.model_validate_json(response)
+            response = response.model_dump()
 
             self.cache.update_cache(key=input_message_model.inputs.get("cache_id"), data=response, cache_file=self.cache_file_name)
+
             return response
 
         except json.JSONDecodeError as exp:

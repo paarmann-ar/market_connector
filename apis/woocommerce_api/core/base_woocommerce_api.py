@@ -1,12 +1,13 @@
 from typing import Any
 from apis.core.base import Base
+from apis.core.singleton_meta import SingletonMeta
 
 # --
 # ...
 # --
 
 
-class BaseWoocommerceApi(Base):
+class BaseWoocommerceApi(Base, metaclass=SingletonMeta):
     def __init__(self, **kwargs: Any) -> None:
         super().__init__(**kwargs)
 
