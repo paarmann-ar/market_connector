@@ -10,7 +10,7 @@ from ki.prompt_provider.prompt_manager import PromptManager
 from services.connection.connection_provider import ConnectionProvider
 from services.disk.service_disk_provider import ServiceDiskProvider
 from services.logging.log_provider import LogProvider
-from cache.cache import Cache
+from config.cache.cache import Cache
 
 # --
 # ...

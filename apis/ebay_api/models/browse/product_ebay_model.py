@@ -79,6 +79,7 @@ class ProductEbayModel:
 
     # eBay item specifics
     aspects: Optional[dict[str, list[str]]] = None
+    sellerAccountType: Optional[str] = None
 
     # --
     # ...

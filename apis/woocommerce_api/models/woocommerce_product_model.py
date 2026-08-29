@@ -1,5 +1,5 @@
 import json
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 from typing import Optional
 
 from apis.seo_api.models.rank_math_model import RankMathModel
@@ -46,6 +46,21 @@ class WoocommerceProductModel:
     default_attributes: list[str] = field(default_factory=list)
     stock_status: Optional[str] = "instock"
     meta_data: Optional[RankMathModel] = None
+
+    # --
+    # ...
+    # --
+
+    def __init__(self, **kwargs):
+
+        valid_fields = {field.name for field in fields(self)}
+
+        for key, value in kwargs.items():
+            # Ignore unknown fields
+            if key not in valid_fields:
+                continue
+
+            setattr(self, key, value)
 
     # --
     # ...

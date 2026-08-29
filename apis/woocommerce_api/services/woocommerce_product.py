@@ -151,7 +151,14 @@ class WoocommerceProduct(BaseWoocommerceApi):
             if not response:
                 return None
 
-            return WoocommerceProductModel(**response)
+            elif isinstance(response, list):
+                woocommerce_product_model = []
+                for res in response:
+                    woocommerce_product_model.append(WoocommerceProductModel(**res))
+                return woocommerce_product_model
+
+            else:
+                return WoocommerceProductModel(**response)
 
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_search_in_woocommerce_model: {exp}")

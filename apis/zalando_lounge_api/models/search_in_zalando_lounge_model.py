@@ -1,19 +1,19 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional
-from urllib.parse import urlencode
 
 
 # --
 # ...
 # --
 @dataclass
-class SearchInWoocommerceModel:
+class SearchInZalandoLoungeModel:
     category_name_candidate: Optional[str] = None
     category_id: Optional[int] = None
     product_id: Optional[int] = None
     name: Optional[str] = None
     sku: Optional[str] = None
+    campaign_id: Optional[str] = (None,)
     status: Optional[str] = None
     stock_status: Optional[str] = None
     filter: Optional[str] = None

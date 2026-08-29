@@ -38,6 +38,7 @@ class Request(Base):
             self.method = kwargs.get("method", "get")
             self.is_download_file = kwargs.get("is_download_file", False)
             self.is_response_json = kwargs.get("is_response_json", True)
+            self.cookies = kwargs.get("cookies", None)
 
         except Exception as exp:
             print(f"{__file__}--->{__name__}: {exp!s}")
@@ -83,6 +84,7 @@ class Request(Base):
         self.is_response_json = kwargs.get("is_response_json", True)
         self.is_download_file = kwargs.get("is_download_file", False)
         self.download_file_address = kwargs.get("download_file_address", "1.txt")
+        self.cookies = kwargs.get("cookies", None)
 
         self.request_package = {
             "url": self.url,
@@ -94,6 +96,7 @@ class Request(Base):
             "files": self.files,
             "verify": self.verify,
             "timeout": self.timeout,
+            "cookies": self.cookies,
         }
 
         self.waiting = kwargs.get("delay", 0.5)
@@ -107,6 +110,16 @@ class Request(Base):
 
         try:
             sys.set_int_max_str_digits(0)
+
+            # if self.cookies:
+            #     session = requests.Session()
+            #     for cookie in self.cookies:
+            #         session.cookies.set(
+            #             cookie["name"],
+            #             cookie["value"],
+            #             domain=cookie.get("domain"),
+            #             path=cookie.get("path", "/"),
+            #         )
 
             response = None
 

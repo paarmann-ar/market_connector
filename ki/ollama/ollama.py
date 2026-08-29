@@ -98,12 +98,12 @@ class Ollama(Base):
         self,
         input_message_model: InputMessageModel = None,
         ollama_prompt_model: OllamaPromptModel = None,
-    ) -> dict:
+    ) -> ProductOutputModel:
 
         try:
             cache = self.cache.get_from_cache(cache_file=self.cache_file_name, key=input_message_model.inputs.get("cache_id"))
             if cache:
-                return cache
+                return ProductOutputModel(**cache)
 
             if not ollama_prompt_model:
                 ollama_prompt_model = self.convert_prompt_model_to_ollama_prompt_model(input_message_model)
@@ -123,11 +123,11 @@ class Ollama(Base):
             response = self.ollama_generate_service.generate_with_ollama(prompt=ollama_prompt_model.content)
             response = response.get("response", "").strip()
             response = ProductOutputModel.model_validate_json(response)
-            response = response.model_dump()
 
+            response = response.model_dump()
             self.cache.update_cache(key=input_message_model.inputs.get("cache_id"), data=response, cache_file=self.cache_file_name)
 
-            return response
+            return ProductOutputModel(**response)
 
         except json.JSONDecodeError as exp:
             self.error("Invalid JSON from Ollama: %s | Response: %s", exp)

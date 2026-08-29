@@ -3,13 +3,15 @@ from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 
-from market_services.adapters.ebay_product_model_to_woocommerce_product_model_adaptor import (
+from market_services.adapters.ebay.ebay_product_model_to_woocommerce_product_model_adaptor import (
     EbayProductModelToWoocommerceProductModelAdaptor,
 )
 from market_services.image_services.image_processing_pipeline.image_processing_pipeline import (
     ImageProcessingPipeline,
 )
 from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
+from market_services.adapters.woocommerce.woocommerce_to_ebay_inventory_adapter import WoocommerceToEbayInventoryAdapter
+from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
 
 
 class MarketConnectorController:
@@ -114,7 +116,6 @@ class MarketConnectorController:
 
     @staticmethod
     def sync_woocommerce_to_ebay(
-        self,
         search_in_woocommerce_model: SearchInWoocommerceModel,
     ) -> bool:
         """
@@ -124,3 +125,36 @@ class MarketConnectorController:
         woocommerce_api = ApisProvider().woocommerce_api
 
         product_woocommerce_models = woocommerce_api.fetch_from_woocommerce(search_in_woocommerce_model=search_in_woocommerce_model)
+
+        for product_woocommerce_model in product_woocommerce_models:
+            woocommerce_to_ebay_inventory_adapter = WoocommerceToEbayInventoryAdapter(woocommerce_product=product_woocommerce_model).adapt()
+            # az inja bayad sku ezafeh konam badan minvisam
+
+            print(woocommerce_to_ebay_inventory_adapter)
+
+    # --
+    # ...
+    # --
+
+    @staticmethod
+    def sync_zalando_lounge_to_woocommerce(
+        search_in_zalando_lounge_model: SearchInZalandoLoungeModel,
+    ) -> bool:
+        """
+        Fetch products from zalando lounge and sync to woocommerce.
+        """
+
+        zalando_lounge_api = ApisProvider().zalando_lounge_api
+
+        product_woocommerce_models = zalando_lounge_api.fetch_from_zalando_lounge(search_in_zalando_lounge_model)
+
+        # for product_woocommerce_model in product_woocommerce_models:
+        #     woocommerce_to_ebay_inventory_adapter = WoocommerceToEbayInventoryAdapter(woocommerce_product=product_woocommerce_model).adapt()
+        #     # az inja bayad sku ezafeh konam badan minvisam
+
+        #     print(woocommerce_to_ebay_inventory_adapter)
+
+    @staticmethod
+    def sync_matterhorn_moda_to_woocommerce():
+        matterhorn_moda_api = ApisProvider().matterhorn_moda_api
+        matterhorn_moda_api.pipeline_fetch_products_from_matterhorn_moda()

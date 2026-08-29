@@ -1,5 +1,5 @@
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, fields
 from typing import Optional
 
 
@@ -11,6 +11,17 @@ class SellerEbayModel:
     imageUrl: Optional[str] = None
     width: Optional[str] = None
     height: Optional[str] = None
+
+    # --
+    # ...
+    # --
+
+    def __init__(self, **kwargs):
+        valid_fields = {f.name for f in fields(self)}
+
+        for key, value in kwargs.items():
+            if key in valid_fields:
+                setattr(self, key, value)
 
     def to_json(self) -> str:
         return json.dumps(

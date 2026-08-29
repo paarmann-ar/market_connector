@@ -4,6 +4,7 @@ from ki.models.input_message_model import InputMessageModel
 from market_services.meta_data_services.models.product_input_metadata_model import ProductInputMetadataModel
 from market_services.meta_data_services.models.product_output_metadata_model import ProductOutputMetadataModel
 from toolboxs.text import Text
+from market_services.meta_data_services.services.ollamat_to_wocommerce_normalize import assemble_final
 
 
 # --
@@ -27,48 +28,38 @@ class MetaDataServices:
         input_message_model.md_file_name = "prompt"
         # qwen3:30B
 
-        ki_message = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
+        product_output_model = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
 
         # -----------------------------------------
         # Normalize KI response
         # -----------------------------------------
 
-        title = ki_message.get("title") or ""
-        description = ki_message.get("description") or ""
-        focus_keyword = ki_message.get("focus_keyword") or ""
-        focus_keywords = ki_message.get("focus_keywords") or []
-        slug = ki_message.get("slug")
-        image_description = ki_message.get("image_description")
-        product_tags = ki_message.get("product_tags")
-
-        if isinstance(focus_keywords, str):
-            focus_keywords = [focus_keywords]
+        product_output_metadata_model = assemble_final(
+            product_output_model=product_output_model, product_input=product_input_metadata_model
+        )
 
         # -----------------------------------------
         # Image SEO
         # -----------------------------------------
 
-        image_alt_constructor = " ".join(keyword for keyword in focus_keywords if keyword)
+        image_alt_constructor = " ".join(keyword for keyword in product_output_metadata_model.focus_keywords if keyword)
         image_alt = Text().remove_duplicate_words_from_string(image_alt_constructor)
-        image_alt_main = title.split("|")[0].strip()
+        image_alt_main = product_output_metadata_model.title.split("|")[0].strip()
 
         # -----------------------------------------
         # Output model
         # -----------------------------------------
-
-        product_output_metadata_model = ProductOutputMetadataModel(**ki_message)
 
         product_output_metadata_model.image_seo_model = {
             "image_alt": image_alt,
             "image_alt_main": image_alt_main,
         }
 
-        rank_math_focus_keyword = product_tags
-        rank_math_focus_keyword.extend(focus_keyword)
+        rank_math_focus_keyword = f"{product_input_metadata_model.mpn}, {product_input_metadata_model.brand}{', '.join(product_output_metadata_model.focus_keywords)}, {product_output_metadata_model.primary_focus_keyword}"
 
         product_output_metadata_model.seo_model = RankMathModel(
-            rank_math_title=title,
-            rank_math_description=description,
+            rank_math_title=product_output_metadata_model.title,
+            rank_math_description=product_output_metadata_model.description,
             rank_math_focus_keyword=rank_math_focus_keyword,
         ).for_use_in_woocommerce()
 

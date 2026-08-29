@@ -8,7 +8,7 @@ from toolboxs.random_expertion import RandomExpertion
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from toolboxs.numbers import Numbers
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
-from market_services.adapters.ebay_product_model_to_product_input_metadata_model import EbayProductModelToProductInputMetadataModel
+from market_services.adapters.ebay.ebay_product_model_to_product_input_metadata_model import EbayProductModelToProductInputMetadataModel
 
 # --
 # ...

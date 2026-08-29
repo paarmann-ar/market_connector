@@ -33,6 +33,8 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.ollama = KiProvider().ollama
 
+        self.cookies = []
+
     # --
     # ...
     # --
