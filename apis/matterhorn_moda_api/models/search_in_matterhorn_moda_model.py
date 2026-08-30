@@ -1,6 +1,7 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional
+from market_services.adapters.models.validate_final_model import ValidateFinalModel
 
 # --
 # ...
@@ -22,7 +23,9 @@ class SearchInMatterhornModaModel:
     total: Optional[int] = None
     item_to_fetch: Optional[int] = 5
     price_anpassen: Optional[int] = 1.60
+    sale_price_anpassen: Optional[int] = 1.50
     target_category_name_in_woocommerce: Optional[str] = None
+    is_remove_description_html: Optional[bool] = True
 
     # --
     # ...

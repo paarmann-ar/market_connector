@@ -1,5 +1,5 @@
 from apis.matterhorn_moda_api.models.brand_matterhorn_moda_model import BrandMatterhornModaModel
-from apis.matterhorn_moda_api.core.base_matterhorn_moda_api  import BaseMatterhornModaApi
+from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhornModaApi
 from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import (
     MatterhornModaApiConfig,
 )
@@ -7,6 +7,7 @@ from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import (
 # --
 # ...
 # --
+
 
 class MatterhornModaBrand(BaseMatterhornModaApi):
     def __init__(self, **kwargs) -> None:

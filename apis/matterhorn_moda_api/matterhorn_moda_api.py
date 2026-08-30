@@ -2,9 +2,8 @@ from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhor
 from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import MatterhornModaApiConfig
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
 from apis.matterhorn_moda_api.services.matterhorn_moda_product import MatterhornModaProduct
-from apis.matterhorn_moda_api.services.matterhorn_moda_category  import MatterhornModaCategory
-from apis.matterhorn_moda_api.services.matterhorn_moda_brand  import MatterhornModaBrand
-
+from apis.matterhorn_moda_api.services.matterhorn_moda_category import MatterhornModaCategory
+from apis.matterhorn_moda_api.services.matterhorn_moda_brand import MatterhornModaBrand
 
 
 # --

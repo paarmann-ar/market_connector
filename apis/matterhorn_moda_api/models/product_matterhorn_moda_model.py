@@ -5,6 +5,7 @@ from pydantic import BaseModel
 # ...
 # --
 
+
 class Price(BaseModel):
     EUR: Optional[float] = None
     CHF: Optional[float] = None

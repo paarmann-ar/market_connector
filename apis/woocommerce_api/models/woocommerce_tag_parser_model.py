@@ -7,6 +7,7 @@ from pydantic import BaseModel
 # ...
 # --
 
+
 class WoocommerceTagParserModel(BaseModel):
     name: str = ""
     brand: Optional[str] = None
@@ -21,10 +22,10 @@ class WoocommerceTagParserModel(BaseModel):
 
     def to_dict(self):
         return self.model_dump()
-    
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()

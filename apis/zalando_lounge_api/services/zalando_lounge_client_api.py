@@ -70,7 +70,7 @@ class ZalandoLoungeClientApi(Base):
                     "accept": "application/json, text/plain, */*",
                     "accept-language": "en-US,en;q=0.9,de;q=0.8",
                     "client_type": "web",
-                    "referer":f"{self.base_url}/campaigns/{campaign_id}/articles/{sku}?navigationSource=catalog&catalog-type=campaign",
+                    "referer": f"{self.base_url}/campaigns/{campaign_id}/articles/{sku}?navigationSource=catalog&catalog-type=campaign",
                     "sec-ch-ua": ('"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"'),
                     "sec-ch-ua-mobile": "?0",
                     "sec-ch-ua-platform": '"macOS"',

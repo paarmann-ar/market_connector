@@ -7,6 +7,7 @@ from pydantic import BaseModel
 # ...
 # --
 
+
 class WoocommerceReviewModel(BaseModel):
     product_id: Optional[int] = None
     review: Optional[str] = None
@@ -19,11 +20,11 @@ class WoocommerceReviewModel(BaseModel):
     # --
 
     def to_dict(self):
-        return self.model_dump()
-    
-# --
-# ...
-# --
+        return self.model_dump(exclude_none=True)
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()

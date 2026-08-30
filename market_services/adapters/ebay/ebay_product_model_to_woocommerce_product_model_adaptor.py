@@ -19,13 +19,16 @@ from market_services.adapters.models.validate_final_model import ValidateFinalMo
 class EbayProductModelToWoocommerceProductModelAdaptor:
     def adapter(self, product_ebay_model: ProductEbayModel) -> WoocommerceProductModel:
 
-        #badan por konam ta roll har befrestam vase validation, alan to hadcode hastan
+        # badan por konam ta roll har befrestam vase validation, alan to hadcode hastan
         validate_final_model = ValidateFinalModel(validation_roles=[])
-        validate_final_model=None
+        validate_final_model = None
 
         meta_data_services = MetaDataServices()
         product_output_metadata_model = meta_data_services.create_metadata(
-            product_input_metadata_model=EbayProductModelToProductInputMetadataModel().adapter(product_ebay_model=product_ebay_model,prompt_filename='paarmann-tech_product_ebay_model'),validate_final_model=validate_final_model
+            product_input_metadata_model=EbayProductModelToProductInputMetadataModel().adapter(
+                product_ebay_model=product_ebay_model, prompt_filename="paarmann-tech_product_ebay_model"
+            ),
+            validate_final_model=validate_final_model,
         )
 
         woocommerce_tags_model = []

@@ -23,6 +23,7 @@ class SearchInEbayModel:
     item_to_fetch: Optional[int] = 5
     price_anpassen: Optional[int] = 1.60
     target_category_name_in_woocommerce: Optional[str] = "Sensoren"
+    is_remove_description_html: Optional[bool] = False
 
     # --
     # ...

@@ -1,14 +1,11 @@
-import json
-from dataclasses import asdict, dataclass
 from typing import Optional
-from urllib.parse import urlencode
+from pydantic import BaseModel
 
 
 # --
 # ...
 # --
-@dataclass
-class SearchInWoocommerceModel:
+class SearchInWoocommerceModel(BaseModel):
     category_name_candidate: Optional[str] = None
     category_id: Optional[int] = None
     product_id: Optional[int] = None
@@ -22,30 +19,31 @@ class SearchInWoocommerceModel:
     item_to_fetch: int = 5
     price_anpassen: float = 1.60
     target_category_name_in_ebay: str = "Sensoren"
-    
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     def __post_init__(self):
         self.generate_filter()
-# --
-# ...
-# --
+
+    # --
+    # ...
+    # --
 
     def to_dict(self):
-        return self.model_dump()
-    
-# --
-# ...
-# --
+        return self.model_dump(exclude_none=True)
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()
 
-# --
-# ...
-# --
+    # --
+    # ...
+    # --
 
     def generate_filter(self):
         params = {}
@@ -69,6 +67,3 @@ class SearchInWoocommerceModel:
             params["stock_status"] = self.stock_status
 
         self.filter = params
-
-    def get_all_attributes(self):
-        return asdict(self)

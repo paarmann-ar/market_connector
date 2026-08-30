@@ -9,11 +9,12 @@ from apis.woocommerce_api.models.woocommerce_category_model import (
 )
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
-from pydantic import BaseModel,ConfigDict
+from pydantic import BaseModel, ConfigDict
 
 # --
 # ...
 # --
+
 
 class WoocommerceProductModel(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -53,11 +54,11 @@ class WoocommerceProductModel(BaseModel):
     # --
 
     def to_dict(self):
-        return self.model_dump()
-    
-# --
-# ...
-# --
+        return self.model_dump(exclude_none=True)
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()

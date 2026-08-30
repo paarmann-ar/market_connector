@@ -22,5 +22,5 @@ class EbayProductModelToProductInputMetadataModel:
             brand=product_ebay_model.brand,
             condition=product_ebay_model.condition,
             mpn=product_ebay_model.mpn,
-            prompt_filename = prompt_filename
+            prompt_filename=prompt_filename,
         )

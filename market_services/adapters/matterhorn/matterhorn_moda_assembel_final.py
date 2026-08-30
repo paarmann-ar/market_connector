@@ -7,6 +7,8 @@ from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from pydantic import BaseModel, Field, field_validator, model_validator
 from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from ki.models.input_message_model import ProductInput
+from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
+
 
 GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae", "Ö": "oe", "Ü": "ue", "ß": "ss"})
 
@@ -16,14 +18,19 @@ GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae"
 
 
 def assemble_final(
-    product_output_model: ProductOutputModel, product_input: ProductInput, validate_final_model=None
+    product_output_model: ProductOutputModel, product_input: ProductInput, product_model:ProductMatterhornModaModel
 ) -> ProductOutputMetadataModel:
     title = f"{product_output_model.german_title.strip()} | {product_output_model.english_title.strip()}"
 
-    paarmann_link = '<a href="https://www.paarmann-tech.de/kontakt/">Paarmann-Tech</a>'
+    paarmann_link = '<a href="https://www.miviva.de/kontakt/">miviva</a>'
     german_description = product_output_model.german_description.strip()
-    if "Paarmann-Tech" not in german_description:
-        german_description += f"für Weitere technische Industrieprodukte kontakten Sie bei {paarmann_link}."
+
+    if "miviva" not in german_description:
+        german_description += f"Für Weitere frage kontakten Sie bei {paarmann_link}."
+
+    english_description = f"{product_output_model.english_description.strip()}\n{product_model.size_table_txt}" 
+    english_description = f"{english_description}\n{product_model.size_table_html}"
+    english_description = f"{english_description}\n{product_model.size_table}"
 
     focus_keywords = product_output_model.german_focus_keywords
     focus_keywords.extend(product_output_model.english_focus_keywords)
@@ -36,7 +43,7 @@ def assemble_final(
     product_tags.extend(product_output_model.english_product_tags)
     product_tags = list(filter(lambda x: x, product_tags))
 
-    description = f"<p>{german_description}</p><p>{product_output_model.english_description.strip()}</p>{keyword_links(focus_keywords)}"
+    description = f"<p>{german_description}</p><p>{english_description}</p>{keyword_links(focus_keywords)}"
 
     short_description = (
         f"<p>{product_output_model.german_short_description.strip()}</p><p>{product_output_model.english_short_description.strip()}</p>"
@@ -56,7 +63,7 @@ def assemble_final(
         product_tags=product_tags,
     )
 
-    validate_final(final, product_input, validate_final_model)
+    validate_final(final, product_input)
     return final
 
 
@@ -65,24 +72,23 @@ def assemble_final(
 # --
 
 
-def validate_final(final: ProductOutputMetadataModel, product_input: ProductInput, validate_final_model) -> None:
-    if validate_final_model:
-        if final.title.count(" | ") != 1:
-            raise ValueError("Final title must contain exactly two separators")
-        if not 1 <= len(final.focus_keywords) <= 10:
-            raise ValueError("focus_keywords must contain 1 to 4 items")
-        if final.primary_focus_keyword in final.focus_keywords:
-            raise ValueError("Primary keyword missing from focus_keywords")
-        if final.description.count("Paarmann-Tech") >= 1:
-            raise ValueError("Paarmann-Tech must appear exactly once")
+def validate_final(final: ProductOutputMetadataModel, product_input: ProductInput) -> None:
+    if final.title.count(" | ") != 1:
+        raise ValueError("Final title must contain exactly two separators")
+    if not 1 <= len(final.focus_keywords) <= 10:
+        raise ValueError("focus_keywords must contain 1 to 4 items")
+    if final.primary_focus_keyword in final.focus_keywords:
+        raise ValueError("Primary keyword missing from focus_keywords")
+    if final.description.count("miviva") > 2:
+        raise ValueError("miviva must appear exactly once")
 
-        heading = "<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>"
-        if heading not in final.description:
-            raise ValueError("SEO keyword section missing")
-        if not final.description.endswith(f">{final.focus_keywords[-1]}</a>"):
-            raise ValueError("Description must end with final SEO keyword link")
+    heading = "<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>"
+    if heading not in final.description:
+        raise ValueError("SEO keyword section missing")
+    if not final.description.endswith(f">{final.focus_keywords[-1]}</a>"):
+        raise ValueError("Description must end with final SEO keyword link")
 
-        json.loads(final.model_dump_json())
+    json.loads(final.model_dump_json())
 
 
 # --

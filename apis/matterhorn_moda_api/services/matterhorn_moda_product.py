@@ -1,5 +1,5 @@
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from apis.matterhorn_moda_api.core.base_matterhorn_moda_api  import BaseMatterhornModaApi
+from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhornModaApi
 from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import (
     MatterhornModaApiConfig,
 )

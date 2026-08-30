@@ -1,5 +1,5 @@
 from typing import Optional
-from apis.matterhorn_moda_api .models.product_matterhorn_moda_model import ProductMatterhornModaModel
+from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
 from apis.woocommerce_api.models.woocommerce_product_model import (
     WoocommerceProductModel,
 )
@@ -15,24 +15,28 @@ from apis.woocommerce_api.models.woocommerce_image_model import (
 from apis.woocommerce_api.models.woocommerce_tag_model import (
     WoocommerceTagModel,
 )
+from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
 from market_services.meta_data_services.meta_data_services import MetaDataServices
 from market_services.adapters.models.validate_final_model import ValidateFinalModel
-from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_input_metadata_model import MatterhornModaProductModelToWoocommerceProductInputMetadataModel
+from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_input_metadata_model import (
+    MatterhornModaProductModelToWoocommerceProductInputMetadataModel,
+)
+from market_services.adapters.matterhorn.matterhorn_moda_assembel_final import assemble_final
 # --
 # ...
 # --
 
 
 class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
-    def adapter(self, product_matterhorn_moda_model: ProductMatterhornModaModel) -> WoocommerceProductModel:
-
-        #badan por konam ta roll har befrestam vase validation
-        validate_final_model = ValidateFinalModel(validation_roles=[])
-        validate_final_model=None
+    def adapter(
+        self, product_matterhorn_moda_model: ProductMatterhornModaModel, search_in_matterhorn_moda_model: SearchInMatterhornModaModel
+    ) -> WoocommerceProductModel:
 
         meta_data_services = MetaDataServices()
         product_output_metadata_model = meta_data_services.create_metadata(
-            product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(product_matterhorn_moda_model=product_matterhorn_moda_model,prompt_filename="miviva_matterhorn_moda_product"),validate_final_model=validate_final_model
+            product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(
+                product_matterhorn_moda_model=product_matterhorn_moda_model, prompt_filename="miviva_matterhorn_moda_product",is_remove_html=search_in_matterhorn_moda_model.is_remove_description_html
+            ),assemble_final=assemble_final, product_model=product_matterhorn_moda_model
         )
 
         woocommerce_tags_model = []
@@ -47,54 +51,19 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url, "alt": image_alt}))
 
         return WoocommerceProductModel(
-            name=product_matterhorn_moda_model.name_without_number or "",
-            description=product_matterhorn_moda_model.description or "",
-            short_description=product_matterhorn_moda_model.description or "",
-            image_description=product_matterhorn_moda_model.name or "",
+            name=product_output_metadata_model.title or "",
+            description=product_output_metadata_model.description or "",
+            short_description=product_output_metadata_model.short_description or "",
+            image_description=product_output_metadata_model.image_description or "",
             sku=f"mm_{product_matterhorn_moda_model.id}" or "",
-
-            price=self._get_price(product_matterhorn_moda_model),
-            regular_price=self._get_price(product_matterhorn_moda_model),
-
             on_sale=True,
-
             manage_stock=True,
-
-            categories=self._get_categories(
-                product_matterhorn_moda_model
-            ),
-
-            brands=self._get_brands(
-                product_matterhorn_moda_model
-            ),
-
+            categories=self._get_categories(product_matterhorn_moda_model),
+            brands=self._get_brands(product_matterhorn_moda_model),
             tags=woocommerce_tags_model,
-
-            images=self._get_images(
-                product_matterhorn_moda_model
-            ),
-
-            stock_status=self._get_stock_status(
-                product_matterhorn_moda_model
-            ),
+            images=self._get_images(product_matterhorn_moda_model),
+            stock_status=self._get_stock_status(product_matterhorn_moda_model),
         )
-
-    # ------------------------------------------------------------------
-    # Price
-    # ------------------------------------------------------------------
-
-    def _get_price(
-        self,
-        product_matterhorn_moda_model: ProductMatterhornModaModel,
-    ) -> str:
-
-        if not product_matterhorn_moda_model.prices:
-            return ""
-
-        if product_matterhorn_moda_model.prices.EUR is None:
-            return ""
-
-        return str(product_matterhorn_moda_model.prices.EUR * 1.4)
 
     # ------------------------------------------------------------------
     # Category
@@ -108,14 +77,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
         category_name = product_matterhorn_moda_model.category_name
         category_path = product_matterhorn_moda_model.category_path
 
-
-        return [
-            WoocommerceCategoryModel(
-                name=category_name,
-                slug=self._slugify(category_name),
-                path=category_path
-            )
-        ]
+        return [WoocommerceCategoryModel(name=category_name, slug=self._slugify(category_name), path=category_path)]
 
     # ------------------------------------------------------------------
     # Brand
@@ -150,9 +112,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
 
         images = []
 
-        for index, image_url in enumerate(
-            product_matterhorn_moda_model.images
-        ):
+        for index, image_url in enumerate(product_matterhorn_moda_model.images):
             if not image_url:
                 continue
 
@@ -201,8 +161,4 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
         if not value:
             return None
 
-        return (
-            value.strip()
-            .lower()
-            .replace(" ", "-")
-        )
+        return value.strip().lower().replace(" ", "-")

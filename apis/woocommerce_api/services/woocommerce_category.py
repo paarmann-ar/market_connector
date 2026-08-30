@@ -52,10 +52,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
     # ...
     # --
 
-    def sync_categories(
-        self,
-        categories: list[WoocommerceCategoryModel]
-    ) -> dict[str, WoocommerceCategoryModel]:
+    def sync_categories(self, categories: list[WoocommerceCategoryModel]) -> dict[str, WoocommerceCategoryModel]:
 
         category_index = self.build_category_index(categories)
 
@@ -63,22 +60,17 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         sorted_categories = sorted(
             category_index.values(),
-            key=lambda category: len(
-                self.normalize_path(category.path)
-            ),
+            key=lambda category: len(self.normalize_path(category.path)),
         )
 
         for category in sorted_categories:
-
             parent_path = self.get_parent_path(category.path)
 
             if parent_path:
                 parent = synced_categories.get(parent_path)
 
                 if not parent:
-                    raise ValueError(
-                        f"Parent category not synced: {parent_path}"
-                    )
+                    raise ValueError(f"Parent category not synced: {parent_path}")
 
                 category.parent_id = parent.id
 
@@ -95,12 +87,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
     # ...
     # --
 
-    def get_category_by_name(
-        self,
-        name: str,
-        parent_id: int = 0,
-        record_per_page: int = 100
-    ):
+    def get_category_by_name(self, name: str, parent_id: int = 0, record_per_page: int = 100):
         response = self.request(
             method="get",
             url=f"{self.base_url}{self.category_url}",
@@ -116,9 +103,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
         normalized_name = html.unescape(name).strip().lower()
 
         for category in response:
-            category_name = html.unescape(
-                category["name"]
-            ).strip().lower()
+            category_name = html.unescape(category["name"]).strip().lower()
 
             if category_name != normalized_name:
                 continue
@@ -210,12 +195,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
         current_path_parts = []
 
         for name in parts:
-
             current_path_parts.append(name)
 
-            current_path = self.build_path(
-                current_path_parts
-            )
+            current_path = self.build_path(current_path_parts)
 
             category = WoocommerceCategoryModel(
                 name=name,
@@ -224,9 +206,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
                 parent_id=parent_id or None,
             )
 
-            category = self.resolve_or_upload_single(
-                category
-            )
+            category = self.resolve_or_upload_single(category)
 
             parent_id = category.id
 
@@ -278,15 +258,10 @@ class WoocommerceCategory(BaseWoocommerceApi):
     # ...
     # --
 
-
     @staticmethod
     def normalize_path(path: str) -> list[str]:
-        return [
-            part.strip()
-            for part in path.strip("/").split("/")
-            if part.strip()
-        ]
-    
+        return [part.strip() for part in path.strip("/").split("/") if part.strip()]
+
     # --
     # ...
     # --
@@ -299,7 +274,6 @@ class WoocommerceCategory(BaseWoocommerceApi):
     # ...
     # --
 
-
     @staticmethod
     def get_parent_path(path: str) -> str | None:
         parts = WoocommerceCategory.normalize_path(path)
@@ -308,7 +282,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
             return None
 
         return WoocommerceCategory.build_path(parts[:-1])
-    
+
     # --
     # ...
     # --
@@ -321,19 +295,13 @@ class WoocommerceCategory(BaseWoocommerceApi):
         result: dict[str, WoocommerceCategoryModel] = {}
 
         for category in categories:
-
             if not category.path:
                 continue
 
-            parts = WoocommerceCategory.normalize_path(
-                category.path
-            )
+            parts = WoocommerceCategory.normalize_path(category.path)
 
             for i, name in enumerate(parts):
-
-                path = WoocommerceCategory.build_path(
-                    parts[: i + 1]
-                )
+                path = WoocommerceCategory.build_path(parts[: i + 1])
 
                 if path not in result:
                     result[path] = WoocommerceCategoryModel(
@@ -353,9 +321,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
         if not category.path:
             return None
 
-        parent_path = WoocommerceCategory.get_parent_path(
-            category.path
-        )
+        parent_path = WoocommerceCategory.get_parent_path(category.path)
 
         if parent_path is None:
             return None

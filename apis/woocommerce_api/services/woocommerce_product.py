@@ -103,7 +103,10 @@ class WoocommerceProduct(BaseWoocommerceApi):
 
         try:
             response = self.request(
-                method="post", url=f"{self.base_url}{self.products_url}", auth=(self.consumer_key, self.consumer_secret), json=product_model.to_dict()
+                method="post",
+                url=f"{self.base_url}{self.products_url}",
+                auth=(self.consumer_key, self.consumer_secret),
+                json=product_model.to_dict(),
             )
 
             self.prompt_on_screen(f"products: {response}")

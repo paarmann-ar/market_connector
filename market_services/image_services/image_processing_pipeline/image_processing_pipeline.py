@@ -42,7 +42,9 @@ class ImageProcessingPipeline(Base):
     # ...
     # --
 
-    def download_url_remove_white_bg_image(self, image_data_models: list[ImageDataModel], is_remove_set_white_backgroung_on_photo) -> list[ImageDataModel]:
+    def download_url_remove_white_bg_image(
+        self, image_data_models: list[ImageDataModel], is_remove_set_white_backgroung_on_photo
+    ) -> list[ImageDataModel]:
 
         try:
             finded_image_data_models = []
@@ -113,7 +115,12 @@ class ImageProcessingPipeline(Base):
     # ...
     # --
 
-    def image_convertor_pipeline(self, woocommerce_product_models: list[WoocommerceProductModel], is_remove_set_white_backgroung_on_photo=True, download_url_remove_white_bg_image=True) -> None:
+    def image_convertor_pipeline(
+        self,
+        woocommerce_product_models: list[WoocommerceProductModel],
+        is_remove_set_white_backgroung_on_photo=True,
+        download_url_remove_white_bg_image=True,
+    ) -> None:
 
         for woocommerce_product_model in woocommerce_product_models:
             image_data_models: list[ImageDataModel] = []
@@ -129,7 +136,9 @@ class ImageProcessingPipeline(Base):
                 image_data_models.append(image_data_model)
 
             if download_url_remove_white_bg_image:
-                image_data_models = self.download_url_remove_white_bg_image(image_data_models=image_data_models, is_remove_set_white_backgroung_on_photo=is_remove_set_white_backgroung_on_photo)
+                image_data_models = self.download_url_remove_white_bg_image(
+                    image_data_models=image_data_models, is_remove_set_white_backgroung_on_photo=is_remove_set_white_backgroung_on_photo
+                )
 
                 # add alt auch hier
                 for image_data_model in image_data_models:

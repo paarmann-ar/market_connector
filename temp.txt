@@ -1,1 +1,1 @@
-08-29-2026, 18:58:23 resolve_or_upload: string indices must be integers, not 'str'
+08-30-2026, 16:53:56 resolve_or_upload: 'NoneType' object is not iterable

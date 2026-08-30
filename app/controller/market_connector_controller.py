@@ -16,7 +16,11 @@ from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import Search
 
 from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_model_adaptor import MatterhornModaProductModelToWoocommerceProductModelAdaptor
+from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_model_adaptor import (
+    MatterhornModaProductModelToWoocommerceProductModelAdaptor,
+)
+import math
+
 
 class MarketConnectorController:
     """
@@ -159,19 +163,31 @@ class MarketConnectorController:
         #     print(woocommerce_to_ebay_inventory_adapter)
 
     @staticmethod
-    def sync_matterhorn_moda_to_woocommerce(search_in_matterhorn_moda_model:SearchInMatterhornModaModel):
+    def sync_matterhorn_moda_to_woocommerce(search_in_matterhorn_moda_model: SearchInMatterhornModaModel):
         matterhorn_moda_api = ApisProvider().matterhorn_moda_api
         product_matterhorn_moda_models = matterhorn_moda_api.pipeline_fetch_products_from_matterhorn_moda()
 
         woocommerce_product_models: list[WoocommerceProductModel] = []
         adaptor = MatterhornModaProductModelToWoocommerceProductModelAdaptor()
 
-        for product_matterhorn_moda_model in product_matterhorn_moda_models[:3]:
-            product_matterhorn_moda_model.prices.EUR= product_matterhorn_moda_model.prices.EUR * search_in_matterhorn_moda_model.price_anpassen
-            woocommerce_product_model = adaptor.adapter(product_matterhorn_moda_model=product_matterhorn_moda_model)
+        for product_matterhorn_moda_model in product_matterhorn_moda_models[:1]:
+            woocommerce_product_model = adaptor.adapter(
+                product_matterhorn_moda_model=product_matterhorn_moda_model, search_in_matterhorn_moda_model=search_in_matterhorn_moda_model
+            )
+
+            woocommerce_product_model.regular_price = str(
+                math.ceil(product_matterhorn_moda_model.prices.EUR * search_in_matterhorn_moda_model.price_anpassen * 20) / 20
+            )
+            woocommerce_product_model.sale_price = str(
+                math.ceil(product_matterhorn_moda_model.prices.EUR * search_in_matterhorn_moda_model.sale_price_anpassen * 20) / 20
+            )
             woocommerce_product_models.append(woocommerce_product_model)
 
-        ImageProcessingPipeline().image_convertor_pipeline(woocommerce_product_models=woocommerce_product_models,is_remove_set_white_backgroung_on_photo=False, download_url_remove_white_bg_image=False)
+        ImageProcessingPipeline().image_convertor_pipeline(
+            woocommerce_product_models=woocommerce_product_models,
+            is_remove_set_white_backgroung_on_photo=False,
+            download_url_remove_white_bg_image=False,
+        )
 
         MarketConnectorController.upload_to_woocommerce(
             woocommerce_product_models=woocommerce_product_models,

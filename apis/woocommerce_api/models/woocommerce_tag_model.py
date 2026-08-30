@@ -1,13 +1,12 @@
 import json
 import re
-from dataclasses import asdict, dataclass
 from typing import Optional
 from pydantic import BaseModel
-from slugify import slugify
 
 # --
 # ...
 # --
+
 
 class WoocommerceTagModel(BaseModel):
     id: Optional[int] = None
@@ -20,7 +19,6 @@ class WoocommerceTagModel(BaseModel):
 
     @property
     def slug(self) -> str:
-        
         return self.build_slug(self.name or "")
 
     # --
@@ -28,17 +26,17 @@ class WoocommerceTagModel(BaseModel):
     # --
 
     def to_json(self) -> str:
-        return json.dumps(
-            self.to_dict(),
-            ensure_ascii=False,
-        )
+        return self.model_dump_json(exclude_none=True)
 
     # --
     # ...
     # --
 
     def to_dict(self) -> dict:
-        data = asdict(self)
+        data = self.model_dump(
+            exclude_none=True,
+        )
+
         data["slug"] = self.slug
 
         return data
@@ -61,24 +59,22 @@ class WoocommerceTagModel(BaseModel):
 
     @classmethod
     def build_slug(cls, name: str) -> str:
-        #return slugify(name)
+
         if not name:
             return ""
 
         slug = name.lower()
 
-        # Replace spaces and special characters with "-"
         slug = re.sub(
             r"[^a-z0-9äöüß]+",
             "-",
             slug,
         )
 
-        # Remove duplicate "-"
         slug = re.sub(
             r"-+",
             "-",
             slug,
         )
 
-        return slug.strip("-").lower()
+        return slug.strip("-")

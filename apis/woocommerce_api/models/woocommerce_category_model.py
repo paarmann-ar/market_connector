@@ -1,16 +1,17 @@
 import json
 from dataclasses import asdict, dataclass, field
 from typing import Optional
-from pydantic import BaseModel,ConfigDict
+from pydantic import BaseModel, ConfigDict
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 
 # --
 # ...
 # --
 
+
 class WoocommerceCategoryModel(BaseModel):
     model_config = ConfigDict(extra="ignore")
-    
+
     id: Optional[int] = None
     name: Optional[str] = None
     slug: Optional[str] = None
@@ -19,9 +20,9 @@ class WoocommerceCategoryModel(BaseModel):
     path: Optional[str] = None
     images: list[WoocommerceImageModel] = field(default_factory=list)
 
-# --
-# ...
-# --
+    # --
+    # ...
+    # --
 
     @classmethod
     def from_api(cls, data):
@@ -34,17 +35,16 @@ class WoocommerceCategoryModel(BaseModel):
             images=data.get("images") or [],
         )
 
-# --
-# ...
-# --
+    # --
+    # ...
+    # --
 
     def to_dict(self):
-        return self.model_dump()
-    
-# --
-# ...
-# --
+        return self.model_dump(exclude_none=True)
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()
-

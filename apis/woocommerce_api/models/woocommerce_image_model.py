@@ -1,11 +1,12 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional
-from pydantic import BaseModel,ConfigDict
+from pydantic import BaseModel, ConfigDict
 
 # --
 # ...
 # --
+
 
 class WoocommerceImageModel(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -21,11 +22,11 @@ class WoocommerceImageModel(BaseModel):
     # --
 
     def to_dict(self):
-        return self.model_dump()
-    
-# --
-# ...
-# --
+        return self.model_dump(exclude_none=True)
+
+    # --
+    # ...
+    # --
 
     def to_json(self):
         return self.model_dump_json()

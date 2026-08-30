@@ -4,7 +4,7 @@ from ki.models.input_message_model import InputMessageModel
 from market_services.meta_data_services.models.product_input_metadata_model import ProductInputMetadataModel
 from market_services.meta_data_services.models.product_output_metadata_model import ProductOutputMetadataModel
 from toolboxs.text import Text
-from market_services.meta_data_services.services.ollamat_to_wocommerce_normalize import assemble_final
+from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
 from ki.ollama.models.ollama_answer_model import ProductOutputModel
 
 
@@ -19,10 +19,7 @@ class MetaDataServices:
     # ...
     # --
 
-    def create_metadata(
-        self,
-        product_input_metadata_model: ProductInputMetadataModel,validate_final_model
-    ) -> ProductOutputMetadataModel:
+    def create_metadata(self, product_input_metadata_model: ProductInputMetadataModel, assemble_final, product_model:object) -> ProductOutputMetadataModel:
 
         inputs = product_input_metadata_model.to_dict()
         input_message_model = InputMessageModel(inputs=inputs)
@@ -39,7 +36,7 @@ class MetaDataServices:
         # -----------------------------------------
 
         product_output_metadata_model = assemble_final(
-            product_output_model=product_output_model, product_input=product_input_metadata_model, validate_final_model=validate_final_model
+            product_output_model=product_output_model, product_input=product_input_metadata_model, product_model=product_model
         )
 
         # -----------------------------------------
