@@ -9,6 +9,7 @@ from typing import Any, Optional
 
 @dataclass
 class ProductInputMetadataModel:
+    prompt_filename: Optional[str] = "prompt"
     cache_id: Optional[str] = None
     title: Optional[str] = None
     description: Optional[str] = None

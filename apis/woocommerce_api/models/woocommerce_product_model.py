@@ -9,14 +9,15 @@ from apis.woocommerce_api.models.woocommerce_category_model import (
 )
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
+from pydantic import BaseModel,ConfigDict
 
 # --
 # ...
 # --
 
+class WoocommerceProductModel(BaseModel):
+    model_config = ConfigDict(extra="ignore")
 
-@dataclass
-class WoocommerceProductModel:
     id: Optional[int] = None
     name: Optional[str] = ""
     slug: Optional[str] = ""
@@ -51,30 +52,15 @@ class WoocommerceProductModel:
     # ...
     # --
 
-    def __init__(self, **kwargs):
-
-        valid_fields = {field.name for field in fields(self)}
-
-        for key, value in kwargs.items():
-            # Ignore unknown fields
-            if key not in valid_fields:
-                continue
-
-            setattr(self, key, value)
-
-    # --
-    # ...
-    # --
+    def to_dict(self):
+        return self.model_dump()
+    
+# --
+# ...
+# --
 
     def to_json(self):
-        return json.dumps(asdict(self), ensure_ascii=False)
-
-    # --
-    # ...
-    # --
-
-    def to_dict(self):
-        return asdict(self)
+        return self.model_dump_json()
 
     # --
     # ...

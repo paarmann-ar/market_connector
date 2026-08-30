@@ -42,7 +42,7 @@ class ImageProcessingPipeline(Base):
     # ...
     # --
 
-    def download_url_remove_white_bg_image(self, image_data_models: list[ImageDataModel]) -> list[ImageDataModel]:
+    def download_url_remove_white_bg_image(self, image_data_models: list[ImageDataModel], is_remove_set_white_backgroung_on_photo) -> list[ImageDataModel]:
 
         try:
             finded_image_data_models = []
@@ -72,7 +72,8 @@ class ImageProcessingPipeline(Base):
                 for image in image_data_models
             }
 
-            image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
+            if is_remove_set_white_backgroung_on_photo:
+                image_data_models = self.background_operation.remove_set_white_backgroung_on_photo()
 
             for image_data_model in image_data_models:
                 image_data = image_url_by_image_name.get(image_data_model.image_name)
@@ -112,7 +113,7 @@ class ImageProcessingPipeline(Base):
     # ...
     # --
 
-    def image_convertor_pipeline(self, woocommerce_product_models: list[WoocommerceProductModel]) -> None:
+    def image_convertor_pipeline(self, woocommerce_product_models: list[WoocommerceProductModel], is_remove_set_white_backgroung_on_photo=True, download_url_remove_white_bg_image=True) -> None:
 
         for woocommerce_product_model in woocommerce_product_models:
             image_data_models: list[ImageDataModel] = []
@@ -122,27 +123,27 @@ class ImageProcessingPipeline(Base):
             for woocommerce_product_model_image in woocommerce_product_model.images:
                 image_data_model = ImageDataModel(
                     image_url=woocommerce_product_model_image.src,
-                    is_main_image=woocommerce_product_model_image.is_main_image,
                     alt=woocommerce_product_model_image.alt,
                     image_description=image_description,
                 )
                 image_data_models.append(image_data_model)
 
-            image_data_models = self.download_url_remove_white_bg_image(image_data_models=image_data_models)
+            if download_url_remove_white_bg_image:
+                image_data_models = self.download_url_remove_white_bg_image(image_data_models=image_data_models, is_remove_set_white_backgroung_on_photo=is_remove_set_white_backgroung_on_photo)
 
-            # add alt auch hier
-            for image_data_model in image_data_models:
-                wordpress_media_model = WordpressMediaModel(
-                    media_address=image_data_model.images_address,
-                    media_name=image_data_model.image_name,
-                    wp_alt_text=image_data_model.alt,
-                    wp_description=image_data_model.image_description,
-                )
-                wordpress_media_models.append(wordpress_media_model)
+                # add alt auch hier
+                for image_data_model in image_data_models:
+                    wordpress_media_model = WordpressMediaModel(
+                        media_address=image_data_model.images_address,
+                        media_name=image_data_model.image_name,
+                        wp_alt_text=image_data_model.alt,
+                        wp_description=image_data_model.image_description,
+                    )
+                    wordpress_media_models.append(wordpress_media_model)
 
-            source_urls = ApisProvider().wordpress_api.upload_media_models_from_disk(media_models=wordpress_media_models)
-            # main image ro ba if bezaram
-            for image, url in zip(woocommerce_product_model.images, source_urls):
-                image.src = url
+                source_urls = ApisProvider().wordpress_api.upload_media_models_from_disk(media_models=wordpress_media_models)
+                # main image ro ba if bezaram
+                for image, url in zip(woocommerce_product_model.images, source_urls):
+                    image.src = url
 
-            FileAndFolderOperation.remove_nestet_folder(self.images_address)
+                FileAndFolderOperation.remove_nestet_folder(self.images_address)

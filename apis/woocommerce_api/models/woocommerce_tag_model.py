@@ -2,10 +2,14 @@ import json
 import re
 from dataclasses import asdict, dataclass
 from typing import Optional
+from pydantic import BaseModel
+from slugify import slugify
 
+# --
+# ...
+# --
 
-@dataclass
-class WoocommerceTagModel:
+class WoocommerceTagModel(BaseModel):
     id: Optional[int] = None
     name: Optional[str] = None
     description: Optional[str] = None
@@ -16,6 +20,7 @@ class WoocommerceTagModel:
 
     @property
     def slug(self) -> str:
+        
         return self.build_slug(self.name or "")
 
     # --
@@ -56,6 +61,7 @@ class WoocommerceTagModel:
 
     @classmethod
     def build_slug(cls, name: str) -> str:
+        #return slugify(name)
         if not name:
             return ""
 

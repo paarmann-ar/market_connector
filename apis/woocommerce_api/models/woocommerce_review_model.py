@@ -1,14 +1,13 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional
+from pydantic import BaseModel
 
 # --
 # ...
 # --
 
-
-@dataclass
-class WoocommerceReviewModel:
+class WoocommerceReviewModel(BaseModel):
     product_id: Optional[int] = None
     review: Optional[str] = None
     reviewer: Optional[str] = None
@@ -19,15 +18,15 @@ class WoocommerceReviewModel:
     # ...
     # --
 
-    def to_json(self):
-        return json.dumps(asdict(self), ensure_ascii=False)
-
-    # --
-    # ...
-    # --
-
     def to_dict(self):
-        return asdict(self)
+        return self.model_dump()
+    
+# --
+# ...
+# --
+
+    def to_json(self):
+        return self.model_dump_json()
 
     # --
     # ...

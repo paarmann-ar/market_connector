@@ -9,6 +9,7 @@ from apis.woocommerce_api.models.woocommerce_product_model import WoocommercePro
 from toolboxs.numbers import Numbers
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from market_services.adapters.ebay.ebay_product_model_to_product_input_metadata_model import EbayProductModelToProductInputMetadataModel
+from market_services.adapters.models.validate_final_model import ValidateFinalModel
 
 # --
 # ...
@@ -17,9 +18,14 @@ from market_services.adapters.ebay.ebay_product_model_to_product_input_metadata_
 
 class EbayProductModelToWoocommerceProductModelAdaptor:
     def adapter(self, product_ebay_model: ProductEbayModel) -> WoocommerceProductModel:
+
+        #badan por konam ta roll har befrestam vase validation, alan to hadcode hastan
+        validate_final_model = ValidateFinalModel(validation_roles=[])
+        validate_final_model=None
+
         meta_data_services = MetaDataServices()
         product_output_metadata_model = meta_data_services.create_metadata(
-            product_input_metadata_model=EbayProductModelToProductInputMetadataModel().adapter(product_ebay_model=product_ebay_model)
+            product_input_metadata_model=EbayProductModelToProductInputMetadataModel().adapter(product_ebay_model=product_ebay_model,prompt_filename='paarmann-tech_product_ebay_model'),validate_final_model=validate_final_model
         )
 
         woocommerce_tags_model = []
@@ -32,7 +38,7 @@ class EbayProductModelToWoocommerceProductModelAdaptor:
         image_alt_main = product_output_metadata_model.image_seo_model.get("image_alt_main")
 
         woocommerce_images_model.insert(
-            0, WoocommerceImageModel().from_api({"src": product_ebay_model.image.imageUrl, "alt": image_alt_main, "is_main_image": True})
+            0, WoocommerceImageModel().from_api({"src": product_ebay_model.image.imageUrl, "alt": image_alt_main})
         )
 
         for image_url in product_ebay_model.additionalImages:

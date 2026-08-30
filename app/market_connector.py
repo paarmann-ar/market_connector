@@ -4,6 +4,7 @@ from app.controller.setup_market_connector_controller import SetupMarketConnecto
 from market_services.image_services.models.image_directory_model import ImageDirectoryModel
 from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
+from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
 
 # --
 # ...
@@ -17,6 +18,8 @@ from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import Search
 #     q="RM1-XA",
 #     item_to_fetch=10,
 # )
+search_in_matterhorn_moda_models=[SearchInMatterhornModaModel(price_anpassen=1.4)]
+
 search_in_zalando_lounge_models = [SearchInZalandoLoungeModel(campaign_id="ZZO4FTR", sku="ZUN243D04X-K23")]
 
 search_in_woocommerce_models = [SearchInWoocommerceModel(name="Motor Display Rate")]
@@ -98,6 +101,7 @@ def sync_zalando_lounge_to_woocommerce():
         k = MarketConnectorController.sync_zalando_lounge_to_woocommerce(search_in_zalando_lounge_model=search_in_zalando_lounge_model)
 
 def sync_matterhorn_moda_to_woocommerce():
-    MarketConnectorController.sync_matterhorn_moda_to_woocommerce()
+    for search_in_matterhorn_moda_model in search_in_matterhorn_moda_models:
+        MarketConnectorController.sync_matterhorn_moda_to_woocommerce(search_in_matterhorn_moda_model=search_in_matterhorn_moda_model)
 
 sync_matterhorn_moda_to_woocommerce()

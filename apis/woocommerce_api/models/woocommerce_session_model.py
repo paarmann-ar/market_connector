@@ -9,14 +9,14 @@ from apis.woocommerce_api.models.woocommerce_product_model import (
 )
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
+from pydantic import BaseModel
 
 # --
 # ...
 # --
 
 
-@dataclass
-class WoocommerceSessionModel:
+class WoocommerceSessionModel(BaseModel):
     products: list[WoocommerceProductModel] = field(default_factory=list)
     categories: list[WoocommerceCategoryModel] = field(default_factory=list)
     tags: list[WoocommerceTagModel] = field(default_factory=list)

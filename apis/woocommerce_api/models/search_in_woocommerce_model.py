@@ -22,15 +22,30 @@ class SearchInWoocommerceModel:
     item_to_fetch: int = 5
     price_anpassen: float = 1.60
     target_category_name_in_ebay: str = "Sensoren"
+    
+# --
+# ...
+# --
 
     def __post_init__(self):
         self.generate_filter()
-
-    def to_json(self):
-        return json.dumps(asdict(self), ensure_ascii=False)
+# --
+# ...
+# --
 
     def to_dict(self):
-        return asdict(self)
+        return self.model_dump()
+    
+# --
+# ...
+# --
+
+    def to_json(self):
+        return self.model_dump_json()
+
+# --
+# ...
+# --
 
     def generate_filter(self):
         params = {}

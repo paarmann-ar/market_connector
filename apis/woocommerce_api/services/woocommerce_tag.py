@@ -120,7 +120,7 @@ class WoocommerceTag(BaseWoocommerceApi):
         if tag:
             return tag
 
-        return self.upload_tag(WoocommerceTagModel(name=woocommerce_tag_model.name))
+        return self.upload_tag(woocommerce_tag_model)
 
     # --
     # ...

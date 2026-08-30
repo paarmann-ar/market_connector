@@ -16,7 +16,7 @@
             "name": "Custom Debug",
             "type": "debugpy",
             "request": "launch",
-            "module": "ki.ollama.semantic_seo",
+            "module": "apis.woocommerce_api.services.woocommerce_category",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {

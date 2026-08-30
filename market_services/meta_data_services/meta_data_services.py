@@ -5,6 +5,7 @@ from market_services.meta_data_services.models.product_input_metadata_model impo
 from market_services.meta_data_services.models.product_output_metadata_model import ProductOutputMetadataModel
 from toolboxs.text import Text
 from market_services.meta_data_services.services.ollamat_to_wocommerce_normalize import assemble_final
+from ki.ollama.models.ollama_answer_model import ProductOutputModel
 
 
 # --
@@ -20,22 +21,25 @@ class MetaDataServices:
 
     def create_metadata(
         self,
-        product_input_metadata_model: ProductInputMetadataModel,
+        product_input_metadata_model: ProductInputMetadataModel,validate_final_model
     ) -> ProductOutputMetadataModel:
 
         inputs = product_input_metadata_model.to_dict()
         input_message_model = InputMessageModel(inputs=inputs)
-        input_message_model.md_file_name = "prompt"
+        input_message_model.md_file_name = inputs.get("prompt_filename")
         # qwen3:30B
 
-        product_output_model = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
+        if input_message_model.md_file_name:
+            product_output_model = self.ollama.get_seo_from_ollama_generate_for_rankmath(input_message_model=input_message_model)
 
+        else:
+            product_output_model = ProductOutputModel(inputs)
         # -----------------------------------------
         # Normalize KI response
         # -----------------------------------------
 
         product_output_metadata_model = assemble_final(
-            product_output_model=product_output_model, product_input=product_input_metadata_model
+            product_output_model=product_output_model, product_input=product_input_metadata_model, validate_final_model=validate_final_model
         )
 
         # -----------------------------------------

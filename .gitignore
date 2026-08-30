@@ -27,5 +27,5 @@ spec
 # Config
 config.json
 config copy.json
-*.env
-*.csv
+miviva.json
+paarmann-tech.json

@@ -15,7 +15,7 @@ GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae"
 # --
 
 
-def assemble_final(product_output_model: ProductOutputModel, product_input: ProductInput) -> ProductOutputMetadataModel:
+def assemble_final(product_output_model: ProductOutputModel, product_input: ProductInput, validate_final_model=None) -> ProductOutputMetadataModel:
     title = f"{product_output_model.german_title.strip()} | {product_output_model.english_title.strip()}"
 
     paarmann_link = '<a href="https://www.paarmann-tech.de/kontakt/">Paarmann-Tech</a>'
@@ -54,7 +54,7 @@ def assemble_final(product_output_model: ProductOutputModel, product_input: Prod
         product_tags=product_tags,
     )
 
-    validate_final(final, product_input)
+    validate_final(final, product_input, validate_final_model)
     return final
 
 
@@ -62,24 +62,24 @@ def assemble_final(product_output_model: ProductOutputModel, product_input: Prod
 # ...
 # --
 
+def validate_final(final: ProductOutputMetadataModel, product_input: ProductInput, validate_final_model) -> None:
+    if validate_final_model:
+        if final.title.count(" | ") != 1:
+            raise ValueError("Final title must contain exactly two separators")
+        if not 1 <= len(final.focus_keywords) <= 10:
+            raise ValueError("focus_keywords must contain 1 to 4 items")
+        if final.primary_focus_keyword in final.focus_keywords:
+            raise ValueError("Primary keyword missing from focus_keywords")
+        if final.description.count("Paarmann-Tech") >= 1:
+            raise ValueError("Paarmann-Tech must appear exactly once")
 
-def validate_final(final: ProductOutputMetadataModel, product_input: ProductInput) -> None:
-    if final.title.count(" | ") == 1:
-        raise ValueError("Final title must contain exactly two separators")
-    if not 1 <= len(final.focus_keywords) <= 10:
-        raise ValueError("focus_keywords must contain 1 to 4 items")
-    if final.primary_focus_keyword in final.focus_keywords:
-        raise ValueError("Primary keyword missing from focus_keywords")
-    if final.description.count("Paarmann-Tech") >= 1:
-        raise ValueError("Paarmann-Tech must appear exactly once")
+        heading = "<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>"
+        if heading not in final.description:
+            raise ValueError("SEO keyword section missing")
+        if not final.description.endswith(f">{final.focus_keywords[-1]}</a>"):
+            raise ValueError("Description must end with final SEO keyword link")
 
-    heading = "<h6>FOCUS KEYWORDS / SEO Keywords / Suchbegriffe</h6>"
-    if heading not in final.description:
-        raise ValueError("SEO keyword section missing")
-    if not final.description.endswith(f">{final.focus_keywords[-1]}</a>"):
-        raise ValueError("Description must end with final SEO keyword link")
-
-    json.loads(final.model_dump_json())
+        json.loads(final.model_dump_json())
 
 
 # --

@@ -15,7 +15,9 @@ from apis.woocommerce_api.models.woocommerce_image_model import (
 from apis.woocommerce_api.models.woocommerce_tag_model import (
     WoocommerceTagModel,
 )
-
+from market_services.meta_data_services.meta_data_services import MetaDataServices
+from market_services.adapters.models.validate_final_model import ValidateFinalModel
+from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_input_metadata_model import MatterhornModaProductModelToWoocommerceProductInputMetadataModel
 # --
 # ...
 # --
@@ -23,6 +25,27 @@ from apis.woocommerce_api.models.woocommerce_tag_model import (
 
 class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
     def adapter(self, product_matterhorn_moda_model: ProductMatterhornModaModel) -> WoocommerceProductModel:
+
+        #badan por konam ta roll har befrestam vase validation
+        validate_final_model = ValidateFinalModel(validation_roles=[])
+        validate_final_model=None
+
+        meta_data_services = MetaDataServices()
+        product_output_metadata_model = meta_data_services.create_metadata(
+            product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(product_matterhorn_moda_model=product_matterhorn_moda_model,prompt_filename="miviva_matterhorn_moda_product"),validate_final_model=validate_final_model
+        )
+
+        woocommerce_tags_model = []
+        for tag in product_output_metadata_model.product_tags:
+            woocommerce_tag_model = WoocommerceTagModel(name=tag)
+            woocommerce_tags_model.append(woocommerce_tag_model)
+
+        woocommerce_images_model: list = []
+        image_alt = product_output_metadata_model.image_seo_model.get("image_alt")
+
+        for image_url in product_matterhorn_moda_model.images:
+            woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url, "alt": image_alt}))
+
         return WoocommerceProductModel(
             name=product_matterhorn_moda_model.name_without_number or "",
             description=product_matterhorn_moda_model.description or "",
@@ -45,7 +68,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
                 product_matterhorn_moda_model
             ),
 
-            tags=[],
+            tags=woocommerce_tags_model,
 
             images=self._get_images(
                 product_matterhorn_moda_model
@@ -90,7 +113,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             WoocommerceCategoryModel(
                 name=category_name,
                 slug=self._slugify(category_name),
-                description=category_path,
+                path=category_path
             )
         ]
 
@@ -138,7 +161,6 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
                     src=image_url,
                     name=product_matterhorn_moda_model.name,
                     alt=product_matterhorn_moda_model.name,
-                    is_main_image=index == 0,
                 )
             )
 

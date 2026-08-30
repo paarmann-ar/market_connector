@@ -17,7 +17,6 @@ class ImageDataModel:
     image_size: Optional[tuple] = None
     product_box: Optional[tuple] = None
     mask: Optional[Any] = None
-    is_main_image: bool = False
     image_description: Optional[str] = None
 
     # --

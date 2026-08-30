@@ -68,10 +68,11 @@ class WoocommerceApi(BaseWoocommerceApi):
     def upload_product_model_to_woocommerce(
         self, woocommerce_product_models: list[WoocommerceProductModel], target_woocommerce_category_name: str
     ) -> bool:
-        target_woocommerce_category_model = WoocommerceCategoryModel(name=target_woocommerce_category_name)
 
         for woocommerce_product_model in woocommerce_product_models:
-            woocommerce_product_model.categories = [target_woocommerce_category_model]
+            if target_woocommerce_category_name is not None:
+                target_woocommerce_category_model = WoocommerceCategoryModel(name=target_woocommerce_category_name)
+                woocommerce_product_model.categories = [target_woocommerce_category_model]
 
             self.resolve_or_upload(woocommerce_product_model=woocommerce_product_model)
 

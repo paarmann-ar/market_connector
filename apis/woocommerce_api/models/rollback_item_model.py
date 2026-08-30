@@ -1,13 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
+from pydantic import BaseModel
 
 # --
 # ...
 # --
 
-
-# type mishe category, product, tag, brand, media
-@dataclass
-class RollbackItem:
+class RollbackItem(BaseModel):
     type: Optional[str] = None
     id: Optional[int] = None
