@@ -5,10 +5,10 @@ from services.disk.json.json_manager import JSONManager
 
 
 def add_id_to_all_json_element():
-    # key = Fernet.generate_key()
-    # fernet = Fernet(key)
-    # encMessage = fernet.encrypt(element.encode())
-    # decMessage = fernet.decrypt(encMessage).decode()
+    #  key = Fernet.generate_key()
+    #  fernet = Fernet(key)
+    #  encMessage = fernet.encrypt(element.encode())
+    #  decMessage = fernet.decrypt(encMessage).decode()
 
     json_manager = JSONManager()
 

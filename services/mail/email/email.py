@@ -20,25 +20,25 @@ class EMail(Base):
     def __init__(self) -> None:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return MailConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, **kwargs):
         self.set_email_attributs(**kwargs)
         self.__send()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def set_email_attributs(self, **kwargs):
 
@@ -91,9 +91,9 @@ class EMail(Base):
             self.error(repr(exp))
             return False
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __send(self) -> bool:
 
@@ -130,9 +130,9 @@ class EMail(Base):
             self.error(repr(exp))
             return False
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def attachment_manager(self, attachments_object=None) -> Any:
 
@@ -162,20 +162,20 @@ class EMail(Base):
             return attachments
 
         except Exception as exp:
-            # self.error(f"{__file__}--->{__name__}: {str(exp)}")
+            #  self.error(f"{__file__}--->{__name__}: {str(exp)}")
             self.error(repr(exp))
             return False
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def create_holder(self, files):
 
         try:
             temp_attachments = []
             files = set(files)
-            # f = list(dict.fromkeys(File))
+            #  f = list(dict.fromkeys(File))
             _ = 0
 
             for item in files:

@@ -27,9 +27,9 @@ class DateAndTime:
         except Exception as exp:
             print(f"get_first_day_of_month: {exp!r}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_first_day_of_month_1(input_):
@@ -41,9 +41,9 @@ class DateAndTime:
         except Exception as exp:
             print(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_today(format="%Y-%m-%d"):
@@ -56,9 +56,9 @@ class DateAndTime:
         except Exception as exp:
             print(f"get_today: {exp!r}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_now(format="%Y-%m-%d %H:%M:%S"):

@@ -1,9 +1,10 @@
+from services.core.singleton_meta import SingletonMeta
 from services.db.sqlserver.config.db_commands_dictionary import DBCommandsDictionary
 from services.db.sqlserver.config.db_config import DBConfig
 from services.db.sqlserver.core.sqlserver_connection import SqlserverConnection
 from services.db.sqlserver.core.sqlserver_execute import SqlserverExecute
 from services.logging.log_provider import LogProvider
-from services.core.singleton_meta import SingletonMeta
+
 # --
 # ...
 # --
@@ -23,11 +24,11 @@ class SqlserverProvider(metaclass=SingletonMeta):
         **kwargs,
     ) -> None:
 
-        # create log
+        #  create log
         log_info_class = LogProvider().info
         log_error_class = LogProvider().error
 
-        # create config dictionary
+        #  create config dictionary
         if is_use_default:
             db_config_dictionary = DBConfig().get_dictionary()
             driver = db_config_dictionary["driver"]

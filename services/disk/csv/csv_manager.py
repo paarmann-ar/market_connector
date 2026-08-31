@@ -19,17 +19,17 @@ class CSVManager(Base):
             f"{CONSTS.ROOT_DIR}/{self.config_dictionary['default_address']}",
         )
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return CSVConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(self, mode="", address="", file_name="", data: list = None, columns: list = None) -> dict:  # type: ignore
 

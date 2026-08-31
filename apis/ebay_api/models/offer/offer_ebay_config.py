@@ -17,16 +17,16 @@ class OfferEbayConfig:
     currency: str
     listing_duration: str = "GTC"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self, **kwargs):
 
         valid_fields = {field.name for field in fields(self)}
 
         for key, value in kwargs.items():
-            # Ignore unknown fields
+            #  Ignore unknown fields
             if key not in valid_fields:
                 continue
 

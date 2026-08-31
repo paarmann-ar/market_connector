@@ -10,47 +10,47 @@ class FindProductBox(Base):
     def __init__(self, **kwargs):
         super(**kwargs).__init__(**kwargs)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return BackgroundOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_product_box(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
         try:
-            # Get segmentation mask from the background-removal model.
+            #  Get segmentation mask from the background-removal model.
             mask = self.remove(image_data_model.image_data, session=self.session, only_mask=True)
 
             mask = np.array(mask)
 
-            # Convert RGB/RGBA mask to grayscale.
+            #  Convert RGB/RGBA mask to grayscale.
             if mask.ndim == 3:
                 mask = mask[:, :, 0]
 
-            # Make sure the mask is binary.
+            #  Make sure the mask is binary.
             binary_mask = np.where(mask > 20, 255, 0).astype(np.uint8)
 
-            # Find connected components.
+            #  Find connected components.
             num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary_mask, connectivity=8)
 
             if num_labels <= 1:
                 return None
 
-            # Ignore background (label 0).
+            #  Ignore background (label 0).
             components = []
 
             for label in range(1, num_labels):
@@ -71,18 +71,18 @@ class FindProductBox(Base):
                     }
                 )
 
-            # Sort components by area.
+            #  Sort components by area.
             components.sort(key=lambda component: component["area"], reverse=True)
 
-            # Largest connected component = main product.
+            #  Largest connected component = main product.
             main_component = components[0]
 
             label = main_component["label"]
 
-            # Keep only the main product in the mask.
+            #  Keep only the main product in the mask.
             product_mask = np.where(labels == label, 255, 0).astype(np.uint8)
 
-            # Find product coordinates.
+            #  Find product coordinates.
             ys, xs = np.where(product_mask > 0)
 
             if len(xs) == 0:
@@ -93,10 +93,10 @@ class FindProductBox(Base):
             x2 = int(xs.max()) + 1
             y2 = int(ys.max()) + 1
 
-            # Save clean product mask.
+            #  Save clean product mask.
             image_data_model.mask = product_mask
 
-            # Save product bounding box.
+            #  Save product bounding box.
             image_data_model.product_box = (x1, y1, x2, y2)
 
             return image_data_model

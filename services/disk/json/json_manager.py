@@ -24,9 +24,9 @@ class JSONManager(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(
         self,
@@ -112,7 +112,7 @@ class JSONManager(metaclass=SingletonMeta):
                         dict_context = context
 
                     else:
-                        # with pprint can see maybe it is not dict but is list or string therefor two times loads
+                        #  with pprint can see maybe it is not dict but is list or string therefor two times loads
                         dict_context = json.loads(json.loads(context))
 
                     dict_readed_file.update(dict_context)
@@ -150,9 +150,9 @@ class JSONManager(metaclass=SingletonMeta):
         except Exception as exp:
             (repr(f"{exp} -> {address}"))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __fix_json_error(self, context="") -> str:
 

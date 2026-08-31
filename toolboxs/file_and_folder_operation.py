@@ -1,6 +1,7 @@
 import os
 import shutil
 from pathlib import Path
+
 import CONSTS
 
 # --
@@ -28,9 +29,9 @@ class FileAndFolderOperation:
         except Exception as exp:
             print(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def remove_pycache():
@@ -49,9 +50,9 @@ class FileAndFolderOperation:
         except Exception as exp:
             print(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def remove_file(file_address):
@@ -73,9 +74,9 @@ class FileAndFolderOperation:
         except Exception as exp:
             print(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def remove_nestet_folder(folder_path):
@@ -89,9 +90,9 @@ class FileAndFolderOperation:
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def copy_file(source, destination):

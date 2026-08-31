@@ -35,9 +35,9 @@ class ProductSummeryEbayModel:
     priorityListing: Optional[str] = None
     listingMarketplaceId: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self, **kwargs):
         valid_fields = {f.name for f in fields(self)}
@@ -46,31 +46,31 @@ class ProductSummeryEbayModel:
             if key in valid_fields:
                 setattr(self, key, value)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)
         return data
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def generate_filter(self):
         self.filter = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry},{self.filter}"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_attributes(self):
         return asdict(self)

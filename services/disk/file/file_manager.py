@@ -14,17 +14,17 @@ class FileManager(Base):
         self.mode = self.config_dictionary["mode"]
         self.address = f"{CONSTS.ROOT_DIR}/{self.config_dictionary['address']}"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return FileConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(self, mode="", address="", context="", output="row") -> str:
 
@@ -56,7 +56,7 @@ class FileManager(Base):
                     with open(address, mode) as file:
                         file.write(context)
 
-        # I have change this exp to bestimmt
+        #  I have change this exp to bestimmt
         except FileNotFoundError as exp:
             print(repr(exp))
 

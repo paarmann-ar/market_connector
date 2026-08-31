@@ -23,17 +23,17 @@ class EbayCategory(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_default_category_tree_id_with_marketplace_id(self, marketplace):
 
@@ -58,9 +58,9 @@ class EbayCategory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_default_category_tree_id_with_marketplace_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_category_tree(self, category_tree_id=""):
 
@@ -86,9 +86,9 @@ class EbayCategory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_category_tree: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def change_category_between_marketplaces(self, us_category_path):
 
@@ -104,9 +104,9 @@ class EbayCategory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"change_category_between_marketplaces: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_ebay_category_id(self, search_in_ebay_model: SearchInEbayModel) -> str:
 
@@ -136,9 +136,9 @@ class EbayCategory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_ebay_category_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def recursive_category(self, category_node: dict):
         if "childCategoryTreeNodes" not in category_node:

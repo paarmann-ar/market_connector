@@ -52,3 +52,5 @@ class ProductMatterhornModaModel(BaseModel):
 
     size_table_txt: Optional[str] = None
     size_table_html: Optional[str] = None
+
+    attribute: Optional[str] = None

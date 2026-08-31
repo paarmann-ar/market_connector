@@ -1,5 +1,5 @@
 import json
-from dataclasses import asdict, dataclass, fields, field
+from dataclasses import asdict, dataclass, field
 from typing import Any, Optional
 
 # --
@@ -31,16 +31,16 @@ class ZalandoLoungeSimpleModel:
 
     gtin: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self) -> str:
         return json.dumps(
@@ -48,9 +48,9 @@ class ZalandoLoungeSimpleModel:
             ensure_ascii=False,
         )
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def from_api(

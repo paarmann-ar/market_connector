@@ -15,13 +15,13 @@ class Logging(BaseLog):
         try:
             self.info_message = ["\n"]
 
-            # aliance for short writing
+            #  aliance for short writing
             self.info = self.error = self.set_information_for_log_file
 
-            # create instance for file operation
+            #  create instance for file operation
             self.file_manager = kwargs.get("file_manager_class")
 
-            # set template and config
+            #  set template and config
             if template := kwargs.get("template"):
                 self.log_template = self.template_dictionary[template]
             else:
@@ -36,30 +36,30 @@ class Logging(BaseLog):
         except Exception as exp:
             print(f"{__file__}--->{__name__} : + {exp!s}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_template_dictionary(self):
         return LogTemplateDictionary()()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self):
         return LogConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def set_information_for_log_file(self, message, is_force_write=False):
 
         try:
-            # remove color from template
+            #  remove color from template
             log_template_for_show_in_screen = self.log_template
 
             log_template_for_write_in_file = self.log_template
@@ -67,19 +67,19 @@ class Logging(BaseLog):
             log_template_for_write_in_file = log_template_for_write_in_file.replace("""f"{CONSTS.COLORS.ERROR_PROMPT.value}",""", "")
             log_template_for_write_in_file = log_template_for_write_in_file.replace(""", f"{CONSTS.COLORS.ENDC.value}" """, "")
 
-            # print message on screen
+            #  print message on screen
             if self.is_show_in_console:
                 temp = f"import colorama\ncolorama.init()\nimport CONSTS\nimport datetime\nprint({log_template_for_show_in_screen})"
                 exec(temp, {"message": message})
 
-            # compile message and template
+            #  compile message and template
             temp = f"""import datetime;temp ={log_template_for_write_in_file}; f = open("temp.txt", "w"); f.write(str(temp[0] + temp[1]))"""
             exec(temp, {"message": message})
 
-            # prepaire message
+            #  prepaire message
             message = self.file_manager.operation("r", "temp.txt")
 
-            # send message to write in file
+            #  send message to write in file
             self.info_message.append(message)
             if len(self.info_message) > self.number_of_log_in_batch or is_force_write:
                 self.__write_in_log_file()
@@ -87,9 +87,9 @@ class Logging(BaseLog):
         except Exception as exp:
             print(f"{__file__}--->{__name__} : + {exp!s}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __write_in_log_file(self):
 

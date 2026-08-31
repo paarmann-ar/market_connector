@@ -1,7 +1,8 @@
+from playwright.sync_api import sync_playwright
+
 from apis.core.base import Base
-from apis.zalando_lounge_api.models.zalando_lounge_product_model import ZalandoLoungeProductModel
 from apis.zalando_lounge_api.config.zalando_lounge_api_config import ZalandoLoungeApiConfig
-from playwright.sync_api import sync_playwright, Page, expect
+from apis.zalando_lounge_api.models.zalando_lounge_product_model import ZalandoLoungeProductModel
 
 # --
 # ...
@@ -17,17 +18,17 @@ class ZalandoLoungeClientApi(Base):
         self.campaigns = self.config_dictionary.get("campaigns")
         self.articles = self.config_dictionary.get("articles")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return ZalandoLoungeApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def connect(self):
 
@@ -55,9 +56,9 @@ class ZalandoLoungeClientApi(Base):
             if cookie.get("domain", "").lstrip(".").endswith("zalando-lounge.de")
         }
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_zalando_lounge_products_by_campaign_artikel_sku(self, campaign_id: str, sku: str) -> ZalandoLoungeProductModel:
 

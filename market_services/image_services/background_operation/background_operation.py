@@ -28,17 +28,17 @@ class BackgroundOperation(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self):
         return BackgroundOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def remove_set_white_backgroung_on_photo(self, image_directory_model: ImageDirectoryModel = None) -> list[ImageDataModel]:
 
@@ -66,9 +66,9 @@ class BackgroundOperation(Base):
         except Exception as exp:
             self.error(f"remove_set_white_backgroung_on_photo: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def reduce_image_size(self, image_directory_model: ImageDirectoryModel = None) -> list[ImageDataModel]:
 

@@ -14,17 +14,17 @@ class CloudOperation(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self):
         return CloudOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def download_image_from_url(self, image_data_model: ImageDataModel) -> ImageDataModel:
 

@@ -1,7 +1,9 @@
 import json
-from dataclasses import asdict, dataclass, fields
+from dataclasses import asdict
 from typing import Any, Optional
-from pydantic import BaseModel, Field, field_validator, model_validator
+
+from pydantic import BaseModel
+
 # --
 # ...
 # --
@@ -20,18 +22,18 @@ class ProductOutputMetadataModel(BaseModel):
     image_description: Optional[str] = None
     product_tags: Optional[list[str]] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
 
         data = asdict(self)
         return {key: value for key, value in data.items() if value is not None}
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self) -> str:
 

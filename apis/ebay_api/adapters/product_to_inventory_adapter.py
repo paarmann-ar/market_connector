@@ -2,9 +2,9 @@ from apis.ebay_api.models.browse.product_ebay_model import (
     ProductEbayModel,
 )
 from apis.ebay_api.models.inventory import (
-    InventoryProductModel,
-    InventoryProductDetailsModel,
     InventoryAvailabilityModel,
+    InventoryProductDetailsModel,
+    InventoryProductModel,
     ShipToLocationAvailabilityModel,
 )
 
@@ -26,17 +26,17 @@ class ProductToInventoryAdapter:
 
         image_urls: list[str] = []
 
-        # Main image
+        #  Main image
         if product.image and product.image.imageUrl:
             image_urls.append(product.image.imageUrl)
 
-        # Additional images
+        #  Additional images
         if product.additionalImages:
             for image in product.additionalImages:
                 if image and image.imageUrl:
                     image_urls.append(image.imageUrl)
 
-        # Remove duplicates while preserving order
+        #  Remove duplicates while preserving order
         image_urls = list(dict.fromkeys(image_urls))
 
         if product.condition:

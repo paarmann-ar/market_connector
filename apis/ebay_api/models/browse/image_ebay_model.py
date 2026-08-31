@@ -13,16 +13,16 @@ class ImageEbayModel:
     width: Optional[str] = None
     height: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)

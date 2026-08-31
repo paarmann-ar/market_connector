@@ -10,9 +10,9 @@ class BaseDataStructure(ABC):
     def __init__(self, **kwargs: Any) -> None:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __new__(cls, *args, **kwargs: Any):
         if not hasattr(cls, "instance") or not cls.instance:
@@ -20,9 +20,9 @@ class BaseDataStructure(ABC):
 
         return cls.instance
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         return self.instance

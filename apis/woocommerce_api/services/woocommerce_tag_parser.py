@@ -32,24 +32,24 @@ class WoocommerceTagParser(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, context: str) -> str:
         self.woocommerce_tag_parser(context)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def woocommerce_tag_parser(self, context: str):
 
@@ -81,9 +81,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_tags: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def normalize_context(self, context: str):
 
@@ -97,9 +97,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"normalize_context: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_brand(self, context: str):
         context = self.normalize_context(context)
@@ -110,9 +110,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_category(self, context: str):
         context = self.normalize_context(context)
@@ -123,9 +123,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_condition(self, context: str):
         context = self.normalize_context(context)
@@ -136,9 +136,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_part_number(self, context: str):
 
@@ -161,9 +161,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"find_part_number: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def clean_title(self, context: str, brand, condition, part_numbers: list, category):
 
@@ -185,9 +185,9 @@ class WoocommerceTagParser(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"clean_title: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def build_tags(self, name, brand, part_numbers, catgory, condition):
 

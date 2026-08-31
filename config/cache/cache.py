@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 import CONSTS
 
 # --
@@ -11,9 +12,9 @@ class Cache:
     def __init__(self):
         self.cache_address = CONSTS.CACHE
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_from_cache(self, cache_file: str, is_change_k_v: bool = False, key: str = None) -> dict:
         cache_file = Path(f"{self.cache_address}/{cache_file}")
@@ -33,9 +34,9 @@ class Cache:
         except (json.JSONDecodeError, OSError):
             return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def update_cache(self, key: str, data: dict, cache_file: str) -> dict:
 

@@ -1,7 +1,8 @@
+import re
+
 from market_services.image_services.cloud_operation.config.cloud_operation_config import CloudOperationConfig
 from market_services.image_services.core.base import Base
 from market_services.image_services.models.image_data_model import ImageDataModel
-import re
 
 # --
 # ...
@@ -12,23 +13,23 @@ class DownloadImage(Base):
     def __init__(self, **kwargs):
         super(**kwargs).__init__(**kwargs)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return CloudOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # ...
-    # --
+    #  ...
+    #  --
 
     def download_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
@@ -50,9 +51,9 @@ class DownloadImage(Base):
         except Exception as exp:
             self.prompt_on_screen(f"download_image: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_ebay_original_image_url(self, image_url: str) -> str:
         if not image_url:

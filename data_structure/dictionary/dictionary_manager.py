@@ -11,9 +11,9 @@ class DictionaryManager(BaseDataStructure):
     def __init__(self) -> None:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def compair(self, dictionary_0={}, dictionary_1={}) -> Any:
 

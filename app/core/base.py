@@ -37,17 +37,17 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self) -> str:
         return BaseConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_elements(self) -> str:

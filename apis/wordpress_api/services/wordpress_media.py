@@ -24,17 +24,17 @@ class WordpressMedia(BaseWordpressApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WordpressApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_media_model(self, media_model: WordpressMediaModel):
 
@@ -66,9 +66,9 @@ class WordpressMedia(BaseWordpressApi):
         except Exception as exp:
             self.error(f"upload_media_model: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_media_from_url(self, media_url: str):
 
@@ -78,9 +78,9 @@ class WordpressMedia(BaseWordpressApi):
         except Exception as exp:
             self.error(f"upload_media_model_from_url: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_wordpress_media_model_by_medial_model_name(self, media_model: WordpressMediaModel) -> WordpressMediaModel:
 
@@ -116,9 +116,9 @@ class WordpressMedia(BaseWordpressApi):
         except Exception as exp:
             self.error(f"get_wordpress_media_model_by_medial_model_name: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_wordpress_media_by_media_model(self, media_model: WordpressMediaModel):
 
@@ -137,9 +137,9 @@ class WordpressMedia(BaseWordpressApi):
         except Exception as exp:
             self.error(f"delete_wordpress_media_by_media_model: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_wordpress_media_by_wp_id(self, wp_id: int):
 

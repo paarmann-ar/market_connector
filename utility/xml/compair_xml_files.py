@@ -11,9 +11,9 @@ class CompairXmlFile:
         self.dictionary = DataStructureProvider().dictionary
         self.xml = ServiceDiskProvider().xml
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(self, xml_file_0, xml_file_1):
 

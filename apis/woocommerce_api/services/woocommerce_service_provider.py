@@ -31,12 +31,12 @@ class WoocommerceServiceProvider:
 
         return WoocommerceImageModel
 
-    # @property
-    # def woocommerce_session_model(self):
-    #     from apis.woocommerce_api.models.woocommerce_session_model import (
-    #         WoocommerceSessionModel,
-    #     )
-    #     return WoocommerceSessionModel
+    #  @property
+    #  def woocommerce_session_model(self):
+    #      from apis.woocommerce_api.models.woocommerce_session_model import (
+    #          WoocommerceSessionModel,
+    #      )
+    #      return WoocommerceSessionModel
 
     @property
     def woocommerce_tag_model(self):

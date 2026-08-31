@@ -35,9 +35,9 @@ class InventoryDimensionModel:
     height: Optional[float] = None
     unit: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {}
@@ -70,9 +70,9 @@ class InventoryPackageWeightAndSizeModel:
     weight: Optional[InventoryWeightModel] = None
     dimensions: Optional[InventoryDimensionModel] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {}

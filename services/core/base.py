@@ -18,19 +18,19 @@ class Base(ABC, metaclass=SingletonMeta):
 
         self.config_dictionary = self.get_config_dictionary()
 
-        # create instance for loging
+        #  create instance for loging
         self.config_dictionary = self.get_config_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         return self
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self) -> str:

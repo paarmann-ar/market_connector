@@ -16,24 +16,24 @@ class WoocommerceRollback(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         self.rollback()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def rollback(self):
         try:

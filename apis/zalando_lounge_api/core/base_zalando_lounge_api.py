@@ -1,4 +1,5 @@
 from typing import Any
+
 from apis.core.base import Base
 
 # --
@@ -14,16 +15,16 @@ class BaseZalandoLoungeApi(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         return self
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls) -> str:

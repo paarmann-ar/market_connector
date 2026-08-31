@@ -38,25 +38,25 @@ class EbayTokenApi(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, **kwargs) -> str:
         pass
 
-    # --
-    # ... application_token
+    #  --
+    #  ... application_token
 
-    # --
+    #  --
 
     def get_application_token(self, **kwargs):
 
@@ -96,9 +96,9 @@ class EbayTokenApi(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_application_token: {exp}")
 
-    # --
-    # ... get_user_token baray upload kardan monteha in refresh dare
-    # --
+    #  --
+    #  ... get_user_token baray upload kardan monteha in refresh dare
+    #  --
 
     def get_user_token(self, **kwargs):
 
@@ -138,9 +138,9 @@ class EbayTokenApi(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_user_token: {exp}")
 
-    # --
-    # ... register_user_token baray upload kardan bayad register anjam beshe bad miche get_user_token estefadeh kard
-    # --
+    #  --
+    #  ... register_user_token baray upload kardan bayad register anjam beshe bad miche get_user_token estefadeh kard
+    #  --
 
     def register_user_token(self, **kwargs):
 

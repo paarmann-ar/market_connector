@@ -69,9 +69,9 @@ class EbayCategoryMapper:
             str,
         ] = {}
 
-    # =========================================================
-    # HTTP
-    # =========================================================
+    #  =========================================================
+    #  HTTP
+    #  =========================================================
 
     def _get(
         self,
@@ -111,9 +111,9 @@ class EbayCategoryMapper:
 
         return response.json()
 
-    # =========================================================
-    # PARSE CATEGORY PATH
-    # =========================================================
+    #  =========================================================
+    #  PARSE CATEGORY PATH
+    #  =========================================================
 
     @staticmethod
     def parse_category_path(
@@ -125,13 +125,13 @@ class EbayCategoryMapper:
 
         value = str(category_path).strip()
 
-        # Support:
+        #  Support:
         #
-        # 12576|183978|184112|184148
+        #  12576|183978|184112|184148
         #
-        # 12576 > 183978 > 184112 > 184148
+        #  12576 > 183978 > 184112 > 184148
         #
-        # 12576/183978/184112/184148
+        #  12576/183978/184112/184148
 
         value = value.replace(">", "|").replace("/", "|").replace("\\", "|")
 
@@ -142,9 +142,9 @@ class EbayCategoryMapper:
 
         return category_ids
 
-    # =========================================================
-    # GET LEAF CATEGORY ID
-    # =========================================================
+    #  =========================================================
+    #  GET LEAF CATEGORY ID
+    #  =========================================================
 
     def get_leaf_category_id(
         self,
@@ -155,9 +155,9 @@ class EbayCategoryMapper:
 
         return category_ids[-1]
 
-    # =========================================================
-    # GET DEFAULT CATEGORY TREE ID
-    # =========================================================
+    #  =========================================================
+    #  GET DEFAULT CATEGORY TREE ID
+    #  =========================================================
 
     def get_default_category_tree_id(
         self,
@@ -194,9 +194,9 @@ class EbayCategoryMapper:
 
         return category_tree_id
 
-    # =========================================================
-    # GET CATEGORY SUBTREE
-    # =========================================================
+    #  =========================================================
+    #  GET CATEGORY SUBTREE
+    #  =========================================================
 
     def get_category_subtree(
         self,
@@ -234,9 +234,9 @@ class EbayCategoryMapper:
             },
         )
 
-    # =========================================================
-    # FIND CATEGORY NODE RECURSIVELY
-    # =========================================================
+    #  =========================================================
+    #  FIND CATEGORY NODE RECURSIVELY
+    #  =========================================================
 
     @staticmethod
     def find_category_node(
@@ -264,9 +264,9 @@ class EbayCategoryMapper:
 
         return None
 
-    # =========================================================
-    # FIND CATEGORY IN SUBTREE RESPONSE
-    # =========================================================
+    #  =========================================================
+    #  FIND CATEGORY IN SUBTREE RESPONSE
+    #  =========================================================
 
     @classmethod
     def find_category_in_subtree(
@@ -275,15 +275,15 @@ class EbayCategoryMapper:
         category_id: str,
     ) -> Optional[dict[str, Any]]:
 
-        # eBay get_category_subtree response:
+        #  eBay get_category_subtree response:
         #
-        # {
-        #     "categoryTreeId": "0",
-        #     "categoryTreeVersion": "...",
-        #     "categorySubtreeNode": {
-        #         ...
-        #     }
-        # }
+        #  {
+        #      "categoryTreeId": "0",
+        #      "categoryTreeVersion": "...",
+        #      "categorySubtreeNode": {
+        #          ...
+        #      }
+        #  }
 
         root = response.get("categorySubtreeNode")
 
@@ -295,9 +295,9 @@ class EbayCategoryMapper:
             category_id,
         )
 
-    # =========================================================
-    # GET US CATEGORY NAME
-    # =========================================================
+    #  =========================================================
+    #  GET US CATEGORY NAME
+    #  =========================================================
 
     def get_us_category_name(
         self,
@@ -340,16 +340,16 @@ class EbayCategoryMapper:
         )
 
         if node is None:
-            # -------------------------------------------------
-            # Important:
+            #  -------------------------------------------------
+            #  Important:
             #
-            # eBay may return the requested category as
-            # rootCategoryNode instead of a child node.
-            # We already search recursively above.
+            #  eBay may return the requested category as
+            #  rootCategoryNode instead of a child node.
+            #  We already search recursively above.
             #
-            # If it is still not found, fail with useful
-            # debugging information.
-            # -------------------------------------------------
+            #  If it is still not found, fail with useful
+            #  debugging information.
+            #  -------------------------------------------------
 
             root = response.get("rootCategoryNode")
 
@@ -384,9 +384,9 @@ class EbayCategoryMapper:
 
         return str(category_name)
 
-    # =========================================================
-    # GET CATEGORY SUGGESTIONS
-    # =========================================================
+    #  =========================================================
+    #  GET CATEGORY SUGGESTIONS
+    #  =========================================================
 
     def get_category_suggestions(
         self,
@@ -424,9 +424,9 @@ class EbayCategoryMapper:
             [],
         )
 
-    # =========================================================
-    # BUILD NUMERIC PATH
-    # =========================================================
+    #  =========================================================
+    #  BUILD NUMERIC PATH
+    #  =========================================================
 
     @staticmethod
     def build_numeric_path(
@@ -452,9 +452,9 @@ class EbayCategoryMapper:
 
         return " > ".join(path)
 
-    # =========================================================
-    # BUILD NAME PATH
-    # =========================================================
+    #  =========================================================
+    #  BUILD NAME PATH
+    #  =========================================================
 
     @staticmethod
     def build_name_path(
@@ -480,9 +480,9 @@ class EbayCategoryMapper:
 
         return " > ".join(path)
 
-    # =========================================================
-    # FIND DE CATEGORY
-    # =========================================================
+    #  =========================================================
+    #  FIND DE CATEGORY
+    #  =========================================================
 
     def find_de_category(
         self,
@@ -502,9 +502,9 @@ class EbayCategoryMapper:
             len(suggestions),
         )
 
-        # -------------------------------------------------
-        # For now select eBay's first / best suggestion.
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  For now select eBay's first / best suggestion.
+        #  -------------------------------------------------
 
         best = suggestions[0]
 
@@ -533,9 +533,9 @@ class EbayCategoryMapper:
             "de_cat_name": (str(de_cat_name) if de_cat_name else ""),
         }
 
-    # =========================================================
-    # MAIN METHOD
-    # =========================================================
+    #  =========================================================
+    #  MAIN METHOD
+    #  =========================================================
 
     def convert_us_category_path(
         self,
@@ -553,9 +553,9 @@ class EbayCategoryMapper:
             us_category_path,
         )
 
-        # -------------------------------------------------
-        # 1. Parse US path
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  1. Parse US path
+        #  -------------------------------------------------
 
         us_category_ids = self.parse_category_path(us_category_path)
 
@@ -571,41 +571,41 @@ class EbayCategoryMapper:
             us_leaf_id,
         )
 
-        # -------------------------------------------------
-        # 2. Get US category name
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  2. Get US category name
+        #  -------------------------------------------------
 
         us_category_name = self.get_us_category_name(us_category_path)
 
-        # -------------------------------------------------
-        # 3. Search DE taxonomy
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  3. Search DE taxonomy
+        #  -------------------------------------------------
 
         de_result = self.find_de_category(query=us_category_name)
 
         suggestion = de_result["suggestion"]
 
-        # -------------------------------------------------
-        # 4. Extract DE category ID
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  4. Extract DE category ID
+        #  -------------------------------------------------
 
         de_cat_id = de_result["de_cat_id"]
 
-        # -------------------------------------------------
-        # 5. Build DE numeric path
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  5. Build DE numeric path
+        #  -------------------------------------------------
 
         de_cat_path = self.build_numeric_path(suggestion)
 
-        # -------------------------------------------------
-        # 6. Build DE name path
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  6. Build DE name path
+        #  -------------------------------------------------
 
         de_cat_name_path = self.build_name_path(suggestion)
 
-        # -------------------------------------------------
-        # 7. Validate result
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  7. Validate result
+        #  -------------------------------------------------
 
         if not de_cat_path:
             raise ValueError(f"DE category path is empty.\nSuggestion: {suggestion}")
@@ -613,9 +613,9 @@ class EbayCategoryMapper:
         if not de_cat_name_path:
             raise ValueError(f"DE category name path is empty.\nSuggestion: {suggestion}")
 
-        # -------------------------------------------------
-        # 8. Final result
-        # -------------------------------------------------
+        #  -------------------------------------------------
+        #  8. Final result
+        #  -------------------------------------------------
 
         result = {
             "de_cat_id": de_cat_id,

@@ -1,5 +1,7 @@
 import html
 
+from slugify import slugify
+
 from apis.woocommerce_api.config.woocommerce_api_config import (
     WoocommerceApiConfig,
 )
@@ -9,7 +11,6 @@ from apis.woocommerce_api.core.base_woocommerce_api import (
 from apis.woocommerce_api.models.woocommerce_category_model import (
     WoocommerceCategoryModel,
 )
-from slugify import slugify
 
 # --
 # ...
@@ -33,24 +34,24 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, category_id) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def sync_categories(self, categories: list[WoocommerceCategoryModel]) -> dict[str, WoocommerceCategoryModel]:
 
@@ -83,9 +84,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return synced_categories
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_category_by_name(self, name: str, parent_id: int = 0, record_per_page: int = 100):
         response = self.request(
@@ -115,9 +116,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_categories(self, record_per_page: int = 100):
 
@@ -134,9 +135,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_categories: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_category(self, category_model: WoocommerceCategoryModel):
 
@@ -156,9 +157,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"upload_category: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resolve_or_upload(
         self,
@@ -180,9 +181,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return self.resolve_or_upload_path(category.path)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resolve_or_upload_path(
         self,
@@ -212,9 +213,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return category
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resolve_or_upload_single(
         self,
@@ -233,9 +234,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return self.upload_category(category)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_category_by_category_id(self, category_id: int):
 
@@ -254,25 +255,25 @@ class WoocommerceCategory(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"delete_category_by_category_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def normalize_path(path: str) -> list[str]:
         return [part.strip() for part in path.strip("/").split("/") if part.strip()]
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def build_path(parts: list[str]) -> str:
         return "/" + "/".join(parts)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_parent_path(path: str) -> str | None:
@@ -283,9 +284,9 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         return WoocommerceCategory.build_path(parts[:-1])
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def build_category_index(

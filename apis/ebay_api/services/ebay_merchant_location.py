@@ -27,17 +27,17 @@ class EbayMerchantLocation(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_ebay_merchant_location_by_inventory_location_model(
         self, inventory_location_model: InventoryLocationModel, marketplace_id: str = ""
@@ -69,9 +69,9 @@ class EbayMerchantLocation(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_ebay_merchant_location_by_inventory_location_model: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_ebay_merchants_location(self, marketplace_id: str = "") -> Any:
 
@@ -99,9 +99,9 @@ class EbayMerchantLocation(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_ebay_merchants_location: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def create_ebay_merchant_location(self, inventory_location_model: InventoryLocationModel, marketplace_id: str = "") -> bool:
 

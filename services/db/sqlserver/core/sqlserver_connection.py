@@ -8,9 +8,9 @@ import pyodbc
 
 
 class SqlserverConnection:
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def create_connection_string(cls, **kwargs) -> str:
@@ -21,9 +21,9 @@ class SqlserverConnection:
         except Exception as exp:
             cls.error(f"{__file__}--->{__name__}: {exp!s}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_connection(cls, connection_string: str) -> Any:

@@ -9,16 +9,16 @@ import CONSTS
 
 
 class PromptManager:
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self):
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def load_prompt_from_file(self, prompt_file_name: str, kwargs: dict) -> str:
         try:

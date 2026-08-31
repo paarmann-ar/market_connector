@@ -22,35 +22,35 @@ class OfferEbayModel:
     lotSize: Optional[int] = None
     inventory_location_model: Optional[Any] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self, **kwargs):
 
         valid_fields = {field.name for field in fields(self)}
 
         for key, value in kwargs.items():
-            # Ignore unknown fields
+            #  Ignore unknown fields
             if key not in valid_fields:
                 continue
 
             setattr(self, key, value)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
 
         data = asdict(self)
 
-        # Remove None values
+        #  Remove None values
         return {key: value for key, value in data.items() if value is not None}
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self) -> str:
 

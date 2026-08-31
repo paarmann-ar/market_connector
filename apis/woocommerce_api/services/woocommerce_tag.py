@@ -30,24 +30,24 @@ class WoocommerceTag(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, category_id) -> str:
         self.get_all_tags()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_tag_by_name(self, name: str, record_per_page: int = 100):
 
@@ -64,9 +64,9 @@ class WoocommerceTag(BaseWoocommerceApi):
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_tags(self, record_per_page: int = 100) -> list[WoocommerceTagModel]:
 
@@ -87,9 +87,9 @@ class WoocommerceTag(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_tags: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_tag(self, tag_model: WoocommerceTagModel):
 
@@ -109,9 +109,9 @@ class WoocommerceTag(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"upload_tag: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resolve_or_upload(self, woocommerce_tag_model: WoocommerceTagModel):
 
@@ -122,9 +122,9 @@ class WoocommerceTag(BaseWoocommerceApi):
 
         return self.upload_tag(woocommerce_tag_model)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_tag_by_tag_id(self, tag_id: int):
 

@@ -31,17 +31,17 @@ class EbayProduct(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_product_summery_ebay_models(self, search_in_ebay_model: SearchInEbayModel, offset=0) -> list[ProductSummeryEbayModel]:
 
@@ -79,14 +79,14 @@ class EbayProduct(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_products: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_product_ebay_model_with_legacy_item_id(self, legacy_item_id: str, marketplace_id: str = "") -> ProductEbayModel:
 
         try:
-            # in endpoint shortDescription ro nemideh shabih be ProductEbayModel hast
+            #  in endpoint shortDescription ro nemideh shabih be ProductEbayModel hast
             if marketplace_id == "":
                 marketplace_id = self.marketplace_id
 
@@ -110,9 +110,9 @@ class EbayProduct(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_product_with_legacy_item_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_product_ebay_model_with_item_id(self, product_item_id: str, marketplace_id: str = "") -> ProductEbayModel:
 

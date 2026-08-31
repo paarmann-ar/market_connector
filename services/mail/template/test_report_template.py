@@ -14,17 +14,17 @@ class test_report_template:
         self.template = ""
         self.mixed_html = ""
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, body="") -> Any:
         self.__set_template()
         self.__get_mixed_html_body(body)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __set_template(self) -> str:
 
@@ -48,9 +48,9 @@ class test_report_template:
                 </html>
             """
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __get_mixed_html_body(self, body) -> str:
         self.mixed_html = self.template if body == "" else self.template.replace("{}", body)

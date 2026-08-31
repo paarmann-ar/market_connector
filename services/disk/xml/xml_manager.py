@@ -15,9 +15,9 @@ class XMLManager(metaclass=SingletonMeta):
     def __init__(self, **kwargs) -> None:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(self, address="", context="", is_get_string=False, is_get_dictionary=True) -> Any:
 
@@ -50,9 +50,9 @@ class XMLManager(metaclass=SingletonMeta):
         except Exception as exp:
             self.error(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __fix_xml_error(self, context="") -> str:
 

@@ -1,8 +1,8 @@
 import math
 import random
-import uuid
 import secrets
 import string
+import uuid
 
 # --
 # ...
@@ -10,17 +10,17 @@ import string
 
 
 class RandomExpertion:
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_uuid(prefix="", postfix="") -> str:
         return f"{prefix}{uuid.uuid4().hex}{postfix}"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def get_random(start_string="RND ", type="string", limit=1000000, delemeter="_"):
@@ -47,9 +47,9 @@ class RandomExpertion:
         except Exception as exp:
             print(repr(exp))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def password_maker():
@@ -58,9 +58,9 @@ class RandomExpertion:
 
         return password
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def sku_generator(length=10):

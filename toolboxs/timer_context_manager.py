@@ -7,9 +7,9 @@ class TimerContextManager:
         print("starting timer...")
         return self
 
-    # --
-    # ... exit
-    # --
+    #  --
+    #  ... exit
+    #  --
 
     def __exit__(self, exc_type, exe_value, exc_tb):
         self.end = time.perf_counter()

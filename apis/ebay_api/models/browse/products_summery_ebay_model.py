@@ -24,16 +24,16 @@ class ProductsSummeryEbayModel:
             if key in valid_fields:
                 setattr(self, key, value)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)

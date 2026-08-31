@@ -12,9 +12,9 @@ class SellerEbayModel:
     width: Optional[str] = None
     height: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self, **kwargs):
         valid_fields = {f.name for f in fields(self)}

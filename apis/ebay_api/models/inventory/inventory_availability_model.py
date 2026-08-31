@@ -55,9 +55,9 @@ class InventoryAvailabilityModel:
     shipToLocationAvailability: Optional[ShipToLocationAvailabilityModel] = None
     pickupAtLocationAvailability: Optional[list[PickupAtLocationAvailabilityModel]] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {}

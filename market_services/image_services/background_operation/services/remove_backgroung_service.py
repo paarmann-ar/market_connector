@@ -15,24 +15,24 @@ class RemoveBackgroungService(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return BackgroundOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def make_background_white(self, image_data_model: ImageDataModel) -> ImageDataModel:
         try:
@@ -50,9 +50,9 @@ class RemoveBackgroungService(Base):
         except Exception as exp:
             print(f"make_background_white: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def remove_backgroung_from_photo(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
@@ -75,9 +75,9 @@ class RemoveBackgroungService(Base):
         except Exception as exp:
             print(f"remove_backgroung_from_photo: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def finalize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
         try:
@@ -90,9 +90,9 @@ class RemoveBackgroungService(Base):
         except Exception as exp:
             print(f"finalize_image: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resize_to_fixed_canvas(
         self,
@@ -104,20 +104,20 @@ class RemoveBackgroungService(Base):
 
             target_width, target_height = size
 
-            # Keep the original aspect ratio.
+            #  Keep the original aspect ratio.
             image.thumbnail(
                 (target_width, target_height),
                 Image.Resampling.LANCZOS,
             )
 
-            # Create fixed-size white canvas.
+            #  Create fixed-size white canvas.
             canvas = Image.new(
                 "RGB",
                 (target_width, target_height),
                 (255, 255, 255),
             )
 
-            # Center image on canvas.
+            #  Center image on canvas.
             x = (target_width - image.width) // 2
             y = (target_height - image.height) // 2
 

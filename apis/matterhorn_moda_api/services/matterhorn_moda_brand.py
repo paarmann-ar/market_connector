@@ -1,8 +1,8 @@
-from apis.matterhorn_moda_api.models.brand_matterhorn_moda_model import BrandMatterhornModaModel
-from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhornModaApi
 from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import (
     MatterhornModaApiConfig,
 )
+from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhornModaApi
+from apis.matterhorn_moda_api.models.brand_matterhorn_moda_model import BrandMatterhornModaModel
 
 # --
 # ...
@@ -19,17 +19,17 @@ class MatterhornModaBrand(BaseMatterhornModaApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return MatterhornModaApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_brand_matterhorn_moda_models(self) -> list[BrandMatterhornModaModel]:
 

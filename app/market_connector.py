@@ -1,10 +1,10 @@
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
+from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
+from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
+from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
 from app.controller.market_connector_controller import MarketConnectorController
 from app.controller.setup_market_connector_controller import SetupMarketConnectorController
 from market_services.image_services.models.image_directory_model import ImageDirectoryModel
-from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
-from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
-from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
 
 # --
 # ...
@@ -29,7 +29,7 @@ search_in_woocommerce_models = [SearchInWoocommerceModel(name="Motor Display Rat
 search_in_ebay_models = [
     SearchInEbayModel(
         legacy_item_id=178354496712,
-        #     category_name_candidate="Business & Industrie",
+        #      category_name_candidate="Business & Industrie",
         marketplace="EBAY_FR",
         marketplace_id="EBAY_FR",
         deliveryCountry="FR",
@@ -37,26 +37,26 @@ search_in_ebay_models = [
         price_anpassen=1.4,
         target_category_name_in_woocommerce="Sonstige",
     )  # 168430948054 q63
-    # SearchInEbayModel(
-    #     legacy_item_id=318647115657,
-    #     #     category_name_candidate="Business & Industrie",
-    #     marketplace="EBAY_US",
-    #     marketplace_id="EBAY_US",
-    #     deliveryCountry="US",
-    #     item_to_fetch=1,
-    #     price_anpassen=1.6,
-    #     target_category_name_in_woocommerce="Sonstige",
-    # ),
-    # SearchInEbayModel(
-    #     conditions="{NEW}",
-    #     marketplace="EBAY_US",
-    #     deliveryCountry="US",
-    #     q="FITOK",
-    #     filter="sellers:{jlb_the_farm},price:[..500]",
-    #     item_to_fetch=1,
-    #     price_anpassen=1.5,
-    #     target_category_name_in_woocommerce="Sonstige",
-    # )
+    #  SearchInEbayModel(
+    #      legacy_item_id=318647115657,
+    #  #     category_name_candidate="Business & Industrie",
+    #      marketplace="EBAY_US",
+    #      marketplace_id="EBAY_US",
+    #      deliveryCountry="US",
+    #      item_to_fetch=1,
+    #      price_anpassen=1.6,
+    #      target_category_name_in_woocommerce="Sonstige",
+    #  ),
+    #  SearchInEbayModel(
+    #      conditions="{NEW}",
+    #      marketplace="EBAY_US",
+    #      deliveryCountry="US",
+    #      q="FITOK",
+    #      filter="sellers:{jlb_the_farm},price:[..500]",
+    #      item_to_fetch=1,
+    #      price_anpassen=1.5,
+    #      target_category_name_in_woocommerce="Sonstige",
+    #  )
 ]
 
 # --
@@ -90,7 +90,9 @@ def sync_ebay_to_woocommerce():
     for search_in_ebay_model in search_in_ebay_models:
         print(search_in_ebay_model.q)
         MarketConnectorController.sync_ebay_to_woocommerce(search_in_ebay_model=search_in_ebay_model)
-        # MarketConnectorController.create_ebay_offers(search_in_ebay_model=search_in_ebay_model)
+
+
+#  MarketConnectorController.create_ebay_offers(search_in_ebay_model=search_in_ebay_model)
 
 
 def sync_woocommerce_to_ebay():

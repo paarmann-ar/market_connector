@@ -26,5 +26,5 @@ class MatterhornModaProductModelToWoocommerceProductInputMetadataModel:
             title=product_matterhorn_moda_model.name_without_number,
             description=description,
             brand=product_matterhorn_moda_model.brand,
-            prompt_filename=prompt_filename
+            prompt_filename=prompt_filename,
         )

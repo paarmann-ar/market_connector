@@ -1,8 +1,8 @@
 from apis.core.base import Base
-from apis.zalando_lounge_api.services.zalando_lounge_client_api import ZalandoLoungeClientApi
-from apis.zalando_lounge_api.models.zalando_lounge_product_model import ZalandoLoungeProductModel
-from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
 from apis.zalando_lounge_api.config.zalando_lounge_api_config import ZalandoLoungeApiConfig
+from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
+from apis.zalando_lounge_api.models.zalando_lounge_product_model import ZalandoLoungeProductModel
+from apis.zalando_lounge_api.services.zalando_lounge_client_api import ZalandoLoungeClientApi
 
 # --
 # ...
@@ -15,17 +15,17 @@ class ZalandoLoungeApi(Base):
 
         self.zalando_lounge_client_api = ZalandoLoungeClientApi()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return ZalandoLoungeApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def fetch_from_zalando_lounge(self, search_in_zalando_lounge_model: SearchInZalandoLoungeModel) -> ZalandoLoungeProductModel:
 

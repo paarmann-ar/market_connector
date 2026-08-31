@@ -43,17 +43,17 @@ class Request(Base):
         except Exception as exp:
             print(f"{__file__}--->{__name__}: {exp!s}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return RequestConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, **kwargs) -> str:
         colorama.init()
@@ -78,7 +78,7 @@ class Request(Base):
         self.files = kwargs.get("files")
         self.auth = kwargs.get("auth", None)
         self.verify = kwargs.get("verify", True)
-        # 11 sec for connect, 11 secound for read
+        #  11 sec for connect, 11 secound for read
         self.timeout = kwargs.get("timeout", (12, 120))
         self.method = kwargs.get("method", "get")
         self.is_response_json = kwargs.get("is_response_json", True)
@@ -102,24 +102,24 @@ class Request(Base):
         self.waiting = kwargs.get("delay", 0.5)
         return self.get_response()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_response(self, wait_counter=5):
 
         try:
             sys.set_int_max_str_digits(0)
 
-            # if self.cookies:
-            #     session = requests.Session()
-            #     for cookie in self.cookies:
-            #         session.cookies.set(
-            #             cookie["name"],
-            #             cookie["value"],
-            #             domain=cookie.get("domain"),
-            #             path=cookie.get("path", "/"),
-            #         )
+            #  if self.cookies:
+            #      session = requests.Session()
+            #      for cookie in self.cookies:
+            #          session.cookies.set(
+            #              cookie["name"],
+            #              cookie["value"],
+            #              domain=cookie.get("domain"),
+            #              path=cookie.get("path", "/"),
+            #          )
 
             response = None
 

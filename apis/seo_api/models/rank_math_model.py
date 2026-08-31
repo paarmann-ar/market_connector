@@ -16,23 +16,23 @@ class RankMathModel:
     rank_math_canonical_url: Optional[str] = None
     rank_math_robots: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         return asdict(self)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def clear(self):
         self.rank_math_title = None
@@ -41,9 +41,9 @@ class RankMathModel:
         self.rank_math_canonical_url = None
         self.rank_math_robots = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def for_use_in_woocommerce(self):
 
@@ -74,9 +74,9 @@ class RankMathModel:
         except Exception as exp:
             self.error(f"for_use_in_woocommerce: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def from_api(cls, data):

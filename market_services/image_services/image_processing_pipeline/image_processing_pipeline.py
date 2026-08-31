@@ -1,6 +1,5 @@
 import CONSTS
 from apis.apis_provider import ApisProvider
-from toolboxs.file_and_folder_operation import FileAndFolderOperation
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from apis.wordpress_api.models.wordpress_media_model import WordpressMediaModel
 from market_services.image_services.background_operation.background_operation import BackgroundOperation
@@ -30,17 +29,17 @@ class ImageProcessingPipeline(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self):
         return CloudOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def download_url_remove_white_bg_image(
         self, image_data_models: list[ImageDataModel], is_remove_set_white_backgroung_on_photo
@@ -97,23 +96,23 @@ class ImageProcessingPipeline(Base):
         except Exception as exp:
             self.error(f"download_image: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def reduce_image_size(self, image_directory_model: ImageDirectoryModel):
         self.background_operation.reduce_image_size(image_directory_model)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def white_backgroung(self, image_directory_model: ImageDirectoryModel):
         self.background_operation.remove_set_white_backgroung_on_photo(image_directory_model)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def image_convertor_pipeline(
         self,
@@ -140,7 +139,7 @@ class ImageProcessingPipeline(Base):
                     image_data_models=image_data_models, is_remove_set_white_backgroung_on_photo=is_remove_set_white_backgroung_on_photo
                 )
 
-                # add alt auch hier
+                #  add alt auch hier
                 for image_data_model in image_data_models:
                     wordpress_media_model = WordpressMediaModel(
                         media_address=image_data_model.images_address,
@@ -151,7 +150,7 @@ class ImageProcessingPipeline(Base):
                     wordpress_media_models.append(wordpress_media_model)
 
                 source_urls = ApisProvider().wordpress_api.upload_media_models_from_disk(media_models=wordpress_media_models)
-                # main image ro ba if bezaram
+                #  main image ro ba if bezaram
                 for image, url in zip(woocommerce_product_model.images, source_urls):
                     image.src = url
 

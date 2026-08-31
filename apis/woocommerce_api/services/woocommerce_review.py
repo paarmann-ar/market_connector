@@ -28,24 +28,24 @@ class WoocommerceReview(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, category_id) -> str:
         self.get_all_reviews()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_reviews(self, product_id: str, record_per_page: int = 100):
         try:
@@ -65,9 +65,9 @@ class WoocommerceReview(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_reviews: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_review(self, review_model: WoocommerceReviewModel):
 

@@ -38,17 +38,17 @@ class EbayApi(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def pipeline_fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
         product_ebay_models: list[ProductEbayModel] = []
@@ -80,9 +80,9 @@ class EbayApi(BaseEbayApi):
 
         return product_ebay_models
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def pipeline_create_ebay_offer(self, product_ebay_model: ProductEbayModel, marketplace_id: str, quantity: int = 1) -> None:
         categoryies_object = self.ebay_category.change_category_between_marketplaces(us_category_path=product_ebay_model.categoryIdPath)

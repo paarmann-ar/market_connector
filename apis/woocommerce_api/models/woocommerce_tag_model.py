@@ -1,6 +1,6 @@
-import json
 import re
 from typing import Optional
+
 from pydantic import BaseModel
 
 # --
@@ -13,24 +13,24 @@ class WoocommerceTagModel(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @property
     def slug(self) -> str:
         return self.build_slug(self.name or "")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self) -> str:
         return self.model_dump_json(exclude_none=True)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict:
         data = self.model_dump(
@@ -41,9 +41,9 @@ class WoocommerceTagModel(BaseModel):
 
         return data
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def from_api(cls, data: dict):
@@ -53,9 +53,9 @@ class WoocommerceTagModel(BaseModel):
             description=data.get("description"),
         )
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def build_slug(cls, name: str) -> str:

@@ -22,36 +22,36 @@ class ExcelManager(Base):
             f"{CONSTS.ROOT_DIR}/{self.config_dictionary['default_address']}",
         )
 
-        # self.workbook = [
-        #     {
-        #         "worksheet_1": [
-        #             [
-        #                 {
-        #                     (0, 0): "Set name",
-        #                 },
-        #                 {(0, 1): "Tax Exempt Number"},
-        #             ],
-        #             [{(1, 0): "country"}, {(1, 1): "ITA"}],
-        #             [{(2, 0): "tax_exempt_number"}, {(2, 1): "47510326"}],
-        #         ]
-        #     }
-        # ]
+        #  self.workbook = [
+        #      {
+        #          "worksheet_1": [
+        #              [
+        #                  {
+        #                      (0, 0): "Set name",
+        #                  },
+        #                  {(0, 1): "Tax Exempt Number"},
+        #              ],
+        #              [{(1, 0): "country"}, {(1, 1): "ITA"}],
+        #              [{(2, 0): "tax_exempt_number"}, {(2, 1): "47510326"}],
+        #          ]
+        #      }
+        #  ]
 
         self.workbook = []
         self.worksheet = None
         self.worksheets_dictionary = {}
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return excelConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def operation(self, mode="", address="", file_name="", range="A1", is_print_worksheets=True) -> str:
 
@@ -97,7 +97,7 @@ class ExcelManager(Base):
                                             row_format = format_rest_rows if item[0] != 0 else format_first_row
 
                                             worksheet.write(item[0], item[1], value, row_format)
-                                        # I have change this exp to bestimmt exception
+                                        #  I have change this exp to bestimmt exception
                                         except Exception as exp:
                                             self.error(repr(exp))
 

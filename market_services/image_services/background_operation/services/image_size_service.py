@@ -15,24 +15,24 @@ class ImageSizeService(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return BackgroundOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def optimize_image(self, image_data_model: ImageDataModel) -> ImageDataModel:
 
@@ -40,7 +40,7 @@ class ImageSizeService(Base):
         suffix = image_data_model.image_name[suffix:].lower()
 
         if suffix in {".jpg", ".jpeg"}:
-            # Keep RGB/RGBA compatibility for JPEG
+            #  Keep RGB/RGBA compatibility for JPEG
             if image_data_model.image_data.mode in ("RGBA", "LA", "P"):
                 background = Image.new("RGB", image_data_model.image_data.size, "white")
                 if image_data_model.image_data.mode == "P":

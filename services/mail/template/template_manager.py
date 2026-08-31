@@ -14,16 +14,16 @@ class TemplateManager(Base):
     def __init__(self) -> None:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
     @classmethod
     def get_config_dictionary(cls):
         return TemplateConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def set_template_attributs(self, **kwargs):
         if body := kwargs.get("body", ""):
@@ -40,9 +40,9 @@ class TemplateManager(Base):
                 "body": body,
             }
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def clear_body(self, body="") -> str:
         if body != "":
@@ -51,16 +51,16 @@ class TemplateManager(Base):
 
         return body
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         return self.template_object
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_template_class(self, template_name) -> str:
         template_directory = f"{CONSTS.ROOT_DIR}/{self.config_dictionary['template_directory']}"

@@ -1,7 +1,8 @@
 from ollama import generate
-from ki.ollama.models.ollama_answer_model import ProductOutputModel
+
 from ki.core.base import Base
 from ki.ollama.config.ollama_config import OllamaConfig
+from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from toolboxs.date_and_time import DateAndTime
 
 # --
@@ -21,24 +22,24 @@ class OllamaGenerateService(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return OllamaConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def generate_with_ollama(self, prompt: str):
 

@@ -14,9 +14,9 @@ class SetupMarketConnectorController(Base):
         self.apis_provider = ApisProvider()
         self.woocommerce_product_models: list[WoocommerceProductModel] = []
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def register_user_token(self):
         self.apis_provider.ebay_api.ebay_token_api.register_user_token()

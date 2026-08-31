@@ -1,27 +1,33 @@
 from typing import Optional
+
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from apis.woocommerce_api.models.woocommerce_product_model import (
-    WoocommerceProductModel,
+from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
+from apis.woocommerce_api.models.woocommerce_brand_model import (
+    WoocommerceBrandModel,
 )
 from apis.woocommerce_api.models.woocommerce_category_model import (
     WoocommerceCategoryModel,
 )
-from apis.woocommerce_api.models.woocommerce_brand_model import (
-    WoocommerceBrandModel,
-)
 from apis.woocommerce_api.models.woocommerce_image_model import (
     WoocommerceImageModel,
+)
+from apis.woocommerce_api.models.woocommerce_product_model import (
+    WoocommerceProductModel,
 )
 from apis.woocommerce_api.models.woocommerce_tag_model import (
     WoocommerceTagModel,
 )
-from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
-from market_services.meta_data_services.meta_data_services import MetaDataServices
-from market_services.adapters.models.validate_final_model import ValidateFinalModel
+from market_services.adapters.matterhorn.matterhorn_moda_assembel_final import assemble_final
 from market_services.adapters.matterhorn.matterhorn_moda_product_model_to_woocommerce_product_input_metadata_model import (
     MatterhornModaProductModelToWoocommerceProductInputMetadataModel,
 )
-from market_services.adapters.matterhorn.matterhorn_moda_assembel_final import assemble_final
+from market_services.meta_data_services.meta_data_services import MetaDataServices
+from apis.woocommerce_api.models.woocommerce_attribute_model import (
+    WoocommerceAttributeModel,
+    WoocommerceAttributeTermModel,
+    WoocommerceProductAttributeModel,
+)
+
 # --
 # ...
 # --
@@ -35,8 +41,12 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
         meta_data_services = MetaDataServices()
         product_output_metadata_model = meta_data_services.create_metadata(
             product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(
-                product_matterhorn_moda_model=product_matterhorn_moda_model, prompt_filename="miviva_matterhorn_moda_product",is_remove_html=search_in_matterhorn_moda_model.is_remove_description_html
-            ),assemble_final=assemble_final, product_model=product_matterhorn_moda_model
+                product_matterhorn_moda_model=product_matterhorn_moda_model,
+                prompt_filename="miviva_matterhorn_moda_product",
+                is_remove_html=search_in_matterhorn_moda_model.is_remove_description_html,
+            ),
+            assemble_final=assemble_final,
+            product_model=product_matterhorn_moda_model,
         )
 
         woocommerce_tags_model = []
@@ -49,6 +59,12 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
 
         for image_url in product_matterhorn_moda_model.images:
             woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url, "alt": image_alt}))
+
+        woocommerce_product_attributes_model: list[WoocommerceProductAttributeModel] = []
+        for attribute_name, attribute_value in product_matterhorn_moda_model.attribute.items():
+            woocommerce_product_attributes_model.append(
+                WoocommerceProductAttributeModel(name=attribute_name, options=attribute_value, visible=True, variation=True)
+            )
 
         return WoocommerceProductModel(
             name=product_output_metadata_model.title or "",
@@ -63,11 +79,13 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             tags=woocommerce_tags_model,
             images=self._get_images(product_matterhorn_moda_model),
             stock_status=self._get_stock_status(product_matterhorn_moda_model),
+            attributes=woocommerce_product_attributes_model,
+            type="variable",
         )
 
-    # ------------------------------------------------------------------
-    # Category
-    # ------------------------------------------------------------------
+    #  ------------------------------------------------------------------
+    #  Category
+    #  ------------------------------------------------------------------
 
     def _get_categories(
         self,
@@ -79,9 +97,9 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
 
         return [WoocommerceCategoryModel(name=category_name, slug=self._slugify(category_name), path=category_path)]
 
-    # ------------------------------------------------------------------
-    # Brand
-    # ------------------------------------------------------------------
+    #  ------------------------------------------------------------------
+    #  Brand
+    #  ------------------------------------------------------------------
 
     def _get_brands(
         self,
@@ -98,9 +116,9 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             )
         ]
 
-    # ------------------------------------------------------------------
-    # Images
-    # ------------------------------------------------------------------
+    #  ------------------------------------------------------------------
+    #  Images
+    #  ------------------------------------------------------------------
 
     def _get_images(
         self,
@@ -126,9 +144,9 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
 
         return images
 
-    # ------------------------------------------------------------------
-    # Stock
-    # ------------------------------------------------------------------
+    #  ------------------------------------------------------------------
+    #  Stock
+    #  ------------------------------------------------------------------
 
     def _get_stock_status(
         self,
@@ -140,9 +158,9 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
 
         return "outofstock"
 
-    # ------------------------------------------------------------------
-    # Helpers
-    # ------------------------------------------------------------------
+    #  ------------------------------------------------------------------
+    #  Helpers
+    #  ------------------------------------------------------------------
 
     @staticmethod
     def _to_int(value: Optional[str | int]) -> Optional[int]:

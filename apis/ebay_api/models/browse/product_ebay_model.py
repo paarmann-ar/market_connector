@@ -77,20 +77,20 @@ class ProductEbayModel:
 
     price_anpassen: Optional[float] = 1.60
 
-    # eBay item specifics
+    #  eBay item specifics
     aspects: Optional[dict[str, list[str]]] = None
     sellerAccountType: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __init__(self, **kwargs):
 
         valid_fields = {field.name for field in fields(self)}
 
         for key, value in kwargs.items():
-            # Ignore unknown fields
+            #  Ignore unknown fields
             if key not in valid_fields:
                 continue
 
@@ -111,16 +111,16 @@ class ProductEbayModel:
 
             setattr(self, key, value)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self) -> str:
         return json.dumps(
@@ -128,16 +128,16 @@ class ProductEbayModel:
             ensure_ascii=False,
         )
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_attributes(self) -> dict[str, Any]:
         return self.to_dict()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @staticmethod
     def parse_images(value) -> list[ImageEbayModel]:

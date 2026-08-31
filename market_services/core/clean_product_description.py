@@ -2,9 +2,9 @@ import re
 
 
 class CleanProductDescription:
-    # Sections that usually indicate non-product information.
+    #  Sections that usually indicate non-product information.
     REMOVE_SECTION_PATTERNS = [
-        # German
+        #  German
         r"\bBEZAHLUNG\b",
         r"\bVERSAND\b",
         r"\bZAHLUNG\s*&\s*VERSAND\b",
@@ -35,7 +35,7 @@ class CleanProductDescription:
         r"\bKONTAKT\b",
         r"\bE-MAIL\b",
         r"\bTELEFON\b",
-        # English
+        #  English
         r"\bABOUT\s+US\b",
         r"\bCONTACT\s+US\b",
         r"\bSHIPPING\b",
@@ -60,7 +60,7 @@ class CleanProductDescription:
         r"\bEMAIL\s+ADDRESS\b",
         r"\bWEBSITE\b",
         r"\bSUPPORT\b",
-        # Generic eBay / seller content
+        #  Generic eBay / seller content
         r"\bMANY\s+MORE\s+ITEMS\b",
         r"\bMORE\s+AUCTIONS\s+IN\s+OUR\s+SHOP\b",
         r"\bOTHER\s+GENERIC\s+COMPANY\s+INFORMATION\b",
@@ -77,15 +77,15 @@ class CleanProductDescription:
 
         cleaned_text = text
 
-        # Normalize whitespace first.
+        #  Normalize whitespace first.
         cleaned_text = re.sub(
             r"\r\n|\r",
             "\n",
             cleaned_text,
         )
 
-        # Remove everything from the first matching
-        # non-product section until the end.
+        #  Remove everything from the first matching
+        #  non-product section until the end.
         for pattern in cls.REMOVE_SECTION_PATTERNS:
             match = re.search(
                 pattern,
@@ -96,14 +96,14 @@ class CleanProductDescription:
             if match:
                 cleaned_text = cleaned_text[: match.start()]
 
-        # Remove excessive whitespace.
+        #  Remove excessive whitespace.
         cleaned_text = re.sub(
             r"[ \t]+",
             " ",
             cleaned_text,
         )
 
-        # Remove excessive empty lines.
+        #  Remove excessive empty lines.
         cleaned_text = re.sub(
             r"\n{3,}",
             "\n\n",

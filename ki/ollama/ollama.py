@@ -1,13 +1,13 @@
 import json
 
 from ki.core.base import Base
+from ki.models.input_message_model import InputMessageModel
 from ki.ollama.config.ollama_config import OllamaConfig
+from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from ki.ollama.models.ollama_message_model import OllamaMessageModel
 from ki.ollama.models.ollama_prompt_model import OllamaPromptModel
 from ki.ollama.services.ollama_chat_service import OllamaChatService
 from ki.ollama.services.ollama_generate_service import OllamaGenerateService
-from ki.models.input_message_model import InputMessageModel
-from ki.ollama.models.ollama_answer_model import ProductOutputModel
 
 # --
 # ...
@@ -24,17 +24,17 @@ class Ollama(Base):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(self):
         return OllamaConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def convert_prompt_model_to_ollama_message_model(self, input_message: InputMessageModel) -> OllamaMessageModel:
 
@@ -49,9 +49,9 @@ class Ollama(Base):
         except Exception as exp:
             self.error(f"convert_prompt_model_to_ollama_message_model: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def convert_prompt_model_to_ollama_prompt_model(self, input_message: InputMessageModel) -> OllamaPromptModel:
 
@@ -66,9 +66,9 @@ class Ollama(Base):
         except Exception as exp:
             self.error(f"convert_prompt_model_to_ollama_prompt_model: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_seo_from_ollama_chat_for_rankmath(
         self,
@@ -90,9 +90,9 @@ class Ollama(Base):
         except Exception as exp:
             self.error(f"get_seo_from_ollama_chat_for_rankmath: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_seo_from_ollama_generate_for_rankmath(
         self,

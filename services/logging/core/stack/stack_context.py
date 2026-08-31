@@ -19,24 +19,24 @@ class StackContext(BaseLog):
         StackContext.no_show_modules = self.get_config_dictionary().get(__name__).get("no_show_modules")
         StackContext.no_show_methods = self.get_config_dictionary().get(__name__).get("no_show_methods")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return LogConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __str__(cls) -> str:
         return cls.StackOperation()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
     @classmethod
     def StackOperation(cls, object_name="") -> Any:
 
@@ -50,7 +50,7 @@ class StackContext(BaseLog):
 
             else:
                 for line in traceback.format_stack()[3:]:
-                    # Data = re.search("([aq:]+\w+).+([, line ]+\d+).+([, in ]+\w+)", line)
+                    #  Data = re.search("([aq:]+\w+).+([, line ]+\d+).+([, in ]+\w+)", line)
                     Data = re.search(r"([aq:]+\w+).+([, line ]+\d+)", line)
 
                     if Data:

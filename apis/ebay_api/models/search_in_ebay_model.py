@@ -25,31 +25,31 @@ class SearchInEbayModel:
     target_category_name_in_woocommerce: Optional[str] = "Sensoren"
     is_remove_description_html: Optional[bool] = False
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)
         return data
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def generate_filter(self):
         self.filter = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry},{self.filter}"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_attributes(self):
         return asdict(self)

@@ -18,7 +18,7 @@ GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae"
 
 
 def assemble_final(
-    product_output_model: ProductOutputModel, product_input: ProductInput, product_model:ProductMatterhornModaModel
+    product_output_model: ProductOutputModel, product_input: ProductInput, product_model: ProductMatterhornModaModel
 ) -> ProductOutputMetadataModel:
     title = f"{product_output_model.german_title.strip()} | {product_output_model.english_title.strip()}"
 
@@ -28,9 +28,7 @@ def assemble_final(
     if "miviva" not in german_description:
         german_description += f"Für Weitere frage kontakten Sie bei {paarmann_link}."
 
-    english_description = f"{product_output_model.english_description.strip()}\n{product_model.size_table_txt}" 
-    english_description = f"{english_description}\n{product_model.size_table_html}"
-    english_description = f"{english_description}\n{product_model.size_table}"
+    english_description = f"{product_output_model.english_description.strip()}<p>{product_model.size_table_html}</p>"
 
     focus_keywords = product_output_model.german_focus_keywords
     focus_keywords.extend(product_output_model.english_focus_keywords)

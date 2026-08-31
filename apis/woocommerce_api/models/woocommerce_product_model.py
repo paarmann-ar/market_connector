@@ -1,6 +1,6 @@
-import json
-from dataclasses import asdict, dataclass, field, fields
 from typing import Optional
+
+from pydantic import BaseModel, ConfigDict, Field
 
 from apis.seo_api.models.rank_math_model import RankMathModel
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
@@ -9,7 +9,8 @@ from apis.woocommerce_api.models.woocommerce_category_model import (
 )
 from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImageModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
-from pydantic import BaseModel, ConfigDict
+from apis.woocommerce_api.models.woocommerce_attribute_model import WoocommerceAttributeModel
+from apis.woocommerce_api.models.woocommerce_attribute_model import WoocommerceAttributeTermModel, WoocommerceProductAttributeModel
 
 # --
 # ...
@@ -39,33 +40,34 @@ class WoocommerceProductModel(BaseModel):
     shipping_taxable: Optional[bool] = True
     shipping_class: Optional[str] = ""
     shipping_class_id: Optional[int] = 0
-    categories: list[WoocommerceCategoryModel] = field(default_factory=list)
-    brands: list[WoocommerceBrandModel] = field(default_factory=list)
-    tags: list[WoocommerceTagModel] = field(default_factory=list)
-    images: list[WoocommerceImageModel] = field(default_factory=list)
+    categories: list[WoocommerceCategoryModel] = Field(default_factory=list)
+    brands: list[WoocommerceBrandModel] = Field(default_factory=list)
+    tags: list[WoocommerceTagModel] = Field(default_factory=list)
+    images: list[WoocommerceImageModel] = Field(default_factory=list)
     image_description: Optional[str] = ""
-    attributes: list = field(default_factory=list)
-    default_attributes: list[str] = field(default_factory=list)
+    default_attributes: list[str] = Field(default_factory=list)
     stock_status: Optional[str] = "instock"
     meta_data: Optional[RankMathModel] = None
+    attributes: list[WoocommerceProductAttributeModel] = Field(default_factory=list)
+    type: Optional[str] = "simple"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         return self.model_dump(exclude_none=True)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return self.model_dump_json()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def from_api(cls, data):

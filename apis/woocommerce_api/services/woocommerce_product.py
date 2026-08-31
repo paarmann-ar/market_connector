@@ -4,11 +4,11 @@ from apis.woocommerce_api.config.woocommerce_api_config import (
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
+from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 from apis.woocommerce_api.models.woocommerce_product_model import (
     WoocommerceProductModel,
 )
-from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
-
+from apis.woocommerce_api.models.woocommerce_variation_attribute_model import WoocommerceVariationModel
 # --
 # ...
 # --
@@ -31,24 +31,24 @@ class WoocommerceProduct(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_product_by_name(self, name: str, record_per_page: int = 100) -> WoocommerceProductModel:
 
@@ -72,9 +72,9 @@ class WoocommerceProduct(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_name: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_products(self, record_per_page: int = 100) -> [WoocommerceProductModel]:
 
@@ -95,11 +95,11 @@ class WoocommerceProduct(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_products: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
-    def upload_product(self, product_model: WoocommerceProductModel):
+    def upload_product(self, product_model: WoocommerceProductModel)->WoocommerceProductModel:
 
         try:
             response = self.request(
@@ -111,14 +111,14 @@ class WoocommerceProduct(BaseWoocommerceApi):
 
             self.prompt_on_screen(f"products: {response}")
 
-            return response
+            return WoocommerceProductModel(**response)
 
         except Exception as exp:
             self.prompt_on_screen(f"upload_product: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_product_by_product_id(self, product_id: int):
 
@@ -137,9 +137,9 @@ class WoocommerceProduct(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"delete_product_by_product_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_product_by_search_in_woocommerce_model(self, search_in_woocommerce_model: SearchInWoocommerceModel) -> WoocommerceProductModel:
 
@@ -165,3 +165,18 @@ class WoocommerceProduct(BaseWoocommerceApi):
 
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_search_in_woocommerce_model: {exp}")
+
+    #  --
+    #  ...
+    #  --
+
+    def upload_variation(self, product_id: int, variation_model: WoocommerceVariationModel):
+
+        response = self.request(
+            method="post",
+            url=(f"{self.base_url}{self.products_url}/{product_id}/variations"),
+            auth=(self.consumer_key, self.consumer_secret),
+            json=variation_model.model_dump(exclude_none=True),
+        )
+
+        return response

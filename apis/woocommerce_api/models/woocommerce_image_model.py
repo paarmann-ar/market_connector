@@ -1,6 +1,5 @@
-import json
-from dataclasses import asdict, dataclass
 from typing import Optional
+
 from pydantic import BaseModel, ConfigDict
 
 # --
@@ -17,33 +16,33 @@ class WoocommerceImageModel(BaseModel):
     alt: Optional[str] = None
     srcset: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         return self.model_dump(exclude_none=True)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return self.model_dump_json()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
-    # @classmethod
-    # def from_api(cls, data):
-    #     return cls(
-    #         id=data.get("id"),
-    #         name=data.get("name"),
-    #         src=data.get("src"),
-    #         alt=data.get("alt"),
-    #         srcset=data.get("srcset")
-    #     )
+    #  @classmethod
+    #  def from_api(cls, data):
+    #      return cls(
+    #          id=data.get("id"),
+    #          name=data.get("name"),
+    #          src=data.get("src"),
+    #          alt=data.get("alt"),
+    #          srcset=data.get("srcset")
+    #      )
 
     @classmethod
     def from_api(cls, data: dict):

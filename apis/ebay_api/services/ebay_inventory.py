@@ -31,17 +31,17 @@ class EbayInventory(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_sku_with_item_id(self, item_id: str, marketplace_id: str = "") -> ProductEbayModel:
 
@@ -81,9 +81,9 @@ class EbayInventory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_product_with_sku: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def create_ebay_inventory(self, inventory_product_model: InventoryProductModel, marketplace_id: str = "") -> bool:
 
@@ -112,9 +112,9 @@ class EbayInventory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_product_with_sku: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_ebay_inventory_by_sku(self, inventory_product_model: InventoryProductModel, marketplace_id: str = "") -> InventoryProductModel:
 
@@ -144,9 +144,9 @@ class EbayInventory(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_ebay_inventory_by_sku: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_skus_on_ebay(self, marketplace_id: str = "") -> bool:
 

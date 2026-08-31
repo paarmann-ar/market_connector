@@ -24,16 +24,16 @@ class TagParser:
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, context: str) -> str:
         self.tag_parser(context)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def tag_parser(self, context: str) -> WoocommerceTagParserModel:
 
@@ -61,9 +61,9 @@ class TagParser:
             tags=tags,
         )
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def normalize_context(self, context: str):
 
@@ -73,9 +73,9 @@ class TagParser:
 
         return context.strip()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_brand(self, context: str):
         context = self.normalize_context(context)
@@ -86,9 +86,9 @@ class TagParser:
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_category(self, context: str):
         context = self.normalize_context(context)
@@ -99,9 +99,9 @@ class TagParser:
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_condition(self, context: str):
         context = self.normalize_context(context)
@@ -112,19 +112,19 @@ class TagParser:
 
         return None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def find_part_number(self, context: str):
 
         context = self.normalize_context(context)
 
-        # patterns = [
-        #     r"\b[A-Z]{2,}\d+[A-Z0-9-]*\b",
-        #     r"\b6ES\d+[A-Z0-9-]*\b",
-        #     r"\b6ES\d+\s+\d+[A-Z0-9-]*\b",
-        # ]
+        #  patterns = [
+        #      r"\b[A-Z]{2,}\d+[A-Z0-9-]*\b",
+        #      r"\b6ES\d+[A-Z0-9-]*\b",
+        #      r"\b6ES\d+\s+\d+[A-Z0-9-]*\b",
+        #  ]
 
         patterns = [
             r"\b[A-Z]{2,}\d+(?:-[A-Z]{2,}\d+)+\b",
@@ -140,9 +140,9 @@ class TagParser:
 
         return list(dict.fromkeys(matches))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def clean_title(self, context: str, brand, condition, part_numbers: list, category):
 
@@ -168,9 +168,9 @@ class TagParser:
         except Exception as exp:
             self.prompt_on_screen(f"clean_title: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def build_tags(self, name, brand, part_numbers, catgory, condition):
 
@@ -216,16 +216,16 @@ class TagParser:
             self.prompt_on_screen(f"build_tags: {exp}")
 
     def clean_char(self, text):
-        # , , ,
+        #  , , ,
         text = re.sub(r"\s*,\s*(?=,)", "", text)
 
         text = re.sub(r"\s*,\s*([–—-])", r" \1", text)
         text = re.sub(r"\s*,\s*$", "", text)
 
-        # ......
+        #  ......
         text = re.sub(r"\.{2,}", "", text)
 
-        #!!!
+        # !!!
         text = re.sub(r"\s*[!]{1,}\s*", " ", text)
 
         text = re.sub(r"\s+", " ", text).strip()

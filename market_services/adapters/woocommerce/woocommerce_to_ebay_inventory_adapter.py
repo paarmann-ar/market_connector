@@ -20,9 +20,9 @@ class WoocommerceToEbayInventoryAdapter:
         self.woocommerce_product = woocommerce_product
         self.price_anpassen = price_anpassen
 
-    # --------------------------------------------------
-    # Main adapter
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Main adapter
+    #  --------------------------------------------------
 
     def adapt(self) -> InventoryProductModel:
 
@@ -36,9 +36,9 @@ class WoocommerceToEbayInventoryAdapter:
             price=self._adapt_price(),
         )
 
-    # --------------------------------------------------
-    # Product details
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Product details
+    #  --------------------------------------------------
 
     def _adapt_product_details(self) -> InventoryProductDetailsModel:
 
@@ -54,9 +54,9 @@ class WoocommerceToEbayInventoryAdapter:
             aspects=self._adapt_aspects(),
         )
 
-    # --------------------------------------------------
-    # Images
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Images
+    #  --------------------------------------------------
 
     def _adapt_images(self) -> list[str]:
 
@@ -78,9 +78,9 @@ class WoocommerceToEbayInventoryAdapter:
 
         return result
 
-    # --------------------------------------------------
-    # Brand
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Brand
+    #  --------------------------------------------------
 
     def _adapt_brand(self) -> Optional[str]:
 
@@ -96,17 +96,17 @@ class WoocommerceToEbayInventoryAdapter:
 
         return brand.name
 
-    # --------------------------------------------------
-    # MPN
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  MPN
+    #  --------------------------------------------------
 
     def _adapt_mpn(self) -> Optional[str]:
 
         return self._get_attribute_value("MPN")
 
-    # --------------------------------------------------
-    # GTIN
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  GTIN
+    #  --------------------------------------------------
 
     def _adapt_gtin(self) -> Optional[str]:
 
@@ -123,9 +123,9 @@ class WoocommerceToEbayInventoryAdapter:
 
         return None
 
-    # --------------------------------------------------
-    # Quantity
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Quantity
+    #  --------------------------------------------------
 
     def _adapt_quantity(self) -> int:
 
@@ -136,9 +136,9 @@ class WoocommerceToEbayInventoryAdapter:
 
         return 1
 
-    # --------------------------------------------------
-    # Price
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Price
+    #  --------------------------------------------------
 
     def _adapt_price(self) -> Optional[str]:
 
@@ -157,9 +157,9 @@ class WoocommerceToEbayInventoryAdapter:
         except (TypeError, ValueError):
             return None
 
-    # --------------------------------------------------
-    # Attributes -> eBay Aspects
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Attributes -> eBay Aspects
+    #  --------------------------------------------------
 
     def _adapt_aspects(self) -> dict[str, list[str]]:
 
@@ -189,9 +189,9 @@ class WoocommerceToEbayInventoryAdapter:
 
         return aspects
 
-    # --------------------------------------------------
-    # Attribute helper
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Attribute helper
+    #  --------------------------------------------------
 
     def _get_attribute_value(
         self,

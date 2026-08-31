@@ -15,9 +15,9 @@ class ImageProduceController(BaseWoocommerceApi):
         self.image_folder_adress = f"{CONSTS.IMAGE_FILES}/temp/"
         self.wordpress_api = WordpressApi()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def download_image_form_url_save_in_disk(self, src: str, image_name: str) -> str:
 
@@ -38,9 +38,9 @@ class ImageProduceController(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_product_by_name: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_image_from_disk_to_wordpress(self, file_address: str) -> int:
 

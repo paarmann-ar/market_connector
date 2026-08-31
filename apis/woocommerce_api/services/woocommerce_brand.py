@@ -30,24 +30,24 @@ class WoocommerceBrand(BaseWoocommerceApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return WoocommerceApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self, category_id) -> str:
         self.get_all_brands()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_brand_by_name(self, name: str, record_per_page: int = 100):
         try:
@@ -70,9 +70,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_brand_by_name: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_brands(self, record_per_page: int = 100):
 
@@ -96,9 +96,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_brands: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def upload_brand(self, brand_model: WoocommerceBrandModel):
 
@@ -119,9 +119,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
         except Exception as exp:
             self.prompt_on_screen(f"upload_brand: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def resolve_or_upload(self, woocommerce_brand_model: WoocommerceBrandModel):
 
@@ -132,9 +132,9 @@ class WoocommerceBrand(BaseWoocommerceApi):
 
         return self.upload_brand(WoocommerceBrandModel(name=woocommerce_brand_model.name))
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def delete_brand_by_brand_id(self, brand_id: int):
 

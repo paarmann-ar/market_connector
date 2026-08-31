@@ -1,8 +1,8 @@
 import json
-from dataclasses import asdict, dataclass, fields
-from typing import Optional, Annotated
-import re
-from pydantic import BaseModel, Field, field_validator, model_validator
+from dataclasses import asdict, dataclass
+from typing import Annotated, Optional
+
+from pydantic import BaseModel, Field
 
 # --
 # ...
@@ -46,24 +46,24 @@ class ProductOutputModel(BaseModel):
 class OllamaAnswerModel:
     answer: Optional[ProductOutputModel] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)
         return data
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_list(self):
         return [self]

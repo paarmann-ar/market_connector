@@ -28,17 +28,17 @@ class EbayVerkaufPolicys(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_fulfillment_policy_on_ebay(self, marketplace_id: str = "") -> Any:
 
@@ -69,9 +69,9 @@ class EbayVerkaufPolicys(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_allskus_on_ebay: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_zahlungs_policy_on_ebay(self, marketplace_id: str = "") -> Any:
 
@@ -102,9 +102,9 @@ class EbayVerkaufPolicys(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_all_zahlung_policy_on_ebay: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_ruckgabes_policy_on_ebay(self, marketplace_id: str = "") -> Any:
 

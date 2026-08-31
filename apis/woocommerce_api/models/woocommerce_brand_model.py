@@ -1,7 +1,7 @@
-import json
-from dataclasses import asdict, dataclass
 from typing import Optional
+
 from pydantic import BaseModel, ConfigDict
+
 # --
 # ...
 # --
@@ -15,23 +15,23 @@ class WoocommerceBrandModel(BaseModel):
     slug: Optional[str] = None
     description: Optional[str] = None
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return self.model_dump_json()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         return self.model_dump(exclude_none=True)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def from_api(cls, data):

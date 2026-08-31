@@ -1,7 +1,6 @@
 import json
 from dataclasses import asdict, dataclass
 from typing import Optional
-from market_services.adapters.models.validate_final_model import ValidateFinalModel
 
 # --
 # ...
@@ -27,31 +26,31 @@ class SearchInMatterhornModaModel:
     target_category_name_in_woocommerce: Optional[str] = None
     is_remove_description_html: Optional[bool] = True
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return json.dumps(asdict(self), ensure_ascii=False)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         data = asdict(self)
         return data
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def generate_filter(self):
         self.filter = f"conditions:{self.conditions},deliveryCountry:{self.deliveryCountry},{self.filter}"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_all_attributes(self):
         return asdict(self)

@@ -18,24 +18,24 @@ class PrepaerImageFile(Base):
 
         self.cache_file_name = self.config_dictionary.get("cache_file_name")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return BackgroundOperationConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __call__(self) -> str:
         pass
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def read_image_file(self, image_directory_model: ImageDirectoryModel) -> list[ImageDataModel]:
         try:
@@ -65,9 +65,9 @@ class PrepaerImageFile(Base):
         except Exception as exp:
             print(f"read_image_file: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def add_padding_crop_image(self, image_data_model: ImageDataModel, padding=30) -> ImageDataModel:
         try:

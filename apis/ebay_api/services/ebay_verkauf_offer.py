@@ -27,17 +27,17 @@ class EbayVerkaufOffer(BaseEbayApi):
 
         self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     @classmethod
     def get_config_dictionary(cls):
         return EbayApiConfig().get_dictionary()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def create_offer_ebay(self, offer_ebay_model: OfferEbayModel, marketplace_id: str = "") -> str:
 
@@ -68,9 +68,9 @@ class EbayVerkaufOffer(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"create_offer_ebay: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_offer_ebay_by_sku(self, sku: str, marketplace_id: str = "") -> OfferEbayModel:
 
@@ -104,9 +104,9 @@ class EbayVerkaufOffer(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_offer_ebay_by_sku: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_offer_status_ebay_by_offer_id(self, offer_id: str = "") -> str:
 
@@ -130,9 +130,9 @@ class EbayVerkaufOffer(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_offer_status_ebay_by_offer_id: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def get_listing_fees_on_ebay(self, sku: str, offer_id: str, marketplace_id: str = "") -> Any:
 
@@ -161,9 +161,9 @@ class EbayVerkaufOffer(BaseEbayApi):
         except Exception as exp:
             self.prompt_on_screen(f"get_listing_fees_on_ebay: {exp}")
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def publish_offer_ebay_by_offer_id(self, offer_id: str = "") -> str:
 

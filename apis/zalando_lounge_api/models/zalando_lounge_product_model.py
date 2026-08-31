@@ -5,7 +5,6 @@ from typing import Any, Optional
 from apis.zalando_lounge_api.models.zalando_lounge_media_model import (
     ZalandoLoungeMediaModel,
 )
-
 from apis.zalando_lounge_api.models.zalando_lounge_simple_model import (
     ZalandoLoungeSimpleModel,
 )
@@ -17,9 +16,9 @@ from apis.zalando_lounge_api.models.zalando_lounge_simple_model import (
 
 @dataclass
 class ZalandoLoungeProductModel:
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
     energy_efficiency_class: Optional[str] = None
 
     model_identifier: Optional[str] = None
@@ -33,9 +32,9 @@ class ZalandoLoungeProductModel:
     modelSku: Optional[str] = None
     sku: Optional[str] = None
 
-    # --------------------------------------------------
-    # Names / category
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Names / category
+    #  --------------------------------------------------
 
     nameCategoryTag: Optional[str] = None
     nameColor: Optional[str] = None
@@ -44,9 +43,9 @@ class ZalandoLoungeProductModel:
 
     silhouette: Optional[str] = None
 
-    # --------------------------------------------------
-    # Product information
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Product information
+    #  --------------------------------------------------
 
     gender: list[str] = field(default_factory=list)
 
@@ -58,17 +57,17 @@ class ZalandoLoungeProductModel:
 
     product_highlights: list[str] = field(default_factory=list)
 
-    # --------------------------------------------------
-    # Images / Media
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Images / Media
+    #  --------------------------------------------------
 
     images: list[str] = field(default_factory=list)
 
     media: list[ZalandoLoungeMediaModel] = field(default_factory=list)
 
-    # --------------------------------------------------
-    # Price
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Price
+    #  --------------------------------------------------
 
     price: Optional[int] = None
     specialPrice: Optional[int] = None
@@ -76,35 +75,35 @@ class ZalandoLoungeProductModel:
 
     similarPrices: Optional[bool] = None
 
-    # --------------------------------------------------
-    # Stock
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Stock
+    #  --------------------------------------------------
 
     stockStatus: Optional[str] = None
 
-    # --------------------------------------------------
-    # Variations
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Variations
+    #  --------------------------------------------------
 
     simples: list[ZalandoLoungeSimpleModel] = field(default_factory=list)
 
-    # --------------------------------------------------
-    # Delivery / Shipping
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Delivery / Shipping
+    #  --------------------------------------------------
 
     delivery_promise: Optional[dict[str, Any]] = None
 
     shipping_fee: Optional[dict[str, Any]] = None
 
-    # --------------------------------------------------
-    # Manufacturer
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Manufacturer
+    #  --------------------------------------------------
 
     manufacturer_details: Optional[dict[str, Any]] = None
 
-    # --------------------------------------------------
-    # Campaign / category
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Campaign / category
+    #  --------------------------------------------------
 
     urlPath: dict[str, str] = field(default_factory=dict)
 
@@ -112,9 +111,9 @@ class ZalandoLoungeProductModel:
 
     filters: list[dict[str, Any]] = field(default_factory=list)
 
-    # --------------------------------------------------
-    # Other
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  Other
+    #  --------------------------------------------------
 
     season: Optional[str] = None
 
@@ -134,16 +133,16 @@ class ZalandoLoungeProductModel:
 
     taxCode: Optional[int] = None
 
-    # --------------------------------------------------
-    # ...
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  ...
+    #  --------------------------------------------------
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
-    # --------------------------------------------------
-    # ...
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  ...
+    #  --------------------------------------------------
 
     def to_json(self) -> str:
         return json.dumps(
@@ -151,16 +150,16 @@ class ZalandoLoungeProductModel:
             ensure_ascii=False,
         )
 
-    # --------------------------------------------------
-    # ...
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  ...
+    #  --------------------------------------------------
 
     def get_all_attributes(self) -> dict[str, Any]:
         return self.to_dict()
 
-    # --------------------------------------------------
-    # API -> Model
-    # --------------------------------------------------
+    #  --------------------------------------------------
+    #  API -> Model
+    #  --------------------------------------------------
 
     @classmethod
     def from_api(
@@ -173,9 +172,9 @@ class ZalandoLoungeProductModel:
         simples = [ZalandoLoungeSimpleModel.from_api(item) for item in data.get("simples", []) if isinstance(item, dict)]
 
         return cls(
-            # --------------------------------------------------
-            # Basic
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Basic
+            #  --------------------------------------------------
             energy_efficiency_class=data.get("energy_efficiency_class"),
             model_identifier=data.get("model_identifier"),
             brand=data.get("brand"),
@@ -184,17 +183,17 @@ class ZalandoLoungeProductModel:
             campaignIdentifier=data.get("campaignIdentifier"),
             modelSku=data.get("modelSku"),
             sku=data.get("sku"),
-            # --------------------------------------------------
-            # Names
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Names
+            #  --------------------------------------------------
             nameCategoryTag=data.get("nameCategoryTag"),
             nameColor=data.get("nameColor"),
             nameShop=data.get("nameShop"),
             subtitle=data.get("subtitle"),
             silhouette=data.get("silhouette"),
-            # --------------------------------------------------
-            # Product information
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Product information
+            #  --------------------------------------------------
             gender=data.get(
                 "gender",
                 [],
@@ -215,41 +214,41 @@ class ZalandoLoungeProductModel:
                 "product_highlights",
                 [],
             ),
-            # --------------------------------------------------
-            # Images
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Images
+            #  --------------------------------------------------
             images=data.get(
                 "images",
                 [],
             ),
             media=media,
-            # --------------------------------------------------
-            # Price
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Price
+            #  --------------------------------------------------
             price=data.get("price"),
             specialPrice=data.get("specialPrice"),
             savings=data.get("savings"),
             similarPrices=data.get("similarPrices"),
-            # --------------------------------------------------
-            # Stock
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Stock
+            #  --------------------------------------------------
             stockStatus=data.get("stockStatus"),
-            # --------------------------------------------------
-            # Variations
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Variations
+            #  --------------------------------------------------
             simples=simples,
-            # --------------------------------------------------
-            # Delivery
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Delivery
+            #  --------------------------------------------------
             delivery_promise=data.get("delivery_promise"),
             shipping_fee=data.get("shipping_fee"),
-            # --------------------------------------------------
-            # Manufacturer
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Manufacturer
+            #  --------------------------------------------------
             manufacturer_details=data.get("manufacturer_details"),
-            # --------------------------------------------------
-            # Campaign / category
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Campaign / category
+            #  --------------------------------------------------
             urlPath=data.get(
                 "urlPath",
                 {},
@@ -262,9 +261,9 @@ class ZalandoLoungeProductModel:
                 "filters",
                 [],
             ),
-            # --------------------------------------------------
-            # Other
-            # --------------------------------------------------
+            #  --------------------------------------------------
+            #  Other
+            #  --------------------------------------------------
             season=data.get("season"),
             sustainable=data.get(
                 "sustainable",

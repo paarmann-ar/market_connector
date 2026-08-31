@@ -1,4 +1,5 @@
 from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -20,30 +21,30 @@ class SearchInWoocommerceModel(BaseModel):
     price_anpassen: float = 1.60
     target_category_name_in_ebay: str = "Sensoren"
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def __post_init__(self):
         self.generate_filter()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_dict(self):
         return self.model_dump(exclude_none=True)
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def to_json(self):
         return self.model_dump_json()
 
-    # --
-    # ...
-    # --
+    #  --
+    #  ...
+    #  --
 
     def generate_filter(self):
         params = {}
