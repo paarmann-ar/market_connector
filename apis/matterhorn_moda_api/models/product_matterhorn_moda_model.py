@@ -1,5 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
+from apis.matterhorn_moda_api.models.variants_matterhorn_mode_model import VariantsMatterhornModeModel
 
 # --
 # ...
@@ -42,7 +43,7 @@ class ProductMatterhornModaModel(BaseModel):
     images: Optional[list[str]] = None
     new_collection: Optional[str] = None
 
-    variants: Optional[list] = None
+    variants: Optional[list[VariantsMatterhornModeModel]] = None
     size_table: Optional[str] = None
     weight: Optional[int] = None
     products_in_set: Optional[list[str]] = None

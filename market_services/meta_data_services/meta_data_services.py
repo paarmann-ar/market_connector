@@ -57,7 +57,9 @@ class MetaDataServices:
             "image_alt_main": image_alt_main,
         }
 
-        rank_math_focus_keyword = f"{product_input_metadata_model.mpn}, {product_input_metadata_model.brand}{', '.join(product_output_metadata_model.focus_keywords)}, {product_output_metadata_model.primary_focus_keyword}"
+        product_output_metadata_model_title = product_output_metadata_model.title.split("|")[0]
+
+        rank_math_focus_keyword = f"{product_output_metadata_model_title}, {product_input_metadata_model.mpn}, {product_input_metadata_model.brand}{', '.join(product_output_metadata_model.focus_keywords)}, {product_output_metadata_model.primary_focus_keyword}"
 
         product_output_metadata_model.seo_model = RankMathModel(
             rank_math_title=product_output_metadata_model.title,

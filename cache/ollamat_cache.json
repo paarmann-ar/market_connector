@@ -1,49 +1,1694 @@
 {
-  "32314": {
-    "german_title": "Push up Axami",
-    "english_title": "Push up Axami",
-    "german_description": "Diese BH ist ein Must-have in jedem Frauenkleiderschrank! Aus glatter, hochwertiger Mikrofaser gefertigt. Cups mit fantastischer Konstruktion, die sogar kleine Brüste optisch vergrößern. Schnitt für besondere Anlässe. Zwei separate Träger dieses BHs können Sie nach Belieben anpassen: z. B. für Abendkleid mit nacktem Rücken (Verschluss am Bauch, ein Träger um den Hals statt Träger an den Seiten). Das Modell hat Silikonträger und traditionelle Träger im Set. Ein weiterer Vorteil sind die entfernbaren Vergrößerungseinsätze.",
-    "english_description": "This bra is a must-have in every woman's wardrobe! Made entirely of smooth, high quality microfiber. Cups of fantastic construction, which optically enlarge even small breasts. Cut designed for special tasks. Two separate straps of this bra can be adjusted as you like: e.g. for evening dress with uncovered back (clasp on the belly, one strap around the neck instead of straps on the sides). The model has silicone straps and traditional ones in the set. An additional advantage are the removable magnifying inserts.",
-    "german_short_description": "Push up BH aus Mikrofaser mit vergrößernden Cups und anpassbaren Trägern.",
-    "english_short_description": "Push up bra made of microfiber with enlarging cups and adjustable straps.",
+  "36600": {
+    "german_title": "Semi-soft Axami",
+    "english_title": "Semi-soft Axami",
+    "german_description": "Die faszinierende BH-Form Corona Australe begeistert die Sinne mit transparentem Openwork-Gewebe. Dieses Modell betont die Schönheit Ihrer Brust, garantiert Ihnen ein spektakuläres Aussehen und unvergessliches Komfortgefühl. Es macht Sie fühlen, als wären Sie erotisch, sexy und feminin. Der Rücken besteht aus feiner Netzstruktur. Ein flirtyer Schleifen zwischen den Cups. Das Modell ist am Hals gebunden, hat abnehmbare, verstellbare Träger, vertikale Whalebones und eine dreistufige, zwei-Öffnungsverschluss.",
+    "english_description": "The intriguing bra Corona Australe seduces the senses with transparent openwork lace. This model will highlight the beauty of your cleavage, guaranteeing you a spectacular look and irreplaceable comfort. It will make you feel seductive, sexy and feminine. The back is made of delicate mesh. A flirtatious bow between cups. The model is tied up at the neck, has detachable, adjustable straps, vertical whalebones and three-position two-hook fastening.",
+    "german_short_description": "Faszinierender BH mit transparentem Openwork-Gewebe, der die Brust betont und ein spektakuläres Aussehen und Komfort bietet. Mit feiner Netzstruktur am Rücken, Schleife zwischen den Cups und verstellbaren Trägern.",
+    "english_short_description": "Intriguing bra with transparent openwork lace that highlights the cleavage and offers a spectacular look and comfort. Features delicate mesh back, a bow between cups, and adjustable straps.",
     "german_meta_description": "",
     "english_meta_description": "",
     "german_focus_keywords": [
-      "Push up BH",
-      "Axami BH",
-      "Mikrofaser BH",
-      "vergrößernde Cups"
+      "BH",
+      "Corona Australe",
+      "Openwork-Gewebe",
+      "Brustbetonung"
     ],
     "english_focus_keywords": [
-      "Push up bra",
-      "Axami bra",
-      "microfiber bra",
-      "enlarging cups"
+      "bra",
+      "Corona Australe",
+      "openwork lace",
+      "cleavage emphasis"
     ],
-    "german_primary_focus_keyword": "Push up BH",
-    "english_primary_focus_keyword": "Push up bra",
+    "german_primary_focus_keyword": "BH",
+    "english_primary_focus_keyword": "bra",
+    "slug_components": [
+      "axami",
+      "bra",
+      "corona-aurtale",
+      "openwork-gewebe",
+      "brustbetonung"
+    ],
+    "german_image_description": "Faszinierender BH mit transparentem Openwork-Gewebe, der die Brust betont und ein spektakuläres Aussehen und Komfort bietet. Mit feiner Netzstruktur am Rücken, Schleife zwischen den Cups und verstellbaren Trägern.",
+    "english_image_description": "Intriguing bra with transparent openwork lace that highlights the cleavage and offers a spectacular look and comfort. Features delicate mesh back, a bow between cups, and adjustable straps.",
+    "german_product_tags": [
+      "BH",
+      "Corona Australe",
+      "Openwork-Gewebe",
+      "Brustbetonung",
+      "Schleife",
+      "verstellbare Träger"
+    ],
+    "english_product_tags": [
+      "bra",
+      "Corona Australe",
+      "openwork lace",
+      "cleavage emphasis",
+      "bow",
+      "adjustable straps"
+    ]
+  },
+  "33104": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Elegantes Beige-BH mit Silikon-Strapsen, die am Rücken niedrig befestigt sind - perfekt unter eng anliegenden Outfits mit Halspartien. Garantiert einen perfekten Effekt und höchsten Komfort. Das BH ist aus glatter Mikrofaser gefertigt. Es verfügt über eine abnehmbare Vergrößerungseinsatz und anpassbare, abnehmbare Strapsen - Beige und Silikon. Die Strapsen dieses BHs können nach Wunsch angepasst werden.",
+    "english_description": "Elegant beige bra with silicone straps fastened low on the back - perfect under fitted outfits with necklines. Guarantees you a perfect effect and the highest comfort. The bra is made of smooth microfiber. It has a removable magnifying inserts and adjustable, detachable straps - beige and silicone. The straps of this bra can be adjusted as you wish.",
+    "german_short_description": "Elegantes Beige-BH mit Silikon-Strapsen, perfekt unter engen Outfits. Aus glatter Mikrofaser, mit abnehmbarem Vergrößerungseinsatz und anpassbaren Strapsen.",
+    "english_short_description": "Elegant beige bra with silicone straps, perfect under fitted outfits. Made of smooth microfiber, with removable magnifying insert and adjustable straps.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push up Axami",
+      "Beige BH",
+      "Silikon-Strapsen",
+      "Mikrofaser BH"
+    ],
+    "english_focus_keywords": [
+      "Push up Axami",
+      "Beige bra",
+      "Silicone straps",
+      "Microfiber bra"
+    ],
+    "german_primary_focus_keyword": "Push up Axami",
+    "english_primary_focus_keyword": "Push up Axami",
+    "slug_components": [
+      "push-up",
+      "axami",
+      "beige-bra",
+      "silicone-straps",
+      "microfiber-bra"
+    ],
+    "german_image_description": "Elegantes Beige-BH mit Silikon-Strapsen, die am Rücken niedrig befestigt sind - perfekt unter eng anliegenden Outfits mit Halspartien.",
+    "english_image_description": "Elegant beige bra with silicone straps fastened low on the back - perfect under fitted outfits with necklines.",
+    "german_product_tags": [
+      "Beige BH",
+      "Silikon-Strapsen",
+      "Mikrofaser",
+      "Vergrößerungseinsatz",
+      "Anpassbare Strapsen"
+    ],
+    "english_product_tags": [
+      "Beige bra",
+      "Silicone straps",
+      "Microfiber",
+      "Magnifying insert",
+      "Adjustable straps"
+    ]
+  },
+  "33107": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Elegantes schwarzes BH-Modell mit Silikon, transparenter Rückseite - perfekt unter eng anliegenden Outfits mit exponiertem Rücken. Es garantiert Ihnen einen perfekten Effekt und den höchsten Komfort. Der BH ist mit entfernbaren Vergrößerungseinsätzen, Vordereinschraubung und entfernbaren, anpassbaren Silikonträgern ausgestattet.",
+    "english_description": "Elegant black bra with silicone, transparent back - perfect under fitted outfits with exposed back. It will guarantee you a perfect effect and the highest comfort. The bra is equipped with removable magnifying inserts, front fastening and removable, adjustable silicone straps.",
+    "german_short_description": "Elegantes schwarzes BH-Modell mit Silikon, transparenter Rückseite. Perfekt unter eng anliegenden Outfits. Mit entfernbaren Vergrößerungseinsätzen und anpassbaren Silikonträgern.",
+    "english_short_description": "Elegant black bra with silicone, transparent back. Perfect under fitted outfits. With removable magnifying inserts and adjustable silicone straps.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push up Axami",
+      "schwarzer BH",
+      "silikon BH",
+      "transparenter Rücken"
+    ],
+    "english_focus_keywords": [
+      "Push up Axami",
+      "black bra",
+      "silicone bra",
+      "transparent back"
+    ],
+    "german_primary_focus_keyword": "Push up Axami",
+    "english_primary_focus_keyword": "Push up Axami",
     "slug_components": [
       "push-up",
       "axami",
       "bra",
-      "enlarging-cups",
-      "microfiber"
+      "black",
+      "silicone"
     ],
-    "german_image_description": "Push up BH von Axami aus Mikrofaser mit vergrößernden Cups und anpassbaren Trägern.",
-    "english_image_description": "Push up bra by Axami made of microfiber with enlarging cups and adjustable straps.",
+    "german_image_description": "",
+    "english_image_description": "",
     "german_product_tags": [
-      "Push up BH",
-      "Axami",
-      "Mikrofaser",
-      "vergrößernde Cups",
-      "anpassbare Träger"
+      "BH",
+      "schwarzer BH",
+      "silikon BH",
+      "transparenter Rücken"
     ],
     "english_product_tags": [
-      "Push up bra",
+      "bra",
+      "black bra",
+      "silicone bra",
+      "transparent back"
+    ]
+  },
+  "33111": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Elegantes Beige-BH mit Silikon, durchsichtigem Rücken - perfekt unter eng anliegenden Outfits mit exponiertem Rücken. Garantiert Ihnen einen perfekten Effekt und den höchsten Komfort. Das BH ist mit entfernbaren Vergrößerungseinsätzen, Vorderverschluss und entfernbaren, anpassbaren Silikonträgern ausgestattet.",
+    "english_description": "Elegant beige bra with silicone, transparent back - perfect under fitted outfits with exposed back. Guarantees you a perfect effect and the highest comfort. The bra is equipped with removable magnifying inserts, front fastening and removable, adjustable silicone straps.",
+    "german_short_description": "Elegantes Beige-BH mit Silikon, durchsichtigem Rücken. Perfekt unter engen Outfits. Mit Vergrößerungseinsätzen, Vorderverschluss und anpassbaren Silikonträgern.",
+    "english_short_description": "Elegant beige bra with silicone, transparent back. Perfect under fitted outfits. With magnifying inserts, front fastening and adjustable silicone straps.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push up Axami",
+      "Beige BH",
+      "Silikon BH",
+      "Durchsichtiges Rücken BH"
+    ],
+    "english_focus_keywords": [
+      "Push up Axami",
+      "Beige Bra",
+      "Silicone Bra",
+      "Transparent Back Bra"
+    ],
+    "german_primary_focus_keyword": "Push up Axami",
+    "english_primary_focus_keyword": "Push up Axami",
+    "slug_components": [
+      "push-up",
+      "axami",
+      "beige-bra",
+      "silicone-bra",
+      "transparent-back-bra"
+    ],
+    "german_image_description": "Elegantes Beige-BH mit Silikon, durchsichtigem Rücken - perfekt unter engen Outfits mit exponiertem Rücken.",
+    "english_image_description": "Elegant beige bra with silicone, transparent back - perfect under fitted outfits with exposed back.",
+    "german_product_tags": [
+      "Push up Axami",
+      "Beige BH",
+      "Silikon BH",
+      "Durchsichtiges Rücken BH"
+    ],
+    "english_product_tags": [
+      "Push up Axami",
+      "Beige Bra",
+      "Silicone Bra",
+      "Transparent Back Bra"
+    ]
+  },
+  "33114": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Elegantes weißes BH-Modell mit Silikon, transparenter Rückseite - perfekt unter eng anliegenden Outfits mit exponiertem Rücken. Es garantiert Ihnen einen perfekten Effekt und den höchsten Komfort. Der BH verfügt über abnehmbare Vergrößerungspads, eine Vordereinsatzverschluss und abnehmbare, anpassbare Silikonträger.",
+    "english_description": "Elegant white bra with silicone, transparent back - perfect under fitted outfits with exposed back. It will guarantee you a perfect effect and the highest comfort. The bra has removable magnifying pads, a front fastening and removable, adjustable silicone straps.",
+    "german_short_description": "Elegantes weißes BH-Modell mit Silikon, transparenter Rückseite. Abnehmbare Vergrößerungspads, Vordereinsatzverschluss und anpassbare Silikonträger.",
+    "english_short_description": "Elegant white bra with silicone, transparent back. Removable magnifying pads, front fastening and adjustable silicone straps.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push up Axami",
+      "weißer BH",
+      "Silikon-BH",
+      "transparenter Rücken"
+    ],
+    "english_focus_keywords": [
+      "Push up Axami",
+      "white bra",
+      "silicone bra",
+      "transparent back"
+    ],
+    "german_primary_focus_keyword": "Push up Axami",
+    "english_primary_focus_keyword": "Push up Axami",
+    "slug_components": [
+      "push-up",
+      "axami",
+      "bra",
+      "silicone",
+      "transparent-back"
+    ],
+    "german_image_description": "Elegantes weißes BH-Modell mit Silikon, transparenter Rückseite.",
+    "english_image_description": "Elegant white bra with silicone, transparent back.",
+    "german_product_tags": [
+      "BH",
+      "Silikon-BH",
+      "transparenter Rücken",
+      "Push up"
+    ],
+    "english_product_tags": [
+      "bra",
+      "silicone bra",
+      "transparent back",
+      "push up"
+    ]
+  },
+  "33136": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Glattes Mikrofaser-Bikini ist der beste Begleiter für den Alltag, sowie Abend- oder Hochzeitsoutfit. Unsichtbar unter Ihrer Kleidung, geben sie Ihnen einen tollen Look und das höchste Komfort.",
+    "english_description": "Smooth microfiber thongs are the best complement to everyday dress, as well as evening or wedding outfit. Invisible under your clothes, they will give you a great look and the highest comfort.",
+    "german_short_description": "Glattes Mikrofaser-Bikini für Alltag, Abend- und Hochzeitsoutfit. Unsichtbar unter Kleidung, bietet höchsten Komfort.",
+    "english_short_description": "Smooth microfiber thongs for everyday, evening, and wedding outfits. Invisible under clothing, offers maximum comfort.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
       "Axami",
-      "microfiber",
-      "enlarging cups",
-      "adjustable straps"
+      "Mikrofaser-Bikini",
+      "Alltag-Outfit"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "microfiber thongs",
+      "everyday outfit"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "microfiber-thongs",
+      "everyday-outfit",
+      "wedding-outfit"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "T-backs",
+      "Axami",
+      "Mikrofaser-Bikini",
+      "Alltag",
+      "Abend",
+      "Hochzeit"
+    ],
+    "english_product_tags": [
+      "T-backs",
+      "Axami",
+      "microfiber thongs",
+      "everyday",
+      "evening",
+      "wedding"
+    ]
+  },
+  "33137": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Glattes Mikrofaser-String ist das beste Komplement zu Both everyday dress und evening outfit. Unsichtbar unter Ihren Kleidern, geben sie Ihnen ein perfektes Aussehen und die höchste Komfort.",
+    "english_description": "Smooth microfiber thong is the best complement to both everyday dress and evening outfit. Invisible under your clothes, they will give you a perfect look and the highest comfort.",
+    "german_short_description": "Glattes Mikrofaser-String für perfektes Aussehen und höchsten Komfort.",
+    "english_short_description": "Smooth microfiber thong for perfect look and highest comfort.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "Mikrofaser-String",
+      "everyday dress"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "microfiber thong",
+      "everyday dress"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "microfiber-thong",
+      "everyday-dress",
+      "evening-outfit"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "T-backs",
+      "Axami",
+      "Mikrofaser-String",
+      "everyday dress",
+      "evening outfit"
+    ],
+    "english_product_tags": [
+      "T-backs",
+      "Axami",
+      "microfiber thong",
+      "everyday dress",
+      "evening outfit"
+    ]
+  },
+  "33138": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Glattes Mikrofaser-Bikini ist der beste Begleiter für den Alltag, sowie Abend- oder Hochzeitsoutfit. Unsichtbar unter Ihrer Kleidung, geben sie Ihnen einen tollen Look und das höchste Komfort.",
+    "english_description": "Smooth microfiber thongs are the best complement to everyday dress, as well as evening or wedding outfit. Invisible under your clothes, they will give you a great look and the highest comfort.",
+    "german_short_description": "Glattes Mikrofaser-Bikini für Alltag, Abend- und Hochzeitsoutfit. Unsichtbar unter Kleidung, bietet höchsten Komfort.",
+    "english_short_description": "Smooth microfiber thongs for everyday, evening, and wedding outfits. Invisible under clothing, offers maximum comfort.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "Mikrofaser-Bikini",
+      "Alltag-Outfit"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "microfiber thongs",
+      "everyday outfit"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "microfiber-thongs",
+      "everyday-outfit",
+      "wedding-outfit"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "T-backs",
+      "Axami",
+      "Mikrofaser-Bikini",
+      "Alltag",
+      "Abend",
+      "Hochzeit"
+    ],
+    "english_product_tags": [
+      "T-backs",
+      "Axami",
+      "microfiber thongs",
+      "everyday",
+      "evening",
+      "wedding"
+    ]
+  },
+  "33173": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Perfekte Sinnlichkeit, verzaubert durch das offene Muster aus schwarzer Spitze. Der bezaubernde, peep-show-BH ist ein wunderbares Kompliment zu Ihrer Weiblichkeit. Dank ihm wird Ihre Schönheit wie ein Juwel leuchten, und Sie können den Eindruck genießen, den Sie machen. Das klassische Schwarz fügt Eleganz hinzu und betont die Glätte Ihrer Haut.",
+    "english_description": "Perfect sensuality enchanted in the openwork of black lace. Alluring Charm peek-a-boo bra is a wonderful compliment to your femininity. Thanks to it your beauty will shine like a jewel, and you will be able to enjoy the impression you make. The classic black will add elegance, while emphasizing the smoothness of your skin.",
+    "german_short_description": "Bezaubernder, peep-show-BH aus schwarzer Spitze, der Ihre Weiblichkeit betont und Ihre Schönheit wie ein Juwel leuchten lässt.",
+    "english_short_description": "Alluring peek-a-boo bra made of black lace, highlighting your femininity and making your beauty shine like a jewel.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Cupless Bra",
+      "Axami",
+      "Black Lace Bra",
+      "Peek-a-boo Bra"
+    ],
+    "english_focus_keywords": [
+      "Cupless Bra",
+      "Axami",
+      "Black Lace Bra",
+      "Peek-a-boo Bra"
+    ],
+    "german_primary_focus_keyword": "Cupless Bra",
+    "english_primary_focus_keyword": "Cupless Bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "black-lace-bra",
+      "peek-a-boo-bra",
+      "bra"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "Black Lace Bra",
+      "Peek-a-boo Bra"
+    ],
+    "english_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "Black Lace Bra",
+      "Peek-a-boo Bra"
+    ]
+  },
+  "34375": {
+    "german_title": "Stockings Axami",
+    "english_title": "Stockings Axami",
+    "german_description": "Fancy and romantic French Kiss V-5204 stockings sind eine perfekte Ergänzung zu vielen Kompositionen! Blumenmuster und originaler Finish garantieren Ihnen einen unvergesslichen Effekt!",
+    "english_description": "Fancy and romantic French Kiss V-5204 stockings are a perfect addition to many compositions! Floral pattern and original finish will guarantee you an unforgettable effect!",
+    "german_short_description": "Fancy French Kiss V-5204 stockings mit Blumenmuster und originaler Optik.",
+    "english_short_description": "Fancy French Kiss V-5204 stockings with floral pattern and original finish.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Stockings Axami",
+      "French Kiss V-5204",
+      "Blumenmuster",
+      "original Finish"
+    ],
+    "english_focus_keywords": [
+      "Stockings Axami",
+      "French Kiss V-5204",
+      "Floral pattern",
+      "original finish"
+    ],
+    "german_primary_focus_keyword": "Stockings Axami",
+    "english_primary_focus_keyword": "Stockings Axami",
+    "slug_components": [
+      "stockings",
+      "axami",
+      "french",
+      "kiss",
+      "v5204"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Stockings",
+      "Axami",
+      "French Kiss",
+      "V-5204",
+      "Blumenmuster",
+      "original Finish"
+    ],
+    "english_product_tags": [
+      "Stockings",
+      "Axami",
+      "French Kiss",
+      "V-5204",
+      "Floral pattern",
+      "original finish"
+    ]
+  },
+  "34404": {
+    "german_title": "Panties Axami",
+    "english_title": "Panties Axami",
+    "german_description": "Deceptively modest panties V-4643 surprises with an extremely sexy back. Transparent tulle and sensual lace openwork will reveal only a piece of the secret, it is up to you whether you want to reveal more. Avant-garde cut will ensure unique and passionate discoveries.",
+    "english_description": "Deceptively modest panties V-4643 surprises with an extremely sexy back. Transparent tulle and sensual lace openwork will reveal only a piece of the secret, it is up to you whether you want to reveal more. Avant-garde cut will ensure unique and passionate discoveries.",
+    "german_short_description": "Deceptively modest panties V-4643 with an extremely sexy back. Transparent tulle and sensual lace openwork reveal only a piece of the secret. Avant-garde cut ensures unique and passionate discoveries.",
+    "english_short_description": "Deceptively modest panties V-4643 with an extremely sexy back. Transparent tulle and sensual lace openwork reveal only a piece of the secret. Avant, cut ensures unique and passionate discoveries.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Panties Axami",
+      "V-4643",
+      "transparent tulle",
+      "sensual lace openwork"
+    ],
+    "english_focus_keywords": [
+      "Panties Axami",
+      "V-4643",
+      "transparent tulle",
+      "sensual lace openwork"
+    ],
+    "german_primary_focus_keyword": "Panties Axami",
+    "english_primary_focus_keyword": "Panties Axami",
+    "slug_components": [
+      "panties",
+      "axami",
+      "v-4643",
+      "transparent-tulle",
+      "sensual-lace-openwork"
+    ],
+    "german_image_description": "Deceptively modest panties V-4643 with an extremely sexy back. Transparent tulle and sensual lace openwork reveal only a piece of the secret.",
+    "english_image_description": "Deceptively modest panties V-4643 with an extremely sexy back. Transparent tulle and sensual lace openwork reveal only a piece of the secret.",
+    "german_product_tags": [
+      "Panties Axami",
+      "V-4643",
+      "transparent tulle",
+      "sensual lace openwork"
+    ],
+    "english_product_tags": [
+      "Panties Axami",
+      "V-4643",
+      "transparent tulle",
+      "sensual lace openwork"
+    ]
+  },
+  "109391": {
+    "german_title": "Soft Axami",
+    "english_title": "Soft Axami",
+    "german_description": "Fancy and sensual Bonbon bra impresses with seductive cuts on the cups and intriguing lace pattern. Phenomenally beautiful both from the front and from the back will win your heart and enchant your senses. The model is fastened at the front and tied at the neck.",
+    "english_description": "Fancy and sensual Bonbon bra impresses with seductive cuts on the cups and intriguing lace pattern. Phenomenally beautiful both from the front and from the back will win your heart and enchant your senses. The model is fastened at the front and tied at the neck.",
+    "german_short_description": "Sensual Bonbon bra mit seduktiven Ausschnitten und verführerischem Spitzenmuster. Bezaubernd von vorne und hinten, mit Vordereinsatz und Halsbändern.",
+    "english_short_description": "Sensual Bonbon bra with seductive cuts and alluring lace pattern. Enchanting from front and back, with front closure and neck tie.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Bonbon bra",
+      "Sensual bra",
+      "Lace bra",
+      "Front closure bra"
+    ],
+    "english_focus_keywords": [
+      "Bonbon bra",
+      "Sensual bra",
+      "Lace bra",
+      "Front closure bra"
+    ],
+    "german_primary_focus_keyword": "Bonbon bra",
+    "english_primary_focus_keyword": "Bonbon bra",
+    "slug_components": [
+      "bonbon-bra",
+      "sensual-bra",
+      "lace-bra",
+      "front-closure-bra",
+      "axami"
+    ],
+    "german_image_description": "Sensual Bonbon bra mit seduktiven Ausschnitten und verführerischem Spitzenmuster. Bezaubernd von vorne und hinten, mit Vordereinsatz und Halsbändern.",
+    "english_image_description": "Sensual Bonbon bra with seductive cuts and alluring lace pattern. Enchanting from front and back, with front closure and neck tie.",
+    "german_product_tags": [
+      "Bonbon bra",
+      "Sensual bra",
+      "Lace bra",
+      "Front closure bra"
+    ],
+    "english_product_tags": [
+      "Bonbon bra",
+      "Sensual bra",
+      "Lace bra",
+      "Front closure bra"
+    ]
+  },
+  "126517": {
+    "german_title": "Sexy Dress Axami",
+    "english_title": "Sexy Dress Axami",
+    "german_description": "Coquettish, sensual dress V-8419 ist eine einzigartige Kombination aus Tulle und mattem Latex. Es betont die Schönheit Ihres Körpers, lenkt die Aufmerksamkeit auf die Taille, den beeindruckenden Hals und die Rundung der Hüften. Axami-Modelle sind Schönheit in der femininsten Form.",
+    "english_description": "Coquettish, sensual dress V-8419 is a unique combination of tulle and matte latex. It will emphasize the beauty of your body, drawing attention to the waistline, stunning neckline, and the roundness of the hips. Axami models are beauty in the most feminine version.",
+    "german_short_description": "Sensual dress V-8419 aus Tulle und mattem Latex betont die Taille, den Hals und die Hüften.",
+    "english_short_description": "Sensual dress V-8419 made of tulle and matte latex emphasizes the waistline, neckline, and hips.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "sexy dress",
+      "tulle",
+      "latex",
+      "dress V-8419"
+    ],
+    "english_focus_keywords": [
+      "sexy dress",
+      "tulle",
+      "latex",
+      "dress V-8419"
+    ],
+    "german_primary_focus_keyword": "sexy dress",
+    "english_primary_focus_keyword": "sexy dress",
+    "slug_components": [
+      "sexy",
+      "dress",
+      "axami",
+      "v8419",
+      "tulle-latex"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "sexy dress",
+      "tulle",
+      "latex",
+      "dress V-8419"
+    ],
+    "english_product_tags": [
+      "sexy dress",
+      "tulle",
+      "latex",
+      "dress V-8419"
+    ]
+  },
+  "126521": {
+    "german_title": "Sexy Rock-Skirt Axami",
+    "english_title": "Sexy Skirt Axami",
+    "german_description": "Sexy, ultra-feminine skirt V-8409 aus mattem Latex ist ein Modell, das perfekt für jede Seduktress ist! Weich und zart im Touch wird es die Schönheit Ihres Körpers betonen und Sie fühlen Sie sich besonders! Material: Lateximitat.",
+    "english_description": "Sexy, ultra-feminine skirt V-8409 made of matte latex is a model perfect for every seductress! Soft and delicate to the touch, it will emphasise the beauty of your body, making you feel special! Material: latex imitation.",
+    "german_short_description": "Sexy, ultra-feminine skirt V-8409 aus mattem Latex. Weich und zart im Touch. Material: Lateximitat.",
+    "english_short_description": "Sexy, ultra-feminine skirt V-8409 made of matte latex. Soft and delicate to the touch. Material: latex imitation.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "sexy skirt",
+      "latex skirt",
+      "Axami skirt",
+      "V-8409 skirt"
+    ],
+    "english_focus_keywords": [
+      "sexy skirt",
+      "latex skirt",
+      "Axami skirt",
+      "V-8409 skirt"
+    ],
+    "german_primary_focus_keyword": "sexy skirt",
+    "english_primary_focus_keyword": "sexy skirt",
+    "slug_components": [
+      "sexy",
+      "skirt",
+      "axami",
+      "v8409",
+      "latex"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "sexy",
+      "skirt",
+      "Axami",
+      "V-8409",
+      "latex"
+    ],
+    "english_product_tags": [
+      "sexy",
+      "skirt",
+      "Axami",
+      "V-8409",
+      "latex"
+    ]
+  },
+  "126522": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Einzigartiges thong V-8398 bezaubert mit seinem originellen Schnitt und geometrischen Muster aus schwarzer Tape, das die Schönheit Ihres Körpers betont. Das matte Latexmaterial ist ein sanfter Kuss für die Haut. Material: Lateximitat.",
+    "english_description": "Unique thong V-8398 seduces with its original cut and geometric pattern of black tape, which will emphasize the beauty of your body. The matte latex material is a caress to the skin. Material: latex imitation.",
+    "german_short_description": "Einzigartiges thong V-8398 mit originellem Schnitt und geometrischem Muster aus schwarzer Tape. Matte Lateximitat.",
+    "english_short_description": "Unique thong V-8398 with original cut and geometric pattern of black tape. Matte latex imitation.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
+      "thong",
+      "V-8398",
+      "geometrisches Muster"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "thong",
+      "V-8398",
+      "geometric pattern"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "v-8398",
+      "geometrisches-muster",
+      "thong"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "T-backs",
+      "thong",
+      "V-8398",
+      "geometrisches Muster",
+      "lateximitat"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "T-backs",
+      "thong",
+      "V-8398",
+      "geometric pattern",
+      "latex imitation"
+    ]
+  },
+  "126528": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "V-8348 thong mit Ausschnitt, sinnlicher Schnitt aus Latex mit Matt-Finish. Silberner Schwarz betont die Glätte Ihrer Haut. Das Set aus Thong und BH V-8341 mit Harness V-8346 ist ein echter Genuss für die Sinne.",
+    "english_description": "V-8348 thong with cut-out, sensual cut is made of latex with matte finish. Silky black will emphasize the smoothness of your skin. The set consisting of thong and bra V-8341 with harness V-8346 is a real delight for the senses.",
+    "german_short_description": "Thong V-8348 mit Ausschnitt aus Latex mit Matt-Finish. Set mit BH V-8341 und Harness V-8346.",
+    "english_short_description": "Thong V-8348 with cut-out made of latex with matte finish. Set with bra V-8341 and harness V-8346.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8348",
+      "Thong",
+      "Bra",
+      "Harness"
+    ],
+    "english_focus_keywords": [
+      "V-8348",
+      "Thong",
+      "Bra",
+      "Harness"
+    ],
+    "german_primary_focus_keyword": "Thong",
+    "english_primary_focus_keyword": "Thong",
+    "slug_components": [
+      "thong",
+      "bra",
+      "harness",
+      "v-8348",
+      "axami"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "Thong",
+      "Bra",
+      "Harness",
+      "V-8348",
+      "Latex",
+      "Matt-Finish"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "Thong",
+      "Bra",
+      "Harness",
+      "V-8348",
+      "Latex",
+      "Matt-Finish"
+    ]
+  },
+  "126529": {
+    "german_title": "Erotische Accessoires Axami",
+    "english_title": "Erotic accessories Axami",
+    "german_description": "Lace harness V-8346 ist ein köstliches kleines Detail, das die Sinne begeistert! Es sieht wunderschön auf der Haut aus, erzeugt ein malerisches und faszinierendes Muster. Es kann jede Kollektion ergänzen, wie Brustband V-8341, V-8348. Anpassbares Harness.",
+    "english_description": "Lace harness V-8346 is a delightful little detail that will ignite the senses! It looks beautiful on the skin, creating a picturesque and intriguing pattern. It can complement any set, such as bra V-8341, V-8348. Adjustable harness.",
+    "german_short_description": "Anpassbares Lace Harness V-8346, das die Sinne begeistert und jede Kollektion ergänzt.",
+    "english_short_description": "Adjustable Lace Harness V-8346, which ignites the senses and complements any set.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Lace harness",
+      "V-8346",
+      "Axami",
+      "Erotische Accessoires"
+    ],
+    "english_focus_keywords": [
+      "Lace harness",
+      "V-8346",
+      "Axami",
+      "Erotic accessories"
+    ],
+    "german_primary_focus_keyword": "Lace harness",
+    "english_primary_focus_keyword": "Lace harness",
+    "slug_components": [
+      "axami",
+      "laced-harness",
+      "v-8346",
+      "erotic-accessories",
+      "harness"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Lace harness",
+      "V-8346",
+      "Axami",
+      "Erotische Accessoires"
+    ],
+    "english_product_tags": [
+      "Lace harness",
+      "V-8346",
+      "Axami",
+      "Erotic accessories"
+    ]
+  },
+  "126530": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "V-8338 thong mit Ausschnitt, sinnlicher Schnitt aus Latex mit Matt-Finish. Silberner Schwarz betont die Weichheit Ihrer Haut. Eine Set mit Thong und BH V-8331 ist ein echter Genuss für die Sinne.",
+    "english_description": "V-8338 thong with cut-out, sensual cut is made of latex with matte finish. Silky black will emphasize the smoothness of your skin. A set including thong and bra V-8331 is a real delight for the senses.",
+    "german_short_description": "Thong mit Ausschnitt aus Latex mit Matt-Finish. Silberner Schwarz betont die Weichheit der Haut. Set mit Thong und BH V-8331.",
+    "english_short_description": "Thong with cut-out made of latex with matte finish. Silky black emphasizes skin smoothness. Set with thong and bra V-8331.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8338",
+      "thong",
+      "latex",
+      "matte finish"
+    ],
+    "english_focus_keywords": [
+      "V-8338",
+      "thong",
+      "latex",
+      "matte finish"
+    ],
+    "german_primary_focus_keyword": "thong",
+    "english_primary_focus_keyword": "thong",
+    "slug_components": [
+      "thong",
+      "axami",
+      "v8338",
+      "latex",
+      "matte-finish"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "V-8338",
+      "Thong",
+      "Latex",
+      "Matte Finish"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "V-8338",
+      "Thong",
+      "Latex",
+      "Matte Finish"
+    ]
+  },
+  "126532": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Der Brasiliana V-8325 thong besteht aus latexähnlichem Material mit matte Oberfläche. Der samtige schwarze Look betont die Weichheit Ihrer Haut. Das Set mit thong, Ketten V-8326 und Corset V-8327 ist ein echter Genuss für die Sinne.",
+    "english_description": "The Brasiliana V-8325 thong is made of latex imitation with a matte finish. The silky black look emphasizes the smoothness of your skin. The set including thong, chain V-8326 and corset V-8327 is a real delight for the senses.",
+    "german_short_description": "Thong aus latexähnlichem Material mit matte Oberfläche. Set mit thong, Ketten V-8326 und Corset V-8327.",
+    "english_short_description": "Thong made of latex imitation with matte finish. Set including thong, chain V-8326 and corset V-8327.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Brasiliana V-8325",
+      "thong",
+      "latexähnlich",
+      "matte Oberfläche"
+    ],
+    "english_focus_keywords": [
+      "Brasiliana V-8325",
+      "thong",
+      "latex imitation",
+      "matte finish"
+    ],
+    "german_primary_focus_keyword": "thong",
+    "english_primary_focus_keyword": "thong",
+    "slug_components": [
+      "thong",
+      "brasiliana",
+      "v8325",
+      "axami",
+      "set"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "Brasiliana",
+      "V-8325",
+      "thong",
+      "latex",
+      "set"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "Brasiliana",
+      "V-8325",
+      "thong",
+      "latex",
+      "set"
+    ]
+  },
+  "126533": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Stunning, seductive, black V-8401 peek-a-boo bra will attract the eye with its textured fabric in soft latex with a matte finish and an irresistible bow between the cups. The bra has a hook-and-eye fastening. Material: latex imitation.",
+    "english_description": "Stunning, seductive, black V-8401 peek-a-boo bra will attract the eye with its textured fabric in soft latex with a matte finish and an irresistible bow between the cups. The bra has a hook-and-eye fastening. Material: latex imitation.",
+    "german_short_description": "Black V-8401 peek-a-boo bra mit texturiertem Latex-Gewebe, matte Oberfläche und einem unwiderstehlichen Schleifen zwischen den Cups. Mit Schlaufenverschluss. Material: Lateximitat.",
+    "english_short_description": "Black V-8401 peek-a-boo bra with textured latex fabric, matte finish, and an irresistible bow between the cups. Hook-and-eye closure. Material: latex imitation.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8401",
+      "peek-a-boo bra",
+      "latex imitation",
+      "hook-and-eye closure"
+    ],
+    "english_focus_keywords": [
+      "V-8401",
+      "peek-a-boo bra",
+      "latex imitation",
+      "hook-and-eye closure"
+    ],
+    "german_primary_focus_keyword": "peek-a-boo bra",
+    "english_primary_focus_keyword": "peek-a-boo bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "v-8401",
+      "peek-a-boo-bra",
+      "latex-imitation"
+    ],
+    "german_image_description": "Black V-8401 peek-a-boo bra mit texturiertem Latex-Gewebe, matte Oberfläche und einem unwiderstehlichen Schleifen zwischen den Cups. Mit Schlaufenverschluss. Material: Lateximitat.",
+    "english_image_description": "Black V-8401 peek-a-boo bra with textured latex fabric, matte finish, and an irresistible bow between the cups. Hook-and-eye closure. Material: latex imitation.",
+    "german_product_tags": [
+      "peek-a-boo bra",
+      "latex imitation",
+      "hook-and-eye closure",
+      "V-8401"
+    ],
+    "english_product_tags": [
+      "peek-a-boo bra",
+      "latex imitation",
+      "hook-and-eye closure",
+      "V-8401"
+    ]
+  },
+  "126534": {
+    "german_title": "Braceless Bra Axami",
+    "english_title": "Braceless Bra Axami",
+    "german_description": "V-8391-BH, gepolstertes Balconette, aus mattem Latex, ist ein Dessous, das Aufmerksamkeit erregt. Intrigant, tief schwarz, ungewöhnliche Textur des Stoffes und abnehmbare Träger schaffen eine einzigartige und angenehme Komposition. Genau wie du! Das Modell ist mit Haken verschlossen, mit abnehmbaren Einlagen und verstellbaren, abnehmbaren Schulterträgern.",
+    "english_description": "V-8391 bra, padded balconette, made of matte latex, is a lingerie that will turn heads. Intriguing, deep black, unusual texture of fabric and removable straps create a unique and delightful composition. Just like you! The model is fastened with hooks, with removable inserts and adjustable, detachable shoulder straps.",
+    "german_short_description": "Gepolstertes Balconette-BH aus mattem Latex, tief schwarz, mit abnehmbaren Trägern und Hakenverschluss.",
+    "english_short_description": "Padded balconette bra made of matte latex, deep black, with removable straps and hook closure.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Braceless Bra",
+      "Axami Bra",
+      "V-8391 Bra",
+      "latex bra"
+    ],
+    "english_focus_keywords": [
+      "Braceless Bra",
+      "Axami Bra",
+      "V-8391 Bra",
+      "latex bra"
+    ],
+    "german_primary_focus_keyword": "Braceless Bra",
+    "english_primary_focus_keyword": "Braceless Bra",
+    "slug_components": [
+      "braceless-bra",
+      "axami",
+      "v-8391",
+      "latex-bra",
+      "bra"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Bra",
+      "Axami",
+      "V-8391",
+      "latex",
+      "braceless bra"
+    ],
+    "english_product_tags": [
+      "Bra",
+      "Axami",
+      "V-8391",
+      "latex",
+      "braceless bra"
+    ]
+  },
+  "126536": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Schwarzer, glatter V-8341 Push-up-BH wurde aus feiner Lateximitation mit matte Oberfläche genäht. Dieses Modell ist sowohl klassisch als auch originell. Es sieht schön alleine aus, beispielsweise unter einem eng anliegenden Kleid oder in Kombination mit einem Samtpass V-8346. Für das Set empfehlen wir einen Thong V-8348.",
+    "english_description": "Black, smooth V-8341 push-up bra was sewn from delicate latex imitation with a matte finish. This model is both classic and original. It looks beautiful alone, for example under a fitted dress or in a set with lace harness V-8346. For the set we recommend thong V-8348.",
+    "german_short_description": "Schwarzer Push-up-BH aus feiner Lateximitation mit matte Oberfläche. Klassisch und originell. Passt unter eng anliegende Kleider oder zu Sets mit Samtpass V-8346.",
+    "english_short_description": "Black push-up bra made from delicate latex imitation with a matte finish. Classic and original. Looks great under fitted dresses or as part of a set with lace harness V-8346.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push-up-BH",
+      "Lateximitation",
+      "V-8341",
+      "Axami"
+    ],
+    "english_focus_keywords": [
+      "push-up bra",
+      "latex imitation",
+      "V-8341",
+      "Axami"
+    ],
+    "german_primary_focus_keyword": "Push-up-BH",
+    "english_primary_focus_keyword": "push-up bra",
+    "slug_components": [
+      "push-up-bra",
+      "axami",
+      "v-8341",
+      "latex-imitation",
+      "black"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Push-up-BH",
+      "Lateximitation",
+      "V-8341",
+      "Axami",
+      "Schwarz",
+      "Matte Oberfläche"
+    ],
+    "english_product_tags": [
+      "push-up bra",
+      "latex imitation",
+      "V-8341",
+      "Axami",
+      "Black",
+      "matte finish"
+    ]
+  },
+  "126537": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Stunning and seductive, the black V-8331 peek-a-boo bra will draw the eye in with its textured fabric, soft latex with a matte finish, and irresistible applique at the neckline. The bra has a hook-and-eye fastening. Material: latex imitation.",
+    "english_description": "Stunning and seductive, the black V-8331 peek-a-boo bra will draw the eye in with its textured fabric, soft latex with a matte finish, and irresistible applique at the neckline. The bra has a hook-and-eye fastening. Material: latex imitation.",
+    "german_short_description": "Black V-8331 peek-a-boo bra mit texturiertem Material, weichem Latex mit matte Oberfläche und bezauberndem Applikat am Ausschnitt. Mit Schließen und Ösen.",
+    "english_short_description": "Black V-8331 peek-a-boo bra with textured material, soft latex with matte finish and charming applique at the neckline. With hook-and-eye fastening.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8331",
+      "peek-a-boo bra",
+      "black bra",
+      "latex bra"
+    ],
+    "english_focus_keywords": [
+      "V-8331",
+      "peek-a-boo bra",
+      "black bra",
+      "latex bra"
+    ],
+    "german_primary_focus_keyword": "peek-a-boo bra",
+    "english_primary_focus_keyword": "peek-a-boo bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "v-8331",
+      "peek-a-boo-bra",
+      "black-bra"
+    ],
+    "german_image_description": "Black V-8331 peek-a-boo bra mit texturiertem Material, weichem Latex mit matte Oberfläche und bezauberndem Applikat am Ausschnitt.",
+    "english_image_description": "Black V-8331 peek-a-boo bra with textured material, soft latex with matte finish and charming applique at the neckline.",
+    "german_product_tags": [
+      "Bra",
+      "peek-a-boo bra",
+      "black bra",
+      "latex bra",
+      "V-8331",
+      "Axami"
+    ],
+    "english_product_tags": [
+      "Bra",
+      "peek-a-boo bra",
+      "black bra",
+      "latex bra",
+      "V-8331",
+      "Axami"
+    ]
+  },
+  "126540": {
+    "german_title": "Soft Axami",
+    "english_title": "Soft Axami",
+    "german_description": "Intrigierend, weicher Semi-Corset-V-8621 in schwarz ist eine einzigartige Angebots. Seidig glatte Spitze, ein kleiner Schleifen und sinnlicher Rücken schaffen eine Komposition aus eleganter und femininer Stil. Haken und Ösenverschluss, Träger sind nicht abnehmbar.",
+    "english_description": "Intriguing, soft semi-corset V-8621 in black color is a one-of-a-kind proposal. Silky smooth lace, a small bow and sensual back create a composition of elegant and feminine. Hook and eye fastening, straps are not detachable.",
+    "german_short_description": "Weicher Semi-Corset-V-8621 in schwarz mit seidiger Spitze, kleinem Schleifen und sinnlichem Rücken.",
+    "english_short_description": "Soft semi-corset V-8623 in black with silky lace, small bow and sensual back.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8621",
+      "Semi-Corset",
+      "Spitze",
+      "Schleifen"
+    ],
+    "english_focus_keywords": [
+      "V-8621",
+      "Semi-Corset",
+      "Lace",
+      "Bow"
+    ],
+    "german_primary_focus_keyword": "V-8621",
+    "english_primary_focus_keyword": "V-8621",
+    "slug_components": [
+      "axami",
+      "v-8621",
+      "semi-corset",
+      "black",
+      "lace"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "V-8621",
+      "Semi-Corset",
+      "Black",
+      "Lace"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "V-8621",
+      "Semi-Corset",
+      "Black",
+      "Lace"
+    ]
+  },
+  "126550": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "V-8305 thong seduces with skimpy cut and asymmetrical, fancy back. The feminine lines of your body will present themselves exceptionally alluringly in this cut, making you feel beautiful, tempting and sexy.",
+    "english_description": "V-8305 thong seduces with skimpy cut and asymmetrical, fancy back. The feminine lines of your body will present themselves exceptionally alluringly in this cut, making you feel beautiful, tempting and sexy.",
+    "german_short_description": "V-8305 thong mit knapper Form und asymmetrischem, fancy Rücken. Die weiblichen Linien deines Körpers präsentieren sich besonders verführerisch in diesem Schnitt, sodass du dich schön, verführerisch und sexy fühlst.",
+    "english_short_description": "V-8305 thong with skimpy cut and asymmetrical, fancy back. The feminine lines of your body present themselves exceptionally alluringly in this cut, making you feel beautiful, tempting and sexy.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "V-8305",
+      "thong",
+      "skimpy cut",
+      "asymmetrical back"
+    ],
+    "english_focus_keywords": [
+      "V-8305",
+      "thong",
+      "skimpy cut",
+      "asymmetrical back"
+    ],
+    "german_primary_focus_keyword": "thong",
+    "english_primary_focus_keyword": "thong",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "v-8305",
+      "thong",
+      "skimpy-cut"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "V-8305",
+      "thong",
+      "skimpy cut",
+      "asymmetrical back"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "V-8305",
+      "thong",
+      "skimpy cut",
+      "asymmetrical back"
+    ]
+  },
+  "126552": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Tempting thong V-8298 ist eine einzigartige Kombination aus schwarzer Spitze, kombinierend schwarze mit rote. Ein origineller Schnitt und ein schmaler Schnitt gewährleisten ein erstaunliches, sinnliches Erlebnis.",
+    "english_description": "Tempting thong V-8298 is a unique composition of black lace, combining black with red. An original cut and a skimpy cut ensure amazing, sensual experience.",
+    "german_short_description": "T-backs mit schwarzer und roter Spitze, origineller Schnitt, sinnliches Erlebnis.",
+    "english_short_description": "T-backs with black and red lace, original cut, sensual experience.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "V-8298",
+      "schwarze Spitze"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "Axami",
+      "V-8298",
+      "black lace"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "v-8298",
+      "black-lace",
+      "red-lace"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "T-backs",
+      "Axami",
+      "V-8298",
+      "schwarze Spitze",
+      "roter Stoff"
+    ],
+    "english_product_tags": [
+      "T-backs",
+      "Axami",
+      "V-8298",
+      "black lace",
+      "red fabric"
+    ]
+  },
+  "126556": {
+    "german_title": "Panties Axami",
+    "english_title": "Panties Axami",
+    "german_description": "Elegant und sinnlich, schwarze und goldene brasiliana V-8265 bezaubern mit subtiler offener Webstrickung und Schnitt, der sicherlich niemanden unberührt lässt!",
+    "english_description": "Elegant and sensual, black and gold brasiliana V-8265 seduce with subtle openwork lace and cut that certainly will not leave anyone indifferent!",
+    "german_short_description": "Elegante, schwarze und goldene brasiliana V-8265 mit subtiler offener Webstrickung und Schnitt.",
+    "english_short_description": "Elegant black and gold brasiliana V-8265 with subtle openwork lace and cut.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Panties Axami",
+      "brasiliana V-8265",
+      "offene Webstrickung",
+      "schwarze und goldene Panties"
+    ],
+    "english_focus_keywords": [
+      "Panties Axami",
+      "brasiliana V-8265",
+      "openwork lace",
+      "black and gold Panties"
+    ],
+    "german_primary_focus_keyword": "Panties Axami",
+    "english_primary_focus_keyword": "Panties Axami",
+    "slug_components": [
+      "panties",
+      "axami",
+      "brasiliana",
+      "v8265",
+      "openwork-lace"
+    ],
+    "german_image_description": "Elegante schwarze und goldene brasiliana V-8265 mit subtiler offener Webstrickung und Schnitt.",
+    "english_image_description": "Elegant black and gold brasiliana V-8265 with subtle openwork lace and cut.",
+    "german_product_tags": [
+      "Panties",
+      "Axami",
+      "brasiliana",
+      "V-8265",
+      "offene Webstrickung"
+    ],
+    "english_product_tags": [
+      "Panties",
+      "Axami",
+      "brasiliana",
+      "V-8265",
+      "openwork lace"
+    ]
+  },
+  "126558": {
+    "german_title": "Panties Axami",
+    "english_title": "Panties Axami",
+    "german_description": "Schwarze BH-8243 ist ein Schmuckstück, das nicht fehlen sollte. Feine Spitze und Ausschnitt am Rücken sorgen für einen beeindruckenden Effekt und Komfort beim Tragen.",
+    "english_description": "Black panties V-8243 is a trinket that should not be missing from your wardrobe. Delicate lace and cut-out at the back will provide a remarkable effect and comfort of wearing.",
+    "german_short_description": "Schwarze BH-8243 mit feiner Spitze und Ausschnitt am Rücken für beeindruckenden Effekt und Komfort.",
+    "english_short_description": "Black panties V-8243 with delicate lace and cut-out at the back for remarkable effect and comfort.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Panties Axami",
+      "BH-8243",
+      "Schwarze BH-8243",
+      "Spitze Ausschnitt Rücken"
+    ],
+    "english_focus_keywords": [
+      "Panties Axami",
+      "V-8243",
+      "Black V-8243",
+      "Lace Cut-out Back"
+    ],
+    "german_primary_focus_keyword": "Panties Axami",
+    "english_primary_focus_keyword": "Panties Axami",
+    "slug_components": [
+      "panties",
+      "axami",
+      "v-8243",
+      "black",
+      "lace-cut-out-back"
+    ],
+    "german_image_description": "Schwarze BH-8243 mit feiner Spitze und Ausschnitt am Rücken",
+    "english_image_description": "Black V-8243 with delicate lace and cut-out at the back",
+    "german_product_tags": [
+      "Axami",
+      "BH-8243",
+      "Schwarze BH-8243",
+      "Spitze",
+      "Ausschnitt Rücken"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "V-8243",
+      "Black V-8243",
+      "Lace",
+      "Cut-out Back"
+    ]
+  },
+  "126559": {
+    "german_title": "T-backs Axami",
+    "english_title": "T-backs Axami",
+    "german_description": "Der sexy thong V-8238 überzeugt mit subtiler Weißfarbe, die die Glätte Ihrer Haut betont. Der feminine Spitzenmuster und der faszinierende Rücken vervollständigen ein sinnliches Ganze.",
+    "english_description": "The sexy thong V-8238 impresses with subtle white, which will emphasize the smoothness of your skin. Feminine lace pattern and intriguing back will complete a sensual whole.",
+    "german_short_description": "Der thong V-8238 mit subtiler Weißfarbe und femininem Spitzenmuster betont die Glätte der Haut.",
+    "english_short_description": "The thong V-8238 with subtle white and feminine lace pattern emphasizes the smoothness of the skin.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "T-backs",
+      "thong",
+      "V-8238",
+      "Weißfarbe"
+    ],
+    "english_focus_keywords": [
+      "T-backs",
+      "thong",
+      "V-8238",
+      "subtle white"
+    ],
+    "german_primary_focus_keyword": "T-backs",
+    "english_primary_focus_keyword": "T-backs",
+    "slug_components": [
+      "t-backs",
+      "axami",
+      "v-8238",
+      "thong",
+      "subtle-white"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "T-backs",
+      "thong",
+      "V-8238",
+      "Weißfarbe"
+    ],
+    "english_product_tags": [
+      "T-backs",
+      "thong",
+      "V-8238",
+      "subtle white"
+    ]
+  },
+  "126561": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Die scheinbare Einfachheit des V-8301-Modells wird durch frivole schwarze und rote Schleifen unterbrochen. Feine Spitze gewährleistet Ihnen perfekten Komfort und einen unwirklichen Look. Der speziell entworfene Schnitt des Peek-a-boo-BH betont, was an Ihnen am schönsten ist, und ermöglicht es Ihnen, den Eindruck vollständig zu genießen, den Sie hinterlassen.",
+    "english_description": "The apparent simplicity of the V-8301 model is broken by frivolous black and red bows. Delicate lace guarantees you perfect comfort and an unearthly look. Specially designed cut of peek-a-boo bra highlights what is most beautiful in you, allowing you to fully appreciate the impression you make.",
+    "german_short_description": "Cupless Bra mit schwarzen und roten Schleifen, feiner Spitze und speziellem Peek-a-boo-Schnitt für perfekten Komfort und einen unwirklichen Look.",
+    "english_short_description": "Cupless Bra with black and red bows, delicate lace, and special peek-a-boo cut for perfect comfort and an unearthly look.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Cupless Bra",
+      "Axami",
+      "V-8301",
+      "Bra with bows"
+    ],
+    "english_focus_keywords": [
+      "Cupless Bra",
+      "Axami",
+      "V-8301",
+      "Bra with bows"
+    ],
+    "german_primary_focus_keyword": "Cupless Bra",
+    "english_primary_focus_keyword": "Cup,less Bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "v-8301",
+      "bra-with-bows",
+      "peek-a-boo"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "V-8301",
+      "Bra with bows",
+      "peek-a-boo"
+    ],
+    "english_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "V-8301",
+      "Bra with bows",
+      "peek-a-boo"
+    ]
+  },
+  "126562": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Das V-82911-BH ist eine faszinierende Kombination aus schwarz und rot. Coquettische Fransen umschlingen sensuell die Brust und betonen ihre Form, während schwarze Spitze das Dekor mit einem schönen floralen Ornament verziert. Das Modell ist am Hals gebunden und mit Haken versehen, die eine dreistufige Regulation ermöglichen. Die Träger sind nicht abnehmbar.",
+    "english_description": "The V-82911 bra is an intriguing combination of black and red. Coquettish frills sensually surround the bust, emphasizing its shape, and black lace decorates it with a beautiful floral ornament. The model is tied up at the neck and fastened with hooks with three-stage regulation. The straps are not detachable.",
+    "german_short_description": "Cupless Bra mit schwarz-rot Farbkombination, coquettischen Fransen und schwarzer Spitze mit floralen Ornamenten. Halsgebunden mit dreistufiger Regulation, nicht abnehmbar.",
+    "english_short_description": "Cupless bra with black-red color combination, coquettish frills, and black lace with floral ornaments. Tied at the neck with three-stage regulation, non-removable straps.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Cupless Bra",
+      "Axami Bra",
+      "V-82911 Bra",
+      "Schwarz-rot BH"
+    ],
+    "english_focus_keywords": [
+      "Cupless Bra",
+      "Axami Bra",
+      "V-82911 Bra",
+      "Black-red Bra"
+    ],
+    "german_primary_focus_keyword": "Cupless Bra",
+    "english_primary_focus_keyword": "Cup,less Bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "v-82911",
+      "bra",
+      "schwarz-rot"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "V-82911",
+      "Schwarz-rot",
+      "BH"
+    ],
+    "english_product_tags": [
+      "Cupless Bra",
+      "Axami",
+      "V-82911",
+      "Black-red",
+      "Bra"
+    ]
+  },
+  "126565": {
+    "german_title": "Padded bra Axami",
+    "english_title": "Padded bra Axami",
+    "german_description": "Ein einzigartiges, schwarzes und goldenes BH-Modell in Form eines sensuellen V-Ausschnitts V-8261 wird Aufmerksamkeit erregen! Einzigartiger Schnitt und die Feinheit der Stoffe ergänzen Ihre Schönheit und garantieren Ihnen das höchste Komfortgefühl. Mit Haken- und Ösenverschluss, ohne Träger.",
+    "english_description": "Unique, black and gold bra in the form of a sensual top V-8261 will turn heads! Unique cut and delicacy of fabrics will compliment your beauty, guaranteeing you the highest comfort. Hook and eye fastening, strapless.",
+    "german_short_description": "Einzigartiges, schwarzes und goldenes BH-Modell V-8261 mit Haken- und Ösenverschluss, ohne Träger.",
+    "english_short_description": "Unique, black and gold bra V-8261 with hook and eye fastening, strapless.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "BH Axami",
+      "schwarzer BH",
+      "goldener BH",
+      "V-8261 BH"
+    ],
+    "english_focus_keywords": [
+      "Axami bra",
+      "black bra",
+      "gold bra",
+      "V-8261 bra"
+    ],
+    "german_primary_focus_keyword": "BH Axami",
+    "english_primary_focus_keyword": "Axami bra",
+    "slug_components": [
+      "axami",
+      "bra",
+      "v8261",
+      "black",
+      "gold"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "BH",
+      "Axami",
+      "schwarz",
+      "gold",
+      "V-8261",
+      "strapless"
+    ],
+    "english_product_tags": [
+      "bra",
+      "Axami",
+      "black",
+      "gold",
+      "V-8261",
+      "strapless"
+    ]
+  },
+  "126567": {
+    "german_title": "Cupless Bra Axami",
+    "english_title": "Cupless Bra Axami",
+    "german_description": "Subtler, doch provokativ schwarzer und beige BH V-8241 ist die perfekte Wahl für besondere Anlässe. Sinnlich geschnitten mit Spitze, abnehmbarer Dekoration am Hals, ist dies die Erfüllung der Träume von BHs, die perfekt auf Ihren Körper und Ihre Bedürfnisse zugeschnitten sind. Der BH hat eine Klettverschluss, die Träger sind nicht abnehmbar.",
+    "english_description": "Subtle, yet provocative black and beige bra V-8241 is the perfect choice for special occasions. Sensually cut with lace, detachable decoration on the neckline, is the fulfillment of dreams of lingerie perfectly tailored to your body and your needs. The bra has a hook and eye fastening, straps are not detachable.",
+    "german_short_description": "Schwarzer und beiger BH V-8241 mit Spitze und abnehmbarer Halsdekoration, perfekt für besondere Anlässe.",
+    "english_short_description": "Black and beige bra V-8241 with lace and detachable neckline decoration, perfect for special occasions.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "BH",
+      "V-8241",
+      "Schwarzer BH",
+      "Beiger BH"
+    ],
+    "english_focus_keywords": [
+      "bra",
+      "V-8241",
+      "black bra",
+      "beige bra"
+    ],
+    "german_primary_focus_keyword": "BH",
+    "english_primary_focus_keyword": "bra",
+    "slug_components": [
+      "cupless-bra",
+      "axami",
+      "v-8241",
+      "black",
+      "beige"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "BH",
+      "V-8241",
+      "Schwarzer BH",
+      "Beiger BH"
+    ],
+    "english_product_tags": [
+      "bra",
+      "V-8241",
+      "black bra",
+      "beige bra"
+    ]
+  },
+  "126635": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Rot Push-up-BH V-7591 Maisa ist eine luxuriöse und elegante Angebots für Damen, die Spitze lieben. Sein leicht höherer Schnitt umschließt Ihre Brüste und macht Sie sich einzigartig und verführerisch. Breite Spitze-Straps perfekt",
+    "english_description": "Red Push-up Bra V-7591 Maisa is a luxurious and elegant proposition for ladies who love lace. Its slightly more built-up cut will wrap your breasts and make you feel unique and alluring. Wider lace straps perfectly",
+    "german_short_description": "Luxuriöser Push-up-BH mit breiten Spitze-Straps für eine verführerische Silhouette.",
+    "english_short_description": "Luxurious push-up bra with wide lace straps for a seductive silhouette.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push-up-BH",
+      "Axami",
+      "Spitze-BH",
+      "V-7591 Maisa"
+    ],
+    "english_focus_keywords": [
+      "Push-up Bra",
+      "Axami",
+      "Lace Bra",
+      "V-7591 Maisa"
+    ],
+    "german_primary_focus_keyword": "Push-up-BH",
+    "english_primary_focus_keyword": "Push-up Bra",
+    "slug_components": [
+      "push-up-bra",
+      "axami",
+      "v-7591-maisa",
+      "spitze-bh",
+      "luxurious"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Push-up-BH",
+      "Axami",
+      "Spitze-BH",
+      "V-7591 Maisa"
+    ],
+    "english_product_tags": [
+      "Push-up Bra",
+      "Axami",
+      "Lace Bra",
+      "V-7591 Maisa"
+    ]
+  },
+  "126682": {
+    "german_title": "Push up Axami",
+    "english_title": "Push up Axami",
+    "german_description": "Die faszinierende V-7861 Schokoladenbrustwäsche überzeugt mit glänzendem Spitzenmuster und extrem sinnlichem Rücken. Perfekt als Ergänzung zu tiefgeschnittenen Outfits. Abnehmbare Träger und Push-up-Pads garantieren fantastisches Dekolleté! Der Wasser-effekt-Embroidery verleiht Eleganz und Sophistication.",
+    "english_description": "The intriguing V-7861 Chocolate Bar bra impresses with shiny lace pattern and extremely sensual back. Perfect as an addition to low-cut outfits. Detachable straps and push-up pads guarantee fantastic cleavage! Water effect embroidery adds sophistication and elegance.",
+    "german_short_description": "Faszinierende Schokoladenbrustwäsche mit glänzendem Spitzenmuster und sinnlichem Rücken. Abnehmbare Träger und Push-up-Pads. Wasser-effekt-Embroidery.",
+    "english_short_description": "Intriguing Chocolate Bar bra with shiny lace pattern and sensual back. Detachable straps and push-up pads. Water-effect embroidery.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Push up Axami",
+      "V-7861 Schokoladenbrustwäsche",
+      "Spitzenmuster",
+      "Wasser-effekt-Embroidery"
+    ],
+    "english_focus_keywords": [
+      "Push up Axami",
+      "V-7861 Chocolate Bar bra",
+      "lace pattern",
+      "water-effect embroidery"
+    ],
+    "german_primary_focus_keyword": "Push up Axami",
+    "english_primary_focus_keyword": "Push up Axami",
+    "slug_components": [
+      "push-up",
+      "axami",
+      "v-7861",
+      "schokoladenbrustwäsche",
+      "spitzenmuster"
+    ],
+    "german_image_description": "Faszinierende V-7861 Schokoladenbrustwäsche mit glänzendem Spitzenmuster und sinnlichem Rücken. Abnehmbare Träger und Push-up-Pads. Wasser-effekt-Embroidery.",
+    "english_image_description": "Intriguing V-7861 Chocolate Bar bra with shiny lace pattern and sensual back. Detachable straps and push-up pads. Water-effect embroidery.",
+    "german_product_tags": [
+      "Push up",
+      "Axami",
+      "V-7861",
+      "Schokoladenbrustwäsche",
+      "Spitzenmuster",
+      "Wasser-effekt-Embroidery"
+    ],
+    "english_product_tags": [
+      "Push up",
+      "Axami",
+      "V-7861",
+      "Chocolate Bar bra",
+      "lace pattern",
+      "water-effect embroidery"
+    ]
+  },
+  "126913": {
+    "german_title": "Stockings Axami",
+    "english_title": "Stockings Axami",
+    "german_description": "Rot, samtig weiche Lodos Selbsttragende Strumpfhose V-7084 sind der perfekte Begleiter zu jedem Outfit. Sie erfüllen ihre Aufgabe perfekt, in Alltagssituationen und bei größeren Anlässen – betonen die Schönheit Ihrer Beine.",
+    "english_description": "Red, silky smooth Lodos self-supporting stockings V-7084 are the perfect complement to every outfit. They will fulfill their task perfectly, in everyday situations and on bigger occasions – highlighting the beauty of your legs.",
+    "german_short_description": "Rot, samtig weiche Lodos Selbsttragende Strumpfhose V-7084 – perfekt für jeden Anlass.",
+    "english_short_description": "Red, silky smooth Lodos self-supporting stockings V-7084 – perfect for every occasion.",
+    "german_meta_description": "",
+    "english_meta_description": "",
+    "german_focus_keywords": [
+      "Stockings Axami",
+      "Lodos Strumpfhose",
+      "Selbsttragende Strumpfhose",
+      "V-7084"
+    ],
+    "english_focus_keywords": [
+      "Stockings Axami",
+      "Lodos stockings",
+      "self-supporting stockings",
+      "V-7084"
+    ],
+    "german_primary_focus_keyword": "Stockings Axami",
+    "english_primary_focus_keyword": "Stockings Axami",
+    "slug_components": [
+      "stockings",
+      "axami",
+      "v-7084",
+      "lodos",
+      "self-supporting"
+    ],
+    "german_image_description": "",
+    "english_image_description": "",
+    "german_product_tags": [
+      "Axami",
+      "Lodos",
+      "Strumpfhose",
+      "V-7084",
+      "Selbsttragende"
+    ],
+    "english_product_tags": [
+      "Axami",
+      "Lodos",
+      "stockings",
+      "V-7084",
+      "self-supporting"
     ]
   }
 }

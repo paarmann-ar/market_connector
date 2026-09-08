@@ -1,8 +1,6 @@
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
 from market_services.meta_data_services.models.product_input_metadata_model import ProductInputMetadataModel
 from market_services.core.clean_product_description import CleanProductDescription
-from toolboxs.numbers import Numbers
-from toolboxs.text import Text
 from toolboxs.html import Html
 
 # --

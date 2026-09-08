@@ -31,13 +31,6 @@ class WoocommerceServiceProvider:
 
         return WoocommerceImageModel
 
-    #  @property
-    #  def woocommerce_session_model(self):
-    #      from apis.woocommerce_api.models.woocommerce_session_model import (
-    #          WoocommerceSessionModel,
-    #      )
-    #      return WoocommerceSessionModel
-
     @property
     def woocommerce_tag_model(self):
         from apis.woocommerce_api.models.woocommerce_tag_model import (
@@ -61,14 +54,6 @@ class WoocommerceServiceProvider:
         )
 
         return WoocommerceRollback()
-
-    @property
-    def woocommerce_uploader(self):
-        from apis.woocommerce_api.services.woocommerce_uploader import (
-            WoocommerceUploader,
-        )
-
-        return WoocommerceUploader()
 
     @property
     def woocommerce_product(self):

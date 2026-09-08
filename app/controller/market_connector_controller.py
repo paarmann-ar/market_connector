@@ -2,7 +2,7 @@ import math
 
 from apis.apis_provider import ApisProvider
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
-from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
+from apis.matterhorn_moda_api.models.fetch_matterhorn_moda_config_model import FetchMatterhornModaConfigModel
 from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
@@ -22,24 +22,6 @@ class MarketConnectorController:
     """
     Controller responsible for connecting eBay and WooCommerce.
     """
-
-    #  --
-    #  ...
-    #  --
-
-    @staticmethod
-    def upload_to_woocommerce(
-        woocommerce_product_models: list[WoocommerceProductModel],
-        search_in_ebay_model: SearchInEbayModel,
-    ) -> bool:
-        """
-        Upload WooCommerce products to the target WooCommerce category.
-        """
-
-        return ApisProvider().woocommerce_api.upload_product_model_to_woocommerce(
-            woocommerce_product_models=woocommerce_product_models,
-            target_woocommerce_category_name=(search_in_ebay_model.target_category_name_in_woocommerce),
-        )
 
     #  --
     #  ...
@@ -159,23 +141,26 @@ class MarketConnectorController:
     #      print(woocommerce_to_ebay_inventory_adapter)
 
     @staticmethod
-    def sync_matterhorn_moda_to_woocommerce(search_in_matterhorn_moda_model: SearchInMatterhornModaModel):
+    def sync_matterhorn_moda_to_woocommerce(fetch_matterhorn_moda_config_model: FetchMatterhornModaConfigModel):
         matterhorn_moda_api = ApisProvider().matterhorn_moda_api
-        product_matterhorn_moda_models = matterhorn_moda_api.pipeline_fetch_products_from_matterhorn_moda()
+        product_matterhorn_moda_models = matterhorn_moda_api.pipeline_fetch_products_from_matterhorn_moda(
+            fetch_matterhorn_moda_config_model=fetch_matterhorn_moda_config_model
+        )
 
         woocommerce_product_models: list[WoocommerceProductModel] = []
         adaptor = MatterhornModaProductModelToWoocommerceProductModelAdaptor()
 
-        for product_matterhorn_moda_model in product_matterhorn_moda_models[:1]:
+        for product_matterhorn_moda_model in product_matterhorn_moda_models:
             woocommerce_product_model = adaptor.adapter(
-                product_matterhorn_moda_model=product_matterhorn_moda_model, search_in_matterhorn_moda_model=search_in_matterhorn_moda_model
+                product_matterhorn_moda_model=product_matterhorn_moda_model,
+                fetch_matterhorn_moda_config_model=FetchMatterhornModaConfigModel,
             )
 
             woocommerce_product_model.regular_price = str(
-                math.ceil(product_matterhorn_moda_model.prices.EUR * search_in_matterhorn_moda_model.price_anpassen * 20) / 20
+                math.ceil(product_matterhorn_moda_model.prices.EUR * fetch_matterhorn_moda_config_model.price_anpassen * 20) / 20
             )
             woocommerce_product_model.sale_price = str(
-                math.ceil(product_matterhorn_moda_model.prices.EUR * search_in_matterhorn_moda_model.sale_price_anpassen * 20) / 20
+                math.ceil(product_matterhorn_moda_model.prices.EUR * fetch_matterhorn_moda_config_model.sale_price_anpassen * 20) / 20
             )
             woocommerce_product_models.append(woocommerce_product_model)
 
@@ -185,7 +170,7 @@ class MarketConnectorController:
             download_url_remove_white_bg_image=False,
         )
 
-        MarketConnectorController.upload_to_woocommerce(
+        return ApisProvider().woocommerce_api.upload_product_model_to_woocommerce(
             woocommerce_product_models=woocommerce_product_models,
-            search_in_ebay_model=search_in_matterhorn_moda_model,
+            target_woocommerce_category_name=fetch_matterhorn_moda_config_model.target_category_name_in_woocommerce,
         )

@@ -1,1 +1,1 @@
-08-30-2026, 16:53:56 resolve_or_upload: 'NoneType' object is not iterable
+09-07-2026, 17:49:04 Could not resolve category 'Sexy Bodysuits, Corsets, Belts, Panties, Leggings': 'NoneType' object has no attribute 'id'

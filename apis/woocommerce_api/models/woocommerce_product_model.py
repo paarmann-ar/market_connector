@@ -25,6 +25,7 @@ class WoocommerceProductModel(BaseModel):
     slug: Optional[str] = ""
     permalink: Optional[str] = ""
     catalog_visibility: Optional[str] = "visible"
+    status: Optional[str] = "publish"
     description: Optional[str] = ""
     short_description: Optional[str] = ""
     image_description: Optional[str] = ""
@@ -35,7 +36,9 @@ class WoocommerceProductModel(BaseModel):
     on_sale: Optional[bool] = True
     tax_status: Optional[str] = "taxable"
     tax_class: Optional[str] = ""
-    manage_stock: Optional[bool] = False
+    manage_stock: Optional[bool] = True
+    stock_quantity: Optional[int] = 0
+    stock_status: Optional[str] = "instock"
     shipping_required: Optional[bool] = True
     shipping_taxable: Optional[bool] = True
     shipping_class: Optional[str] = ""
@@ -46,9 +49,9 @@ class WoocommerceProductModel(BaseModel):
     images: list[WoocommerceImageModel] = Field(default_factory=list)
     image_description: Optional[str] = ""
     default_attributes: list[str] = Field(default_factory=list)
-    stock_status: Optional[str] = "instock"
-    meta_data: Optional[RankMathModel] = None
+    meta_data: Optional[list[dict]] = None
     attributes: list[WoocommerceProductAttributeModel] = Field(default_factory=list)
+    variants: list[object] = (None,)
     type: Optional[str] = "simple"
 
     #  --
@@ -98,4 +101,5 @@ class WoocommerceProductModel(BaseModel):
             attributes=data["attributes"],
             default_attributes=data["default_attributes"],
             stock_status=data["stock_status"],
+            type=data["type"],
         )

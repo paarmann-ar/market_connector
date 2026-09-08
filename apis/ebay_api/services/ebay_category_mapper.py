@@ -356,13 +356,7 @@ class EbayCategoryMapper:
             root_category = root.get("category", {}) if root else {}
 
             raise ValueError(
-                "US category was not found "
-                "in eBay taxonomy.\n"
-                f"Requested ID: {leaf_id}\n"
-                f"Root category: "
-                f"{root_category}\n"
-                f"Response keys: "
-                f"{list(response.keys())}"
+                f"US category was not found in eBay taxonomy.\nRequested ID: {leaf_id}\nRoot category: {root_category}\nResponse keys: {list(response.keys())}"
             )
 
         category = node.get("category") or {}

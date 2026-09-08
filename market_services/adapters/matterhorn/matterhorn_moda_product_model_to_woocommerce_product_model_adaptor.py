@@ -1,7 +1,7 @@
 from typing import Optional
 
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
+from apis.matterhorn_moda_api.models.fetch_matterhorn_moda_config_model import FetchMatterhornModaConfigModel
 from apis.woocommerce_api.models.woocommerce_brand_model import (
     WoocommerceBrandModel,
 )
@@ -35,7 +35,7 @@ from apis.woocommerce_api.models.woocommerce_attribute_model import (
 
 class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
     def adapter(
-        self, product_matterhorn_moda_model: ProductMatterhornModaModel, search_in_matterhorn_moda_model: SearchInMatterhornModaModel
+        self, product_matterhorn_moda_model: ProductMatterhornModaModel, fetch_matterhorn_moda_config_model: FetchMatterhornModaConfigModel
     ) -> WoocommerceProductModel:
 
         meta_data_services = MetaDataServices()
@@ -43,7 +43,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(
                 product_matterhorn_moda_model=product_matterhorn_moda_model,
                 prompt_filename="miviva_matterhorn_moda_product",
-                is_remove_html=search_in_matterhorn_moda_model.is_remove_description_html,
+                is_remove_html=fetch_matterhorn_moda_config_model.is_remove_description_html,
             ),
             assemble_final=assemble_final,
             product_model=product_matterhorn_moda_model,
@@ -61,26 +61,38 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url, "alt": image_alt}))
 
         woocommerce_product_attributes_model: list[WoocommerceProductAttributeModel] = []
-        for attribute_name, attribute_value in product_matterhorn_moda_model.attribute.items():
+
+        product_type = "simple"
+        if product_matterhorn_moda_model.variants:
+            attribut_terms = []
+            for attribute_term in product_matterhorn_moda_model.variants:
+                attribut_terms.append(attribute_term.name)
+
             woocommerce_product_attributes_model.append(
-                WoocommerceProductAttributeModel(name=attribute_name, options=attribute_value, visible=True, variation=True)
+                WoocommerceProductAttributeModel(
+                    name=product_matterhorn_moda_model.attribute, options=attribut_terms, visible=True, variation=True
+                )
             )
+            fetch_matterhorn_moda_config_model.product_type = "variable"
 
         return WoocommerceProductModel(
             name=product_output_metadata_model.title or "",
+            meta_data=product_output_metadata_model.seo_model,
             description=product_output_metadata_model.description or "",
             short_description=product_output_metadata_model.short_description or "",
             image_description=product_output_metadata_model.image_description or "",
             sku=f"mm_{product_matterhorn_moda_model.id}" or "",
             on_sale=True,
             manage_stock=True,
+            stock_status=self._get_stock_status(product_matterhorn_moda_model),
+            stock_quantity=product_matterhorn_moda_model.stock_total,
             categories=self._get_categories(product_matterhorn_moda_model),
             brands=self._get_brands(product_matterhorn_moda_model),
             tags=woocommerce_tags_model,
             images=self._get_images(product_matterhorn_moda_model),
-            stock_status=self._get_stock_status(product_matterhorn_moda_model),
             attributes=woocommerce_product_attributes_model,
-            type="variable",
+            variants=product_matterhorn_moda_model.variants,
+            type=product_type,
         )
 
     #  ------------------------------------------------------------------

@@ -99,19 +99,21 @@ class WoocommerceProduct(BaseWoocommerceApi):
     #  ...
     #  --
 
-    def upload_product(self, product_model: WoocommerceProductModel)->WoocommerceProductModel:
+    def upload_product(self, woocommerce_product_model: WoocommerceProductModel) -> WoocommerceProductModel:
 
         try:
             response = self.request(
                 method="post",
                 url=f"{self.base_url}{self.products_url}",
                 auth=(self.consumer_key, self.consumer_secret),
-                json=product_model.to_dict(),
+                json=woocommerce_product_model.to_dict(),
             )
 
             self.prompt_on_screen(f"products: {response}")
 
-            return WoocommerceProductModel(**response)
+            woocommerce_product_model.id = response["id"]
+
+            return woocommerce_product_model
 
         except Exception as exp:
             self.prompt_on_screen(f"upload_product: {exp}")
@@ -178,5 +180,7 @@ class WoocommerceProduct(BaseWoocommerceApi):
             auth=(self.consumer_key, self.consumer_secret),
             json=variation_model.model_dump(exclude_none=True),
         )
+
+        self.prompt_on_screen(f"upload_variation: {response}")
 
         return response

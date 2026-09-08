@@ -13,7 +13,27 @@ class MatterhornSizeTableParser:
     # --
 
     @classmethod
-    def parse(cls, size_table_html: str) -> dict[str, list[str]]:
+    def normalize_attribute_name(
+        cls,
+        name: str,
+    ) -> str | None:
+
+        if not name:
+            return None
+
+        normalized = name.strip().lower()
+
+        return cls.ATTRIBUTE_NAMES.get(normalized)
+
+    # --
+    # ...
+    # --
+
+    @classmethod
+    def parse(
+        cls,
+        size_table_html: str,
+    ) -> dict[str, list[str]]:
 
         if not size_table_html:
             return {}
@@ -36,16 +56,14 @@ class MatterhornSizeTableParser:
             return {}
 
         for th in header_row.find_all("th"):
-            header = th.get_text(strip=True)
+            attribute_name = cls.normalize_attribute_name(
+                th.get_text(
+                    " ",
+                    strip=True,
+                )
+            )
 
-            normalized = header.lower()
-
-            attribute_name = cls.ATTRIBUTE_NAMES.get(normalized)
-
-            if attribute_name:
-                headers.append(attribute_name)
-            else:
-                headers.append(None)
+            headers.append(attribute_name)
 
         result = {attribute_name: [] for attribute_name in cls.ATTRIBUTE_NAMES.values()}
 
@@ -108,13 +126,10 @@ class MatterhornSizeTableParser:
         headers = []
 
         for th in header_row.find_all("th"):
-
-            attribute_name = (
-                cls.normalize_attribute_name(
-                    th.get_text(
-                        " ",
-                        strip=True,
-                    )
+            attribute_name = cls.normalize_attribute_name(
+                th.get_text(
+                    " ",
+                    strip=True,
                 )
             )
 
@@ -123,7 +138,6 @@ class MatterhornSizeTableParser:
         result = []
 
         for row in table.find_all("tr")[1:]:
-
             cells = row.find_all("td")
 
             if not cells:
@@ -132,7 +146,6 @@ class MatterhornSizeTableParser:
             row_data = {}
 
             for index, cell in enumerate(cells):
-
                 if index >= len(headers):
                     continue
 
@@ -167,10 +180,6 @@ class MatterhornSizeTableParser:
     ) -> dict:
 
         return {
-            "attributes": cls.parse(
-                size_table_html
-            ),
-            "rows": cls.parse_rows(
-                size_table_html
-            ),
+            "attributes": cls.parse(size_table_html),
+            "rows": cls.parse_rows(size_table_html),
         }

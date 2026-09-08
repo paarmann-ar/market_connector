@@ -1,5 +1,5 @@
 from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
-from apis.matterhorn_moda_api.models.search_in_matterhorn_moda_model import SearchInMatterhornModaModel
+from apis.matterhorn_moda_api.models.fetch_matterhorn_moda_config_model import FetchMatterhornModaConfigModel
 from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
 from apis.zalando_lounge_api.models.search_in_zalando_lounge_model import SearchInZalandoLoungeModel
 from app.controller.market_connector_controller import MarketConnectorController
@@ -18,8 +18,14 @@ from market_services.image_services.models.image_directory_model import ImageDir
 #     q="RM1-XA",
 #     item_to_fetch=10,
 # )
-search_in_matterhorn_moda_models = [
-    SearchInMatterhornModaModel(price_anpassen=2.3, sale_price_anpassen=2, is_remove_description_html=False)
+fetch_matterhorn_moda_config_models = [
+    FetchMatterhornModaConfigModel(
+        price_anpassen=2.3,
+        sale_price_anpassen=2,
+        is_remove_description_html=False,
+        attribute_name="Size",
+        item_to_fetch=1000,
+    )
 ]
 
 search_in_zalando_lounge_models = [SearchInZalandoLoungeModel(campaign_id="ZZO4FTR", sku="ZUN243D04X-K23")]
@@ -106,8 +112,8 @@ def sync_zalando_lounge_to_woocommerce():
 
 
 def sync_matterhorn_moda_to_woocommerce():
-    for search_in_matterhorn_moda_model in search_in_matterhorn_moda_models:
-        MarketConnectorController.sync_matterhorn_moda_to_woocommerce(search_in_matterhorn_moda_model=search_in_matterhorn_moda_model)
+    for fetch_matterhorn_moda_config_model in fetch_matterhorn_moda_config_models:
+        MarketConnectorController.sync_matterhorn_moda_to_woocommerce(fetch_matterhorn_moda_config_model=fetch_matterhorn_moda_config_model)
 
 
 sync_matterhorn_moda_to_woocommerce()

@@ -8,7 +8,7 @@ from typing import Optional
 
 
 @dataclass
-class SearchInMatterhornModaModel:
+class FetchMatterhornModaConfigModel:
     category_name_candidate: Optional[str] = None
     category_id = Optional[int]
     product_id = Optional[int]
@@ -25,6 +25,7 @@ class SearchInMatterhornModaModel:
     sale_price_anpassen: Optional[int] = 1.50
     target_category_name_in_woocommerce: Optional[str] = None
     is_remove_description_html: Optional[bool] = True
+    attribute_name: Optional[str] = None
 
     #  --
     #  ...
