@@ -24,7 +24,7 @@ fetch_matterhorn_moda_config_models = [
         sale_price_anpassen=2,
         is_remove_description_html=False,
         attribute_name="Size",
-        item_to_fetch=1000,
+        item_to_fetch=300,
     )
 ]
 
@@ -108,7 +108,7 @@ def sync_woocommerce_to_ebay():
 
 def sync_zalando_lounge_to_woocommerce():
     for search_in_zalando_lounge_model in search_in_zalando_lounge_models:
-        k = MarketConnectorController.sync_zalando_lounge_to_woocommerce(search_in_zalando_lounge_model=search_in_zalando_lounge_model)
+        MarketConnectorController.sync_zalando_lounge_to_woocommerce(search_in_zalando_lounge_model=search_in_zalando_lounge_model)
 
 
 def sync_matterhorn_moda_to_woocommerce():
