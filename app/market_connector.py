@@ -24,7 +24,7 @@ fetch_matterhorn_moda_config_models = [
         sale_price_anpassen=2,
         is_remove_description_html=False,
         attribute_name="Size",
-        item_to_fetch=300,
+        item_to_fetch=400,
     )
 ]
 
