@@ -5,10 +5,11 @@ from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImage
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from market_services.adapters.ebay.ebay_product_model_to_product_input_metadata_model import EbayProductModelToProductInputMetadataModel
-from market_services.adapters.models.validate_final_model import ValidateFinalModel
+from market_services.adapters.ebay.ebay_assemble_final import assemble_final
 from market_services.meta_data_services.meta_data_services import MetaDataServices
 from toolboxs.numbers import Numbers
 from toolboxs.random_expertion import RandomExpertion
+from typing import Optional
 
 # --
 # ...
@@ -18,16 +19,13 @@ from toolboxs.random_expertion import RandomExpertion
 class EbayProductModelToWoocommerceProductModelAdaptor:
     def adapter(self, product_ebay_model: ProductEbayModel) -> WoocommerceProductModel:
 
-        #  badan por konam ta roll har befrestam vase validation, alan to hadcode hastan
-        validate_final_model = ValidateFinalModel(validation_roles=[])
-        validate_final_model = None
-
         meta_data_services = MetaDataServices()
         product_output_metadata_model = meta_data_services.create_metadata(
             product_input_metadata_model=EbayProductModelToProductInputMetadataModel().adapter(
                 product_ebay_model=product_ebay_model, prompt_filename="paarmann-tech_product_ebay_model"
             ),
-            validate_final_model=validate_final_model,
+            assemble_final=assemble_final,
+            product_model=product_ebay_model,
         )
 
         woocommerce_tags_model = []
@@ -43,11 +41,12 @@ class EbayProductModelToWoocommerceProductModelAdaptor:
             0, WoocommerceImageModel().from_api({"src": product_ebay_model.image.imageUrl, "alt": image_alt_main})
         )
 
-        for image_url in product_ebay_model.additionalImages:
-            woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url.imageUrl, "alt": image_alt}))
+        if product_ebay_model.additionalImages:
+            for image_url in product_ebay_model.additionalImages:
+                woocommerce_images_model.append(WoocommerceImageModel.from_api({"src": image_url.imageUrl, "alt": image_alt}))
 
         return WoocommerceProductModel(
-            categories=WoocommerceCategoryModel(name=product_ebay_model.categoryPath.split("|")[-1]),
+            categories=self._get_categories(product_ebay_model=product_ebay_model),
             brands=[WoocommerceBrandModel(name=product_ebay_model.brand)],
             tags=woocommerce_tags_model,
             slug=product_output_metadata_model.slug,
@@ -61,4 +60,47 @@ class EbayProductModelToWoocommerceProductModelAdaptor:
             images=woocommerce_images_model,
             image_description=product_output_metadata_model.image_description,
             sku=RandomExpertion.sku_generator(),
+            on_sale=True,
+            manage_stock=True,
+            stock_quantity=product_ebay_model.estimatedAvailabilities[0]['estimatedRemainingQuantity'],
+            stock_status=self._get_stock_status(product_ebay_model)
         )
+
+# --
+# ...
+# --
+
+    def _get_categories(
+        self,
+        product_ebay_model: ProductEbayModel,
+    ) -> list[WoocommerceCategoryModel]:
+
+        category_name = product_ebay_model.categoryPath.split("|")[-1]
+        category_path = product_ebay_model.categoryPath
+
+        return [WoocommerceCategoryModel(name=category_name, slug=self._slugify(category_name), path=category_path)]
+
+# --
+# ...
+# --
+
+    @staticmethod
+    def _slugify(value: Optional[str]) -> Optional[str]:
+
+        if not value:
+            return None
+
+        return value.strip().lower().replace(" ", "-")
+# --
+# ...
+# --
+
+    def _get_stock_status(
+        self,
+        product_ebay_model: ProductEbayModel,
+    ) -> str:
+
+        if (product_ebay_model.estimatedAvailabilities[0]['estimatedRemainingQuantity'] or 0) > 0:
+            return "instock"
+
+        return "outofstock"

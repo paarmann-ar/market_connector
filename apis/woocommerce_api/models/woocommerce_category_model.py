@@ -17,7 +17,7 @@ class WoocommerceCategoryModel(BaseModel):
     name: Optional[str] = None
     slug: Optional[str] = None
     description: Optional[str] = None
-    parent_id: Optional[int] = None
+    parent: Optional[int] = None
     path: Optional[str] = None
     images: list[WoocommerceImageModel] = field(default_factory=list)
 
@@ -32,7 +32,7 @@ class WoocommerceCategoryModel(BaseModel):
             name=data.get("name"),
             slug=data.get("slug"),
             description=data.get("description"),
-            parent_id=data.get("parent", 0) or None,
+            parent=data.get("parent", 0) or None,
             images=data.get("images") or [],
         )
 

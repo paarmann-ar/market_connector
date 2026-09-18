@@ -8,7 +8,7 @@ from typing import Optional
 
 
 @dataclass
-class FetchMatterhornModaConfigModel:
+class FetchConfigModel:
     category_name_candidate: Optional[str] = None
     category_id = Optional[int]
     product_id = Optional[int]
@@ -19,6 +19,7 @@ class FetchMatterhornModaConfigModel:
     filter: Optional[str] = None
     q: Optional[str] = None
     legacy_item_id: Optional[str] = None
+    legacy_variation_id: Optional[str] = None
     total: Optional[int] = None
     item_to_fetch: Optional[int] = 5
     price_anpassen: Optional[int] = 1.60
@@ -26,6 +27,11 @@ class FetchMatterhornModaConfigModel:
     target_category_name_in_woocommerce: Optional[str] = None
     is_remove_description_html: Optional[bool] = True
     attribute_name: Optional[str] = None
+    name: Optional[str] = None
+    sku: Optional[str] = None
+    campaign_id: Optional[str] = None
+    product_type : Optional[str] = None
+    is_use_image_service : Optional[bool] = True
 
     #  --
     #  ...

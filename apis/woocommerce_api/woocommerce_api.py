@@ -1,7 +1,7 @@
 from itertools import product
 from apis.woocommerce_api.config.woocommerce_api_config import WoocommerceApiConfig
 from apis.woocommerce_api.core.base_woocommerce_api import BaseWoocommerceApi
-from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
+from apis.models.fetch_config_model import FetchConfigModel
 from apis.woocommerce_api.models.woocommerce_category_model import WoocommerceCategoryModel
 from apis.woocommerce_api.models.woocommerce_product_model import WoocommerceProductModel
 from apis.woocommerce_api.models.woocommerce_attribute_model import WoocommerceAttributeModel
@@ -339,9 +339,10 @@ class WoocommerceApi(BaseWoocommerceApi):
                 continue
 
             for variant in woocommerce_product_model.variants:
-                if variant.name == option:
-                    stock_quantity = variant.stock
-                    break
+                if variant:
+                    if variant.name == option:
+                        stock_quantity = variant.stock
+                        break
 
             variation_model = WoocommerceVariationModel(
                 sku=f"{woocommerce_product_model.sku}-{sku_index}",
@@ -375,10 +376,10 @@ class WoocommerceApi(BaseWoocommerceApi):
     # ...
     # --
 
-    def fetch_from_woocommerce(self, search_in_woocommerce_model: SearchInWoocommerceModel) -> WoocommerceProductModel:
+    def fetch_from_woocommerce(self, fetch_config_model: FetchConfigModel) -> WoocommerceProductModel:
 
         woocommerce_product_models = self.woocommerce_product.get_product_by_search_in_woocommerce_model(
-            search_in_woocommerce_model=(search_in_woocommerce_model)
+            search_in_woocommerce_model=(fetch_config_model)
         )
 
         return woocommerce_product_models

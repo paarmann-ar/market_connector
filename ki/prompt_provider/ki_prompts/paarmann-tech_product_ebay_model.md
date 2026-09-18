@@ -177,6 +177,8 @@ Use only information available in PRODUCT DATA.
 
 When enough information is available, prefer:
 
+Do not use SKU in TITLE
+
 Brand + Model + Product Type + MPN
 
 However:
@@ -320,6 +322,11 @@ Do not create German and English versions.
 Use only factual semantic components from PRODUCT DATA.
 
 Prefer important product identifiers such as:
+
+Do not use SKU in SLUG COMPONENTS
+Never include the literal field name "SKU" either.
+
+Never use the literal field name "MPN" when the MPN value is missing, null, None, empty, or unavailable.
 
 - Brand
 - Model
@@ -519,7 +526,9 @@ Before returning the JSON, verify ALL of the following:
 25. No Markdown was used.
 26. The response is valid JSON.
 27. No text exists outside the JSON.
-
+28. Do not use SKU in TITLE
+29. Do not use SKU in SLUG COMPONENTS
+30. Only include MPN when a non-empty, actual MPN value is present in PRODUCT DATA. Never output the literal field name "MPN" when the MPN value is missing, null, None, empty, or unavailable.
 ==================================================
 PRODUCT DATA
 ==================================================

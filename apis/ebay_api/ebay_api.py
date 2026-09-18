@@ -7,7 +7,7 @@ from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 from apis.ebay_api.models.inventory.inventory_location_model import InventoryLocationModel
 from apis.ebay_api.models.offer.offer_ebay_config import OfferEbayConfig
-from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
+from apis.models.fetch_config_model import FetchConfigModel
 from apis.ebay_api.services.ebay_category import EbayCategory
 from apis.ebay_api.services.ebay_inventory import EbayInventory
 from apis.ebay_api.services.ebay_merchant_location import EbayMerchantLocation
@@ -50,18 +50,20 @@ class EbayApi(BaseEbayApi):
     #  ...
     #  --
 
-    def pipeline_fetch_product_from_ebay_by_search_in_ebay_model(self, search_in_ebay_model: SearchInEbayModel) -> list[ProductEbayModel]:
+    def pipeline_fetch_product_from_ebay_by_search_in_ebay_model(self, fetch_config_model: FetchConfigModel) -> list[ProductEbayModel]:
         product_ebay_models: list[ProductEbayModel] = []
 
-        if search_in_ebay_model.legacy_item_id:
+        if fetch_config_model.legacy_item_id:
             product_ebay_model = self.ebay_product.get_product_ebay_model_with_legacy_item_id(
-                legacy_item_id=search_in_ebay_model.legacy_item_id, marketplace_id=search_in_ebay_model.marketplace_id
+                legacy_item_id=fetch_config_model.legacy_item_id,
+                legacy_variation_id=fetch_config_model.legacy_variation_id,
+                marketplace_id=fetch_config_model.marketplace_id,
             )
             return [product_ebay_model]
 
         else:
-            product_summery_ebay_models = self.ebay_product.get_product_summery_ebay_models(search_in_ebay_model=search_in_ebay_model)
-            product_summery_ebay_models = product_summery_ebay_models[: search_in_ebay_model.item_to_fetch]
+            product_summery_ebay_models = self.ebay_product.get_product_summery_ebay_models(search_in_ebay_model=fetch_config_model)
+            product_summery_ebay_models = product_summery_ebay_models[: fetch_config_model.item_to_fetch]
 
         for product_summery_ebay_model in product_summery_ebay_models:
             product_ebay_model = self.ebay_product.get_product_ebay_model_with_item_id(

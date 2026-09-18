@@ -43,7 +43,9 @@ class WoocommerceProductModel(BaseModel):
     shipping_taxable: Optional[bool] = True
     shipping_class: Optional[str] = ""
     shipping_class_id: Optional[int] = 0
+    
     categories: list[WoocommerceCategoryModel] = Field(default_factory=list)
+
     brands: list[WoocommerceBrandModel] = Field(default_factory=list)
     tags: list[WoocommerceTagModel] = Field(default_factory=list)
     images: list[WoocommerceImageModel] = Field(default_factory=list)

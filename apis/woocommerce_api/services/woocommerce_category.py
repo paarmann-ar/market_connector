@@ -73,10 +73,10 @@ class WoocommerceCategory(BaseWoocommerceApi):
                 if not parent:
                     raise ValueError(f"Parent category not synced: {parent_path}")
 
-                category.parent_id = parent.id
+                category.parent = parent.id
 
             else:
-                category.parent_id = None
+                category.parent = None
 
             synced_category = self.resolve_or_upload(category)
 
@@ -88,7 +88,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
     #  ...
     #  --
 
-    def get_category_by_name(self, name: str, parent_id: int = 0, record_per_page: int = 100):
+    def get_category_by_name(self, name: str, parent: int = 0, record_per_page: int = 100):
         response = self.request(
             method="get",
             url=f"{self.base_url}{self.category_url}",
@@ -109,7 +109,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
             if category_name != normalized_name:
                 continue
 
-            if category.get("parent", 0) != parent_id:
+            if category.get("parent", 0) != parent:
                 continue
 
             return WoocommerceCategoryModel.from_api(category)
@@ -167,11 +167,11 @@ class WoocommerceCategory(BaseWoocommerceApi):
     ) -> WoocommerceCategoryModel:
 
         if not category.path:
-            parent_id = category.parent_id or 0
+            parent = category.parent or 0
 
             existing = self.get_category_by_name(
                 name=category.name,
-                parent_id=parent_id,
+                parent=parent,
             )
 
             if existing:
@@ -192,7 +192,7 @@ class WoocommerceCategory(BaseWoocommerceApi):
 
         parts = self.normalize_path(path)
 
-        parent_id = 0
+        parent = 0
         current_path_parts = []
 
         for name in parts:
@@ -204,12 +204,12 @@ class WoocommerceCategory(BaseWoocommerceApi):
                 name=name,
                 slug=slugify(name),
                 path=current_path,
-                parent_id=parent_id or None,
+                parent=parent or None,
             )
 
             category = self.resolve_or_upload_single(category)
 
-            parent_id = category.id
+            parent = category.id
 
         return category
 
@@ -222,11 +222,11 @@ class WoocommerceCategory(BaseWoocommerceApi):
         category: WoocommerceCategoryModel,
     ) -> WoocommerceCategoryModel:
 
-        parent_id = category.parent_id or 0
+        parent = category.parent or 0
 
         existing = self.get_category_by_name(
             name=category.name,
-            parent_id=parent_id,
+            parent=parent,
         )
 
         if existing:

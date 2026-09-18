@@ -3,7 +3,7 @@ from apis.matterhorn_moda_api.config.matterhorn_moda_api_config import (
 )
 from apis.matterhorn_moda_api.core.base_matterhorn_moda_api import BaseMatterhornModaApi
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from apis.matterhorn_moda_api.models.fetch_matterhorn_moda_config_model import FetchMatterhornModaConfigModel
+from apis.models.fetch_config_model import FetchConfigModel
 
 # --
 # ...
@@ -35,7 +35,7 @@ class MatterhornModaProduct(BaseMatterhornModaApi):
     #  --
 
     def get_products_matterhorn_moda_models(
-        self, fetch_matterhorn_moda_config_model: FetchMatterhornModaConfigModel, page=1
+        self, fetch_config_model: FetchConfigModel, page=1
     ) -> list[ProductMatterhornModaModel]:
 
         try:
@@ -55,7 +55,7 @@ class MatterhornModaProduct(BaseMatterhornModaApi):
 
             for item in response:
                 product_matterhorn_moda_model = ProductMatterhornModaModel(**item)
-                product_matterhorn_moda_model.attribute = fetch_matterhorn_moda_config_model.attribute_name
+                product_matterhorn_moda_model.attribute = fetch_config_model.attribute_name
 
                 product_matterhorn_moda_models.append(product_matterhorn_moda_model)
 

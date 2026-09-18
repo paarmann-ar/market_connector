@@ -4,7 +4,7 @@ from apis.woocommerce_api.config.woocommerce_api_config import (
 from apis.woocommerce_api.core.base_woocommerce_api import (
     BaseWoocommerceApi,
 )
-from apis.woocommerce_api.models.search_in_woocommerce_model import SearchInWoocommerceModel
+from apis.models.fetch_config_model import FetchConfigModel
 from apis.woocommerce_api.models.woocommerce_product_model import (
     WoocommerceProductModel,
 )
@@ -143,14 +143,14 @@ class WoocommerceProduct(BaseWoocommerceApi):
     #  ...
     #  --
 
-    def get_product_by_search_in_woocommerce_model(self, search_in_woocommerce_model: SearchInWoocommerceModel) -> WoocommerceProductModel:
+    def get_product_by_search_in_woocommerce_model(self, fetch_config_model: FetchConfigModel) -> WoocommerceProductModel:
 
         try:
             response = self.request(
                 method="get",
                 url=f"{self.base_url}{self.products_url}",
                 auth=(self.consumer_key, self.consumer_secret),
-                params=search_in_woocommerce_model.filter,
+                params=fetch_config_model.filter,
             )
 
             if not response:

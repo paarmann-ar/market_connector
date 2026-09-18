@@ -1,0 +1,159 @@
+/* =========================================
+   MIVIVA DYNAMIC MENU - چسباندن کامل به چپ
+   ========================================= */
+
+.miviva-header-dynamic-menu {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+/* Main menu items */
+.miviva-header-dynamic-menu > li {
+    position: relative;
+    list-style: none;
+}
+
+/* Main menu links */
+.miviva-header-dynamic-menu > li > a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 0;
+    font-family: var(--theme-font-family) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.4;
+    color: #222 !important;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .2s ease;
+}
+
+/* Arrow */
+.miviva-header-dynamic-menu > li > a span {
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 2px;
+}
+
+/* =========================================
+   GOLD HOVER LINE
+   ========================================= */
+
+.miviva-header-dynamic-menu > li > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #e5a51a;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .2s ease;
+}
+
+.miviva-header-dynamic-menu > li:hover > a {
+    color: #e5a51a !important;
+}
+
+.miviva-header-dynamic-menu > li:hover > a::after {
+    transform: scaleX(1);
+}
+
+/* =========================================
+   DROPDOWN (Level 1)
+   ========================================= */
+
+.miviva-header-dynamic-menu .miviva-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    max-width: 300px;
+    margin: 0;
+    padding: 7px 0;
+    background: #17120e;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 0); 
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index: 99999;
+    list-style: none;
+}
+
+/* Open dropdown (Level 1) */
+.miviva-header-dynamic-menu > li:hover > .miviva-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+/* =========================================
+   NESTED DROPDOWNS (Level 2 and deeper)
+   ========================================= */
+
+.miviva-header-dynamic-menu .miviva-submenu .miviva-submenu {
+    top: 0;
+    left: 100%;
+    transform: translate(0, 0);
+}
+
+/* Open nested dropdowns */
+.miviva-header-dynamic-menu .miviva-submenu li:hover > .miviva-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+/* =========================================
+   DROPDOWN ITEMS
+   ========================================= */
+
+.miviva-header-dynamic-menu .miviva-submenu li {
+    position: relative;
+    list-style: none;
+}
+
+.miviva-header-dynamic-menu .miviva-submenu a {
+    display: block;
+    padding: 9px 16px;
+    color: #fff !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    text-decoration: none;
+    white-space: normal;
+    transition: color .15s ease, background .15s ease;
+}
+
+/* Separator */
+.miviva-header-dynamic-menu .miviva-submenu li + li a {
+    border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* Dropdown hover */
+.miviva-header-dynamic-menu .miviva-submenu a:hover {
+    color: #e5a51a !important;
+    background: rgba(255,255,255,.05);
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 767px) {
+    .miviva-header-dynamic-menu {
+        display: none !important;
+    }
+}

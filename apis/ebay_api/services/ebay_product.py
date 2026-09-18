@@ -4,7 +4,7 @@ from apis.ebay_api.config.ebay_api_config import (
 from apis.ebay_api.core.base_ebay_api import BaseEbayApi
 from apis.ebay_api.models.browse.product_ebay_model import ProductEbayModel
 from apis.ebay_api.models.browse.product_summery_ebay_model import ProductSummeryEbayModel
-from apis.ebay_api.models.search_in_ebay_model import SearchInEbayModel
+from apis.models.fetch_config_model import FetchConfigModel
 
 # --
 # ...
@@ -43,19 +43,19 @@ class EbayProduct(BaseEbayApi):
     #  ...
     #  --
 
-    def get_product_summery_ebay_models(self, search_in_ebay_model: SearchInEbayModel, offset=0) -> list[ProductSummeryEbayModel]:
+    def get_product_summery_ebay_models(self, fetch_config_model: FetchConfigModel, offset=0) -> list[ProductSummeryEbayModel]:
 
         try:
             self.ebay_token_api.get_application_token()
             ebay_access_token = self.ebay_token_api.ebay_application_token
 
-            search_in_ebay_model.generate_filter()
+            fetch_config_model.generate_filter()
 
             params = {
                 "limit": 200,
                 "offset": offset,
-                "filter": search_in_ebay_model.filter,
-                "q": search_in_ebay_model.q,
+                "filter": fetch_config_model.filter,
+                "q": fetch_config_model.q,
             }
 
             response = self.request(
@@ -64,7 +64,7 @@ class EbayProduct(BaseEbayApi):
                 headers={
                     "Accept": "application/json",
                     "Authorization": f"Bearer {ebay_access_token}",
-                    "X-EBAY-C-MARKETPLACE-ID": f"{search_in_ebay_model.marketplace}",
+                    "X-EBAY-C-MARKETPLACE-ID": f"{fetch_config_model.marketplace}",
                 },
                 params=params,
             )
@@ -83,7 +83,9 @@ class EbayProduct(BaseEbayApi):
     #  ...
     #  --
 
-    def get_product_ebay_model_with_legacy_item_id(self, legacy_item_id: str, marketplace_id: str = "") -> ProductEbayModel:
+    def get_product_ebay_model_with_legacy_item_id(
+        self, legacy_item_id: str, legacy_variation_id: str = None, marketplace_id: str = ""
+    ) -> ProductEbayModel:
 
         try:
             #  in endpoint shortDescription ro nemideh shabih be ProductEbayModel hast
@@ -93,9 +95,14 @@ class EbayProduct(BaseEbayApi):
             self.ebay_token_api.get_application_token()
             ebay_access_token = self.ebay_token_api.ebay_application_token
 
+            url = f"{self.ebay_browse_api}{self.browse_api_product_url}/get_item_by_legacy_id?legacy_item_id={legacy_item_id}"
+
+            if legacy_variation_id:
+                url = f"{url}&legacy_variation_id={legacy_variation_id}"
+
             response = self.request(
                 method="get",
-                url=f"{self.ebay_browse_api}{self.browse_api_product_url}/get_item_by_legacy_id?legacy_item_id={legacy_item_id}",
+                url=url,
                 headers={
                     "Authorization": f"Bearer {ebay_access_token}",
                     "X-EBAY-C-MARKETPLACE-ID": f"{marketplace_id}",

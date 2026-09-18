@@ -37,9 +37,8 @@ class MetaDataServices:
         #  -----------------------------------------
 
         product_output_metadata_model = assemble_final(
-            product_output_model=product_output_model, product_input=product_input_metadata_model, product_model=product_model
+            product_output_model=product_output_model, product_input=product_input_metadata_model
         )
-
         #  -----------------------------------------
         #  Image SEO
         #  -----------------------------------------
@@ -59,7 +58,22 @@ class MetaDataServices:
 
         product_output_metadata_model_title = product_output_metadata_model.title.split("|")[0]
 
-        rank_math_focus_keyword = f"{product_output_metadata_model_title}, {product_input_metadata_model.mpn}, {product_input_metadata_model.brand}{', '.join(product_output_metadata_model.focus_keywords)}, {product_output_metadata_model.primary_focus_keyword}"
+        focus_keywords = [
+            product_output_metadata_model_title,
+        ]
+
+        if product_input_metadata_model.mpn:
+            focus_keywords.append(product_input_metadata_model.mpn)
+
+        if product_input_metadata_model.brand:
+            focus_keywords.append(product_input_metadata_model.brand)
+
+        focus_keywords.extend(product_output_metadata_model.focus_keywords or [])
+
+        if product_output_metadata_model.primary_focus_keyword:
+            focus_keywords.append(product_output_metadata_model.primary_focus_keyword)
+
+        rank_math_focus_keyword = ", ".join(focus_keywords)
 
         product_output_metadata_model.seo_model = RankMathModel(
             rank_math_title=product_output_metadata_model.title,

@@ -1,7 +1,7 @@
 from typing import Optional
 
 from apis.matterhorn_moda_api.models.product_matterhorn_moda_model import ProductMatterhornModaModel
-from apis.matterhorn_moda_api.models.fetch_matterhorn_moda_config_model import FetchMatterhornModaConfigModel
+from apis.models.fetch_config_model import FetchConfigModel
 from apis.woocommerce_api.models.woocommerce_brand_model import (
     WoocommerceBrandModel,
 )
@@ -35,7 +35,7 @@ from apis.woocommerce_api.models.woocommerce_attribute_model import (
 
 class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
     def adapter(
-        self, product_matterhorn_moda_model: ProductMatterhornModaModel, fetch_matterhorn_moda_config_model: FetchMatterhornModaConfigModel
+        self, product_matterhorn_moda_model: ProductMatterhornModaModel, fetch_config_model: FetchConfigModel
     ) -> WoocommerceProductModel:
 
         meta_data_services = MetaDataServices()
@@ -43,7 +43,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
             product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(
                 product_matterhorn_moda_model=product_matterhorn_moda_model,
                 prompt_filename="miviva_matterhorn_moda_product",
-                is_remove_html=fetch_matterhorn_moda_config_model.is_remove_description_html,
+                is_remove_html=fetch_config_model.is_remove_description_html,
             ),
             assemble_final=assemble_final,
             product_model=product_matterhorn_moda_model,
@@ -73,7 +73,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
                     name=product_matterhorn_moda_model.attribute, options=attribut_terms, visible=True, variation=True
                 )
             )
-            fetch_matterhorn_moda_config_model.product_type = "variable"
+            fetch_config_model.product_type = "variable"
 
         return WoocommerceProductModel(
             name=product_output_metadata_model.title or "",
