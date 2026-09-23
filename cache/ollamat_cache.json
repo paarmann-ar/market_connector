@@ -32464,95 +32464,695 @@
     ]
   },
   "v1|377494651062|645799895114": {
-    "german_title": "FC/PC Connector Multimode Stainless Zirconia Ferrule 125um, 126um, 140um, 230um",
-    "english_title": "FC/PC Connector Multimode Stainless Zirconia Ferrule 125um, 126um, 140um, 230um",
-    "german_description": "Der FIS FC-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie optimale optische Leistung erfordert. Dieser nicht-optische Disconnect-Connector ist in Multimode- und Singlemode-Versionen erhältlich. Die hochpräzise, vorausgeformte Zirkonia-Keramik-Bohrung poliert sich schnell. Der FIS FC ist ein hochwertiger Connector zu einem günstigen Preis.",
-    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
-    "german_short_description": "FC/PC Connector Multimode, Zirkonia Ferrule, 125um, 126um, 140um, 230um, Neu",
-    "english_short_description": "FC/PC Connector Multimode, Zirconia Ferrule, 125um, 126um, 140um, 230um, New",
-    "german_meta_description": "FC/PC Connector Multimode, Zirkonia Ferrule, 125um, 126um, 140um, 230um, Neu - FIS FC Connector, schnelle Montage, optimale optische Leistung",
-    "english_meta_description": "FC/PC Connector Multimode, Zirconia Ferrule, 125um, 126um, 140um, 230um, New - FIS FC Connector, fast assembly, top optical performance",
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "FC/PC Connector Multimode. Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Der Stecker ist in Multimodus- und Singlemode-Versionen erhältlich.",
+    "english_short_description": "FC/PC Connector Multimode. The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. The connector is available in multimode and singlemode versions.",
+    "german_meta_description": "FC/PC Connector Multimode. Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Der Stecker ist in Multimodus- und Singlemode-Versionen erhältlich.",
+    "english_meta_description": "FC/PC Connector Multimode. The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. The connector is available in multimode and singlemode versions.",
     "german_focus_keywords": [
-      "FC/PC Connector",
-      "Zirkonia Ferrule",
-      "Multimode Connector",
-      "FIS FC Connector"
+      "FC/PC Connector Multimode",
+      "FIS FC Stecker"
     ],
     "english_focus_keywords": [
-      "FC/PC Connector",
-      "Zirconia Ferrule",
-      "Multimode Connector",
+      "FC/PC Connector Multimode",
       "FIS FC Connector"
     ],
-    "german_primary_focus_keyword": "FC/PC Connector",
-    "english_primary_focus_keyword": "FC/PC Connector",
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
     "slug_components": [
       "fis",
-      "fc",
+      "fc/pc",
       "connector",
       "multimode",
-      "125um"
+      "mpn"
     ],
-    "german_image_description": "FC/PC Connector mit Zirkonia Ferrule in verschiedenen Durchmessern, optische Leistung, schnelle Montage",
-    "english_image_description": "FC/PC Connector with Zirconia Ferrule in various diameters, optical performance, fast assembly",
+    "german_image_description": "Ein optischer Stecker in Multimodus- und Singlemode-Versionen, mit Zirkonia-Keramik-Stecker und Strain-Relief-Boots, der für schnelle und einfache Montage sowie topoptische Leistung konzipiert ist.",
+    "english_image_description": "An optical connector in multimode and singlemode versions, with zirconia ceramic ferrule and strain relief boots, designed for fast and easy assembly as well as top optical performance.",
     "german_product_tags": [
       "FC/PC Connector",
-      "Zirkonia Ferrule",
       "Multimode",
-      "FIS FC"
+      "FIS",
+      "Stecker"
     ],
     "english_product_tags": [
       "FC/PC Connector",
-      "Zirconia Ferrule",
       "Multimode",
-      "FIS FC"
+      "FIS",
+      "Connector"
     ]
   },
   "v1|377494682430|645799614328": {
-    "german_title": "ST Connector Multimode Stainless Zirconia Ferrule 126um, 127um, 140um, 230um",
-    "english_title": "ST Connector Multimode Stainless Zirconia Ferrule 126um, 127um, 140um, 230um",
-    "german_description": "Der FIS ST Style Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Die hochpräzise, vorab gerundete Zirkonia-Keramik-Steinzeugfassung poliert sich schnell und ist extrem langlebig. Auch verfügbar ist die hochleistungsfähige Stahllegierung Multimodus-Version. Der Connector-Design ermöglicht eine direkte Kabelklemmung am Kabel und Kevlar, wodurch das Kabel nicht vom Connector abgezogen wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 um bis 3,0 mm.",
-    "english_description": "The FIS ST Style Connector is specifically designed for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Also available is the high performing stainless alloy multimode version. The connector rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one piece design accommodates 900um through 3.0mm cable diameters.",
-    "german_short_description": "Multimode ST Connector mit Zirkonia- und Stahllegierungsfassungen für 126um, 127um, 140um, 230um. Neu.",
-    "english_short_description": "Multimode ST Connector with zirconia and stainless alloy ferrules for 126um, 127um, 140um, 230um. New.",
-    "german_meta_description": "FIS ST Connector Multimode mit Zirkonia- und Stahllegierungsfassungen für 126um, 127um, 140um, 230um. Neu. Ideal für Einzelmodus- und Multimodus-Anwendungen.",
-    "english_meta_description": "FIS ST Connector Multimode with zirconia and stainless alloy ferrules for 126um, 127um, 140um, 230um. New. Ideal for singlemode and multimode applications.",
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector's rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "ST Connector Multimode 3.0mm, 2.0mm und 900um Versionen. Einzelmodus und Multimodus verfügbar (Keramik Features).",
+    "english_short_description": "ST Connector Multimode 3.0mm, 2.0mm and 900um versions. Singlemode and Multimode available (Ceramic Features).",
+    "german_meta_description": "FIS ST Connector Multimode 3.0mm – Einzelmodus und Multimodus verfügbar. Hochpräzise Zirkonia-Keramik-Stein, langlebig und leistungsstark. Ideal für schnelle Montage und optimale optische Leistung.",
+    "english_meta_description": "FIS ST Connector Multimode 3.0mm – Singlemode and Multimode available. High precision zirconia ceramic ferrule, durable and high-performance. Ideal for fast assembly and optimal optical performance.",
     "german_focus_keywords": [
-      "ST Connector Multimode",
-      "Zirkonia Ferrule",
-      "Stahllegierungsfassung",
-      "FIS ST Connector"
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Connector",
+      "Multimode Connector",
+      "Optische Verbindung"
     ],
     "english_focus_keywords": [
-      "ST Connector Multimode",
-      "Zirconia Ferrule",
-      "Stainless Alloy Ferrule",
-      "FIS ST Connector"
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Connector",
+      "Multimode Connector",
+      "Optical Connector"
     ],
-    "german_primary_focus_keyword": "ST Connector Multimode",
-    "english_primary_focus_keyword": "ST Connector Multimode",
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
     "slug_components": [
       "fis",
       "st-connector",
       "multimode",
-      "126um",
-      "127um"
+      "3.0mm",
+      "mpn"
     ],
-    "german_image_description": "Ein ST Connector Multimode mit Zirkonia- und Stahllegierungsfassungen für 126um, 127um, 140um, 230um. Neu. Ideal für Einzelmodus- und Multimodus-Anwendungen.",
-    "english_image_description": "An ST Connector Multimode with zirconia and stainless alloy ferrules for 126um, 127um, 140um, 230um. New. Ideal for singlemode and multimode applications.",
+    "german_image_description": "Ein optischer Connector mit Zirkonia-Keramik-Stein und Stahllegierungsfassung, für Multimodus-Anwendungen geeignet",
+    "english_image_description": "An optical connector with zirconia ceramic ferrule and stainless alloy housing, suitable for multimode applications",
     "german_product_tags": [
+      "FIS",
       "ST Connector",
       "Multimode",
-      "Zirkonia Ferrule",
-      "Stahllegierungsfassung",
-      "FIS"
+      "3.0mm"
     ],
     "english_product_tags": [
+      "FIS",
       "ST Connector",
       "Multimode",
-      "Zirconia Ferrule",
-      "Stainless Alloy Ferrule",
-      "FIS"
+      "3.0mm"
+    ]
+  },
+  "v1|377494651062|645799670839": {
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis.",
+    "english_short_description": "This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
+    "german_meta_description": "FIS FC/PC Connector Multimode – nicht-optischer Trennstecker in Multimodus- und Singlemode-Versionen. Hochpräziser Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards.",
+    "english_meta_description": "FIS FC/PC Connector Multimode – nonoptical disconnect connector in multimode and singlemode versions. High precision zirconia ceramic ferrule, strain relief boots, FOTP, EIA/TIA, JIS industry standards.",
+    "german_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Stecker",
+      "Zirkonia Keramik Stecker",
+      "Strain Relief Boots"
+    ],
+    "english_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Connector",
+      "Zirconia Ceramic Ferrule",
+      "Strain Relief Boots"
+    ],
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
+    "slug_components": [
+      "fis",
+      "fcpc",
+      "connector",
+      "multimode",
+      "mpn"
+    ],
+    "german_image_description": "FIS FC/PC Connector Multimode, nicht-optischer Trennstecker, Multimodus und Singlemode, Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards",
+    "english_image_description": "FIS FC/PC Connector Multimode, nonoptical disconnect connector, multimode and singlemode, zirconia ceramic ferrule, strain relief boots, FOTP, EIA/TIA, JIS industry standards",
+    "german_product_tags": [
+      "FIS FC Stecker",
+      "FC/PC Connector",
+      "Multimode Stecker",
+      "Zirkonia Keramik"
+    ],
+    "english_product_tags": [
+      "FIS FC Connector",
+      "FC/PC Connector",
+      "Multimode Connector",
+      "Zirconia Ceramic"
+    ]
+  },
+  "v1|377494651062|645799670840": {
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis.",
+    "english_short_description": "This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
+    "german_meta_description": "FIS FC/PC Connector Multimode – Nicht-optischer Trennstecker in Multimodus- und Singlemode-Versionen. Hochpräziser Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards.",
+    "english_meta_description": "FIS FC/PC Connector Multimode – Non-Optical Disconnect Connector in Multimode and Singlemode Versions. High Precision Zirconia Ceramic Ferrule, Strain Relief Boots, FOTP, EIA/TIA, JIS Industry Standards.",
+    "german_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Stecker",
+      "Zirkonia Keramik Stecker",
+      "Strain Relief Boots"
+    ],
+    "english_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Connector",
+      "Zirconia Ceramic Ferrule",
+      "Strain Relief Boots"
+    ],
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
+    "slug_components": [
+      "fis",
+      "fcpc",
+      "connector",
+      "multimode",
+      "mpn"
+    ],
+    "german_image_description": "FIS FC/PC Connector Multimode, nicht-optischer Trennstecker, Multimodus und Singlemode, Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards",
+    "english_image_description": "FIS FC/PC Connector Multimode, non-optical disconnect connector, multimode and singlemode, zirconia ceramic ferrule, strain relief boots, FOTP, EIA/TIA, JIS industry standards",
+    "german_product_tags": [
+      "FIS FC Stecker",
+      "Zirkonia Keramik",
+      "Strain Relief Boots",
+      "Multimode Connector"
+    ],
+    "english_product_tags": [
+      "FIS FC Connector",
+      "Zirconia Ceramic",
+      "Strain Relief Boots",
+      "Multimode Connector"
+    ]
+  },
+  "v1|377494651062|645799670841": {
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis.",
+    "english_short_description": "This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
+    "german_meta_description": "FIS FC/PC Connector Multimode – nicht-optischer Trennstecker in Multimodus- und Singlemode-Versionen. Hochpräziser Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards.",
+    "english_meta_description": "FIS FC/PC Connector Multimode – nonoptical disconnect connector in multimode and singlemode versions. High precision zirconia ceramic ferrule, strain relief boots, FOTP, EIA/TIA, JIS industry standards.",
+    "german_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC/PC LWL-Stecker",
+      "Zirkonia-Keramik-Stecker",
+      "Strain-Relief-Boots"
+    ],
+    "english_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC/PC LWL Connector",
+      "Zirconia Ceramic Ferrule",
+      "Strain Relief Boots"
+    ],
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
+    "slug_components": [
+      "fis",
+      "fcpc",
+      "connector",
+      "multimode",
+      "mpn"
+    ],
+    "german_image_description": "FIS FC/PC Connector Multimode, nicht-optischer Trennstecker, Zirkonia-Keramik-Stecker, Strain-Relief-Boots, Multimodus und Singlemode-Versionen, FOTP, EIA/TIA, JIS-Industriestandards",
+    "english_image_description": "FIS FC/PC Connector Multimode, nonoptical disconnect connector, zirconia ceramic ferrule, strain relief boots, multimode and singlemode versions, FOTP, EIA/TIA, JIS industry standards",
+    "german_product_tags": [
+      "FIS FC/PC Connector",
+      "Multimode Connector",
+      "Zirkonia-Keramik",
+      "Strain Relief Boots"
+    ],
+    "english_product_tags": [
+      "FIS FC/PC Connector",
+      "Multimode Connector",
+      "Zirconia Ceramic",
+      "Strain Relief Boots"
+    ]
+  },
+  "v1|377494651062|645799670843": {
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis.",
+    "english_short_description": "This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
+    "german_meta_description": "FIS FC/PC Connector Multimode – nicht-optischer Trennstecker in Multimodus- und Singlemode-Versionen. Hochpräziser Zirkonia-Keramik-Stecker, Strain-Relief-Boots, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_meta_description": "FIS FC/PC Connector Multimode – nonoptical disconnect connector in multimode and singlemode versions. High precision zirconia ceramic ferrule, strain relief boots, meets FOTP, EIA/TIA, and JIS industry standards.",
+    "german_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC/PC LWL-Stecker",
+      "Zirkonia-Keramik-Stecker",
+      "Strain-Relief-Boots"
+    ],
+    "english_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC/PC LWL Connector",
+      "Zirconia Ceramic Ferrule",
+      "Strain Relief Boots"
+    ],
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
+    "slug_components": [
+      "fis",
+      "fcpc",
+      "connector",
+      "multimode",
+      "mpn"
+    ],
+    "german_image_description": "FIS FC/PC Connector Multimode, nicht-optischer Trennstecker, Zirkonia-Keramik-Stecker, Strain-Relief-Boots, entspricht FOTP, EIA/TIA und JIS-Industriestandards",
+    "english_image_description": "FIS FC/PC Connector Multimode, nonoptical disconnect connector, zirconia ceramic ferrule, strain relief boots, meets FOTP, EIA/TIA, and JIS industry standards",
+    "german_product_tags": [
+      "FIS FC/PC Connector",
+      "Multimode Connector",
+      "Zirkonia-Keramik",
+      "Strain Relief Boots"
+    ],
+    "english_product_tags": [
+      "FIS FC/PC Connector",
+      "Multimode Connector",
+      "Zirconia Ceramic",
+      "Strain Relief Boots"
+    ]
+  },
+  "v1|377494651062|645799670842": {
+    "german_title": "FC/PC Connector Multimode",
+    "english_title": "FC/PC Connector Multimode",
+    "german_description": "Der FIS FC-Stecker ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung erfordert. Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis. Merkmale: Zirkonia-Keramik-Stecker, nicht-optischer Trennstecker, Strain-Relief-Boots in 3,0 mm und 900 µm, entspricht FOTP, EIA/TIA und JIS-Industriestandards.",
+    "english_description": "The FIS FC Connector is specifically designed for the installer who demands fast, easy assembly, and top optical performance. This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost. Features: Zirconia Ceramic Pre-Radius or Stainless Alloy Ferrule, Non-Optical Disconnect Connector, Strain relief boots available in 3.0mm and 900um, meets FOTP, EIA/TIA, & JIS Industry Standards.",
+    "german_short_description": "Dieser nicht-optische Trennstecker ist in Multimodus- und Singlemode-Versionen erhältlich. Der hochpräzise, vorausgeformte Zirkonia-Keramik-Stecker poliert sich schnell. Der FIS FC ist ein hochwertiger Stecker zu günstigem Preis.",
+    "english_short_description": "This nonoptical disconnect connector is available in multimode and singlemode versions. The high precision, preradius zirconia ceramic ferrule polishes quickly. The FIS FC is a superior quality connector at a low cost.",
+    "german_meta_description": "FIS FC/PC Connector Multimode – Nicht-optischer Trennstecker in Multimodus- und Singlemode-Versionen. Hochpräziser Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards.",
+    "english_meta_description": "FIS FC/PC Connector Multimode – Non-Optical Disconnect Connector in Multimode and Singlemode Versions. High Precision Zirconia Ceramic Ferrule, Strain Relief Boots, FOTP, EIA/TIA, JIS Industry Standards.",
+    "german_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Stecker",
+      "Zirkonia Keramik Stecker",
+      "Nicht-optischer Trennstecker"
+    ],
+    "english_focus_keywords": [
+      "FC/PC Connector Multimode",
+      "FIS FC Connector",
+      "Zirconia Ceramic Connector",
+      "Non-Optical Disconnect Connector"
+    ],
+    "german_primary_focus_keyword": "FC/PC Connector Multimode",
+    "english_primary_focus_keyword": "FC/PC Connector Multimode",
+    "slug_components": [
+      "fis",
+      "fcpc",
+      "connector",
+      "multimode",
+      "mpn"
+    ],
+    "german_image_description": "FIS FC/PC Connector Multimode, nicht-optischer Trennstecker, Multimodus und Singlemode, Zirkonia-Keramik-Stecker, Strain-Relief-Boots, FOTP, EIA/TIA, JIS-Industriestandards",
+    "english_image_description": "FIS FC/PC Connector Multimode, non-optical disconnect connector, multimode and singlemode, zirconia ceramic ferrule, strain relief boots, FOTP, EIA/TIA, JIS industry standards",
+    "german_product_tags": [
+      "FIS FC Stecker",
+      "FC/PC Connector",
+      "Multimode Stecker",
+      "Zirkonia Keramik"
+    ],
+    "english_product_tags": [
+      "FIS FC Connector",
+      "FC/PC Connector",
+      "Multimode Connector",
+      "Zirconia Ceramic"
+    ]
+  },
+  "v1|377494682430|645800639897": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, einstückiger Aufbau für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, one-piece design for cable diameters from 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, einstückiger Aufbau für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, one-piece design for cable diameters from 900 µm to 3.0 mm.",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|377494682430|645800639898": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen, mit hochpräzisem Zirkonia-Keramik-Stein und leistungsfähiger Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications, with high precision zirconia ceramic ferrule and high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|377494682430|645800639899": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector",
+      "Multimode-Stecker",
+      "Kabelverbindung"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector",
+      "Multimode Connector",
+      "Cable Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode-3-0mm",
+      "st-style",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST Style Connector für Multimode-Anwendungen, hochpräziser Zirkonia-Keramik-Stein, Kabeldurchmesser bis 3,0 mm, leistungsfähige Stahllegierungsversion",
+    "english_image_description": "FIS ST Style Connector for multimode applications, high precision zirconia ceramic ferrule, cable diameter up to 3.0 mm, high-performance stainless alloy version",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "Kabelverbindung"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "Cable Connector"
+    ]
+  },
+  "v1|377494682430|645800639900": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen, hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications, high precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|377494682430|645800639901": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen, hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications, high precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|377494682430|645800639902": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion. Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version. Cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST-Style-Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion. Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version. Cable diameter 900 µm to 3.0 mm.",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|377494682430|645800639903": {
+    "german_title": "ST Connector Multimode 3.0mm",
+    "english_title": "ST Connector Multimode 3.0mm",
+    "german_description": "Der FIS ST-Style-Connector ist speziell für den Installateur konzipiert, der schnelle und einfache Montage sowie topoptische Leistung bei geringen Kosten erfordert. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig. Zudem ist eine hochleistungsfähige Stahllegierungsversion für Multimodus verfügbar. Der Connector-Design ermöglicht eine direkte Krimping auf Kabel und Kevlar, wodurch das Kabelabziehen vom Connector verhindert wird. Der einstückige Aufbau eignet sich für Kabeldurchmesser von 900 µm bis 3,0 mm.",
+    "english_description": "The FIS ST Style Connector is designed specifically for the installer who demands fast and easy assembly and top optical performance at a low cost. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable. Additionally, a high-performance stainless alloy multimode version is available. The connector’s rear design crimps directly on the cable and Kevlar, eliminating cable pull-away from the connector. The one-piece design accommodates 900um through 3.0mm cable diameters.",
+    "german_short_description": "Für Multimode-Anwendungen steht zusätzlich eine leistungsfähige Edelstahl-Ferrule zur Verfügung. Er ist für Einzelmodus- und Multimodus-Anwendungen verfügbar. Der hochpräzise, vorab gerundete Zirkonia-Keramik-Stein wird schnell poliert und ist extrem langlebig.",
+    "english_short_description": "A high-performance stainless ferrule is available for multimode applications. It is available for both singlemode and multimode applications. The high precision pre-radius zirconia ceramic ferrule polishes quickly and is extremely durable.",
+    "german_meta_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen. Hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm.",
+    "english_meta_description": "FIS ST Style Connector for singlemode and multimode applications. High precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm.",
+    "german_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "english_focus_keywords": [
+      "ST Connector Multimode 3.0mm",
+      "FIS ST Style Connector"
+    ],
+    "german_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "english_primary_focus_keyword": "ST Connector Multimode 3.0mm",
+    "slug_components": [
+      "fis",
+      "st-connector",
+      "multimode",
+      "3.0mm",
+      "$mpn"
+    ],
+    "german_image_description": "FIS ST-Style-Connector für Einzelmodus- und Multimodus-Anwendungen, hochpräziser Zirkonia-Keramik-Stein, leistungsfähige Stahllegierungsversion, Kabeldurchmesser 900 µm bis 3,0 mm",
+    "english_image_description": "FIS ST Style Connector for singlemode and multimode applications, high precision zirconia ceramic ferrule, high-performance stainless alloy version, cable diameter 900 µm to 3.0 mm",
+    "german_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ],
+    "english_product_tags": [
+      "FIS",
+      "ST Connector",
+      "Multimode",
+      "3.0mm"
+    ]
+  },
+  "v1|387356705350|0": {
+    "german_title": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+    "english_title": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+    "german_description": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K Sie erhalten eine",
+    "english_description": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K You receive a",
+    "german_short_description": "LABOD ELECTRONIC. TSR 250V-15/30A-4Q K",
+    "english_short_description": "LABOD ELECTRONIC. TSR 250V-15/30A-4Q K",
+    "german_meta_description": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K Gebraucht. Produktinformationen und technische Daten.",
+    "english_meta_description": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K Used. Product information and technical data.",
+    "german_focus_keywords": [
+      "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+      "TSR 250V-15/30A-4Q K"
+    ],
+    "english_focus_keywords": [
+      "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+      "TSR 250V-15/30A-4Q K"
+    ],
+    "german_primary_focus_keyword": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+    "english_primary_focus_keyword": "LABOD ELECTRONIC TSR 250V-15/30A-4Q K",
+    "slug_components": [
+      "labod",
+      "electronic",
+      "tsr",
+      "250v-15-30a-4q",
+      "k"
+    ],
+    "german_image_description": "Ein technisches Bauteil mit einer Schutzschale und Kabelanschlüssen, in einer Werkstatt montiert.",
+    "english_image_description": "A technical component with a housing and cable connections, mounted in a workshop.",
+    "german_product_tags": [
+      "LABOD ELECTRONIC",
+      "TSR 250V-15/30A-4Q K",
+      "Gebraucht"
+    ],
+    "english_product_tags": [
+      "LABOD ELECTRONIC",
+      "TSR 250V-15/30A-4Q K",
+      "Used"
+    ]
+  },
+  "v1|377407787143|0": {
+    "german_title": "Axis Q6135-LE PTZ 50HZ Outdoor IP/Netzwerk Dome Kamera 50fps P/N 01958-002 2MP",
+    "english_title": "Axis Q6135-LE PTZ 50HZ Outdoor IP/Network Dome Camera 50fps P/N 01958-002 2MP",
+    "german_description": "AXIS Q6135-LE PTZ Outdoor IP Kamera 2MP 50fps IR bis 250m 32xZoom NEU. Neu, nie verwendet, nie installiert. In Originalverpackung mit allen Accessoires. Die Verpackung war leicht beschädigt, daher wurde die Verpackung geöffnet, um den Inhalt zu prüfen (daher wurde Axis SEALED). MSRP > € 3200. Enthalten: AXIS Q6135-LE 50Hz PTZ Kamera (P/N:01958-002 EU Modell) AXIS T8154 60 W SFP Midspan Powercord für T8154 (EU) AXIS TQ6803 Hard-Coated Clear Dome RJ45 Connector Push Pull Plug Installationsanleitung Benutzerhandbuch Painting Boards OAK (Owner Authentication Key) PTZ Outdoor Kamera 2MP 50fps, IR, 32x, Tag/Nacht, Zoomobjektiv, erweiterte Analyse und Auto Track Ring, Revolving IR LEDs bis zu 250 Meter Reichweite",
+    "english_description": "AXIS Q6135-LE PTZ Outdoor IP Camera 2MP 50fps IR up to 250m 32xZoom NEW. New, never used, never installed. In original box with all accessories included. The box was slightly damaged, so I opened the box to verify the contents (therefore it was Axis SEALED). MSRP > € 3200. Included: AXIS Q6135-LE 50Hz PTZ Camera (P/N:01958-002 EU Model) AXIS T8154 60 W SFP Midspan Powercord for T8154 (EU) AXIS TQ6803 Hard-Coated Clear Dome RJ45 Connector Push Pull Plug Installation Manual User Manual Painting Boards OAK (Owner Authentication Key) PTZ Outdoor Camera 2MP 50fps, IR, 32x, day/night, zoom lens, advanced analysis and auto track ring, Revolving IR LEDs up to 250 meter range",
+    "german_short_description": "Diese Kamera verfügt über OptimizedIR bis zu 250 m (820 ft) oder mehr je nach Szene und Lightfinder 2.0 für klare, scharfe Bilder auch bei schwierigen Lichtverhältnissen. Die Privatsphäremaske mit Mosaik ermöglicht es, ganze Bereiche der Szene zu pixeln.",
+    "english_short_description": "It features OptimizedIR up to 250 m (820 ft) or more depending on the scene and Lightfinder 2.0 for clear, sharp images even in challenging light. Privacy masking with mosaic lets you pixelate whole areas of the scene.",
+    "german_meta_description": "AXIS Q6135-LE PTZ Outdoor IP Kamera 2MP 50fps IR bis 250m 32xZoom NEU. In Originalverpackung mit allen Accessoires. MSRP > € 3200. Enthalten: AXIS Q6135-LE 50Hz PTZ Kamera (P/N:01958-002 EU Modell)",
+    "english_meta_description": "AXIS Q6135-LE PTZ Outdoor IP Camera 2MP 50fps IR up to 250m 32xZoom NEW. In original box with all accessories included. MSRP > € 3200. Included: AXIS Q6135-LE 50Hz PTZ Camera (P/N:01958-002 EU Model)",
+    "german_focus_keywords": [
+      "Axis Q6135-LE",
+      "PTZ Outdoor Kamera",
+      "2MP IP Kamera",
+      "50fps IR Kamera"
+    ],
+    "english_focus_keywords": [
+      "Axis Q6135-LE",
+      "PTZ Outdoor Camera",
+      "2MP IP Camera",
+      "50fps IR Camera"
+    ],
+    "german_primary_focus_keyword": "Axis Q6135-LE",
+    "english_primary_focus_keyword": "Axis Q6135-LE",
+    "slug_components": [
+      "axis",
+      "q6135-le",
+      "ptz-outdoor-kamera",
+      "2mp",
+      "01958-002"
+    ],
+    "german_image_description": "Eine PTZ Outdoor Kamera mit IR-Beleuchtung und Zoomfunktion, in Originalverpackung mit Accessoires",
+    "english_image_description": "A PTZ Outdoor Camera with IR lighting and zoom function, in original packaging with accessories",
+    "german_product_tags": [
+      "Axis",
+      "Q6135-LE",
+      "PTZ Kamera",
+      "IP Kamera",
+      "2MP",
+      "50fps",
+      "IR Kamera"
+    ],
+    "english_product_tags": [
+      "Axis",
+      "Q6135-LE",
+      "PTZ Camera",
+      "IP Camera",
+      "2MP",
+      "50fps",
+      "IR Camera"
     ]
   }
 }

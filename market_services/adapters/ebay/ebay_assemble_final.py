@@ -97,6 +97,8 @@ def build_slug(components: list[str]) -> str:
     for component in components:
         parts.extend(slugify_component(component).split("-"))
 
+    parts = list(filter(lambda x: x!="mpn", parts))
+
     parts = dict.fromkeys(parts)
 
     return "-".join(list(parts)[:8])

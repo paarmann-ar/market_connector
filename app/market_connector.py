@@ -41,131 +41,7 @@ search_in_ebay_models = [
     #     price_anpassen=1.4,
     #     target_category_name_in_woocommerce="Sonstige",
     # ),
-    FetchConfigModel(
-        legacy_item_id=377494651062,
-        legacy_variation_id=645799895114,
-        marketplace="EBAY_DE",
-        marketplace_id="EBAY_DE",
-        deliveryCountry="DE",
-        item_to_fetch=1,
-        price_anpassen=1,
-        sale_price_anpassen=0.8,
-        is_use_image_service=False
-    ),
-    # FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895116,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895118,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895120,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895121,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895119,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895120,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895118,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895116,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),FetchConfigModel(
-    #     legacy_item_id=377494651062,
-    #     legacy_variation_id=645799895114,
-    #     marketplace="EBAY_DE",
-    #     marketplace_id="EBAY_DE",
-    #     deliveryCountry="DE",
-    #     item_to_fetch=1,
-    #     price_anpassen=1,
-    #     sale_price_anpassen=0.8,
-    #     target_category_name_in_woocommerce="elektronik",
-    #     is_use_image_service=False
-    # ),
 
-
-    FetchConfigModel(
-        legacy_item_id=377494682430,
-        legacy_variation_id=645799614328,
-        marketplace="EBAY_DE",
-        marketplace_id="EBAY_DE",
-        deliveryCountry="DE",
-        item_to_fetch=1,
-        price_anpassen=1,
-        sale_price_anpassen=0.8,
-        target_category_name_in_woocommerce="elektronik",
-        is_use_image_service=False
-    )
     # 168430948054 q63
     #  SearchInEbayModel(
     #      legacy_item_id=318647115657,
@@ -187,6 +63,163 @@ search_in_ebay_models = [
     #      price_anpassen=1.5,
     #      target_category_name_in_woocommerce="Sonstige",
     #  )
+    
+        FetchConfigModel(
+        legacy_item_id=377407787143,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=1,
+        sale_price_anpassen=0.93,
+        is_use_image_service=False,
+        target_category_name_in_woocommerce="Sonstige"
+        
+    ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494651062,
+    #     legacy_variation_id=645799670839,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494651062,
+    #     legacy_variation_id=645799670840,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494651062,
+    #     legacy_variation_id=645799670841,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494651062,
+    #     legacy_variation_id=645799670843,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494651062,
+    #     legacy_variation_id=645799670842,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639897,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639898,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639899,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639900,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639901,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639902,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # ),
+    # FetchConfigModel(
+    #     legacy_item_id=377494682430,
+    #     legacy_variation_id=645800639903,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.8,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige"
+    # )
 ]
 
 # --
@@ -194,12 +227,12 @@ search_in_ebay_models = [
 # --
 
 
-def reduce_image_size():
-    SetupMarketConnectorController().image_provider.image_processing_pipeline.reduce_image_size(ImageDirectoryModel())
+def reduce_image_size(image_directory_model:ImageDirectoryModel):
+    SetupMarketConnectorController().image_provider.image_processing_pipeline.reduce_image_size(image_directory_model)
 
 
-def white_backgroung():
-    SetupMarketConnectorController().image_provider.image_processing_pipeline.white_backgroung(ImageDirectoryModel())
+def white_backgroung(image_directory_model:ImageDirectoryModel):
+    SetupMarketConnectorController().image_provider.image_processing_pipeline.white_backgroung(image_directory_model)
 
 
 # --

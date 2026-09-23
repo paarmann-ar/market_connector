@@ -4,6 +4,8 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from apis.seo_api.models.rank_math_model import RankMathModel
 from apis.woocommerce_api.models.woocommerce_brand_model import WoocommerceBrandModel
+from apis.woocommerce_api.models.woocommerce_google_product_model import WoocommerceGoogleProductModel
+
 from apis.woocommerce_api.models.woocommerce_category_model import (
     WoocommerceCategoryModel,
 )
@@ -51,11 +53,12 @@ class WoocommerceProductModel(BaseModel):
     images: list[WoocommerceImageModel] = Field(default_factory=list)
     image_description: Optional[str] = ""
     default_attributes: list[str] = Field(default_factory=list)
-    meta_data: Optional[list[dict]] = None
+    meta_data: Optional[list[dict]] = Field(default_factory=list)
     attributes: list[WoocommerceProductAttributeModel] = Field(default_factory=list)
     variants: list[object] = (None,)
     type: Optional[str] = "simple"
 
+    
     #  --
     #  ...
     #  --
