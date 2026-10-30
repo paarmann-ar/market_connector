@@ -34,9 +34,7 @@ class MatterhornModaProduct(BaseMatterhornModaApi):
     #  ...
     #  --
 
-    def get_products_matterhorn_moda_models(
-        self, fetch_config_model: FetchConfigModel, page=1
-    ) -> list[ProductMatterhornModaModel]:
+    def get_products_matterhorn_moda_models(self, fetch_config_model: FetchConfigModel, page=1) -> list[ProductMatterhornModaModel]:
 
         try:
             # if self.product_matterhorn_moda_models_cache:

@@ -30,7 +30,7 @@ def assemble_final(
 
     english_description = f"{product_output_model.english_description.strip()}<p>{product_model.size_table_html}</p>"
 
-    focus_keywords = product_output_model.german_focus_keywords
+    focus_keywords = list(product_output_model.german_focus_keywords)
     focus_keywords.extend(product_output_model.english_focus_keywords)
     focus_keywords = list(filter(lambda x: x, focus_keywords))
 

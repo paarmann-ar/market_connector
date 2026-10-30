@@ -1,11 +1,10 @@
-
 from apis.models.fetch_config_model import FetchConfigModel
 from app.controller.market_connector_controller import MarketConnectorController
 from app.controller.setup_market_connector_controller import SetupMarketConnectorController
 from market_services.image_services.models.image_directory_model import ImageDirectoryModel
 
 # --
-# ...
+# ...https://paarmann-tech.de/labod-electronic-tsr-250v-15-30a-4q-k/
 # --
 
 # product: RM1XA1011 - TÉLÉMÉCANIQUE RM1XA1011 Zubehör Neu
@@ -17,13 +16,7 @@ from market_services.image_services.models.image_directory_model import ImageDir
 #     item_to_fetch=10,
 # )
 fetch_matterhorn_moda_config_models = [
-    FetchConfigModel(
-        price_anpassen=2.3,
-        sale_price_anpassen=2,
-        is_remove_description_html=False,
-        attribute_name="Size",
-        item_to_fetch=100
-    )
+    FetchConfigModel(price_anpassen=2.3, sale_price_anpassen=2, is_remove_description_html=False, attribute_name="Size", item_to_fetch=100)
 ]
 
 search_in_zalando_lounge_models = [FetchConfigModel(campaign_id="ZZO4FTR", sku="ZUN243D04X-K23")]
@@ -41,7 +34,6 @@ search_in_ebay_models = [
     #     price_anpassen=1.4,
     #     target_category_name_in_woocommerce="Sonstige",
     # ),
-
     # 168430948054 q63
     #  SearchInEbayModel(
     #      legacy_item_id=318647115657,
@@ -63,19 +55,39 @@ search_in_ebay_models = [
     #      price_anpassen=1.5,
     #      target_category_name_in_woocommerce="Sonstige",
     #  )
-    
-        FetchConfigModel(
-        legacy_item_id=377407787143,
+    # FetchConfigModel(
+    #     legacy_item_id=377407787143,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=1,
+    #     sale_price_anpassen=0.93,
+    #     is_use_image_service=False,
+    #     target_category_name_in_woocommerce="Sonstige",
+    # ),
+    FetchConfigModel(
+        legacy_item_id=387356705350,
         marketplace="EBAY_DE",
         marketplace_id="EBAY_DE",
         deliveryCountry="DE",
         item_to_fetch=1,
-        price_anpassen=1,
+        price_anpassen=4.5,
         sale_price_anpassen=0.93,
-        is_use_image_service=False,
-        target_category_name_in_woocommerce="Sonstige"
-        
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="Elektronik",
     ),
+    # FetchConfigModel(
+    #     legacy_item_id=318647115657,
+    #     marketplace="EBAY_US",
+    #     marketplace_id="EBAY_US",
+    #     deliveryCountry="US",
+    #     item_to_fetch=1,
+    #     price_anpassen=2,
+    #     sale_price_anpassen=0.92,
+    #     is_use_image_service=True,
+    #     target_category_name_in_woocommerce="Sonstige",
+    # ),
     # FetchConfigModel(
     #     legacy_item_id=377494651062,
     #     legacy_variation_id=645799670839,
@@ -227,11 +239,11 @@ search_in_ebay_models = [
 # --
 
 
-def reduce_image_size(image_directory_model:ImageDirectoryModel):
+def reduce_image_size(image_directory_model: ImageDirectoryModel):
     SetupMarketConnectorController().image_provider.image_processing_pipeline.reduce_image_size(image_directory_model)
 
 
-def white_backgroung(image_directory_model:ImageDirectoryModel):
+def white_backgroung(image_directory_model: ImageDirectoryModel):
     SetupMarketConnectorController().image_provider.image_processing_pipeline.white_backgroung(image_directory_model)
 
 
@@ -273,5 +285,11 @@ def sync_matterhorn_moda_to_woocommerce():
         MarketConnectorController.sync_matterhorn_moda_to_woocommerce(fetch_config_model=fetch_matterhorn_moda_config_model)
 
 
+def sync_woocomerce_to_idealo():
+    for search_in_woocommerce_model in search_in_woocommerce_models:
+        MarketConnectorController.sync_woocommerce_to_idealo(fetch_config_model=search_in_woocommerce_model)
+
+
 # sync_matterhorn_moda_to_woocommerce()
-sync_ebay_to_woocommerce()
+# sync_ebay_to_woocommerce()
+sync_woocomerce_to_idealo()

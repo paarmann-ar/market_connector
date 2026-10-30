@@ -167,12 +167,11 @@ class WoocommerceApi(BaseWoocommerceApi):
             # ATTRIBUTES
             # ------------------------------------------
 
-            woocommerce_attribute = WoocommerceAttribute()
-
             for product_attribute in woocommerce_product_model.attributes:
                 # --------------------------------------
                 # GLOBAL ATTRIBUTE
                 # --------------------------------------
+                woocommerce_attribute = WoocommerceAttribute()
 
                 attribute = woocommerce_attribute.resolve_or_upload(WoocommerceAttributeModel(name=product_attribute.name))
 
@@ -379,7 +378,7 @@ class WoocommerceApi(BaseWoocommerceApi):
     def fetch_from_woocommerce(self, fetch_config_model: FetchConfigModel) -> WoocommerceProductModel:
 
         woocommerce_product_models = self.woocommerce_product.get_product_by_search_in_woocommerce_model(
-            search_in_woocommerce_model=(fetch_config_model)
+            fetch_config_model=fetch_config_model
         )
 
         return woocommerce_product_models

@@ -13,10 +13,23 @@ from apis.woocommerce_api.models.woocommerce_image_model import WoocommerceImage
 from apis.woocommerce_api.models.woocommerce_tag_model import WoocommerceTagModel
 from apis.woocommerce_api.models.woocommerce_attribute_model import WoocommerceAttributeModel
 from apis.woocommerce_api.models.woocommerce_attribute_model import WoocommerceAttributeTermModel, WoocommerceProductAttributeModel
+from enum import Enum
 
 # --
 # ...
 # --
+class Condition(str, Enum):
+    NEW = "NEW"
+    AS_NEW = "AS_NEW"
+    REFURBISHED = "REFURBISHED"
+    USED = "USED"
+
+
+class ConditionValue(str, Enum):
+    EXCELLENT = "EXCELLENT"
+    VERY_GOOD = "VERY_GOOD"
+    GOOD = "GOOD"
+    ACCEPTABLE = "ACCEPTABLE"
 
 
 class WoocommerceProductModel(BaseModel):
@@ -45,7 +58,7 @@ class WoocommerceProductModel(BaseModel):
     shipping_taxable: Optional[bool] = True
     shipping_class: Optional[str] = ""
     shipping_class_id: Optional[int] = 0
-    
+
     categories: list[WoocommerceCategoryModel] = Field(default_factory=list)
 
     brands: list[WoocommerceBrandModel] = Field(default_factory=list)
@@ -53,18 +66,38 @@ class WoocommerceProductModel(BaseModel):
     images: list[WoocommerceImageModel] = Field(default_factory=list)
     image_description: Optional[str] = ""
     default_attributes: list[str] = Field(default_factory=list)
-    meta_data: Optional[list[dict]] = Field(default_factory=list)
+
+    condition: Condition = Condition.NEW
+    condition_value: ConditionValue = ConditionValue.EXCELLENT
+    meta_data: list[dict] = Field(default_factory=list)
+
     attributes: list[WoocommerceProductAttributeModel] = Field(default_factory=list)
     variants: list[object] = (None,)
     type: Optional[str] = "simple"
 
-    
     #  --
     #  ...
     #  --
 
     def to_dict(self):
-        return self.model_dump(exclude_none=True)
+        data = self.model_dump(
+            exclude_none=True,
+            mode="json",
+        )
+
+        data["meta_data"] = [
+            *data.get("meta_data", []),
+            {
+                "key": "condition",
+                "value": self.condition.value,
+            },
+            {
+                "key": "condition_value",
+                "value": self.condition_value.value,
+            },
+        ]
+
+        return data
 
     #  --
     #  ...
@@ -79,6 +112,24 @@ class WoocommerceProductModel(BaseModel):
 
     @classmethod
     def from_api(cls, data):
+        meta_data = data.get("meta_data", [])
+
+        condition = Condition.NEW
+        condition_value = ConditionValue.EXCELLENT
+
+        for meta in meta_data:
+            if meta.get("key") == "condition":
+                try:
+                    condition = Condition(meta.get("value"))
+                except ValueError:
+                    condition = Condition.NEW
+
+            elif meta.get("key") == "condition_value":
+                try:
+                    condition_value = ConditionValue(meta.get("value"))
+                except ValueError:
+                    condition_value = ConditionValue.EXCELLENT
+
         return cls(
             id=data["id"],
             name=data["name"],
@@ -107,4 +158,8 @@ class WoocommerceProductModel(BaseModel):
             default_attributes=data["default_attributes"],
             stock_status=data["stock_status"],
             type=data["type"],
+
+            condition=condition,
+            condition_value=condition_value,
+            meta_data=meta_data,
         )

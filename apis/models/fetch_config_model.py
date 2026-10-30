@@ -30,8 +30,8 @@ class FetchConfigModel:
     name: Optional[str] = None
     sku: Optional[str] = None
     campaign_id: Optional[str] = None
-    product_type : Optional[str] = None
-    is_use_image_service : Optional[bool] = True
+    product_type: Optional[str] = None
+    is_use_image_service: Optional[bool] = True
 
     #  --
     #  ...

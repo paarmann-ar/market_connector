@@ -18,9 +18,7 @@ class MetaDataServices:
     #  ...
     #  --
 
-    def create_metadata(
-        self, product_input_metadata_model: ProductInputMetadataModel, assemble_final, product_model: object
-    ) -> ProductOutputMetadataModel:
+    def create_metadata(self, product_input_metadata_model: ProductInputMetadataModel, assemble_final) -> ProductOutputMetadataModel:
 
         inputs = product_input_metadata_model.to_dict()
         input_message_model = InputMessageModel(inputs=inputs)
@@ -37,7 +35,7 @@ class MetaDataServices:
         #  -----------------------------------------
 
         product_output_metadata_model = assemble_final(
-            product_output_model=product_output_model, product_input=product_input_metadata_model
+            product_output_model=product_output_model, product_input_metadata_model=product_input_metadata_model
         )
         #  -----------------------------------------
         #  Image SEO

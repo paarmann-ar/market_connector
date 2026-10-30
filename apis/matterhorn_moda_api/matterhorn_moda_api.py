@@ -33,9 +33,7 @@ class MatterhornModaApi(BaseMatterhornModaApi):
     #  ...
     #  --
 
-    def pipeline_fetch_products_from_matterhorn_moda(
-        self, fetch_config_model: FetchConfigModel
-    ) -> list[ProductMatterhornModaModel]:
+    def pipeline_fetch_products_from_matterhorn_moda(self, fetch_config_model: FetchConfigModel) -> list[ProductMatterhornModaModel]:
 
         page = 1
         fetched_product = 0

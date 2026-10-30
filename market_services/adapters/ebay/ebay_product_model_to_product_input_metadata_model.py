@@ -11,7 +11,7 @@ from toolboxs.html import Html
 
 
 class EbayProductModelToProductInputMetadataModel:
-    def adapter(self, product_ebay_model: ProductEbayModel, prompt_filename) -> ProductInputMetadataModel:
+    def adapter(self, product_ebay_model: ProductEbayModel, prompt_filename, technical_attributes) -> ProductInputMetadataModel:
         return ProductInputMetadataModel(
             cache_id=product_ebay_model.itemId,
             title=product_ebay_model.title,
@@ -22,5 +22,6 @@ class EbayProductModelToProductInputMetadataModel:
             brand=product_ebay_model.brand,
             condition=product_ebay_model.condition,
             mpn=product_ebay_model.mpn,
+            technical_attributes=technical_attributes,
             prompt_filename=prompt_filename,
         )

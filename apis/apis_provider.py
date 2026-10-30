@@ -3,6 +3,7 @@ from apis.matterhorn_moda_api.matterhorn_moda_api import MatterhornModaApi
 from apis.woocommerce_api.woocommerce_api import WoocommerceApi
 from apis.wordpress_api.wordpress_api import WordpressApi
 from apis.zalando_lounge_api.zalando_lounge_api import ZalandoLoungeApi
+from apis.idealo_api.idealo_api import IdealoApi
 from toolboxs.decorators import singleton
 
 # --
@@ -19,3 +20,4 @@ class ApisProvider:
         self.woocommerce_api = WoocommerceApi()
         self.zalando_lounge_api = ZalandoLoungeApi()
         self.matterhorn_moda_api = MatterhornModaApi()
+        self.idealo_api = IdealoApi()

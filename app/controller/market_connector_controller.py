@@ -14,6 +14,11 @@ from market_services.adapters.woocommerce.woocommerce_to_ebay_inventory_adapter 
 from market_services.image_services.image_processing_pipeline.image_processing_pipeline import (
     ImageProcessingPipeline,
 )
+from apis.idealo_api.models.idealo_offer_model import IdealoOfferModel
+from market_services.adapters.idealo.woocommerce_to_idealo_offer_adapter import WoocommerceToIdealoOfferAdapter
+#  --
+#  ...
+#  --
 
 
 class MarketConnectorController:
@@ -56,9 +61,9 @@ class MarketConnectorController:
             ImageProcessingPipeline().image_convertor_pipeline(woocommerce_product_models=woocommerce_product_models)
 
         return ApisProvider().woocommerce_api.upload_product_model_to_woocommerce(
-                    woocommerce_product_models=woocommerce_product_models,
-                    target_woocommerce_category_name= fetch_config_model.target_category_name_in_woocommerce,
-                )
+            woocommerce_product_models=woocommerce_product_models,
+            target_woocommerce_category_name=fetch_config_model.target_category_name_in_woocommerce,
+        )
 
     #  --
     #  ...
@@ -109,7 +114,7 @@ class MarketConnectorController:
 
         woocommerce_api = ApisProvider().woocommerce_api
 
-        product_woocommerce_models = woocommerce_api.fetch_from_woocommerce(search_in_woocommerce_model=fetch_config_model)
+        product_woocommerce_models = woocommerce_api.fetch_from_woocommerce(fetch_config_model=fetch_config_model)
 
         for product_woocommerce_model in product_woocommerce_models:
             woocommerce_to_ebay_inventory_adapter = WoocommerceToEbayInventoryAdapter(woocommerce_product=product_woocommerce_model).adapt()
@@ -173,3 +178,42 @@ class MarketConnectorController:
             woocommerce_product_models=woocommerce_product_models,
             target_woocommerce_category_name=fetch_config_model.target_category_name_in_woocommerce,
         )
+
+    #  --
+    #  ...
+    #  --
+
+    @staticmethod
+    def sync_woocommerce_to_idealo(
+        fetch_config_model: FetchConfigModel,
+    ) -> bool:
+        """
+        Fetch products from woocommerce and create offers on idealo.
+        """
+
+        woocommerce_api = ApisProvider().woocommerce_api
+        idealo_api = ApisProvider().idealo_api
+
+        product_woocommerce_models = woocommerce_api.fetch_from_woocommerce(fetch_config_model=fetch_config_model)
+
+        idealo_offer_models: list[IdealoOfferModel] = []
+        adapter = WoocommerceToIdealoOfferAdapter()
+
+        for product_woocommerce_model in product_woocommerce_models:
+            idealo_offer_model = adapter.from_woocommerce(
+                woocommerce_product_model=product_woocommerce_model,
+                delivery="7-28 Werktage",
+                delivery_costs={"DHL": "0.00"},
+                payment_costs={"CASH_IN_ADVANCE": "0.00", "PAYPAL": "0.00"},
+                free_return_days="14",
+            )
+
+            idealo_offer_models.append(idealo_offer_model)
+
+
+        idealo_offer_models = list(filter(lambda x: x.sku == "pt-WEKONSBDX9", idealo_offer_models))
+        # idealo_api.update_offer_on_idealo(idealo_offer_model)
+        # idealo_api.get_offer_on_idealo(idealo_offer_model)
+
+        for idealo_offer_model in idealo_offer_models:
+            idealo_api.pipeline_create_offer_on_idealo(idealo_offer_model=idealo_offer_model)

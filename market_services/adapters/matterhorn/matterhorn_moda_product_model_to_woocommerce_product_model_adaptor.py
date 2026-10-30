@@ -27,13 +27,35 @@ from apis.woocommerce_api.models.woocommerce_attribute_model import (
     WoocommerceAttributeTermModel,
     WoocommerceProductAttributeModel,
 )
-
+from market_services.core.base import Base
+from market_services.config.market_services_config import MarketServicesConfig
 # --
 # ...
 # --
 
 
-class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
+class MatterhornModaProductModelToWoocommerceProductModelAdaptor(Base):
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+
+        self.prompt_filename = self.config_dictionary.get(
+            "matterhorn_moda_product_model_to_woocommerce_product_model_adaptor_prompt_filename"
+        )
+
+        self.prompt_on_screen(f"{__class__.__name__}, {id(self)}")
+
+    #  --
+    #  ...
+    #  --
+
+    @classmethod
+    def get_config_dictionary(cls):
+        return MarketServicesConfig().get_dictionary()
+
+    #  --
+    #  ...
+    #  --
+
     def adapter(
         self, product_matterhorn_moda_model: ProductMatterhornModaModel, fetch_config_model: FetchConfigModel
     ) -> WoocommerceProductModel:
@@ -42,7 +64,7 @@ class MatterhornModaProductModelToWoocommerceProductModelAdaptor:
         product_output_metadata_model = meta_data_services.create_metadata(
             product_input_metadata_model=MatterhornModaProductModelToWoocommerceProductInputMetadataModel().adapter(
                 product_matterhorn_moda_model=product_matterhorn_moda_model,
-                prompt_filename="miviva_matterhorn_moda_product",
+                prompt_filename=self.prompt_filename,  # "miviva_matterhorn_moda_product",
                 is_remove_html=fetch_config_model.is_remove_description_html,
             ),
             assemble_final=assemble_final,

@@ -25,7 +25,7 @@ def assemble_final(
     if "Paarmann-Tech" not in german_description:
         german_description += f"für Weitere technische Industrieprodukte kontakten Sie bei {paarmann_link}."
 
-    focus_keywords = product_output_model.german_focus_keywords
+    focus_keywords = list(product_output_model.german_focus_keywords)
     focus_keywords.extend(product_output_model.english_focus_keywords)
     focus_keywords = list(filter(lambda x: x, focus_keywords))
 

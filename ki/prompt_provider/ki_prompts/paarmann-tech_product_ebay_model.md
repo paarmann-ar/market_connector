@@ -490,7 +490,8 @@ The JSON MUST contain EXACTLY these fields:
   "english_image_description": "",
 
   "german_product_tags": [],
-  "english_product_tags": []
+  "english_product_tags": [],
+
 }
 
 ==================================================
@@ -550,6 +551,9 @@ $condition
 
 MPN:
 $mpn
+
+Technical attributes:
+$technical_attributes
 
 ==================================================
 GENERATE THE FINAL JSON NOW

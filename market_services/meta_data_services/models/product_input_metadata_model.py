@@ -17,6 +17,7 @@ class ProductInputMetadataModel:
     brand: Optional[str] = None
     condition: Optional[str] = None
     mpn: Optional[str] = None
+    technical_attributes: Optional[dict[str, list[str]]] = None
 
     #  --
     #  ...

@@ -1,4 +1,4 @@
-from typing import Optional, Literal
+from typing import ClassVar, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict
 
@@ -8,13 +8,9 @@ class WoocommerceGoogleProductModel(BaseModel):
 
     manufacturer_part_number: Optional[str] = None
 
-    condition: Optional[
-        Literal["new", "refurbished", "used"]
-    ] = None
+    condition: Optional[Literal["new", "refurbished", "used"]] = None
 
-    gender: Optional[
-        Literal["male", "female", "unisex"]
-    ] = None
+    gender: Optional[Literal["male", "female", "unisex"]] = None
 
     size: Optional[str] = None
 
@@ -73,7 +69,7 @@ class WoocommerceGoogleProductModel(BaseModel):
     # WooCommerce Google for WooCommerce meta keys
     # ------------------------------------------------------------------
 
-    META_KEYS = {
+    META_KEYS: ClassVar[dict[str, str]] = {
         "manufacturer_part_number": "_wc_gla_mpn",
         "condition": "_wc_gla_condition",
         "gender": "_wc_gla_gender",

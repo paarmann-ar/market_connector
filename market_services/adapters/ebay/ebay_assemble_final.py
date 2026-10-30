@@ -3,10 +3,12 @@ import re
 from pathlib import Path
 from typing import Annotated
 from market_services.meta_data_services.models.product_output_metadata_model import ProductOutputMetadataModel
+from market_services.meta_data_services.models.product_input_metadata_model import ProductInputMetadataModel
 from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from pydantic import BaseModel, Field, field_validator, model_validator
 from ki.ollama.models.ollama_answer_model import ProductOutputModel
 from ki.models.input_message_model import ProductInput
+from market_services.adapters.ebay.technical_table_builder import TechnicalTableBuilder
 
 GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae", "Ö": "oe", "Ü": "ue", "ß": "ss"})
 
@@ -16,7 +18,7 @@ GERMAN_ASCII_MAP = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "ae"
 
 
 def assemble_final(
-    product_output_model: ProductOutputModel, product_input: ProductInput
+    product_output_model: ProductOutputModel, product_input_metadata_model: ProductInputMetadataModel
 ) -> ProductOutputMetadataModel:
     title = f"{product_output_model.german_title.strip()} | {product_output_model.english_title.strip()}"
 
@@ -25,7 +27,7 @@ def assemble_final(
     if "Paarmann-Tech" not in german_description:
         german_description += f"für Weitere technische Industrieprodukte kontakten Sie bei {paarmann_link}."
 
-    focus_keywords = product_output_model.german_focus_keywords
+    focus_keywords = list(product_output_model.german_focus_keywords)
     focus_keywords.extend(product_output_model.english_focus_keywords)
     focus_keywords = list(filter(lambda x: x, focus_keywords))
 
@@ -36,7 +38,22 @@ def assemble_final(
     product_tags.extend(product_output_model.english_product_tags)
     product_tags = list(filter(lambda x: x, product_tags))
 
-    description = f"<p>{german_description}</p><p>{product_output_model.english_description.strip()}</p>{keyword_links(focus_keywords)}"
+    technical_table_en = TechnicalTableBuilder.build(
+        technical_attributes=product_input_metadata_model.technical_attributes,
+        brand=product_input_metadata_model.brand,
+        mpn=product_input_metadata_model.mpn,
+        condition=product_input_metadata_model.condition,
+        language="en",
+    )
+    technical_table_de = TechnicalTableBuilder.build(
+        technical_attributes=product_input_metadata_model.technical_attributes,
+        brand=product_input_metadata_model.brand,
+        mpn=product_input_metadata_model.mpn,
+        condition=product_input_metadata_model.condition,
+        language="de",
+    )
+
+    description = f"<p>{german_description}</p>{technical_table_de}<p>{product_output_model.english_description.strip()}</p>{technical_table_en}{keyword_links(focus_keywords)}"
 
     short_description = (
         f"<p>{product_output_model.german_short_description.strip()}</p><p>{product_output_model.english_short_description.strip()}</p>"
@@ -97,15 +114,17 @@ def build_slug(components: list[str]) -> str:
     for component in components:
         parts.extend(slugify_component(component).split("-"))
 
-    parts = list(filter(lambda x: x!="mpn", parts))
+    parts = list(filter(lambda x: x != "mpn", parts))
 
     parts = dict.fromkeys(parts)
 
     return "-".join(list(parts)[:8])
 
+
 # --
 # ...
 # --
+
 
 def slugify_component(value: str) -> str:
     value = value.translate(GERMAN_ASCII_MAP).lower().strip()
@@ -115,6 +134,7 @@ def slugify_component(value: str) -> str:
     if not value:
         raise ValueError("Slug component became empty")
     return value
+
 
 # --
 # ...

@@ -36,6 +36,11 @@ class ProductOutputModel(BaseModel):
     german_product_tags: list[str]
     english_product_tags: list[str]
 
+    german_technical_table: list[str]
+    english_technical_table: list[str]
+
+    technical_table: Optional[str] = None
+
 
 # --
 # ...
