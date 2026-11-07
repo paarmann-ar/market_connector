@@ -2,6 +2,7 @@ from apis.models.fetch_config_model import FetchConfigModel
 from app.controller.market_connector_controller import MarketConnectorController
 from app.controller.setup_market_connector_controller import SetupMarketConnectorController
 from market_services.image_services.models.image_directory_model import ImageDirectoryModel
+from market_services.image_services.background_operation.background_operation import BackgroundOperation
 
 # --
 # ...https://paarmann-tech.de/labod-electronic-tsr-250v-15-30a-4q-k/
@@ -66,16 +67,82 @@ search_in_ebay_models = [
     #     is_use_image_service=False,
     #     target_category_name_in_woocommerce="Sonstige",
     # ),
-    FetchConfigModel(
-        legacy_item_id=387356705350,
+    # FetchConfigModel(
+    #     legacy_item_id=387356705350,
+    #     marketplace="EBAY_DE",
+    #     marketplace_id="EBAY_DE",
+    #     deliveryCountry="DE",
+    #     item_to_fetch=1,
+    #     price_anpassen=4.5,
+    #     sale_price_anpassen=0.93,
+    #     is_use_image_service=True,
+    #     target_category_name_in_woocommerce="Elektronik",
+    # ),
+   FetchConfigModel(
+        legacy_item_id=353108642508,
         marketplace="EBAY_DE",
         marketplace_id="EBAY_DE",
         deliveryCountry="DE",
         item_to_fetch=1,
         price_anpassen=4.5,
-        sale_price_anpassen=0.93,
+        sale_price_anpassen=0.91,
         is_use_image_service=True,
-        target_category_name_in_woocommerce="Elektronik",
+        target_category_name_in_woocommerce="PLC & SPS",
+    ),
+   FetchConfigModel(
+        legacy_item_id=177358360646,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=2,
+        sale_price_anpassen=0.91,
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="PLC & SPS",
+    ),
+   FetchConfigModel(
+        legacy_item_id=146103665058,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=4.5,
+        sale_price_anpassen=0.91,
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="PLC & SPS",
+    ),
+   FetchConfigModel(
+        legacy_item_id=880081981175,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=4.5,
+        sale_price_anpassen=0.91,
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="PLC & SPS",
+    ),
+   FetchConfigModel(
+        legacy_item_id=880082001394,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=4.5,
+        sale_price_anpassen=0.91,
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="PLC & SPS",
+    ),
+   FetchConfigModel(
+        legacy_item_id=237031306222,
+        marketplace="EBAY_DE",
+        marketplace_id="EBAY_DE",
+        deliveryCountry="DE",
+        item_to_fetch=1,
+        price_anpassen=4.5,
+        sale_price_anpassen=0.91,
+        is_use_image_service=True,
+        target_category_name_in_woocommerce="PLC & SPS",
     ),
     # FetchConfigModel(
     #     legacy_item_id=318647115657,
@@ -291,5 +358,9 @@ def sync_woocomerce_to_idealo():
 
 
 # sync_matterhorn_moda_to_woocommerce()
-# sync_ebay_to_woocommerce()
-sync_woocomerce_to_idealo()
+sync_ebay_to_woocommerce()
+# sync_woocomerce_to_idealo()
+
+
+# image_directory_model= ImageDirectoryModel("/Users/bpm2/Downloads/simense")
+# white_backgroung(image_directory_model)
